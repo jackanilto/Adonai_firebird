@@ -752,7 +752,7 @@ object FrmPrincipal: TFrmPrincipal
       OnClick = btnGRUPOSClick
     end
     object SpeedButton3: TSpeedButton
-      Left = 224
+      Left = 225
       Top = 1
       Width = 97
       Height = 71

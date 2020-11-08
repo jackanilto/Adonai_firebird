@@ -1,0 +1,53 @@
+unit ULogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Imaging.jpeg;
+
+type
+  TFrmLogin = class(TForm)
+    Image1: TImage;
+    GrpBxLogin: TGroupBox;
+    Image2: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    BtnLogin: TButton;
+    BtnSair: TButton;
+    EdtUser: TEdit;
+    EdtSenha: TEdit;
+    procedure BtnSairClick(Sender: TObject);
+    procedure BtnLoginClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmLogin: TFrmLogin;
+
+implementation
+
+{$R *.dfm}
+
+uses UDM;
+
+
+procedure TFrmLogin.BtnLoginClick(Sender: TObject);
+begin
+    if (DM.TblAcesso.Locate('USUARIO', EdtUser.Text, [])) and (DM.TblAcesso.Locate('SENHA',EdtSenha.Text,[])) then
+    Begin
+
+    End;
+
+end;
+
+procedure TFrmLogin.BtnSairClick(Sender: TObject);
+begin
+Application.Terminate;
+end;
+
+end.

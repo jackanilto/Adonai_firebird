@@ -1,0 +1,124 @@
+unit UPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.WinXCalendars,
+  Vcl.ExtCtrls, Vcl.Menus, Vcl.Buttons;
+
+type
+  TFrmPrincipal = class(TForm)
+    PanelMenuDireita: TPanel;
+    CalendarView1: TCalendarView;
+    GBoxHoras: TGroupBox;
+    LabelHora: TLabel;
+    GBoxUsuario: TGroupBox;
+    LabelUsuario: TLabel;
+    Timer1: TTimer;
+    MainMenu1: TMainMenu;
+    Cadastro1: TMenuItem;
+    Funes1: TMenuItem;
+    PanelMenuTop: TPanel;
+    Sair1: TMenuItem;
+    Deslogar1: TMenuItem;
+    Encerrar1: TMenuItem;
+    Membros1: TMenuItem;
+    SpeedButton1: TSpeedButton;
+    Profissoes1: TMenuItem;
+    SpeedButton2: TSpeedButton;
+    btnGRUPOS: TSpeedButton;
+    ratamentos1: TMenuItem;
+    SpeedButton3: TSpeedButton;
+    procedure Button1Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Encerrar1Click(Sender: TObject);
+    procedure Membros1Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure Profissoes1Click(Sender: TObject);
+    procedure btnGRUPOSClick(Sender: TObject);
+    procedure ratamentos1Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses UDM, ULogin, UCadMembro, UProfissoes, UGrupos, UTratamentos;
+
+procedure TFrmPrincipal.btnGRUPOSClick(Sender: TObject);
+begin
+FrmGRUPOS.ShowModal;
+end;
+
+procedure TFrmPrincipal.Button1Click(Sender: TObject);
+begin
+Application.Terminate;
+end;
+
+procedure TFrmPrincipal.Encerrar1Click(Sender: TObject);
+begin
+Application.Terminate;
+end;
+
+procedure TFrmPrincipal.FormShow(Sender: TObject);
+//Abre form full Screen ( precisa configurar BorderStyle = bsSigle ou none )
+var
+   r : TRect;
+begin
+//Mostra o user logado no sistema
+LabelUsuario.Caption := DM.TblAcesso.FieldByName('USUARIO').AsString;
+
+ //Abre form full Screen ( precisa configurar BorderStyle = bsSigle ou none )
+ SystemParametersInfo(SPI_GETWORKAREA, 0, @r,0) ;
+ SetBounds(r.Left, r.Top, r.Right-r.Left, r.Bottom-r.Top) ;
+end;
+
+procedure TFrmPrincipal.Membros1Click(Sender: TObject);
+begin
+FrmCadMembro.ShowModal;
+end;
+
+procedure TFrmPrincipal.Profissoes1Click(Sender: TObject);
+begin
+FrmCadProfissoes.ShowModal;
+end;
+
+procedure TFrmPrincipal.ratamentos1Click(Sender: TObject);
+begin
+FrmTRATAMENTOS.ShowModal;
+end;
+
+procedure TFrmPrincipal.SpeedButton1Click(Sender: TObject);
+begin
+FrmCadMembro.ShowModal;
+end;
+
+procedure TFrmPrincipal.SpeedButton2Click(Sender: TObject);
+begin
+Application.Terminate;
+end;
+
+
+procedure TFrmPrincipal.SpeedButton3Click(Sender: TObject);
+begin
+FrmTRATAMENTOS.ShowModal;
+end;
+
+procedure TFrmPrincipal.Timer1Timer(Sender: TObject);
+//Mostra a hora do sitema
+begin
+    LabelHora.Caption := TimeToStr(now);
+end;
+
+end.

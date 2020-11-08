@@ -1,0 +1,20 @@
+program AdonaiSoftware;
+
+uses
+  Vcl.Forms,
+  ULogin in 'ULogin.pas' {FrmLogin},
+  UDM in 'UDM.pas' {DM: TDataModule},
+  UPrincipal in 'UPrincipal.pas' {FrmPrincipal},
+  UCadMembro in 'Cadastros\UCadMembro.pas' {FrmCadMembro};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmLogin, FrmLogin);
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFrmPrincipal, FrmPrincipal);
+  Application.CreateForm(TFrmCadMembro, FrmCadMembro);
+  Application.Run;
+end.

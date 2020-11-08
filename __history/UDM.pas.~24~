@@ -1,0 +1,125 @@
+unit UDM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, FireDAC.Phys.IBBase, FireDAC.Comp.UI,
+  Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet;
+
+type
+  TDM = class(TDataModule)
+    FDConn: TFDConnection;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    FDPhysFBDriverLink1: TFDPhysFBDriverLink;
+    TblAcesso: TFDTable;
+    DSAcesso: TDataSource;
+    TblAcessoCODIGO: TIntegerField;
+    TblAcessoUSUARIO: TStringField;
+    TblAcessoSENHA: TStringField;
+    TblAcessoMEMBROS: TStringField;
+    TblAcessoTRATAMENTOS: TStringField;
+    TblAcessoGRUPOS: TStringField;
+    TblAcessoCADUSERS: TStringField;
+    TblAcessoENTRADA: TStringField;
+    TblAcessoSAIDA: TStringField;
+    TblAcessoSO_CONSULTA: TStringField;
+    TblMembro: TFDTable;
+    DSMembro: TDataSource;
+    QueyMembro: TFDQuery;
+    sqlGenMemb: TFDQuery;
+    TblMembroID: TIntegerField;
+    TblMembroNOME: TStringField;
+    TblMembroENDERECO: TStringField;
+    TblMembroNUMERO: TStringField;
+    TblMembroBAIRRO: TStringField;
+    TblMembroCIDADE: TStringField;
+    TblMembroESTADO: TStringField;
+    TblMembroCEP: TStringField;
+    TblMembroCOMPLEMENTO: TStringField;
+    TblMembroTELPESSOAL: TStringField;
+    TblMembroCONTATO1: TStringField;
+    TblMembroCONTATO2: TStringField;
+    TblMembroEMAIL: TStringField;
+    TblMembroDIZIMISTA: TStringField;
+    TblMembroVALOR: TFloatField;
+    TblMembroGRUPO: TStringField;
+    TblMembroTRATAMENTO: TStringField;
+    TblMembroFOTO: TStringField;
+    TblMembroDATA_NASC: TStringField;
+    TblMembroOBS: TStringField;
+    TblMembroSEXO: TStringField;
+    TblMembroESTADO_CIVIL: TStringField;
+    TblMembroMINISTERIO: TStringField;
+    TblMembroPROFISSAO: TStringField;
+    TblMembroGRAU_ESCOLARIDADE: TStringField;
+    TblMembroBATIZADO: TStringField;
+    TblMembroRG: TStringField;
+    TblMembroCPF: TStringField;
+    TblMembroNOME_PAI: TStringField;
+    TblMembroNOME_MAE: TStringField;
+    TblMembroDATA_BATISMO: TStringField;
+    TblMembroDATA_ADMISSAO: TStringField;
+    TblMembroVALIDADE_CARTEIRA: TStringField;
+    TblMembroPAIS_ORIGEM: TStringField;
+    TblMembroTELEFONE_PAIS_ORIGEM: TStringField;
+    TblMembroDATA_CASAMENTO: TStringField;
+    TblMembroATIVO: TStringField;
+    TblMembroIGREJA_BATISMO: TStringField;
+    TblMembroCIDADE_BATISMO: TStringField;
+    TblMembroDATA_CONSAGRACAO: TStringField;
+    TblMembroNATURALIDADE: TStringField;
+    TblMembroTITULO_ELEITOR: TStringField;
+    TblMembroFILHOS: TIntegerField;
+    TblMembroVAL_CARTEIRA: TStringField;
+    TblMembroTAG: TStringField;
+    TblMembroCONJUGE: TStringField;
+    TblMembroNASC_CONJUGE: TStringField;
+    TblMembroCAMPO11: TIntegerField;
+    TblMembroCIDADE_BATIS: TStringField;
+    TblMembroCAMPO13: TStringField;
+    TblMembroTIPO_MORADIA: TStringField;
+    TblMembroCAMPO15: TStringField;
+    TblMembroHISTORICO: TMemoField;
+    TBL_PROFISSOES: TFDTable;
+    DSProfissoes: TDataSource;
+    TBL_PROFISSOESID: TIntegerField;
+    TBL_PROFISSOESPROFISSAO: TStringField;
+    QueryProfissoes: TFDQuery;
+    TBL_GRUPOS: TFDTable;
+    DSGrupos: TDataSource;
+    QueryGupos: TFDQuery;
+    TBL_GRUPOSID: TIntegerField;
+    TBL_GRUPOSNOME_GRUPO: TStringField;
+    TBL_TRATAMENTOS: TFDTable;
+    DSTratamentos: TDataSource;
+    QueryTratamentos: TFDQuery;
+    TBL_TRATAMENTOSID: TIntegerField;
+    TBL_TRATAMENTOSTRATAMENTO: TStringField;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses ULogin, UProfissoes;
+
+{$R *.dfm}
+
+procedure TDM.DataModuleCreate(Sender: TObject);
+begin
+FDConn.Connected := true;
+end;
+
+end.

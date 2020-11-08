@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/08/29 18:08:22.000.916,=C:\Users\TI\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 23:25:37.000.568,=C:\Users\TI\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 23:26:12.000.728,C:\Users\TI\Documents\Embarcadero\Studio\Projects\ULogin.pas=C:\Users\TI\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 23:26:12.000.728,C:\Users\TI\Documents\Embarcadero\Studio\Projects\ULogin.dfm=C:\Users\TI\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020/09/26 23:37:12.000.050,=C:\Users\TI\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 23:42:46.000.848,C:\Users\TI\Documents\Embarcadero\Studio\Projects\UDM.pas=C:\Users\TI\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 23:42:46.000.848,C:\Users\TI\Documents\Embarcadero\Studio\Projects\UDM.dfm=C:\Users\TI\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020/09/26 23:43:08.000.307,C:\Users\TI\Documents\Embarcadero\Studio\Projects\AdonaiSoftware.dproj=C:\Users\TI\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2020/09/26 23:57:03.000.958,=C:\Users\TI\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 23:57:43.000.254,C:\Users\TI\Documents\Embarcadero\Studio\Projects\UPrincipal.pas=C:\Users\TI\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 23:57:43.000.254,C:\Users\TI\Documents\Embarcadero\Studio\Projects\UPrincipal.dfm=C:\Users\TI\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020/09/28 21:06:28.000.525,=C:\ProgramData\Adonai_firebird\Unit1.pas</Transaction>
+    <Transaction>2020/09/28 21:10:27.000.915,C:\ProgramData\Adonai_firebird\Cadastros\UCadMembro.pas=C:\ProgramData\Adonai_firebird\Unit1.pas</Transaction>
+    <Transaction>2020/09/28 21:10:27.000.915,C:\ProgramData\Adonai_firebird\Cadastros\UCadMembro.dfm=C:\ProgramData\Adonai_firebird\Unit1.dfm</Transaction>
+    <Transaction>2020/10/02 23:38:55.000.500,=C:\ProgramData\Adonai_firebird\Unit1.pas</Transaction>
+    <Transaction>2020/10/02 23:49:57.000.248,C:\ProgramData\Adonai_firebird\Cadastros\UProfissoes.pas=C:\ProgramData\Adonai_firebird\Unit1.pas</Transaction>
+    <Transaction>2020/10/02 23:49:57.000.248,C:\ProgramData\Adonai_firebird\Cadastros\UProfissoes.dfm=C:\ProgramData\Adonai_firebird\Unit1.dfm</Transaction>
+    <Transaction>2020/10/04 11:38:34.000.907,=C:\ProgramData\Adonai_firebird\Unit1.pas</Transaction>
+    <Transaction>2020/10/04 11:44:43.000.621,C:\ProgramData\Adonai_firebird\Cadastros\UGrupos.pas=C:\ProgramData\Adonai_firebird\Unit1.pas</Transaction>
+    <Transaction>2020/10/04 11:44:43.000.621,C:\ProgramData\Adonai_firebird\Cadastros\UGrupos.dfm=C:\ProgramData\Adonai_firebird\Unit1.dfm</Transaction>
+    <Transaction>2020/10/04 15:00:33.000.575,=C:\ProgramData\Adonai_firebird\Unit1.pas</Transaction>
+    <Transaction>2020/10/04 17:26:45.000.201,C:\ProgramData\Adonai_firebird\Cadastros\UTratamentos.dfm=C:\ProgramData\Adonai_firebird\Unit1.dfm</Transaction>
+    <Transaction>2020/10/04 17:26:45.000.201,C:\ProgramData\Adonai_firebird\Cadastros\UTratamentos.pas=C:\ProgramData\Adonai_firebird\Unit1.pas</Transaction>
+    <Transaction>2020/10/23 22:41:23.000.101,C:\ProgramData\Adonai_firebird\BD\UDM.dfm=C:\ProgramData\Adonai_firebird\UDM.dfm</Transaction>
+    <Transaction>2020/10/23 22:41:23.000.101,C:\ProgramData\Adonai_firebird\BD\UDM.pas=C:\ProgramData\Adonai_firebird\UDM.pas</Transaction>
+    <Transaction>2020/10/23 22:53:05.000.315,C:\ProgramData\Adonai_firebird\BD\UDM.pas=C:\ProgramData\Adonai_firebird\Database\UDM.pas</Transaction>
+    <Transaction>2020/10/23 22:53:05.000.315,C:\ProgramData\Adonai_firebird\BD\UDM.dfm=C:\ProgramData\Adonai_firebird\Database\UDM.dfm</Transaction>
+    <Transaction>2020/10/25 10:07:13.000.794,=C:\ProgramData\Adonai_firebird\Unit1.pas</Transaction>
+    <Transaction>2020/10/25 10:08:48.000.492,C:\ProgramData\Adonai_firebird\Movimentacoes\UEntraSaida.pas=C:\ProgramData\Adonai_firebird\Unit1.pas</Transaction>
+    <Transaction>2020/10/25 10:08:48.000.492,C:\ProgramData\Adonai_firebird\Movimentacoes\UEntraSaida.dfm=C:\ProgramData\Adonai_firebird\Unit1.dfm</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Cadastros"/>
+    <File Path="Cadastros\UCadMembro.pas"/>
+    <File Path="Cadastros\UCadMembro.dfm"/>
+    <File Path="Cadastros\UGrupos.pas"/>
+    <File Path="Cadastros\UGrupos.dfm"/>
+    <File Path="Cadastros\UProfissoes.pas"/>
+    <File Path="Cadastros\UProfissoes.dfm"/>
+    <File Path="Cadastros\UTratamentos.pas"/>
+    <File Path="Cadastros\UTratamentos.dfm"/>
+    <File Path="Database"/>
+    <File Path="Database\UDM.pas"/>
+    <File Path="Database\UDM.dfm"/>
+    <File Path="Movimentacoes"/>
+    <File Path="Movimentacoes\UEntraSaida.pas"/>
+    <File Path="Movimentacoes\UEntraSaida.dfm"/>
+    <File Path="ULogin.pas"/>
+    <File Path="ULogin.dfm"/>
+    <File Path="UPrincipal.pas"/>
+    <File Path="UPrincipal.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

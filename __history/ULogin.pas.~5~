@@ -1,0 +1,76 @@
+unit ULogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Imaging.jpeg;
+
+type
+  TFrmLogin = class(TForm)
+    Image1: TImage;
+    GrpBxLogin: TGroupBox;
+    Image2: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    BtnLogin: TButton;
+    BtnSair: TButton;
+    EdtUser: TEdit;
+    EdtSenha: TEdit;
+    procedure BtnSairClick(Sender: TObject);
+    procedure BtnLoginClick(Sender: TObject);
+    procedure EdtSenhaKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmLogin: TFrmLogin;
+
+implementation
+
+{$R *.dfm}
+
+uses UDM, UPrincipal;
+
+ //inicio do login
+procedure TFrmLogin.BtnLoginClick(Sender: TObject);
+//Verifica o dados na tabela Acesso
+begin
+    if (DM.TblAcesso.Locate('USUARIO', EdtUser.Text, [])) and (DM.TblAcesso.Locate('SENHA',EdtSenha.Text,[])) then
+    Begin
+      FrmPrincipal.Show;
+      FrmLogin.Hide;
+    End
+// Verifica se foram preencidos os campos Login e Senha e exibe o alerta
+   else
+   if (EdtUser.Text ='') and (EdtSenha.Text = '')then
+   ShowMessage ('Preencha os campos Login e Senha')
+
+   else
+   MessageDlg('Login ou senha inválidos', mtError, [mbOk], 0);
+end;
+  //Fim do codigo login
+procedure TFrmLogin.BtnSairClick(Sender: TObject);
+begin
+Application.Terminate;
+end;
+
+procedure TFrmLogin.EdtSenhaKeyPress(Sender: TObject; var Key: Char);
+begin
+ if Key = #13 then            // Define o comando enter
+    BtnLoginClick(Sender);     // Atribui a função do boatao entrar ao enter
+end;
+
+procedure TFrmLogin.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+// define tab on press enter para navegar entre dbedit´s
+if key = vk_return then SelectNext(ActiveControl,True,True);
+end;
+
+end.

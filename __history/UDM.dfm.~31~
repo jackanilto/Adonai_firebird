@@ -1,0 +1,426 @@
+object DM: TDM
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 545
+  Width = 928
+  object FDConn: TFDConnection
+    Params.Strings = (
+      'Database=C:\ProgramData\Adonai_firebird\BD\ADONIAFB.FDB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
+      'DriverID=FB')
+    Connected = True
+    LoginPrompt = False
+    Left = 840
+    Top = 24
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 840
+    Top = 144
+  end
+  object FDPhysFBDriverLink1: TFDPhysFBDriverLink
+    VendorLib = 'C:\ProgramData\Adonai_firebird\Firebird\fbclient.dll'
+    Left = 840
+    Top = 80
+  end
+  object TblAcesso: TFDTable
+    Connection = FDConn
+    UpdateOptions.UpdateTableName = 'TBL_ACESSO'
+    TableName = 'TBL_ACESSO'
+    Left = 56
+    Top = 32
+    object TblAcessoCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+    end
+    object TblAcessoUSUARIO: TStringField
+      FieldName = 'USUARIO'
+      Origin = 'USUARIO'
+      Size = 50
+    end
+    object TblAcessoSENHA: TStringField
+      FieldName = 'SENHA'
+      Origin = 'SENHA'
+      Size = 50
+    end
+    object TblAcessoMEMBROS: TStringField
+      FieldName = 'MEMBROS'
+      Origin = 'MEMBROS'
+      Size = 3
+    end
+    object TblAcessoTRATAMENTOS: TStringField
+      FieldName = 'TRATAMENTOS'
+      Origin = 'TRATAMENTOS'
+      Size = 3
+    end
+    object TblAcessoGRUPOS: TStringField
+      FieldName = 'GRUPOS'
+      Origin = 'GRUPOS'
+      Size = 3
+    end
+    object TblAcessoCADUSERS: TStringField
+      FieldName = 'CADUSERS'
+      Origin = 'CADUSERS'
+      Size = 3
+    end
+    object TblAcessoENTRADA: TStringField
+      FieldName = 'ENTRADA'
+      Origin = 'ENTRADA'
+      Size = 3
+    end
+    object TblAcessoSAIDA: TStringField
+      FieldName = 'SAIDA'
+      Origin = 'SAIDA'
+      Size = 3
+    end
+    object TblAcessoSO_CONSULTA: TStringField
+      FieldName = 'SO_CONSULTA'
+      Origin = 'SO_CONSULTA'
+      Size = 3
+    end
+  end
+  object DSAcesso: TDataSource
+    DataSet = TblAcesso
+    Left = 56
+    Top = 88
+  end
+  object TblMembro: TFDTable
+    Connection = FDConn
+    UpdateOptions.UpdateTableName = 'TBL_MEMBROS'
+    TableName = 'TBL_MEMBROS'
+    Left = 112
+    Top = 32
+    object TblMembroID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+    end
+    object TblMembroNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 70
+    end
+    object TblMembroENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 50
+    end
+    object TblMembroNUMERO: TStringField
+      FieldName = 'NUMERO'
+      Origin = 'NUMERO'
+      Size = 10
+    end
+    object TblMembroBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Origin = 'BAIRRO'
+      Size = 50
+    end
+    object TblMembroCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Origin = 'CIDADE'
+      Size = 50
+    end
+    object TblMembroESTADO: TStringField
+      FieldName = 'ESTADO'
+      Origin = 'ESTADO'
+      Size = 2
+    end
+    object TblMembroCEP: TStringField
+      FieldName = 'CEP'
+      Origin = 'CEP'
+      Size = 12
+    end
+    object TblMembroCOMPLEMENTO: TStringField
+      FieldName = 'COMPLEMENTO'
+      Origin = 'COMPLEMENTO'
+      Size = 50
+    end
+    object TblMembroTELPESSOAL: TStringField
+      FieldName = 'TEL.PESSOAL'
+      Origin = '"TEL.PESSOAL"'
+      Size = 50
+    end
+    object TblMembroCONTATO1: TStringField
+      FieldName = 'CONTATO1'
+      Origin = 'CONTATO1'
+      Size = 50
+    end
+    object TblMembroCONTATO2: TStringField
+      FieldName = 'CONTATO2'
+      Origin = 'CONTATO2'
+      Size = 50
+    end
+    object TblMembroEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Size = 50
+    end
+    object TblMembroDIZIMISTA: TStringField
+      FieldName = 'DIZIMISTA'
+      Origin = 'DIZIMISTA'
+      Size = 3
+    end
+    object TblMembroVALOR: TFloatField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+    end
+    object TblMembroGRUPO: TStringField
+      FieldName = 'GRUPO'
+      Origin = 'GRUPO'
+    end
+    object TblMembroTRATAMENTO: TStringField
+      FieldName = 'TRATAMENTO'
+      Origin = 'TRATAMENTO'
+    end
+    object TblMembroFOTO: TStringField
+      FieldName = 'FOTO'
+      Origin = 'FOTO'
+      Size = 254
+    end
+    object TblMembroDATA_NASC: TStringField
+      FieldName = 'DATA_NASC'
+      Origin = 'DATA_NASC'
+      Size = 255
+    end
+    object TblMembroOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 255
+    end
+    object TblMembroSEXO: TStringField
+      FieldName = 'SEXO'
+      Origin = 'SEXO'
+      Size = 1
+    end
+    object TblMembroESTADO_CIVIL: TStringField
+      FieldName = 'ESTADO_CIVIL'
+      Origin = 'ESTADO_CIVIL'
+    end
+    object TblMembroMINISTERIO: TStringField
+      FieldName = 'MINISTERIO'
+      Origin = 'MINISTERIO'
+      Size = 30
+    end
+    object TblMembroPROFISSAO: TStringField
+      FieldName = 'PROFISSAO'
+      Origin = 'PROFISSAO'
+    end
+    object TblMembroGRAU_ESCOLARIDADE: TStringField
+      FieldName = 'GRAU_ESCOLARIDADE'
+      Origin = 'GRAU_ESCOLARIDADE'
+    end
+    object TblMembroBATIZADO: TStringField
+      FieldName = 'BATIZADO'
+      Origin = 'BATIZADO'
+      Size = 3
+    end
+    object TblMembroRG: TStringField
+      FieldName = 'RG'
+      Origin = 'RG'
+      Size = 16
+    end
+    object TblMembroCPF: TStringField
+      FieldName = 'CPF'
+      Origin = 'CPF'
+      Size = 16
+    end
+    object TblMembroNOME_PAI: TStringField
+      FieldName = 'NOME_PAI'
+      Origin = 'NOME_PAI'
+      Size = 70
+    end
+    object TblMembroNOME_MAE: TStringField
+      FieldName = 'NOME_MAE'
+      Origin = 'NOME_MAE'
+      Size = 70
+    end
+    object TblMembroDATA_BATISMO: TStringField
+      FieldName = 'DATA_BATISMO'
+      Origin = 'DATA_BATISMO'
+      Size = 255
+    end
+    object TblMembroDATA_ADMISSAO: TStringField
+      FieldName = 'DATA_ADMISSAO'
+      Origin = 'DATA_ADMISSAO'
+      Size = 255
+    end
+    object TblMembroVALIDADE_CARTEIRA: TStringField
+      FieldName = 'VALIDADE_CARTEIRA'
+      Origin = 'VALIDADE_CARTEIRA'
+      Size = 6
+    end
+    object TblMembroPAIS_ORIGEM: TStringField
+      FieldName = 'PAIS_ORIGEM'
+      Origin = 'PAIS_ORIGEM'
+      Size = 30
+    end
+    object TblMembroTELEFONE_PAIS_ORIGEM: TStringField
+      FieldName = 'TELEFONE_PAIS_ORIGEM'
+      Origin = 'TELEFONE_PAIS_ORIGEM'
+      Size = 50
+    end
+    object TblMembroDATA_CASAMENTO: TStringField
+      FieldName = 'DATA_CASAMENTO'
+      Origin = 'DATA_CASAMENTO'
+      Size = 255
+    end
+    object TblMembroATIVO: TStringField
+      FieldName = 'ATIVO'
+      Origin = 'ATIVO'
+      Size = 5
+    end
+    object TblMembroIGREJA_BATISMO: TStringField
+      FieldName = 'IGREJA_BATISMO'
+      Origin = 'IGREJA_BATISMO'
+      Size = 50
+    end
+    object TblMembroCIDADE_BATISMO: TStringField
+      FieldName = 'CIDADE_BATISMO'
+      Origin = 'CIDADE_BATISMO'
+      Size = 50
+    end
+    object TblMembroDATA_CONSAGRACAO: TStringField
+      FieldName = 'DATA_CONSAGRACAO'
+      Origin = 'DATA_CONSAGRACAO'
+      Size = 255
+    end
+    object TblMembroNATURALIDADE: TStringField
+      FieldName = 'NATURALIDADE'
+      Origin = 'NATURALIDADE'
+      Size = 50
+    end
+    object TblMembroTITULO_ELEITOR: TStringField
+      FieldName = 'TITULO_ELEITOR'
+      Origin = 'TITULO_ELEITOR'
+      Size = 50
+    end
+    object TblMembroFILHOS: TIntegerField
+      FieldName = 'FILHOS'
+      Origin = 'FILHOS'
+    end
+    object TblMembroVAL_CARTEIRA: TStringField
+      FieldName = 'VAL_CARTEIRA'
+      Origin = 'VAL_CARTEIRA'
+      Size = 255
+    end
+    object TblMembroTAG: TStringField
+      FieldName = 'TAG'
+      Origin = 'TAG'
+      Size = 50
+    end
+    object TblMembroCONJUGE: TStringField
+      FieldName = 'CONJUGE'
+      Origin = 'CONJUGE'
+      Size = 50
+    end
+    object TblMembroNASC_CONJUGE: TStringField
+      FieldName = 'NASC_CONJUGE'
+      Origin = 'NASC_CONJUGE'
+      Size = 255
+    end
+    object TblMembroCAMPO11: TIntegerField
+      FieldName = 'CAMPO11'
+      Origin = 'CAMPO11'
+    end
+    object TblMembroCIDADE_BATIS: TStringField
+      FieldName = 'CIDADE_BATIS'
+      Origin = 'CIDADE_BATIS'
+      Size = 70
+    end
+    object TblMembroCAMPO13: TStringField
+      FieldName = 'CAMPO13'
+      Origin = 'CAMPO13'
+      Size = 70
+    end
+    object TblMembroTIPO_MORADIA: TStringField
+      FieldName = 'TIPO_MORADIA'
+      Origin = 'TIPO_MORADIA'
+      Size = 70
+    end
+    object TblMembroCAMPO15: TStringField
+      FieldName = 'CAMPO15'
+      Origin = 'CAMPO15'
+      Size = 255
+    end
+    object TblMembroHISTORICO: TMemoField
+      FieldName = 'HISTORICO'
+      Origin = 'HISTORICO'
+      BlobType = ftMemo
+    end
+  end
+  object DSMembro: TDataSource
+    DataSet = TblMembro
+    Left = 113
+    Top = 88
+  end
+  object QueyMembro: TFDQuery
+    MasterSource = DSMembro
+    Connection = FDConn
+    SQL.Strings = (
+      'select  *  from tbl_membros')
+    Left = 112
+    Top = 136
+  end
+  object sqlGenMemb: TFDQuery
+    Connection = FDConn
+    Left = 112
+    Top = 192
+  end
+  object TBL_PROFISSOES: TFDTable
+    Connection = FDConn
+    UpdateOptions.UpdateTableName = 'TBL_PROFISSOES'
+    TableName = 'TBL_PROFISSOES'
+    Left = 184
+    Top = 32
+    object TBL_PROFISSOESID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+    end
+    object TBL_PROFISSOESPROFISSAO: TStringField
+      FieldName = 'PROFISSAO'
+      Origin = 'PROFISSAO'
+      Size = 50
+    end
+  end
+  object DSProfissoes: TDataSource
+    DataSet = TBL_PROFISSOES
+    Left = 184
+    Top = 88
+  end
+  object QueryProfissoes: TFDQuery
+    MasterSource = DSProfissoes
+    Connection = FDConn
+    SQL.Strings = (
+      'select * from TBL_PROFISSOES')
+    Left = 184
+    Top = 136
+  end
+  object TBL_GRUPOS: TFDTable
+    Connection = FDConn
+    UpdateOptions.UpdateTableName = 'TBL_GRUPOS'
+    TableName = 'TBL_GRUPOS'
+    Left = 264
+    Top = 32
+    object TBL_GRUPOSID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+    end
+    object TBL_GRUPOSNOME_GRUPO: TStringField
+      FieldName = 'NOME_GRUPO'
+      Origin = 'NOME_GRUPO'
+      Size = 50
+    end
+  end
+  object DSGrupos: TDataSource
+    Left = 264
+    Top = 88
+  end
+  object QueryGupos: TFDQuery
+    Active = True
+    Connection = FDConn
+    SQL.Strings = (
+      'select * from TBL_GRUPOS')
+    Left = 264
+    Top = 136
+  end
+end

@@ -2187,9 +2187,9 @@ object FrmLogin: TFrmLogin
     Stretch = True
   end
   object AdonaiSoftware: TLabel
-    Left = 85
+    Left = 76
     Top = 9
-    Width = 276
+    Width = 285
     Height = 49
     Alignment = taCenter
     Caption = 'Adonai Software'
@@ -2201,10 +2201,10 @@ object FrmLogin: TFrmLogin
     ParentFont = False
   end
   object LabelVersao: TLabel
-    Left = 202
+    Left = 333
     Top = 49
-    Width = 170
-    Height = 16
+    Width = 39
+    Height = 13
     Alignment = taRightJustify
     Caption = 'Versao'
     Font.Charset = DEFAULT_CHARSET

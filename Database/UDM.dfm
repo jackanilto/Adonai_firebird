@@ -9,7 +9,6 @@ object DM: TDM
       'User_Name=SYSDBA'
       'Password=masterkey'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 840
     Top = 24
@@ -85,275 +84,275 @@ object DM: TDM
     Left = 56
     Top = 88
   end
-  object TBL_MEMBRO: TFDTable
+  object TBL_MEMBROS: TFDTable
     IndexFieldNames = 'ID'
     Connection = FDConn
     UpdateOptions.UpdateTableName = 'TBL_MEMBROS'
     TableName = 'TBL_MEMBROS'
     Left = 144
     Top = 32
-    object TBL_MEMBROID: TIntegerField
+    object TBL_MEMBROSID: TIntegerField
       AutoGenerateValue = arAutoInc
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object TBL_MEMBRONOME: TStringField
+    object TBL_MEMBROSNOME: TStringField
       FieldName = 'NOME'
       Origin = 'NOME'
       Size = 200
     end
-    object TBL_MEMBROENDERECO: TStringField
+    object TBL_MEMBROSENDERECO: TStringField
       FieldName = 'ENDERECO'
       Origin = 'ENDERECO'
       Size = 200
     end
-    object TBL_MEMBRONUMERO: TStringField
+    object TBL_MEMBROSNUMERO: TStringField
       FieldName = 'NUMERO'
       Origin = 'NUMERO'
       Size = 200
     end
-    object TBL_MEMBROBAIRRO: TStringField
+    object TBL_MEMBROSBAIRRO: TStringField
       FieldName = 'BAIRRO'
       Origin = 'BAIRRO'
       Size = 200
     end
-    object TBL_MEMBROCIDADE: TStringField
+    object TBL_MEMBROSCIDADE: TStringField
       FieldName = 'CIDADE'
       Origin = 'CIDADE'
       Size = 200
     end
-    object TBL_MEMBROESTADO: TStringField
+    object TBL_MEMBROSESTADO: TStringField
       FieldName = 'ESTADO'
       Origin = 'ESTADO'
       Size = 200
     end
-    object TBL_MEMBROCEP: TStringField
+    object TBL_MEMBROSCEP: TStringField
       FieldName = 'CEP'
       Origin = 'CEP'
       Size = 200
     end
-    object TBL_MEMBROCOMPLEMENTO: TStringField
+    object TBL_MEMBROSCOMPLEMENTO: TStringField
       FieldName = 'COMPLEMENTO'
       Origin = 'COMPLEMENTO'
       Size = 200
     end
-    object TBL_MEMBROTELPESSOAL: TStringField
+    object TBL_MEMBROSTELPESSOAL: TStringField
       FieldName = 'TEL.PESSOAL'
       Origin = '"TEL.PESSOAL"'
       Size = 200
     end
-    object TBL_MEMBROCONTATO1: TStringField
+    object TBL_MEMBROSCONTATO1: TStringField
       FieldName = 'CONTATO1'
       Origin = 'CONTATO1'
       Size = 200
     end
-    object TBL_MEMBROCONTATO2: TStringField
+    object TBL_MEMBROSCONTATO2: TStringField
       FieldName = 'CONTATO2'
       Origin = 'CONTATO2'
       Size = 200
     end
-    object TBL_MEMBROEMAIL: TStringField
+    object TBL_MEMBROSEMAIL: TStringField
       FieldName = 'EMAIL'
       Origin = 'EMAIL'
       Size = 200
     end
-    object TBL_MEMBRODIZIMISTA: TStringField
+    object TBL_MEMBROSDIZIMISTA: TStringField
       FieldName = 'DIZIMISTA'
       Origin = 'DIZIMISTA'
       Size = 200
     end
-    object TBL_MEMBROVALOR: TFloatField
+    object TBL_MEMBROSVALOR: TFloatField
       FieldName = 'VALOR'
       Origin = 'VALOR'
     end
-    object TBL_MEMBROGRUPO: TStringField
+    object TBL_MEMBROSGRUPO: TStringField
       FieldName = 'GRUPO'
       Origin = 'GRUPO'
       Size = 200
     end
-    object TBL_MEMBROTRATAMENTO: TStringField
+    object TBL_MEMBROSTRATAMENTO: TStringField
       FieldName = 'TRATAMENTO'
       Origin = 'TRATAMENTO'
       Size = 200
     end
-    object TBL_MEMBROIMAGEM: TBlobField
+    object TBL_MEMBROSIMAGEM: TBlobField
       FieldName = 'IMAGEM'
       Origin = 'IMAGEM'
     end
-    object TBL_MEMBROSEXO: TStringField
+    object TBL_MEMBROSSEXO: TStringField
       FieldName = 'SEXO'
       Origin = 'SEXO'
       Size = 193
     end
-    object TBL_MEMBROESTADO_CIVIL: TStringField
+    object TBL_MEMBROSESTADO_CIVIL: TStringField
       FieldName = 'ESTADO_CIVIL'
       Origin = 'ESTADO_CIVIL'
       Size = 200
     end
-    object TBL_MEMBROMINISTERIO: TStringField
+    object TBL_MEMBROSMINISTERIO: TStringField
       FieldName = 'MINISTERIO'
       Origin = 'MINISTERIO'
       Size = 200
     end
-    object TBL_MEMBROPOFISSAO: TStringField
+    object TBL_MEMBROSPOFISSAO: TStringField
       FieldName = 'POFISSAO'
       Origin = 'POFISSAO'
       Size = 200
     end
-    object TBL_MEMBROGRAU_ESCOLARIDADE: TStringField
+    object TBL_MEMBROSGRAU_ESCOLARIDADE: TStringField
       FieldName = 'GRAU_ESCOLARIDADE'
       Origin = 'GRAU_ESCOLARIDADE'
       Size = 200
     end
-    object TBL_MEMBROBATIZADO: TStringField
+    object TBL_MEMBROSBATIZADO: TStringField
       FieldName = 'BATIZADO'
       Origin = 'BATIZADO'
       Size = 200
     end
-    object TBL_MEMBRORG: TStringField
+    object TBL_MEMBROSRG: TStringField
       FieldName = 'RG'
       Origin = 'RG'
       Size = 200
     end
-    object TBL_MEMBROCPF: TStringField
+    object TBL_MEMBROSCPF: TStringField
       FieldName = 'CPF'
       Origin = 'CPF'
       Size = 200
     end
-    object TBL_MEMBRONOME_PAI: TStringField
+    object TBL_MEMBROSNOME_PAI: TStringField
       FieldName = 'NOME_PAI'
       Origin = 'NOME_PAI'
       Size = 200
     end
-    object TBL_MEMBRONOME_MAE: TStringField
+    object TBL_MEMBROSNOME_MAE: TStringField
       FieldName = 'NOME_MAE'
       Origin = 'NOME_MAE'
       FixedChar = True
       Size = 200
     end
-    object TBL_MEMBRODATA_BATISMO: TStringField
+    object TBL_MEMBROSDATA_BATISMO: TStringField
       FieldName = 'DATA_BATISMO'
       Origin = 'DATA_BATISMO'
       Size = 10
     end
-    object TBL_MEMBRODATA_ADMISSAO: TStringField
+    object TBL_MEMBROSDATA_ADMISSAO: TStringField
       FieldName = 'DATA_ADMISSAO'
       Origin = 'DATA_ADMISSAO'
       Size = 10
     end
-    object TBL_MEMBROPAIS_ORIGEM: TStringField
+    object TBL_MEMBROSPAIS_ORIGEM: TStringField
       FieldName = 'PAIS_ORIGEM'
       Origin = 'PAIS_ORIGEM'
       Size = 200
     end
-    object TBL_MEMBROTELEFONE_PAIS_ORIGEM: TStringField
+    object TBL_MEMBROSTELEFONE_PAIS_ORIGEM: TStringField
       FieldName = 'TELEFONE_PAIS_ORIGEM'
       Origin = 'TELEFONE_PAIS_ORIGEM'
       Size = 200
     end
-    object TBL_MEMBRODATA_CASAMENTO: TStringField
+    object TBL_MEMBROSDATA_CASAMENTO: TStringField
       FieldName = 'DATA_CASAMENTO'
       Origin = 'DATA_CASAMENTO'
       Size = 10
     end
-    object TBL_MEMBROATIVO: TStringField
+    object TBL_MEMBROSATIVO: TStringField
       FieldName = 'ATIVO'
       Origin = 'ATIVO'
       Size = 200
     end
-    object TBL_MEMBROIGREJA_BATISMO: TStringField
+    object TBL_MEMBROSIGREJA_BATISMO: TStringField
       FieldName = 'IGREJA_BATISMO'
       Origin = 'IGREJA_BATISMO'
       Size = 200
     end
-    object TBL_MEMBRODATA_CONSAGRACAO: TStringField
+    object TBL_MEMBROSDATA_CONSAGRACAO: TStringField
       FieldName = 'DATA_CONSAGRACAO'
       Origin = 'DATA_CONSAGRACAO'
       Size = 10
     end
-    object TBL_MEMBRONATURALIDADE: TStringField
+    object TBL_MEMBROSNATURALIDADE: TStringField
       FieldName = 'NATURALIDADE'
       Origin = 'NATURALIDADE'
       Size = 200
     end
-    object TBL_MEMBROTITULO_ELEITOR: TStringField
+    object TBL_MEMBROSTITULO_ELEITOR: TStringField
       FieldName = 'TITULO_ELEITOR'
       Origin = 'TITULO_ELEITOR'
       Size = 200
     end
-    object TBL_MEMBROFILHOS: TStringField
+    object TBL_MEMBROSFILHOS: TStringField
       FieldName = 'FILHOS'
       Origin = 'FILHOS'
       Size = 200
     end
-    object TBL_MEMBROVALIDADE_CARTEIRA: TStringField
+    object TBL_MEMBROSVALIDADE_CARTEIRA: TStringField
       FieldName = 'VALIDADE_CARTEIRA'
       Origin = 'VALIDADE_CARTEIRA'
       Size = 10
     end
-    object TBL_MEMBROTAG: TStringField
+    object TBL_MEMBROSTAG: TStringField
       FieldName = 'TAG'
       Origin = 'TAG'
       Size = 200
     end
-    object TBL_MEMBROCONJUGE: TStringField
+    object TBL_MEMBROSCONJUGE: TStringField
       FieldName = 'CONJUGE'
       Origin = 'CONJUGE'
       Size = 200
     end
-    object TBL_MEMBROTIPO_MORADIA: TStringField
+    object TBL_MEMBROSTIPO_MORADIA: TStringField
       FieldName = 'TIPO_MORADIA'
       Origin = 'TIPO_MORADIA'
       Size = 200
     end
-    object TBL_MEMBROHISTORICO: TStringField
+    object TBL_MEMBROSHISTORICO: TStringField
       FieldName = 'HISTORICO'
       Origin = 'HISTORICO'
       Size = 200
     end
-    object TBL_MEMBROPROFISSAO: TStringField
+    object TBL_MEMBROSPROFISSAO: TStringField
       FieldName = 'PROFISSAO'
       Origin = 'PROFISSAO'
       Size = 200
     end
-    object TBL_MEMBRONASC_CONJUGE: TStringField
+    object TBL_MEMBROSNASC_CONJUGE: TStringField
       FieldName = 'NASC_CONJUGE'
       Origin = 'NASC_CONJUGE'
       Size = 10
     end
-    object TBL_MEMBROCIDADE_BATISMO: TStringField
+    object TBL_MEMBROSCIDADE_BATISMO: TStringField
       FieldName = 'CIDADE_BATISMO'
       Origin = 'CIDADE_BATISMO'
       Size = 10
     end
-    object TBL_MEMBRODATA_NASC: TDateField
+    object TBL_MEMBROSDATA_NASC: TDateField
       FieldName = 'DATA_NASC'
       Origin = 'DATA_NASC'
     end
-    object TBL_MEMBROCAMPO13: TStringField
+    object TBL_MEMBROSCAMPO13: TStringField
       FieldName = 'CAMPO13'
       Origin = 'CAMPO13'
       Size = 200
     end
-    object TBL_MEMBROCAMPO15: TStringField
+    object TBL_MEMBROSCAMPO15: TStringField
       FieldName = 'CAMPO15'
       Origin = 'CAMPO15'
       Size = 200
     end
-    object TBL_MEMBROOBSERVACAO: TStringField
+    object TBL_MEMBROSOBSERVACAO: TStringField
       FieldName = 'OBSERVACAO'
       Origin = 'OBSERVACAO'
       Size = 200
     end
   end
   object DSMembro: TDataSource
-    DataSet = TBL_MEMBRO
+    DataSet = TBL_MEMBROS
     Left = 145
     Top = 88
   end
-  object QueyMembro: TFDQuery
+  object QueryMembro: TFDQuery
     MasterSource = DSMembro
     Connection = FDConn
     SQL.Strings = (

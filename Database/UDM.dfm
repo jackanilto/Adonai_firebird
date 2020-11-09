@@ -138,11 +138,6 @@ object DM: TDM
       Origin = 'COMPLEMENTO'
       Size = 200
     end
-    object TBL_MEMBROSTELPESSOAL: TStringField
-      FieldName = 'TEL.PESSOAL'
-      Origin = '"TEL.PESSOAL"'
-      Size = 200
-    end
     object TBL_MEMBROSCONTATO1: TStringField
       FieldName = 'CONTATO1'
       Origin = 'CONTATO1'
@@ -344,6 +339,16 @@ object DM: TDM
     object TBL_MEMBROSOBSERVACAO: TStringField
       FieldName = 'OBSERVACAO'
       Origin = 'OBSERVACAO'
+      Size = 200
+    end
+    object TBL_MEMBROSOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 200
+    end
+    object TBL_MEMBROSTELPESSOAL: TStringField
+      FieldName = 'TELPESSOAL'
+      Origin = 'TELPESSOAL'
       Size = 200
     end
   end

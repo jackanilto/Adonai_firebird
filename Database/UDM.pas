@@ -57,7 +57,6 @@ type
     TBL_MEMBROSESTADO: TStringField;
     TBL_MEMBROSCEP: TStringField;
     TBL_MEMBROSCOMPLEMENTO: TStringField;
-    TBL_MEMBROSTELPESSOAL: TStringField;
     TBL_MEMBROSCONTATO1: TStringField;
     TBL_MEMBROSCONTATO2: TStringField;
     TBL_MEMBROSEMAIL: TStringField;
@@ -99,6 +98,8 @@ type
     TBL_MEMBROSCAMPO13: TStringField;
     TBL_MEMBROSCAMPO15: TStringField;
     TBL_MEMBROSOBSERVACAO: TStringField;
+    TBL_MEMBROSOBS: TStringField;
+    TBL_MEMBROSTELPESSOAL: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

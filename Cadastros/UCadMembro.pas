@@ -289,11 +289,11 @@ btnDeletar.Enabled := true;
 btnAdd.Enabled := true;
 habilitarCampos;
 
-if dm.QueryMembro.FieldByName('nome').Value <> null then
-editNome.Text := dm.QueryMembro.FieldByName('nome').Value;
+if dm.TBL_MEMBROS.FieldByName('nome').Value <> null then
+editNome.Text := dm.TBL_MEMBROS.FieldByName('nome').Value;
 
- if dm.QueryMembro.FieldByName('imagem').Value <> null then
- ExibeFoto(dm.QueryMembro, 'imagem', img);
+ if dm.TBL_MEMBROS.FieldByName('imagem').Value <> null then
+ ExibeFoto(dm.TBL_MEMBROS, 'imagem', img);
 
 end;
 

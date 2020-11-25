@@ -2032,14 +2032,6 @@ object FrmCadMembro: TFrmCadMembro
       000000000000}
   end
   object dialog: TOpenPictureDialog
-    Filter = 
-      'All (*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.ico;*.emf;*.wmf;*.tif;*.ti' +
-      'ff)|*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.ico;*.emf;*.wmf;*.tif;*.tif' +
-      'f|GIF Image (*.gif)|*.gif|Portable Network Graphics (*.png)|*.pn' +
-      'g|JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg|' +
-      'Bitmaps (*.bmp)|*.bmp|Icons (*.ico)|*.ico|Enhanced Metafiles (*.' +
-      'emf)|*.emf|Metafiles (*.wmf)|*.wmf|TIFF Images (*.tif)|*.tif|TIF' +
-      'F Images (*.tiff)|*.tiff'
     Left = 744
     Top = 240
   end

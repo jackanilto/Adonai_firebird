@@ -13,4 +13,17 @@ object FormEntraSaida: TFormEntraSaida
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 24
+    Top = 168
+    Width = 689
+    Height = 120
+    DataSource = DM.DSEntSai
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
 end

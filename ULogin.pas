@@ -9,17 +9,17 @@ uses
 
 type
   TFrmLogin = class(TForm)
-    ImageLogoLogin: TImage;
     GrpBxLogin: TGroupBox;
     Image2: TImage;
-    Label1: TLabel;
-    Label2: TLabel;
     BtnLogin: TButton;
     BtnSair: TButton;
     EdtUser: TEdit;
     EdtSenha: TEdit;
     AdonaiSoftware: TLabel;
     LabelVersao: TLabel;
+    ImageLogoLogin: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure BtnSairClick(Sender: TObject);
     procedure BtnLoginClick(Sender: TObject);
     procedure EdtSenhaKeyPress(Sender: TObject; var Key: Char);

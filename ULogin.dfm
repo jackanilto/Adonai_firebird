@@ -455,8 +455,39 @@ object FrmLogin: TFrmLogin
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
+  object AdonaiSoftware: TLabel
+    Left = 0
+    Top = 0
+    Width = 385
+    Height = 49
+    Align = alTop
+    Alignment = taCenter
+    Caption = 'Adonai Software'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -40
+    Font.Name = 'Monotype Corsiva'
+    Font.Style = [fsBold]
+    ParentFont = False
+    ExplicitLeft = 8
+    ExplicitTop = 87
+  end
+  object LabelVersao: TLabel
+    Left = 333
+    Top = 49
+    Width = 39
+    Height = 13
+    Alignment = taRightJustify
+    Caption = 'Versao'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object ImageLogoLogin: TImage
-    Left = 36
+    Left = 20
     Top = 0
     Width = 49
     Height = 65
@@ -2186,34 +2217,6 @@ object FrmLogin: TFrmLogin
     Proportional = True
     Stretch = True
   end
-  object AdonaiSoftware: TLabel
-    Left = 76
-    Top = 9
-    Width = 285
-    Height = 49
-    Alignment = taCenter
-    Caption = 'Adonai Software'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -40
-    Font.Name = 'Monotype Corsiva'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object LabelVersao: TLabel
-    Left = 333
-    Top = 49
-    Width = 39
-    Height = 13
-    Alignment = taRightJustify
-    Caption = 'Versao'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
   object GrpBxLogin: TGroupBox
     Left = 8
     Top = 71
@@ -2568,18 +2571,18 @@ object FrmLogin: TFrmLogin
         9DA6AA7A0000000049454E44AE426082}
     end
     object Label1: TLabel
-      Left = 65
+      Left = 48
       Top = 24
-      Width = 36
+      Width = 35
       Height = 13
-      Caption = 'Usuario'
+      Caption = 'Login : '
     end
     object Label2: TLabel
-      Left = 68
-      Top = 48
-      Width = 30
+      Left = 48
+      Top = 56
+      Width = 40
       Height = 13
-      Caption = 'Senha'
+      Caption = 'Senha : '
     end
     object BtnLogin: TButton
       Left = 184
@@ -2606,6 +2609,7 @@ object FrmLogin: TFrmLogin
       Height = 21
       CharCase = ecUpperCase
       TabOrder = 0
+      TextHint = 'Digite o nome de Usu'#225'rio'
       OnKeyDown = EdtUserKeyDown
     end
     object EdtSenha: TEdit
@@ -2615,6 +2619,7 @@ object FrmLogin: TFrmLogin
       Height = 21
       PasswordChar = '*'
       TabOrder = 1
+      TextHint = 'DIGITE SUA SENHA'
       OnKeyPress = EdtSenhaKeyPress
     end
   end

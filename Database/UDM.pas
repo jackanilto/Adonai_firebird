@@ -100,6 +100,10 @@ type
     TBL_MEMBROSOBSERVACAO: TStringField;
     TBL_MEMBROSOBS: TStringField;
     TBL_MEMBROSTELPESSOAL: TStringField;
+    QueryAcesso: TFDQuery;
+    TBL_ENTRA_SAI: TFDTable;
+    DSEntSai: TDataSource;
+    QueryEntSai: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

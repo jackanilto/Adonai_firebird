@@ -5,10 +5,11 @@ object DM: TDM
   Width = 928
   object FDConn: TFDConnection
     Params.Strings = (
-      'Database=C:\ProgramData\Adonai_firebird\Database\ADONIAFB.FDB'
+      'Database=D:\ProjetosGitHub\Adonai_firebird\Database\ADONIAFB.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 840
     Top = 24
@@ -19,7 +20,7 @@ object DM: TDM
     Top = 144
   end
   object FDPhysFBDriverLink1: TFDPhysFBDriverLink
-    VendorLib = 'C:\ProgramData\Adonai_firebird\Firebird\fbclient.dll'
+    VendorLib = 'D:\ProjetosGitHub\Adonai_firebird\Firebird\fbclient.dll'
     Left = 840
     Top = 80
   end
@@ -80,7 +81,7 @@ object DM: TDM
     end
   end
   object DSAcesso: TDataSource
-    DataSet = TblAcesso
+    DataSet = QueryAcesso
     Left = 56
     Top = 88
   end
@@ -353,12 +354,11 @@ object DM: TDM
     end
   end
   object DSMembro: TDataSource
-    DataSet = TBL_MEMBROS
+    DataSet = QueryMembro
     Left = 145
     Top = 88
   end
   object QueryMembro: TFDQuery
-    MasterSource = DSMembro
     Connection = FDConn
     SQL.Strings = (
       'select  *  from tbl_membros order by nome asc')
@@ -383,12 +383,11 @@ object DM: TDM
     end
   end
   object DSProfissoes: TDataSource
-    DataSet = TBL_PROFISSOES
+    DataSet = QueryProfissoes
     Left = 248
     Top = 88
   end
   object QueryProfissoes: TFDQuery
-    MasterSource = DSProfissoes
     Connection = FDConn
     SQL.Strings = (
       'select * from TBL_PROFISSOES')
@@ -418,6 +417,7 @@ object DM: TDM
       Origin = 'ID'
     end
     object TBL_GRUPOSNOME_GRUPO: TStringField
+      DisplayLabel = 'NOME DO GRUPO'
       FieldName = 'NOME_GRUPO'
       Origin = 'NOME_GRUPO'
       Size = 50
@@ -462,5 +462,27 @@ object DM: TDM
       'select * from TBL_TRATAMENTOS ORDER by TRATAMENTO ASC')
     Left = 448
     Top = 136
+  end
+  object QueryAcesso: TFDQuery
+    Connection = FDConn
+    Left = 56
+    Top = 136
+  end
+  object TBL_ENTRA_SAI: TFDTable
+    Connection = FDConn
+    UpdateOptions.UpdateTableName = 'TBL_ENTRADA_SAIDA'
+    TableName = 'TBL_ENTRADA_SAIDA'
+    Left = 64
+    Top = 256
+  end
+  object DSEntSai: TDataSource
+    DataSet = QueryEntSai
+    Left = 64
+    Top = 304
+  end
+  object QueryEntSai: TFDQuery
+    Connection = FDConn
+    Left = 64
+    Top = 360
   end
 end

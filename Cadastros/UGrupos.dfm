@@ -55,7 +55,7 @@ object FrmGRUPOS: TFrmGRUPOS
       item
         Expanded = False
         FieldName = 'ID'
-        Visible = True
+        Visible = False
       end
       item
         Expanded = False

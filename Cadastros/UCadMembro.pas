@@ -244,9 +244,9 @@ DM.TBL_MEMBROS.Active := false;
 DM.TBL_MEMBROS.Active := true;
 
 buscarTudo;
-carregarComboboxFilial;
-carregarComboboxMatriz;
-carregarComboboxFuncoes;
+//carregarComboboxFilial;
+//carregarComboboxMatriz;
+//carregarComboboxFuncoes;
 
 btnSalvar.Enabled := false;
 btnEditar.Enabled := false;

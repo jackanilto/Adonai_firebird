@@ -5,14 +5,13 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.WinXCalendars,
-  Vcl.ExtCtrls, Vcl.Menus, Vcl.Buttons;
+  Vcl.ExtCtrls, Vcl.Menus, Vcl.Buttons, Vcl.WinXCtrls, Vcl.WinXPickers,
+  Vcl.Imaging.pngimage;
 
 type
   TFrmPrincipal = class(TForm)
     PanelMenuDireita: TPanel;
     CalendarView1: TCalendarView;
-    GBoxHoras: TGroupBox;
-    LabelHora: TLabel;
     GBoxUsuario: TGroupBox;
     LabelUsuario: TLabel;
     Timer1: TTimer;
@@ -30,6 +29,10 @@ type
     btnGRUPOS: TSpeedButton;
     ratamentos1: TMenuItem;
     SpeedButton3: TSpeedButton;
+    TimgRelogio: TImage;
+    LabelHora: TLabel;
+    Image2: TImage;
+    Image3: TImage;
     procedure Button1Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure FormShow(Sender: TObject);

@@ -18,8 +18,7 @@ type
     AdonaiSoftware: TLabel;
     LabelVersao: TLabel;
     ImageLogoLogin: TImage;
-    Label1: TLabel;
-    Label2: TLabel;
+    Image1: TImage;
     procedure BtnSairClick(Sender: TObject);
     procedure BtnLoginClick(Sender: TObject);
     procedure EdtSenhaKeyPress(Sender: TObject; var Key: Char);
@@ -28,6 +27,7 @@ type
       Shift: TShiftState);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -137,6 +137,25 @@ begin
 if key = vk_return then SelectNext(ActiveControl,True,True);
 end;
 
+
+procedure TFrmLogin.SpeedButton1Click(Sender: TObject);
+//Verifica o dados na tabela Acesso
+begin
+ DM.TblAcesso.Open();
+    if (DM.TblAcesso.Locate('USUARIO', EdtUser.Text, [])) and (DM.TblAcesso.Locate('SENHA',EdtSenha.Text,[])) then
+    Begin
+      FrmPrincipal.Show;
+      FrmLogin.Hide;
+    End
+// Verifica se foram preencidos os campos Login e Senha e exibe o alerta
+   else
+   if (EdtUser.Text ='') and (EdtSenha.Text = '')then
+   ShowMessage ('Preencha os campos Login e Senha') // Caso esteja vazio
+
+   else
+   MessageDlg('Login ou senha inválidos', mtError, [mbOk], 0); // Caso de digitação errada
+end;
+  //Fim do codigo login
 
 //Procedure para pegar a versao do programa
 

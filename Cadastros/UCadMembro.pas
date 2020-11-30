@@ -86,28 +86,29 @@ begin
 if Messagedlg('Deseja excluir o registro?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
    associarCampos;
-    DM.QueryMembro.Close;
-    DM.QueryMembro.SQL.Clear;
-    dm.QueryMembro.SQL.Add('delete from TBL_MEMBROS where id = :id');
+    dm.QueryMembro.Close;
+    dm.QueryMembro.SQL.Clear;
+    dm.QueryMembro.SQL.Add('delete from tbl_membros where id = :id');
 
     dm.QueryMembro.ParamByName('id').Value := editID.Text;
     dm.QueryMembro.ExecSql;
-     MessageDlg('Excluido com Sucesso!!', mtInformation, mbOKCancel, 0);
+    MessageDlg('Excluido com Sucesso!!', mtInformation, mbOKCancel, 0);
     buscarTudo;
     desabilitarCampos;
     btnSalvar.Enabled := false;
     btnEditar.Enabled := false;
     btnDeletar.Enabled := false;
+//    btnRel.Enabled := false;
     btnNovo.Enabled := true;
   end;
 end;
 
 procedure TFrmCadMembro.btnEditarClick(Sender: TObject);
 begin
-if (EditNOME.Text <> '')  then
+if (editNome.Text <> '') then
     begin
     associarCampos;
-    DM.TBL_MEMBROS.Edit;
+    dm.TBL_MEMBROS.Edit;
 
     dm.QueryMembro.Close;
     dm.QueryMembro.SQL.Clear;
@@ -118,7 +119,7 @@ if (EditNOME.Text <> '')  then
     end
     else
     begin
-    dm.QueryMembro.SQL.Add('update TBL_MEMBROS set nome = :nome imagem = :imagem where id = :id');
+    dm.QueryMembro.SQL.Add('update TBL_MEMBROS set nome = :nome, imagem = :imagem where id = :id');
     imgPessoa := TPicture.Create;
     imgPessoa.LoadFromFile(dialog.FileName);
     dm.QueryMembro.ParamByName('imagem').Assign(imgPessoa);
@@ -127,9 +128,14 @@ if (EditNOME.Text <> '')  then
     end;
 
 
-    dm.QueryMembro.ParamByName('nome').Value := EditNOME.Text;
+    dm.QueryMembro.ParamByName('nome').Value := editNome.Text;
+//    dm.query_pessoas.ParamByName('endereco').Value := edtEndereco.Text;
+//    dm.query_pessoas.ParamByName('telefone').Value := edtTel.Text;
+//    dm.query_pessoas.ParamByName('funcao').Value := cbFuncao.Text;
+//    dm.query_pessoas.ParamByName('matriz').Value := cbMatriz.Text;
+//    dm.query_pessoas.ParamByName('filial').Value := cbFilial.Text;
 
-    dm.QueryMembro.ParamByName('id').Value := EditID.Text;
+    dm.QueryMembro.ParamByName('id').Value := editID.Text;
     dm.QueryMembro.ExecSql;
 
     MessageDlg('Editado com Sucesso!!', mtInformation, mbOKCancel, 0);
@@ -139,6 +145,7 @@ if (EditNOME.Text <> '')  then
     btnSalvar.Enabled := false;
     btnEditar.Enabled := false;
     btnDeletar.Enabled := false;
+    //btnRel.Enabled := false;
     btnNovo.Enabled := true;
     end
     else

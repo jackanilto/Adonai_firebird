@@ -15,10 +15,9 @@ type
     BtnSair: TButton;
     EdtUser: TEdit;
     EdtSenha: TEdit;
-    AdonaiSoftware: TLabel;
     LabelVersao: TLabel;
     ImageLogoLogin: TImage;
-    Image1: TImage;
+    AdonaiSoftware: TLabel;
     procedure BtnSairClick(Sender: TObject);
     procedure BtnLoginClick(Sender: TObject);
     procedure EdtSenhaKeyPress(Sender: TObject; var Key: Char);

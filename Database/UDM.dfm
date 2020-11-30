@@ -5,11 +5,10 @@ object DM: TDM
   Width = 928
   object FDConn: TFDConnection
     Params.Strings = (
-      'Database=D:\ProjetosGitHub\Adonai_firebird\Database\ADONIAFB.FDB'
+      'Database=C:\Adonai_firebird\Database\ADONIAFB.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 840
     Top = 24
@@ -20,7 +19,7 @@ object DM: TDM
     Top = 144
   end
   object FDPhysFBDriverLink1: TFDPhysFBDriverLink
-    VendorLib = 'D:\ProjetosGitHub\Adonai_firebird\Firebird\fbclient.dll'
+    VendorLib = 'C:\Adonai_firebird\Firebird\fbclient.dll'
     Left = 840
     Top = 80
   end

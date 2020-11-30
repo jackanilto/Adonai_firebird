@@ -71,7 +71,7 @@ uses UDM;
 
 procedure TFrmCadMembro.associarCampos;
 begin
- DM.TBL_MEMBROS.FieldByName('NOME').Value := EditNOME.Text;
+ DM.TBL_MEMBROS.FieldByName('nome').Value := EditNOME.Text;
 end;
 
 procedure TFrmCadMembro.btnAddClick(Sender: TObject);
@@ -88,17 +88,16 @@ if Messagedlg('Deseja excluir o registro?', mtConfirmation, [mbYes, mbNo], 0) = 
    associarCampos;
     dm.QueryMembro.Close;
     dm.QueryMembro.SQL.Clear;
-    dm.QueryMembro.SQL.Add('delete from tbl_membros where id = :id');
+    dm.QueryMembro.SQL.Add('delete from TBL_MEMBROS where id = :id');
 
     dm.QueryMembro.ParamByName('id').Value := editID.Text;
     dm.QueryMembro.ExecSql;
-    MessageDlg('Excluido com Sucesso!!', mtInformation, mbOKCancel, 0);
+     MessageDlg('Excluido com Sucesso!!', mtInformation, mbOKCancel, 0);
     buscarTudo;
     desabilitarCampos;
     btnSalvar.Enabled := false;
     btnEditar.Enabled := false;
     btnDeletar.Enabled := false;
-//    btnRel.Enabled := false;
     btnNovo.Enabled := true;
   end;
 end;
@@ -119,7 +118,10 @@ if (editNome.Text <> '') then
     end
     else
     begin
-    dm.QueryMembro.SQL.Add('update TBL_MEMBROS set nome = :nome, imagem = :imagem where id = :id');
+    dm.QueryMembro.SQL.Add('update TBL_MEMBROS set' +
+     'nome =      :nome,'+
+     'imagem =    :imagem'+
+     'where id =  :id');
     imgPessoa := TPicture.Create;
     imgPessoa.LoadFromFile(dialog.FileName);
     dm.QueryMembro.ParamByName('imagem').Assign(imgPessoa);
@@ -129,11 +131,6 @@ if (editNome.Text <> '') then
 
 
     dm.QueryMembro.ParamByName('nome').Value := editNome.Text;
-//    dm.query_pessoas.ParamByName('endereco').Value := edtEndereco.Text;
-//    dm.query_pessoas.ParamByName('telefone').Value := edtTel.Text;
-//    dm.query_pessoas.ParamByName('funcao').Value := cbFuncao.Text;
-//    dm.query_pessoas.ParamByName('matriz').Value := cbMatriz.Text;
-//    dm.query_pessoas.ParamByName('filial').Value := cbFilial.Text;
 
     dm.QueryMembro.ParamByName('id').Value := editID.Text;
     dm.QueryMembro.ExecSql;
@@ -145,7 +142,6 @@ if (editNome.Text <> '') then
     btnSalvar.Enabled := false;
     btnEditar.Enabled := false;
     btnDeletar.Enabled := false;
-    //btnRel.Enabled := false;
     btnNovo.Enabled := true;
     end
     else
@@ -251,9 +247,6 @@ DM.TBL_MEMBROS.Active := false;
 DM.TBL_MEMBROS.Active := true;
 
 buscarTudo;
-//carregarComboboxFilial;
-//carregarComboboxMatriz;
-//carregarComboboxFuncoes;
 
 btnSalvar.Enabled := false;
 btnEditar.Enabled := false;

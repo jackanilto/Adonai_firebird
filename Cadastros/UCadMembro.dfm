@@ -1839,10 +1839,11 @@ object FrmCadMembro: TFrmCadMembro
       end
       object EditID: TEdit
         Left = 45
-        Top = 5
+        Top = 3
         Width = 121
         Height = 21
         TabOrder = 0
+        Visible = False
       end
       object EditNOME: TEdit
         Left = 24

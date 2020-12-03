@@ -13,45 +13,43 @@ type
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
-    PageContImg: TImageList;
+    btnNovo: TBitBtn;
+    BtnSalvar: TBitBtn;
+    btnEditar: TBitBtn;
+    btnDeletar: TBitBtn;
     Label1: TLabel;
-    Label2: TLabel;
-    EditID: TEdit;
     EditNOME: TEdit;
-    btnSalvar: TSpeedButton;
-    btnNovo: TSpeedButton;
-    btnEditar: TSpeedButton;
-    btnDeletar: TSpeedButton;
-    img: TImage;
+    grid: TDBGrid;
+    EditID: TEdit;
     dialog: TOpenPictureDialog;
     btnAdd: TButton;
-    grid: TDBGrid;
-    editBuscar: TEdit;
-    LabelBuscar: TLabel;
+    img: TImage;
+    Label2: TLabel;
+    edtBuscar: TEdit;
+    procedure btnNovoClick(Sender: TObject);
+    procedure BtnSalvarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure gridCellClick(Column: TColumn);
     procedure btnDeletarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
-    procedure btnAddClick(Sender: TObject);
-    procedure btnNovoClick(Sender: TObject);
-    procedure btnSalvarClick(Sender: TObject);
-    procedure gridCellClick(Column: TColumn);
-    procedure editBuscarChange(Sender: TObject);
+    procedure edtBuscarChange(Sender: TObject);
+
   private
     { Private declarations }
   public
-    { Public declarations }
-    procedure limparCampos();
-    procedure habilitarCampos();
-    procedure desabilitarCampos();
-    procedure buscarTudo();
-    procedure buscarNome();
-    procedure associarCampos();
-    procedure carregarComboboxFilial();
-    procedure carregarComboboxMatriz();
-    procedure carregarComboboxFuncoes();
-    procedure carregarImagemPadrao();
-    procedure salvarFoto();
-    procedure carregarComboboxIgrejas();
+   { Public declarations }
+   procedure limparCampos();
+   procedure habilitarCampos();
+   procedure desabilitarCampos();
+   procedure buscarTudo();
+   procedure buscarNome();
+   procedure associarCampos();
+//   procedure carregarComboboxFilial();
+//   procedure carregarComboboxMatriz();
+//   procedure carregarComboboxFuncoes();
+   procedure carregarImagemPadrao();
+   procedure salvarFoto();
+//   procedure carregarComboboxIgrejas();
   end;
 
 var
@@ -67,18 +65,9 @@ implementation
 
 uses UDM;
 
-{ TFrmCadMembro }
-
 procedure TFrmCadMembro.associarCampos;
 begin
- DM.TBL_MEMBROS.FieldByName('nome').Value := EditNOME.Text;
-end;
-
-procedure TFrmCadMembro.btnAddClick(Sender: TObject);
-begin
-dialog.Execute();
-img.Picture.LoadFromFile(dialog.filename);
-alterou := true;
+ DM.TBL_MEMBROS.FieldByName('NOME').Value :=EditNOME.Text;
 end;
 
 procedure TFrmCadMembro.btnDeletarClick(Sender: TObject);
@@ -86,15 +75,20 @@ begin
 if Messagedlg('Deseja excluir o registro?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
    associarCampos;
-    dm.QueryMembro.Close;
-    dm.QueryMembro.SQL.Clear;
-    dm.QueryMembro.SQL.Add('delete from TBL_MEMBROS where id = :id');
+    DM.QueryMembro.Close;
+    DM.QueryMembro.SQL.Clear;
+    DM.QueryMembro.SQL.Add('delete from TBL_MEMBROS where ID = :ID');
 
-    dm.QueryMembro.ParamByName('id').Value := editID.Text;
-    dm.QueryMembro.ExecSql;
-     MessageDlg('Excluido com Sucesso!!', mtInformation, mbOKCancel, 0);
+    DM.QueryMembro.ParamByName('ID').Value := editID.Text;
+    DM.QueryMembro.ExecSql;
     buscarTudo;
-    desabilitarCampos;
+    MessageDlg('Excluido com Sucesso!!', mtInformation, mbOKCancel, 0);
+    // destativa a table (solução para atualiza grid em tempo de execução)
+    //reativa a table
+    DM.TBL_MEMBROS.Active := false;
+    DM.TBL_MEMBROS.Active := true;
+
+    EditNOME.Enabled := false;
     btnSalvar.Enabled := false;
     btnEditar.Enabled := false;
     btnDeletar.Enabled := false;
@@ -104,41 +98,26 @@ end;
 
 procedure TFrmCadMembro.btnEditarClick(Sender: TObject);
 begin
-if (editNome.Text <> '') then
+if (EditNOME.Text <> '') then
     begin
     associarCampos;
     dm.TBL_MEMBROS.Edit;
 
-    dm.QueryMembro.Close;
-    dm.QueryMembro.SQL.Clear;
+    DM.QueryMembro.Close;
+    DM.QueryMembro.SQL.Clear;
+    DM.QueryMembro.SQL.Add('update TBL_MEMBROS set NOME = :NOME where ID = :ID');
+    DM.QueryMembro.ParamByName('NOME').Value := EditNOME.Text;
+    DM.QueryMembro.ParamByName('ID').Value := editID.Text;
+    DM.QueryMembro.ExecSql;
 
-    if alterou = false then
-    begin
-    dm.QueryMembro.SQL.Add('update TBL_MEMBROS set nome = :nome where id = :id');
-    end
-    else
-    begin
-    dm.QueryMembro.SQL.Add('update TBL_MEMBROS set' +
-     'nome =      :nome,'+
-     'imagem =    :imagem'+
-     'where id =  :id');
-    imgPessoa := TPicture.Create;
-    imgPessoa.LoadFromFile(dialog.FileName);
-    dm.QueryMembro.ParamByName('imagem').Assign(imgPessoa);
-    imgPessoa.Free;
-    alterou := false;
-    end;
-
-
-    dm.QueryMembro.ParamByName('nome').Value := editNome.Text;
-
-    dm.QueryMembro.ParamByName('id').Value := editID.Text;
-    dm.QueryMembro.ExecSql;
+    // destativa a table (solução para atualiza grid em tempo de execução)
+    //reativa a table
+    DM.TBL_MEMBROS.Active := false;
+    DM.TBL_MEMBROS.Active := true;
 
     MessageDlg('Editado com Sucesso!!', mtInformation, mbOKCancel, 0);
     buscarTudo;
-    desabilitarCampos;
-    limparCampos;
+    EditNOME.Enabled := false;
     btnSalvar.Enabled := false;
     btnEditar.Enabled := false;
     btnDeletar.Enabled := false;
@@ -152,32 +131,39 @@ end;
 
 procedure TFrmCadMembro.btnNovoClick(Sender: TObject);
 begin
-limparCampos;
-habilitarCampos;
+//apos editar um dado esta desbilitando o Edit
+EditNOME.Enabled := true; // Reabilita Edit
+EditNOME.Text := '';
+EditNOME.SetFocus;
+EditNOME.Enabled := true;
 DM.TBL_MEMBROS.Insert;
 BtnSalvar.Enabled := true;
-btnNovo.Enabled := false;
-btnAdd.Enabled := true;
-btnEditar.Enabled := false;
+btnNovo.Enabled := true;
+
+btnEditar.Enabled := true;
 btnDeletar.Enabled := false;
-grid.Enabled := false;
 end;
 
-procedure TFrmCadMembro.btnSalvarClick(Sender: TObject);
+procedure TFrmCadMembro.BtnSalvarClick(Sender: TObject);
 begin
-if (editNome.Text <> '') then
+if (EditNOME.Text <> '')  then
   begin
   associarCampos;
-  salvarFoto;
-  dm.TBL_MEMBROS.Post;
-  MessageDlg('Salvo com Sucesso!!', mtInformation, mbOKCancel, 0);
+  DM.TBL_MEMBROS.Post;
   buscarTudo;
-  desabilitarCampos;
+  MessageDlg('Salvo com Sucesso!!', mtInformation, mbOKCancel, 0);
+  EditNOME.Enabled := false;
+  // destativa/Reativa table (solução para atualiza grid em tempo de execução)
+  DM.TBL_MEMBROS.Active := false;   // destativa a table
+  DM.TBL_MEMBROS.Active := true;    //reativa a table
+
+
   btnSalvar.Enabled := false;
   btnNovo.Enabled := true;
   btnEditar.Enabled := false;
   btnDeletar.Enabled := false;
-  grid.Enabled := true;
+  DM.QueryMembro.Close;
+  DM.QueryMembro.Open;
   end
   else
   begin
@@ -190,37 +176,37 @@ begin
 dm.QueryMembro.Close;
 dm.QueryMembro.SQL.Clear;
 dm.QueryMembro.SQL.Add('select * from TBL_MEMBROS where nome LIKE :nome order by nome asc');
-dm.QueryMembro.ParamByName('nome').Value := editBuscar.Text + '%';
+dm.QueryMembro.ParamByName('nome').Value := edtBuscar.Text + '%';
 dm.QueryMembro.Open;
 end;
 
 procedure TFrmCadMembro.buscarTudo;
 begin
-dm.QueryMembro.Close;
-dm.QueryMembro.SQL.Clear;
-dm.QueryMembro.SQL.Add('select * from TBL_MEMBROS order by nome asc');
-dm.QueryMembro.Open;
+DM.QueryMembro.Close;
+DM.QueryMembro.SQL.Clear;
+DM.QueryMembro.SQL.Add('select * from TBL_MEMBROS');
+DM.QueryMembro.Open();
 end;
 
-procedure TFrmCadMembro.carregarComboboxFilial;
-begin
-
-end;
-
-procedure TFrmCadMembro.carregarComboboxFuncoes;
-begin
-
-end;
-
-procedure TFrmCadMembro.carregarComboboxIgrejas;
-begin
-
-end;
-
-procedure TFrmCadMembro.carregarComboboxMatriz;
-begin
-
-end;
+//procedure TFrmCadMembro.carregarComboboxFilial;
+//begin
+//
+//end;
+//
+//procedure TFrmCadMembro.carregarComboboxFuncoes;
+//begin
+//
+//end;
+//
+//procedure TFrmCadMembro.carregarComboboxIgrejas;
+//begin
+//
+//end;
+//
+//procedure TFrmCadMembro.carregarComboboxMatriz;
+//begin
+//
+//end;
 
 procedure TFrmCadMembro.carregarImagemPadrao;
 begin
@@ -231,27 +217,23 @@ end;
 procedure TFrmCadMembro.desabilitarCampos;
 begin
 limparcampos();
-editNome.Enabled := false;
+edItNome.Enabled := false;
 
 end;
 
-procedure TFrmCadMembro.editBuscarChange(Sender: TObject);
+procedure TFrmCadMembro.edtBuscarChange(Sender: TObject);
 begin
 buscarNome;
 end;
 
 procedure TFrmCadMembro.FormShow(Sender: TObject);
 begin
-
 DM.TBL_MEMBROS.Active := false;
 DM.TBL_MEMBROS.Active := true;
-
 buscarTudo;
-
 btnSalvar.Enabled := false;
 btnEditar.Enabled := false;
 btnDeletar.Enabled := false;
-carregarImagemPadrao();
 end;
 
 procedure ExibeFoto(DataSet : TDataSet; BlobFieldName : String; ImageExibicao :
@@ -283,29 +265,31 @@ end;
 
 procedure TFrmCadMembro.gridCellClick(Column: TColumn);
 begin
-dm.TBL_MEMBROS.Edit;
+DM.TBL_MEMBROS.Edit;
 btnEditar.Enabled := true;
 btnDeletar.Enabled := true;
 btnAdd.Enabled := true;
 habilitarCampos;
 
-if dm.QueryMembro.FieldByName('nome').Value <> null then
-editNome.Text := dm.QueryMembro.FieldByName('nome').Value;
+if DM.TBL_MEMBROS.FieldByName('NOME').Value <> null then
+EditNOME.Text := DM.TBL_MEMBROS.FieldByName('NOME').Value;
+editID.Text := DM.TBL_MEMBROS.FieldByName('ID').Value;
 
- if dm.QueryMembro.FieldByName('imagem').Value <> null then
- ExibeFoto(dm.QueryMembro, 'imagem', img);
+ if dm.querymembro.FieldByName('imagem').Value <> null then
+ ExibeFoto(dm.querymembro, 'imagem', img);
 
 end;
 
 procedure TFrmCadMembro.habilitarCampos;
 begin
-limparcampos();
-editNome.Enabled := true;
+limparCampos;
+EditNOME.Enabled := True;
+
 end;
 
 procedure TFrmCadMembro.limparCampos;
 begin
-editNome.text := '';
+
 end;
 
 procedure TFrmCadMembro.salvarFoto;
@@ -314,14 +298,14 @@ begin
   begin
   imgPessoa := TPicture.Create;
   imgPessoa.LoadFromFile(dialog.FileName);
-  dm.TBL_MEMBROS.FieldByName('imagem').Assign(imgPessoa);
+  DM.TBL_MEMBROS.FieldByName('imagem').Assign(imgPessoa);
   imgPessoa.Free;
   dialog.FileName := GetCurrentDir + '\img\sem-foto.jpg';
   alterou := false;
   end
   else
     begin
-  dm.TBL_MEMBROS.FieldByName('imagem').Value := GetCurrentDir + '\img\sem-foto.jpg';
+  DM.TBL_MEMBROS.FieldByName('imagem').Value := GetCurrentDir + '\img\sem-foto.jpg';
 
   end;
 end;

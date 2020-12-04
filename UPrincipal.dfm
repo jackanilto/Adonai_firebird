@@ -18,19 +18,12 @@ object FrmPrincipal: TFrmPrincipal
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object TimgRelogio: TImage
-    Left = 267
-    Top = 248
-    Width = 94
-    Height = 96
-  end
   object PanelMenuDireita: TPanel
     Left = 835
     Top = 73
     Width = 259
     Height = 578
     Align = alRight
-    Color = clInactiveCaption
     Ctl3D = False
     ParentBackground = False
     ParentCtl3D = False
@@ -51,16 +44,18 @@ object FrmPrincipal: TFrmPrincipal
       Font.Quality = fqProof
       HeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
       HeaderInfo.DaysOfWeekFont.Color = clWindowText
-      HeaderInfo.DaysOfWeekFont.Height = -13
+      HeaderInfo.DaysOfWeekFont.Height = -16
       HeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
       HeaderInfo.DaysOfWeekFont.Style = []
       HeaderInfo.Font.Charset = DEFAULT_CHARSET
       HeaderInfo.Font.Color = clWindowText
-      HeaderInfo.Font.Height = -20
+      HeaderInfo.Font.Height = -16
       HeaderInfo.Font.Name = 'Segoe UI'
       HeaderInfo.Font.Style = []
       ParentFont = False
       TabOrder = 0
+      Touch.ParentTabletOptions = False
+      Touch.TabletOptions = [toPressAndHold]
     end
     object GBoxUsuario: TGroupBox
       Left = 8

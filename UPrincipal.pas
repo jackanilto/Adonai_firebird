@@ -29,7 +29,6 @@ type
     btnGRUPOS: TSpeedButton;
     ratamentos1: TMenuItem;
     SpeedButton3: TSpeedButton;
-    TimgRelogio: TImage;
     LabelHora: TLabel;
     Image2: TImage;
     Image3: TImage;

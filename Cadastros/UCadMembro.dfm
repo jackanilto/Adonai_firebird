@@ -80,6 +80,48 @@ object FrmCadMembro: TFrmCadMembro
         Height = 13
         Caption = 'N'#186':'
       end
+      object Estado: TLabel
+        Left = 21
+        Top = 116
+        Width = 37
+        Height = 13
+        Caption = 'Estado:'
+      end
+      object Label8: TLabel
+        Left = 177
+        Top = 116
+        Width = 23
+        Height = 13
+        Caption = 'Cep:'
+      end
+      object LabelCOMPLENENTO: TLabel
+        Left = 248
+        Top = 116
+        Width = 69
+        Height = 13
+        Caption = 'Complemento:'
+      end
+      object Label7: TLabel
+        Left = 383
+        Top = 116
+        Width = 61
+        Height = 13
+        Caption = 'Tel. Pessoal:'
+      end
+      object Label9: TLabel
+        Left = 510
+        Top = 116
+        Width = 52
+        Height = 13
+        Caption = 'Contato 1:'
+      end
+      object Label10: TLabel
+        Left = 637
+        Top = 116
+        Width = 52
+        Height = 13
+        Caption = 'Contato 2:'
+      end
       object btnNovo: TBitBtn
         Left = 224
         Top = 488
@@ -1892,6 +1934,7 @@ object FrmCadMembro: TFrmCadMembro
           item
             Expanded = False
             FieldName = 'ENDERECO'
+            Title.Caption = 'ENDERE'#199'O'
             Width = 200
             Visible = True
           end
@@ -1933,18 +1976,21 @@ object FrmCadMembro: TFrmCadMembro
           item
             Expanded = False
             FieldName = 'TELPESSOAL'
+            Title.Caption = 'TEL. PESSOAL'
             Width = 100
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CONTATO1'
+            Title.Caption = 'CONTATO 1'
             Width = 100
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CONTATO2'
+            Title.Caption = 'CONTATO 2'
             Width = 100
             Visible = True
           end
@@ -2002,8 +2048,8 @@ object FrmCadMembro: TFrmCadMembro
           item
             Expanded = False
             FieldName = 'POFISSAO'
-            Width = 100
-            Visible = True
+            Width = -1
+            Visible = False
           end
           item
             Expanded = False
@@ -2204,60 +2250,47 @@ object FrmCadMembro: TFrmCadMembro
         Height = 21
         TabOrder = 12
       end
-      object Edit4: TEdit
-        Left = 40
-        Top = 186
-        Width = 121
+      object EditBAIRRO: TEdit
+        Left = 21
+        Top = 132
+        Width = 150
         Height = 21
         TabOrder = 13
-        Text = 'Edit4'
-      end
-      object Edit5: TEdit
-        Left = 200
-        Top = 186
-        Width = 121
-        Height = 21
-        TabOrder = 14
-        Text = 'Edit4'
       end
       object Edit6: TEdit
-        Left = 351
-        Top = 186
+        Left = 248
+        Top = 132
+        Width = 129
+        Height = 21
+        TabOrder = 14
+      end
+      object EditTELPESSOAL: TEdit
+        Left = 383
+        Top = 132
         Width = 121
         Height = 21
         TabOrder = 15
-        Text = 'Edit4'
       end
-      object Edit7: TEdit
+      object EditCONTATO1: TEdit
         Left = 510
-        Top = 186
+        Top = 132
         Width = 121
         Height = 21
         TabOrder = 16
-        Text = 'Edit4'
       end
-      object Edit8: TEdit
+      object EditCONTATO2: TEdit
         Left = 637
-        Top = 186
+        Top = 132
         Width = 121
         Height = 21
         TabOrder = 17
-        Text = 'Edit4'
-      end
-      object Edit9: TEdit
-        Left = 40
-        Top = 250
-        Width = 121
-        Height = 21
-        TabOrder = 18
-        Text = 'Edit4'
       end
       object Edit10: TEdit
         Left = 200
         Top = 250
         Width = 121
         Height = 21
-        TabOrder = 19
+        TabOrder = 18
         Text = 'Edit4'
       end
       object Edit11: TEdit
@@ -2265,7 +2298,7 @@ object FrmCadMembro: TFrmCadMembro
         Top = 250
         Width = 121
         Height = 21
-        TabOrder = 20
+        TabOrder = 19
         Text = 'Edit4'
       end
       object Edit12: TEdit
@@ -2273,7 +2306,7 @@ object FrmCadMembro: TFrmCadMembro
         Top = 250
         Width = 121
         Height = 21
-        TabOrder = 21
+        TabOrder = 20
         Text = 'Edit4'
       end
       object Edit13: TEdit
@@ -2281,8 +2314,18 @@ object FrmCadMembro: TFrmCadMembro
         Top = 250
         Width = 121
         Height = 21
-        TabOrder = 22
+        TabOrder = 21
         Text = 'Edit4'
+      end
+      object MasKCEP: TMaskEdit
+        Left = 177
+        Top = 132
+        Width = 65
+        Height = 21
+        EditMask = '00000\-999;1;_'
+        MaxLength = 9
+        TabOrder = 22
+        Text = '     -   '
       end
     end
     object TabSheet2: TTabSheet

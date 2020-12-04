@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
   Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtDlgs, Vcl.ExtCtrls, Data.DB,
-  Vcl.Grids, Vcl.DBGrids;
+  Vcl.Grids, Vcl.DBGrids, Vcl.Mask;
 
 type
   TFrmCadMembro = class(TForm)
@@ -35,16 +35,22 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    Edit4: TEdit;
-    Edit5: TEdit;
+    EditBAIRRO: TEdit;
     Edit6: TEdit;
-    Edit7: TEdit;
-    Edit8: TEdit;
-    Edit9: TEdit;
+    EditTELPESSOAL: TEdit;
+    EditCONTATO1: TEdit;
+    EditCONTATO2: TEdit;
     Edit10: TEdit;
     Edit11: TEdit;
     Edit12: TEdit;
     Edit13: TEdit;
+    Estado: TLabel;
+    Label8: TLabel;
+    MasKCEP: TMaskEdit;
+    LabelCOMPLENENTO: TLabel;
+    Label7: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
     procedure btnNovoClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

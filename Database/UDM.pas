@@ -48,6 +48,10 @@ type
     TBL_TRATAMENTOSTRATAMENTO: TStringField;
     QueryProfissoesID: TIntegerField;
     QueryProfissoesPROFISSAO: TStringField;
+    QueryAcesso: TFDQuery;
+    TBL_ENTRA_SAI: TFDTable;
+    DSEntSai: TDataSource;
+    QueryEntSai: TFDQuery;
     TBL_MEMBROSID: TIntegerField;
     TBL_MEMBROSNOME: TStringField;
     TBL_MEMBROSENDERECO: TStringField;
@@ -57,6 +61,7 @@ type
     TBL_MEMBROSESTADO: TStringField;
     TBL_MEMBROSCEP: TStringField;
     TBL_MEMBROSCOMPLEMENTO: TStringField;
+    TBL_MEMBROSTELPESSOAL: TStringField;
     TBL_MEMBROSCONTATO1: TStringField;
     TBL_MEMBROSCONTATO2: TStringField;
     TBL_MEMBROSEMAIL: TStringField;
@@ -65,6 +70,7 @@ type
     TBL_MEMBROSGRUPO: TStringField;
     TBL_MEMBROSTRATAMENTO: TStringField;
     TBL_MEMBROSIMAGEM: TBlobField;
+    TBL_MEMBROSOBS: TStringField;
     TBL_MEMBROSSEXO: TStringField;
     TBL_MEMBROSESTADO_CIVIL: TStringField;
     TBL_MEMBROSMINISTERIO: TStringField;
@@ -89,21 +95,15 @@ type
     TBL_MEMBROSVALIDADE_CARTEIRA: TStringField;
     TBL_MEMBROSTAG: TStringField;
     TBL_MEMBROSCONJUGE: TStringField;
+    TBL_MEMBROSCAMPO13: TStringField;
     TBL_MEMBROSTIPO_MORADIA: TStringField;
+    TBL_MEMBROSCAMPO15: TStringField;
     TBL_MEMBROSHISTORICO: TStringField;
     TBL_MEMBROSPROFISSAO: TStringField;
     TBL_MEMBROSNASC_CONJUGE: TStringField;
     TBL_MEMBROSCIDADE_BATISMO: TStringField;
     TBL_MEMBROSDATA_NASC: TDateField;
-    TBL_MEMBROSCAMPO13: TStringField;
-    TBL_MEMBROSCAMPO15: TStringField;
     TBL_MEMBROSOBSERVACAO: TStringField;
-    TBL_MEMBROSOBS: TStringField;
-    TBL_MEMBROSTELPESSOAL: TStringField;
-    QueryAcesso: TFDQuery;
-    TBL_ENTRA_SAI: TFDTable;
-    DSEntSai: TDataSource;
-    QueryEntSai: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

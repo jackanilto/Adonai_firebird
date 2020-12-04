@@ -138,6 +138,11 @@ object DM: TDM
       Origin = 'COMPLEMENTO'
       Size = 200
     end
+    object TBL_MEMBROSTELPESSOAL: TStringField
+      FieldName = 'TELPESSOAL'
+      Origin = 'TELPESSOAL'
+      Size = 200
+    end
     object TBL_MEMBROSCONTATO1: TStringField
       FieldName = 'CONTATO1'
       Origin = 'CONTATO1'
@@ -175,6 +180,11 @@ object DM: TDM
     object TBL_MEMBROSIMAGEM: TBlobField
       FieldName = 'IMAGEM'
       Origin = 'IMAGEM'
+    end
+    object TBL_MEMBROSOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 200
     end
     object TBL_MEMBROSSEXO: TStringField
       FieldName = 'SEXO'
@@ -224,7 +234,6 @@ object DM: TDM
     object TBL_MEMBROSNOME_MAE: TStringField
       FieldName = 'NOME_MAE'
       Origin = 'NOME_MAE'
-      FixedChar = True
       Size = 200
     end
     object TBL_MEMBROSDATA_BATISMO: TStringField
@@ -297,9 +306,19 @@ object DM: TDM
       Origin = 'CONJUGE'
       Size = 200
     end
+    object TBL_MEMBROSCAMPO13: TStringField
+      FieldName = 'CAMPO13'
+      Origin = 'CAMPO13'
+      Size = 200
+    end
     object TBL_MEMBROSTIPO_MORADIA: TStringField
       FieldName = 'TIPO_MORADIA'
       Origin = 'TIPO_MORADIA'
+      Size = 200
+    end
+    object TBL_MEMBROSCAMPO15: TStringField
+      FieldName = 'CAMPO15'
+      Origin = 'CAMPO15'
       Size = 200
     end
     object TBL_MEMBROSHISTORICO: TStringField
@@ -326,29 +345,9 @@ object DM: TDM
       FieldName = 'DATA_NASC'
       Origin = 'DATA_NASC'
     end
-    object TBL_MEMBROSCAMPO13: TStringField
-      FieldName = 'CAMPO13'
-      Origin = 'CAMPO13'
-      Size = 200
-    end
-    object TBL_MEMBROSCAMPO15: TStringField
-      FieldName = 'CAMPO15'
-      Origin = 'CAMPO15'
-      Size = 200
-    end
     object TBL_MEMBROSOBSERVACAO: TStringField
       FieldName = 'OBSERVACAO'
       Origin = 'OBSERVACAO'
-      Size = 200
-    end
-    object TBL_MEMBROSOBS: TStringField
-      FieldName = 'OBS'
-      Origin = 'OBS'
-      Size = 200
-    end
-    object TBL_MEMBROSTELPESSOAL: TStringField
-      FieldName = 'TELPESSOAL'
-      Origin = 'TELPESSOAL'
       Size = 200
     end
   end

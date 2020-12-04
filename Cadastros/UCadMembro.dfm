@@ -3,7 +3,7 @@ object FrmCadMembro: TFrmCadMembro
   Top = 0
   Caption = 'CadMembro'
   ClientHeight = 599
-  ClientWidth = 984
+  ClientWidth = 916
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,7 +18,7 @@ object FrmCadMembro: TFrmCadMembro
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 984
+    Width = 916
     Height = 599
     ActivePage = TabSheet1
     Align = alClient
@@ -27,18 +27,20 @@ object FrmCadMembro: TFrmCadMembro
     TabHeight = 30
     TabOrder = 0
     TabWidth = 150
+    ExplicitWidth = 984
     object TabSheet1: TTabSheet
       Caption = 'Dados Pessoais'
+      ExplicitWidth = 976
       object Label1: TLabel
-        Left = 65
-        Top = 45
+        Left = 21
+        Top = 71
         Width = 34
         Height = 13
         Caption = 'Nome: '
       end
       object img: TImage
-        Left = 841
-        Top = 120
+        Left = 769
+        Top = 87
         Width = 120
         Height = 120
         Stretch = True
@@ -51,29 +53,29 @@ object FrmCadMembro: TFrmCadMembro
         Caption = 'Buscar:'
       end
       object Label3: TLabel
-        Left = 270
-        Top = 45
+        Left = 226
+        Top = 71
         Width = 49
         Height = 13
         Caption = 'Endere'#231'o:'
       end
       object Label4: TLabel
-        Left = 681
-        Top = 45
+        Left = 637
+        Top = 71
         Width = 33
         Height = 13
         Caption = 'Cidade'
       end
       object Label5: TLabel
-        Left = 554
-        Top = 45
+        Left = 510
+        Top = 71
         Width = 32
         Height = 13
         Caption = 'Bairro:'
       end
       object Label6: TLabel
-        Left = 475
-        Top = 45
+        Left = 431
+        Top = 71
         Width = 16
         Height = 13
         Caption = 'N'#186':'
@@ -1855,16 +1857,16 @@ object FrmCadMembro: TFrmCadMembro
         OnClick = btnDeletarClick
       end
       object EditNOME: TEdit
-        Left = 65
-        Top = 61
+        Left = 21
+        Top = 87
         Width = 200
         Height = 21
         TabOrder = 4
       end
       object grid: TDBGrid
-        Left = 16
+        Left = 21
         Top = 352
-        Width = 945
+        Width = 868
         Height = 120
         DataSource = DM.DSMembro
         TabOrder = 5
@@ -2150,15 +2152,15 @@ object FrmCadMembro: TFrmCadMembro
           end>
       end
       object EditID: TEdit
-        Left = 65
-        Top = 16
+        Left = 21
+        Top = 42
         Width = 89
         Height = 21
         TabOrder = 6
       end
       object btnAdd: TButton
-        Left = 841
-        Top = 246
+        Left = 769
+        Top = 216
         Width = 120
         Height = 25
         Caption = 'Adicionar Foto'
@@ -2175,46 +2177,127 @@ object FrmCadMembro: TFrmCadMembro
         OnChange = edtBuscarChange
       end
       object Edit1: TEdit
-        Left = 270
-        Top = 61
+        Left = 226
+        Top = 87
         Width = 200
         Height = 21
         TabOrder = 9
       end
       object Edit2: TEdit
-        Left = 475
-        Top = 61
+        Left = 431
+        Top = 87
         Width = 73
         Height = 21
         TabOrder = 10
       end
       object Edit3: TEdit
-        Left = 554
-        Top = 61
+        Left = 510
+        Top = 87
         Width = 121
         Height = 21
         TabOrder = 11
       end
-      object Edit4: TEdit
-        Left = 681
-        Top = 61
+      object EditCIDADE: TEdit
+        Left = 637
+        Top = 87
         Width = 121
         Height = 21
         TabOrder = 12
+      end
+      object Edit4: TEdit
+        Left = 40
+        Top = 186
+        Width = 121
+        Height = 21
+        TabOrder = 13
+        Text = 'Edit4'
+      end
+      object Edit5: TEdit
+        Left = 200
+        Top = 186
+        Width = 121
+        Height = 21
+        TabOrder = 14
+        Text = 'Edit4'
+      end
+      object Edit6: TEdit
+        Left = 351
+        Top = 186
+        Width = 121
+        Height = 21
+        TabOrder = 15
+        Text = 'Edit4'
+      end
+      object Edit7: TEdit
+        Left = 510
+        Top = 186
+        Width = 121
+        Height = 21
+        TabOrder = 16
+        Text = 'Edit4'
+      end
+      object Edit8: TEdit
+        Left = 637
+        Top = 186
+        Width = 121
+        Height = 21
+        TabOrder = 17
+        Text = 'Edit4'
+      end
+      object Edit9: TEdit
+        Left = 40
+        Top = 250
+        Width = 121
+        Height = 21
+        TabOrder = 18
+        Text = 'Edit4'
+      end
+      object Edit10: TEdit
+        Left = 200
+        Top = 250
+        Width = 121
+        Height = 21
+        TabOrder = 19
+        Text = 'Edit4'
+      end
+      object Edit11: TEdit
+        Left = 351
+        Top = 250
+        Width = 121
+        Height = 21
+        TabOrder = 20
+        Text = 'Edit4'
+      end
+      object Edit12: TEdit
+        Left = 496
+        Top = 250
+        Width = 121
+        Height = 21
+        TabOrder = 21
+        Text = 'Edit4'
+      end
+      object Edit13: TEdit
+        Left = 637
+        Top = 250
+        Width = 121
+        Height = 21
+        TabOrder = 22
+        Text = 'Edit4'
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'Dados Eclesiasticos'
       ImageIndex = 1
+      ExplicitWidth = 976
     end
   end
   object dialog: TOpenPictureDialog
-    Left = 880
-    Top = 200
+    Left = 816
+    Top = 160
   end
   object ImageList1: TImageList
-    Left = 644
-    Top = 252
+    Left = 316
+    Top = 4
     Bitmap = {
       494C010102000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010

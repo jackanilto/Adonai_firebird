@@ -1,4 +1,4 @@
-object FrmCadMembro: TFrmCadMembro
+﻿object FrmCadMembro: TFrmCadMembro
   Left = 0
   Top = 0
   Caption = 'CadMembro'
@@ -27,10 +27,8 @@ object FrmCadMembro: TFrmCadMembro
     TabHeight = 30
     TabOrder = 0
     TabWidth = 150
-    ExplicitWidth = 984
     object TabSheet1: TTabSheet
       Caption = 'Dados Pessoais'
-      ExplicitWidth = 976
       object Label1: TLabel
         Left = 21
         Top = 71
@@ -121,6 +119,139 @@ object FrmCadMembro: TFrmCadMembro
         Width = 52
         Height = 13
         Caption = 'Contato 2:'
+      end
+      object Email: TLabel
+        Left = 21
+        Top = 160
+        Width = 28
+        Height = 13
+        Caption = 'Email:'
+      end
+      object Label11: TLabel
+        Left = 206
+        Top = 160
+        Width = 28
+        Height = 13
+        Caption = 'Sexo:'
+      end
+      object EstaCivil: TLabel
+        Left = 250
+        Top = 160
+        Width = 59
+        Height = 13
+        Caption = 'Estado Civil:'
+      end
+      object Label12: TLabel
+        Left = 185
+        Top = 199
+        Width = 48
+        Height = 13
+        Caption = 'Profiss'#227'o:'
+      end
+      object Label13: TLabel
+        Left = 363
+        Top = 160
+        Width = 84
+        Height = 13
+        Caption = 'Data Casamento:'
+      end
+      object Escolaridade: TLabel
+        Left = 21
+        Top = 199
+        Width = 64
+        Height = 13
+        Caption = 'Escolaridade:'
+      end
+      object Label14: TLabel
+        Left = 359
+        Top = 199
+        Width = 18
+        Height = 13
+        Caption = 'RG:'
+      end
+      object CPF: TLabel
+        Left = 492
+        Top = 199
+        Width = 23
+        Height = 13
+        Caption = 'CPF:'
+      end
+      object Label15: TLabel
+        Left = 21
+        Top = 241
+        Width = 69
+        Height = 13
+        Caption = 'Nome da M'#227'e:'
+      end
+      object Label16: TLabel
+        Left = 227
+        Top = 241
+        Width = 63
+        Height = 13
+        Caption = 'Nome do Pai:'
+      end
+      object Label17: TLabel
+        Left = 622
+        Top = 199
+        Width = 78
+        Height = 13
+        Caption = 'Titulo de Eleitor:'
+      end
+      object Label18: TLabel
+        Left = 436
+        Top = 241
+        Width = 23
+        Height = 13
+        Caption = 'Pa'#237's:'
+      end
+      object Naturalidade: TLabel
+        Left = 571
+        Top = 241
+        Width = 65
+        Height = 13
+        Caption = 'Naturalidade:'
+      end
+      object Label19: TLabel
+        Left = 465
+        Top = 160
+        Width = 89
+        Height = 13
+        Caption = 'Nome do Conjuge:'
+      end
+      object DataCasCONJUGE: TLabel
+        Left = 662
+        Top = 160
+        Width = 96
+        Height = 13
+        Caption = 'Data Nasc Conjuge:'
+      end
+      object Label20: TLabel
+        Left = 706
+        Top = 241
+        Width = 31
+        Height = 13
+        Caption = 'Filhos:'
+      end
+      object Label24: TLabel
+        Left = 21
+        Top = 284
+        Width = 95
+        Height = 13
+        Caption = 'Data de Nacimento:'
+      end
+      object Label25: TLabel
+        Left = 124
+        Top = 284
+        Width = 80
+        Height = 13
+        Caption = 'Tipo de Moradia:'
+      end
+      object ROLL: TLabel
+        Left = 21
+        Top = 28
+        Width = 86
+        Height = 13
+        Caption = 'ROLL de Membros'
       end
       object btnNovo: TBitBtn
         Left = 224
@@ -1922,7 +2053,6 @@ object FrmCadMembro: TFrmCadMembro
           item
             Expanded = False
             FieldName = 'ID'
-            Width = -1
             Visible = False
           end
           item
@@ -1941,31 +2071,26 @@ object FrmCadMembro: TFrmCadMembro
           item
             Expanded = False
             FieldName = 'NUMERO'
-            Width = -1
             Visible = False
           end
           item
             Expanded = False
             FieldName = 'BAIRRO'
-            Width = -1
             Visible = False
           end
           item
             Expanded = False
             FieldName = 'CIDADE'
-            Width = -1
             Visible = False
           end
           item
             Expanded = False
             FieldName = 'ESTADO'
-            Width = -1
             Visible = False
           end
           item
             Expanded = False
             FieldName = 'CEP'
-            Width = -1
             Visible = False
           end
           item
@@ -2048,7 +2173,6 @@ object FrmCadMembro: TFrmCadMembro
           item
             Expanded = False
             FieldName = 'POFISSAO'
-            Width = -1
             Visible = False
           end
           item
@@ -2198,8 +2322,8 @@ object FrmCadMembro: TFrmCadMembro
           end>
       end
       object EditID: TEdit
-        Left = 21
-        Top = 42
+        Left = 267
+        Top = 16
         Width = 89
         Height = 21
         TabOrder = 6
@@ -2222,21 +2346,21 @@ object FrmCadMembro: TFrmCadMembro
         TabOrder = 8
         OnChange = edtBuscarChange
       end
-      object Edit1: TEdit
+      object EditENDERECO: TEdit
         Left = 226
         Top = 87
         Width = 200
         Height = 21
         TabOrder = 9
       end
-      object Edit2: TEdit
+      object EditNUMERO: TEdit
         Left = 431
         Top = 87
         Width = 73
         Height = 21
         TabOrder = 10
       end
-      object Edit3: TEdit
+      object EditBAIRRO: TEdit
         Left = 510
         Top = 87
         Width = 121
@@ -2250,14 +2374,14 @@ object FrmCadMembro: TFrmCadMembro
         Height = 21
         TabOrder = 12
       end
-      object EditBAIRRO: TEdit
+      object EditESTADO: TEdit
         Left = 21
         Top = 132
         Width = 150
         Height = 21
         TabOrder = 13
       end
-      object Edit6: TEdit
+      object EditCOMPLEMENTO: TEdit
         Left = 248
         Top = 132
         Width = 129
@@ -2285,53 +2409,460 @@ object FrmCadMembro: TFrmCadMembro
         Height = 21
         TabOrder = 17
       end
-      object Edit10: TEdit
-        Left = 200
-        Top = 250
-        Width = 121
-        Height = 21
-        TabOrder = 18
-        Text = 'Edit4'
-      end
-      object Edit11: TEdit
-        Left = 351
-        Top = 250
-        Width = 121
-        Height = 21
-        TabOrder = 19
-        Text = 'Edit4'
-      end
-      object Edit12: TEdit
-        Left = 496
-        Top = 250
-        Width = 121
-        Height = 21
-        TabOrder = 20
-        Text = 'Edit4'
-      end
-      object Edit13: TEdit
-        Left = 637
-        Top = 250
-        Width = 121
-        Height = 21
-        TabOrder = 21
-        Text = 'Edit4'
-      end
-      object MasKCEP: TMaskEdit
+      object MaskCEP: TMaskEdit
         Left = 177
         Top = 132
         Width = 65
         Height = 21
         EditMask = '00000\-999;1;_'
         MaxLength = 9
-        TabOrder = 22
+        TabOrder = 18
         Text = '     -   '
+      end
+      object EditEMAIL: TEdit
+        Left = 21
+        Top = 176
+        Width = 179
+        Height = 21
+        TabOrder = 19
+      end
+      object cbSEXO: TComboBox
+        Left = 206
+        Top = 176
+        Width = 38
+        Height = 21
+        TabOrder = 20
+        Items.Strings = (
+          'M'
+          'F')
+      end
+      object cbESTCIVIL: TComboBox
+        Left = 250
+        Top = 176
+        Width = 106
+        Height = 21
+        TabOrder = 21
+        Items.Strings = (
+          'Casado(a)'
+          'Divorciado(a)'
+          'Viuvo(a)'
+          'Solteiro(a)')
+      end
+      object cbPROFISSAO: TComboBox
+        Left = 185
+        Top = 215
+        Width = 150
+        Height = 21
+        TabOrder = 22
+      end
+      object DateCASAMENTO: TDateTimePicker
+        Left = 362
+        Top = 176
+        Width = 97
+        Height = 21
+        Date = 44169.000000000000000000
+        Time = 0.917848101853451200
+        TabOrder = 23
+      end
+      object cbESCOLARIDADE: TComboBox
+        Left = 21
+        Top = 215
+        Width = 142
+        Height = 21
+        TabOrder = 24
+      end
+      object MaskRG: TMaskEdit
+        Left = 359
+        Top = 215
+        Width = 100
+        Height = 21
+        EditMask = '999.999.999-99;1;_'
+        MaxLength = 14
+        TabOrder = 25
+        Text = '   .   .   -  '
+      end
+      object MaskCPF: TMaskEdit
+        Left = 492
+        Top = 215
+        Width = 100
+        Height = 21
+        EditMask = '999.999.999-99;1;_'
+        MaxLength = 14
+        TabOrder = 26
+        Text = '   .   .   -  '
+      end
+      object EditMAE: TEdit
+        Left = 21
+        Top = 257
+        Width = 200
+        Height = 21
+        TabOrder = 27
+      end
+      object EditPAI: TEdit
+        Left = 227
+        Top = 257
+        Width = 200
+        Height = 21
+        TabOrder = 28
+      end
+      object EditTITULO: TEdit
+        Left = 623
+        Top = 215
+        Width = 135
+        Height = 21
+        TabOrder = 29
+      end
+      object EditPAIS: TEdit
+        Left = 436
+        Top = 257
+        Width = 129
+        Height = 21
+        TabOrder = 30
+      end
+      object EditNATURAL: TEdit
+        Left = 571
+        Top = 257
+        Width = 129
+        Height = 21
+        TabOrder = 31
+      end
+      object EditCONJUGE: TEdit
+        Left = 465
+        Top = 176
+        Width = 191
+        Height = 21
+        TabOrder = 32
+      end
+      object DateNASCCONJUGE: TDateTimePicker
+        Left = 662
+        Top = 176
+        Width = 96
+        Height = 21
+        Date = 44169.000000000000000000
+        Time = 0.937815706020046500
+        TabOrder = 33
+      end
+      object EditFILHOS: TEdit
+        Left = 706
+        Top = 257
+        Width = 52
+        Height = 21
+        TabOrder = 34
+      end
+      object DateNASC: TDateTimePicker
+        Left = 21
+        Top = 300
+        Width = 97
+        Height = 21
+        Date = 44169.000000000000000000
+        Time = 0.917848101853451200
+        TabOrder = 35
+      end
+      object EditMORADIA: TEdit
+        Left = 124
+        Top = 300
+        Width = 129
+        Height = 21
+        TabOrder = 36
+      end
+      object EditROLL: TEdit
+        Left = 21
+        Top = 44
+        Width = 121
+        Height = 21
+        TabOrder = 37
+      end
+      object CheckATIVO: TCheckBox
+        Left = 792
+        Top = 18
+        Width = 97
+        Height = 17
+        Caption = 'Ativo'
+        TabOrder = 38
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'Dados Eclesiasticos'
       ImageIndex = 1
-      ExplicitWidth = 976
+      object DIZIMISTA: TLabel
+        Left = 25
+        Top = 72
+        Width = 41
+        Height = 13
+        Caption = 'Dizimista'
+      end
+      object Label21: TLabel
+        Left = 96
+        Top = 72
+        Width = 28
+        Height = 13
+        Caption = 'Valor:'
+      end
+      object Tratamento: TLabel
+        Left = 223
+        Top = 72
+        Width = 60
+        Height = 13
+        Caption = 'Tratamento:'
+      end
+      object Grupo: TLabel
+        Left = 504
+        Top = 72
+        Width = 33
+        Height = 13
+        Caption = 'Grupo:'
+      end
+      object Ministerio: TLabel
+        Left = 657
+        Top = 72
+        Width = 49
+        Height = 13
+        Caption = 'Minist'#233'rio:'
+      end
+      object Label22: TLabel
+        Left = 27
+        Top = 32
+        Width = 45
+        Height = 13
+        Caption = 'Batizado:'
+      end
+      object dataBatismo: TLabel
+        Left = 104
+        Top = 32
+        Width = 67
+        Height = 13
+        Caption = 'Data Batismo:'
+      end
+      object Label23: TLabel
+        Left = 201
+        Top = 32
+        Width = 88
+        Height = 13
+        Caption = 'Igreja de Batismo:'
+      end
+      object DataCONSAGRAÇAO: TLabel
+        Left = 376
+        Top = 72
+        Width = 93
+        Height = 13
+        Caption = 'Data Consagra'#231#227'o:'
+      end
+      object CidadeBatismo: TLabel
+        Left = 406
+        Top = 32
+        Width = 92
+        Height = 13
+        Caption = 'Cidade de Batismo:'
+      end
+      object OBS: TLabel
+        Left = 17
+        Top = 323
+        Width = 62
+        Height = 13
+        Caption = 'Observa'#231#227'o:'
+      end
+      object Label26: TLabel
+        Left = 439
+        Top = 323
+        Width = 45
+        Height = 13
+        Caption = 'Hist'#243'rico:'
+      end
+      object ValCarteira: TLabel
+        Left = 613
+        Top = 32
+        Width = 89
+        Height = 13
+        Caption = 'Validade  Carteira:'
+      end
+      object Label27: TLabel
+        Left = 104
+        Top = 144
+        Width = 75
+        Height = 13
+        Caption = 'Data Admiss'#227'o:'
+      end
+      object Label28: TLabel
+        Left = 223
+        Top = 144
+        Width = 64
+        Height = 13
+        Caption = 'Pa'#237's Origem::'
+      end
+      object Label29: TLabel
+        Left = 363
+        Top = 144
+        Width = 81
+        Height = 13
+        Caption = 'Tel. Pa'#237's Origem:'
+      end
+      object Label30: TLabel
+        Left = 504
+        Top = 144
+        Width = 52
+        Height = 13
+        Caption = 'Campo 13:'
+      end
+      object Label31: TLabel
+        Left = 645
+        Top = 144
+        Width = 52
+        Height = 13
+        Caption = 'Campo 15:'
+      end
+      object cbDIZIMISTA: TComboBox
+        Left = 25
+        Top = 88
+        Width = 65
+        Height = 21
+        TabOrder = 0
+        Items.Strings = (
+          'SIM'
+          'N'#195'O')
+      end
+      object EditVALOR: TEdit
+        Left = 96
+        Top = 88
+        Width = 121
+        Height = 21
+        TabOrder = 1
+      end
+      object cbTRATAMENTO: TComboBox
+        Left = 223
+        Top = 88
+        Width = 147
+        Height = 21
+        TabOrder = 2
+        Items.Strings = (
+          'SIM'
+          'N'#195'O')
+      end
+      object cbGRUPO: TComboBox
+        Left = 504
+        Top = 88
+        Width = 147
+        Height = 21
+        TabOrder = 3
+        Items.Strings = (
+          'SIM'
+          'N'#195'O')
+      end
+      object cbMINISTERIO: TComboBox
+        Left = 657
+        Top = 88
+        Width = 147
+        Height = 21
+        TabOrder = 4
+        Items.Strings = (
+          'SIM'
+          'N'#195'O')
+      end
+      object cbBATIZADO: TComboBox
+        Left = 27
+        Top = 48
+        Width = 65
+        Height = 21
+        TabOrder = 5
+        Items.Strings = (
+          'SIM'
+          'N'#195'O')
+      end
+      object DateBATISMO: TDateTimePicker
+        Left = 104
+        Top = 48
+        Width = 91
+        Height = 21
+        Date = 44169.000000000000000000
+        Time = 0.956302002312440900
+        TabOrder = 6
+      end
+      object EditIGREJA_BATISMO: TEdit
+        Left = 201
+        Top = 48
+        Width = 200
+        Height = 21
+        TabOrder = 7
+      end
+      object DateCONSAGRA: TDateTimePicker
+        Left = 376
+        Top = 88
+        Width = 91
+        Height = 21
+        Date = 44169.000000000000000000
+        Time = 0.956302002312440900
+        TabOrder = 8
+      end
+      object EditCIDADEBATISMO: TEdit
+        Left = 407
+        Top = 48
+        Width = 200
+        Height = 21
+        TabOrder = 9
+      end
+      object MemoMembro: TMemo
+        Left = 17
+        Top = 339
+        Width = 416
+        Height = 169
+        Lines.Strings = (
+          'MemoMembro')
+        TabOrder = 10
+      end
+      object MemoHistórico: TMemo
+        Left = 439
+        Top = 339
+        Width = 416
+        Height = 169
+        Lines.Strings = (
+          'MemoMembro')
+        TabOrder = 11
+      end
+      object DateVALCARTEIRA: TDateTimePicker
+        Left = 613
+        Top = 48
+        Width = 91
+        Height = 21
+        Date = 44169.000000000000000000
+        Time = 0.956302002312440900
+        TabOrder = 12
+      end
+      object DateADMISSAO: TDateTimePicker
+        Left = 104
+        Top = 160
+        Width = 91
+        Height = 21
+        Date = 44173.000000000000000000
+        Time = 0.951005474540579600
+        TabOrder = 13
+      end
+      object EditPAISORIG: TEdit
+        Left = 223
+        Top = 160
+        Width = 121
+        Height = 21
+        TabOrder = 14
+      end
+      object EditTELPAISORIG: TEdit
+        Left = 363
+        Top = 160
+        Width = 121
+        Height = 21
+        TabOrder = 15
+      end
+      object EditCAMPO13: TEdit
+        Left = 504
+        Top = 160
+        Width = 121
+        Height = 21
+        TabOrder = 16
+      end
+      object EditCAMPO15: TEdit
+        Left = 645
+        Top = 160
+        Width = 121
+        Height = 21
+        TabOrder = 17
+      end
     end
   end
   object dialog: TOpenPictureDialog

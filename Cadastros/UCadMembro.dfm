@@ -45,7 +45,7 @@
       end
       object Label2: TLabel
         Left = 436
-        Top = 24
+        Top = 19
         Width = 36
         Height = 13
         Caption = 'Buscar:'

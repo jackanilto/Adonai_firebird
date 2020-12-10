@@ -166,8 +166,8 @@ procedure TFrmCadMembro.associarCampos;
 begin
    DM.TBL_MEMBROS.FieldByName('NOME').Value := EditNOME.Text;
    DM.TBL_MEMBROS.FieldByName('ENDERECO').Value := EditENDERECO.Text;
-   DM.TBL_MEMBROS.FieldByName('NUMERO').Value   := EditNUMERO               .Text;
-   DM.TBL_MEMBROS.FieldByName('BAIRRO').Value   := EditBAIRRO               .Text;
+   DM.TBL_MEMBROS.FieldByName('NUMERO').Value := EditNUMERO.Text;
+   DM.TBL_MEMBROS.FieldByName('BAIRRO').Value   := EditBAIRRO.Text;
    DM.TBL_MEMBROS.FieldByName('CIDADE')  .Value   := EditCIDADE               .Text;
    DM.TBL_MEMBROS.FieldByName('ESTADO')  .Value   := EditESTADO               .Text;
    DM.TBL_MEMBROS.FieldByName('CEP')  .Value   := MaskCEP                  .Text;
@@ -191,7 +191,7 @@ begin
    DM.TBL_MEMBROS.FieldByName('CPF')  .Value   := MaskCPF                  .Text;
    DM.TBL_MEMBROS.FieldByName('NOME_PAI')  .Value   := EditPAI                  .Text;
    DM.TBL_MEMBROS.FieldByName('NOME_MAE')  .Value   := EditMAE                  .Text;
-   DM.TBL_MEMBROS.FieldByName('DATA_BATISMO')  .Value   := DateBATISMO              .DateTime;
+   DM.TBL_MEMBROS.FieldByName('DATA_BATISMO')  .Value   := DateBATISMO.DateTime;
    DM.TBL_MEMBROS.FieldByName('DATA_ADMISSAO')  .Value   := DateADMISSAO             .DateTime;
    DM.TBL_MEMBROS.FieldByName('PAIS_ORIGEM')  .Value   := EditPAISORIG             .Text;
    DM.TBL_MEMBROS.FieldByName('TELEFONE_PAIS_ORIGEM')  .Value   := EditTELPAISORIG          .Text;
@@ -318,6 +318,7 @@ if (editNOME.Text <> '') then
    ' RG                =  :RG                   , DATA_NASC            = :DATA_NASC            , '+
    ' CPF               =  :CPF                  , OBSERVACAO           = :OBSERVACAO           , '+
     'imagem = :imagem where id = :id');
+
     imgPessoa := TPicture.Create;
     imgPessoa.LoadFromFile(dialog.FileName);
     DM.QueryMembro.ParamByName('imagem').Assign(imgPessoa);

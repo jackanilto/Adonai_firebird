@@ -22,7 +22,6 @@ type
     grid: TDBGrid;
     EditID: TEdit;
     dialog: TOpenPictureDialog;
-    btnAdd: TButton;
     img: TImage;
     Label2: TLabel;
     edtBuscar: TEdit;
@@ -55,7 +54,6 @@ type
     EstaCivil: TLabel;
     cbPROFISSAO: TComboBox;
     Label12: TLabel;
-    DateCASAMENTO: TDateTimePicker;
     Label13: TLabel;
     cbESCOLARIDADE: TComboBox;
     Escolaridade: TLabel;
@@ -75,7 +73,6 @@ type
     Naturalidade: TLabel;
     EditCONJUGE: TEdit;
     Label19: TLabel;
-    DateNASCCONJUGE: TDateTimePicker;
     DataCasCONJUGE: TLabel;
     EditFILHOS: TEdit;
     Label20: TLabel;
@@ -91,13 +88,10 @@ type
     Ministerio: TLabel;
     cbBATIZADO: TComboBox;
     Label22: TLabel;
-    DateBATISMO: TDateTimePicker;
     dataBatismo: TLabel;
     EditIGREJA_BATISMO: TEdit;
     Label23: TLabel;
-    DateCONSAGRA: TDateTimePicker;
     DataCONSAGRAÇAO: TLabel;
-    DateNASC: TDateTimePicker;
     Label24: TLabel;
     EditMORADIA: TEdit;
     Label25: TLabel;
@@ -107,11 +101,9 @@ type
     OBS: TLabel;
     MemoHistórico: TMemo;
     Label26: TLabel;
-    DateVALCARTEIRA: TDateTimePicker;
     ValCarteira: TLabel;
     EditROLL: TEdit;
     ROLL: TLabel;
-    DateADMISSAO: TDateTimePicker;
     Label27: TLabel;
     EditPAISORIG: TEdit;
     Label28: TLabel;
@@ -122,6 +114,15 @@ type
     EditCAMPO15: TEdit;
     Label30: TLabel;
     Label31: TLabel;
+    DateCASAMENTO: TMaskEdit;
+    DateNASCCONJUGE: TMaskEdit;
+    DateNASC: TMaskEdit;
+    DateBATISMO: TMaskEdit;
+    DateVALCARTEIRA: TMaskEdit;
+    DateADMISSAO: TMaskEdit;
+    DateCONSAGRA: TMaskEdit;
+    btnFOTOCAMERA: TSpeedButton;
+    btnAdd: TSpeedButton;
     procedure btnNovoClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -130,6 +131,7 @@ type
     procedure btnEditarClick(Sender: TObject);
     procedure edtBuscarChange(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
+    procedure btnADDFOTOClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -191,17 +193,17 @@ begin
    DM.TBL_MEMBROS.FieldByName('CPF')  .Value   := MaskCPF                  .Text;
    DM.TBL_MEMBROS.FieldByName('NOME_PAI')  .Value   := EditPAI                  .Text;
    DM.TBL_MEMBROS.FieldByName('NOME_MAE')  .Value   := EditMAE                  .Text;
-   DM.TBL_MEMBROS.FieldByName('DATA_BATISMO')  .Value   := DateBATISMO.DateTime;
-   DM.TBL_MEMBROS.FieldByName('DATA_ADMISSAO')  .Value   := DateADMISSAO             .DateTime;
+   DM.TBL_MEMBROS.FieldByName('DATA_BATISMO')  .Value   := DateBATISMO.Text;
+   DM.TBL_MEMBROS.FieldByName('DATA_ADMISSAO')  .Value   := DateADMISSAO             .Text;
    DM.TBL_MEMBROS.FieldByName('PAIS_ORIGEM')  .Value   := EditPAISORIG             .Text;
    DM.TBL_MEMBROS.FieldByName('TELEFONE_PAIS_ORIGEM')  .Value   := EditTELPAISORIG          .Text;
-   DM.TBL_MEMBROS.FieldByName('DATA_CASAMENTO')  .Value   := DateCASAMENTO            .DateTime;
+   DM.TBL_MEMBROS.FieldByName('DATA_CASAMENTO')  .Value   := DateCASAMENTO            .Text;
    DM.TBL_MEMBROS.FieldByName('IGREJA_BATISMO')  .Value   := EditIGREJA_BATISMO       .Text;
-   DM.TBL_MEMBROS.FieldByName('DATA_CONSAGRACAO')  .Value   := DateCONSAGRA             .DateTime;
+   DM.TBL_MEMBROS.FieldByName('DATA_CONSAGRACAO')  .Value   := DateCONSAGRA.Text;
    DM.TBL_MEMBROS.FieldByName('NATURALIDADE')  .Value   := EditNATURAL              .Text;
    DM.TBL_MEMBROS.FieldByName('TITULO_ELEITOR')  .Value   := EditTITULO               .Text;
    DM.TBL_MEMBROS.FieldByName('FILHOS')  .Value   := EditFILHOS               .Text;
-   DM.TBL_MEMBROS.FieldByName('VALIDADE_CARTEIRA')  .Value   := DateVALCARTEIRA          .DateTime;
+   DM.TBL_MEMBROS.FieldByName('VALIDADE_CARTEIRA')  .Value   := DateVALCARTEIRA          .Text;
    DM.TBL_MEMBROS.FieldByName('ROLL')  .Value   := EditROLL                 .Text;
    DM.TBL_MEMBROS.FieldByName('CONJUGE')  .Value   := EditCONJUGE              .Text;
    DM.TBL_MEMBROS.FieldByName('CAMPO13')  .Value   := EditCAMPO13              .Text;
@@ -209,13 +211,20 @@ begin
    DM.TBL_MEMBROS.FieldByName('CAMPO15')  .Value   := EditCAMPO15              .Text;
    DM.TBL_MEMBROS.FieldByName('HISTORICO')  .Value   := MemoHistórico            .Text;
    DM.TBL_MEMBROS.FieldByName('PROFISSAO')  .Value   := cbPROFISSAO              .Text;
-   DM.TBL_MEMBROS.FieldByName('NASC_CONJUGE')  .Value   := DateNASCCONJUGE          .DateTime;
+   DM.TBL_MEMBROS.FieldByName('NASC_CONJUGE')  .Value   := DateNASCCONJUGE          .Text;
    DM.TBL_MEMBROS.FieldByName('CIDADE_BATISMO')  .Value   := EditCIDADEBATISMO        .Text;
-   DM.TBL_MEMBROS.FieldByName('DATA_NASC')  .Value   := DateNASC                 .DateTime;
+   DM.TBL_MEMBROS.FieldByName('DATA_NASC')  .Value   := DateNASC                 .Text;
    DM.TBL_MEMBROS.FieldByName('OBSERVACAO')  .Value   := MemoMembro               .Text;
 end;
 
 procedure TFrmCadMembro.btnAddClick(Sender: TObject);
+begin
+dialog.Execute();
+img.Picture.LoadFromFile(dialog.filename);
+alterou := true;
+end;
+
+procedure TFrmCadMembro.btnADDFOTOClick(Sender: TObject);
 begin
 dialog.Execute();
 img.Picture.LoadFromFile(dialog.filename);
@@ -317,7 +326,7 @@ if (editNOME.Text <> '') then
    ' BATIZADO          =  :BATIZADO             , CIDADE_BATISMO       = :CIDADE_BATISMO       , '+
    ' RG                =  :RG                   , DATA_NASC            = :DATA_NASC            , '+
    ' CPF               =  :CPF                  , OBSERVACAO           = :OBSERVACAO           , '+
-    'imagem = :imagem where id = :id');
+   'imagem             =  :imagem where           id                   = :id');
 
     imgPessoa := TPicture.Create;
     imgPessoa.LoadFromFile(dialog.FileName);
@@ -566,10 +575,10 @@ if DM.QueryMembro.FieldByName('NOME_MAE').Value <> null then
 EditMAE.Text  := DM.QueryMembro.FieldByName('NOME_MAE').Value;
 
 if DM.QueryMembro.FieldByName('DATA_BATISMO').Value <> null then
-DateBATISMO.DateTime  := DM.QueryMembro.FieldByName('DATA_BATISMO').Value;
+DateBATISMO.Text  := DM.QueryMembro.FieldByName('DATA_BATISMO').Value;
 
 if DM.QueryMembro.FieldByName('DATA_ADMISSAO').Value <> null then
-DateADMISSAO.DateTime  := DM.QueryMembro.FieldByName('DATA_ADMISSAO').Value;
+DateADMISSAO.Text  := DM.QueryMembro.FieldByName('DATA_ADMISSAO').Value;
 
 if DM.QueryMembro.FieldByName('PAIS_ORIGEM').Value <> null then
 EditPAISORIG.Text  := DM.QueryMembro.FieldByName('PAIS_ORIGEM').Value;
@@ -578,7 +587,7 @@ if DM.QueryMembro.FieldByName('TELEFONE_PAIS_ORIGEM').Value <> null then
 EditTELPAISORIG.Text  := DM.QueryMembro.FieldByName('TELEFONE_PAIS_ORIGEM').Value;
 
 if DM.QueryMembro.FieldByName('DATA_CASAMENTO').Value <> null then
-DateCASAMENTO.DateTime  := DM.QueryMembro.FieldByName('DATA_CASAMENTO').Value;
+DateCASAMENTO.Text  := DM.QueryMembro.FieldByName('DATA_CASAMENTO').Value;
 
 //if DM.QueryMembro.FieldByName('ATIVO').Value <> null then
 //CheckATIVO.Text  := DM.QueryMembro.FieldByName('ATIVO').Value;
@@ -587,7 +596,7 @@ if DM.QueryMembro.FieldByName('IGREJA_BATISMO').Value <> null then
 EditIGREJA_BATISMO.Text  := DM.QueryMembro.FieldByName('IGREJA_BATISMO').Value;
 
 if DM.QueryMembro.FieldByName('DATA_CONSAGRACAO').Value <> null then
-DateCONSAGRA.DateTime  := DM.QueryMembro.FieldByName('DATA_CONSAGRACAO').Value;
+DateCONSAGRA.Text  := DM.QueryMembro.FieldByName('DATA_CONSAGRACAO').Value;
 
 if DM.QueryMembro.FieldByName('NATURALIDADE').Value <> null then
 EditNATURAL.Text  := DM.QueryMembro.FieldByName('NATURALIDADE').Value;
@@ -599,7 +608,7 @@ if DM.QueryMembro.FieldByName('FILHOS').Value <> null then
 EditFILHOS.Text  := DM.QueryMembro.FieldByName('FILHOS').Value;
 
 if DM.QueryMembro.FieldByName('VALIDADE_CARTEIRA').Value <> null then
-DateVALCARTEIRA.DateTime  := DM.QueryMembro.FieldByName('VALIDADE_CARTEIRA').Value;
+DateVALCARTEIRA.Text  := DM.QueryMembro.FieldByName('VALIDADE_CARTEIRA').Value;
 
 if DM.QueryMembro.FieldByName('ROLL').Value <> null then
 EditROLL.Text  := DM.QueryMembro.FieldByName('ROLL').Value;
@@ -623,13 +632,13 @@ if DM.QueryMembro.FieldByName('PROFISSAO').Value <> null then
 cbPROFISSAO.Text  := DM.QueryMembro.FieldByName('PROFISSAO').Value;
 
 if DM.QueryMembro.FieldByName('NASC_CONJUGE').Value <> null then
-DateNASCCONJUGE.DateTime  := DM.QueryMembro.FieldByName('NASC_CONJUGE').Value;
+DateNASCCONJUGE.Text  := DM.QueryMembro.FieldByName('NASC_CONJUGE').Value;
 
 if DM.QueryMembro.FieldByName('CIDADE_BATISMO').Value <> null then
 EditCIDADEBATISMO.Text  := DM.QueryMembro.FieldByName('CIDADE_BATISMO').Value;
 
 if DM.QueryMembro.FieldByName('DATA_NASC').Value <> null then
-DateNASC .DateTime  := DM.QueryMembro.FieldByName('DATA_NASC').Value;
+DateNASC .Text  := DM.QueryMembro.FieldByName('DATA_NASC').Value;
 
 if DM.QueryMembro.FieldByName('OBSERVACAO').Value <> null then
 MemoMembro.Text  := DM.QueryMembro.FieldByName('OBSERVACAO').Value;

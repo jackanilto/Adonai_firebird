@@ -1,7 +1,7 @@
 ﻿object FrmCadMembro: TFrmCadMembro
   Left = 0
   Top = 0
-  Caption = 'CadMembro'
+  Caption = 'Cadastro de Pessoas'
   ClientHeight = 599
   ClientWidth = 916
   Color = clBtnFace
@@ -252,6 +252,135 @@
         Width = 86
         Height = 13
         Caption = 'ROLL de Membros'
+      end
+      object btnFOTOCAMERA: TSpeedButton
+        Left = 769
+        Top = 247
+        Width = 120
+        Height = 30
+        Caption = 'Fotografar'
+        Glyph.Data = {
+          F6060000424DF606000000000000360000002800000018000000180000000100
+          180000000000C006000000000000000000000000000000000000FAFAFAFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFEFEAEADED3D5D5C7C9D7CDCFD8CCCED8CCCED8CCCED9CCCED8CBCDD8CACC
+          D7CACCD7CACBD7C9CAD6C9CAD6C8CAD6C8CAD5C7C9D5C7C9D5C7C9D5C7C9D5C7
+          C9D5C7C9DED3D5EFEAEADED3D5D5C7C9D5C7C9D0C3C5D0C4C5D1C5C6D2C5C7D4
+          C5C7D5C6C8D5C7C9D5C7C9D5C7C9D5C7C9D5C7C9D5C7C9D5C7C9D5C7C9D5C7C9
+          D5C7C9D5C7C9D5C7C9D5C7C9D5C7C9DED3D55757575555555151514D4D4D4949
+          49CFC2C4D0C3C5D0C4C5D2C5C6D3C5C7D4C6C8C4B5B6B3A4A5A595959B8B8B9B
+          8B8BA59595B3A4A5C4B5B7D5C7C9D5C7C9D5C7C9D5C7C9D5C7C9575757555555
+          5151514D4D4D494949454545CCC1C3CDC2C4CFC3C5C9BBBDB0A2A29889899586
+          86958686958686958686958686958686988989B2A3A4CDBFC1D5C7C9D5C7C9D5
+          C7C9464646464646464646464646494949454545C8BEC0CABFC1C4B9BAA79B9B
+          9285859F9393BFB6B6D6CECFE4DDDDE4DDDED7CFD0C1B6B6A09494928585AA9D
+          9ECDBFC0D5C7C9D5C7C9434343434343434343484848494949454545C4BBBDC5
+          BCBEA89E9E8F8383A79D9ED1C9CADCD5D6D6CCCED1C6C8D2C7C8D9CFCFE0D8D9
+          D4CCCDA99E9E8F8383AFA2A3D5C7C9D5C7C94949494949494949494B4B4B4949
+          49454545BFB8BBB2AAAC8F8484988F8FCEC7C8D5CECFC2A7A2BA887AB26F59B3
+          6F59BB8A7BC8ABA6DCD3D4D3CBCC9A90908F8484C1B3B5D5C7C9505050505050
+          5050504E4E4E494949454545BBB6B8A09999888080B6AFB0D6D0D2BBA4A0AB73
+          61A5614ACAA06CCAA06CA5614AAD7462C3A9A5DED6D7BBB3B3888080A99F9FD3
+          C5C7585858585858585858515151494949454545B7B2B58F8A8A847E7ECAC6C7
+          C8C3C5A88177995D4ACAA06CCAA06CCAA06CCAA06C995D4AAD8479D3CACCD2CB
+          CD847E7E948D8ED0C3C55F5F5F5F5F5F5F5F5F555555494949454545B3AFB284
+          7F7F817C7CD6D3D5BDB8BB9165568B5A49CAA06CCAA06CCAA06CCAA06C8B5A49
+          926657CAC0C1DED9DA817C7C858080CCC1C36767676767676767675959594949
+          49454545AFAEB0817D7D7E7A7AD4D2D3B9B5B88260567B5549A06C3CA06C3CA0
+          6C3CA06C3C7B5549846157C6BEBFDCD7D87E7A7A827E7EC9BEC06F6F6F6F6F6F
+          6F6F6F5C5C5C494949454545BAB9BC8D8B8C7B7979C2C2C2BEBBBE847572664F
+          48A06C3CA06C3CA06C3CA06C3C664F48897975C9C3C5CAC6C77B79798B8788C5
+          BBBD7676767676767676765F5F5F494949454545CECED0B0B0B19E9D9EB3B2B3
+          C8C7C9979495655E5CF0E0C6F0E0C6534A47534A47675F5D9F999AD0CCCEADAB
+          AB797878989496C1B9BC7C7C7C7C7C7C7C7C7C626262494949454545D1D1D3C4
+          C4C6A5A5A5ADADADD3D3D4D3D2D4A09FA0F0E0C6F0E0C6545454727172999698
+          C9C6C8C7C5C69C9C9C9E9E9EBBB9BACDCCCE8181818181818181816464644949
+          49454545D5D5D6D5D5D6BDBDBEAAAAAABDBDBDDBDBDBE3E3E3DCDCDDD7D7D8D7
+          D7D8DCDCDDE3E3E3DBDBDBBDBDBDAAAAAABDBDBED5D5D6D5D5D6666666666666
+          666666666666494949454545D9D9DAD9D9DAD4D4D5C7C7C7B1B1B1BABABAD0D0
+          D0E0E0E0E9E9E9E9E9E9E0E0E0D0D0D0BABABAB1B1B1BFBFC0D4D4D5D9D9DAD9
+          D9DA5757575555555151514D4D4D494949454545DCDCDDDCDCDDDCDCDD9D9D9D
+          A9A9A9B9B9B9B7B7B7B7B7B7B7B7B7B7B7B7B7B7B7B7B7B7B9B9B9C8C8C8D7D7
+          D8DCDCDDDCDCDDDCDCDD5757575555555151514D4D4D494949DFDFE0DFDFE0DF
+          DFE0DFDFE0999999999999D5D5D6CBCBCCC3C3C3BDBDBDBDBDBDC3C3C3CBCBCC
+          D5D5D6DFDFE0DFDFE0DFDFE0DFDFE0E3E3E3EEEEEFE5E5E6E2E2E3E2E2E3E2E2
+          E3E2E2E3E2E2E3E2E2E3E2E2E3E2E2E3E2E2E3E2E2E3E2E2E3E2E2E3E2E2E3E2
+          E2E3E2E2E3E2E2E3E2E2E3E2E2E3E2E2E3E2E2E3E5E5E6EEEEEFF9F9F9F3F3F3
+          EFEFF0F1F1F2F1F1F2F1F1F2F1F1F2F1F1F2F1F1F2F1F1F2F1F1F2F0F0F1F0F0
+          F1F0F0F1F0F0F1F0F0F1F0F0F0F0F0F0F0F0F0F0F0F0EFEFF0EFEFF0F3F3F3F9
+          F9F9FFFFFFFFFFFFFFFFFFA8A8A8C4C4C4BEBEBE929292FFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA8A8A8C4C4C4BEBEBE929292FF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      end
+      object btnAdd: TSpeedButton
+        Left = 769
+        Top = 213
+        Width = 120
+        Height = 30
+        Caption = 'Adicionar Foto'
+        Glyph.Data = {
+          F6060000424DF606000000000000360000002800000018000000180000000100
+          180000000000C0060000000000000000000000000000000000007B7B7BB8B8B8
+          B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8
+          B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B8B87B
+          7B7BABABABE6E6E65CB5715DB6725DB6725DB6725CB571E6E6E6E6E6E6E6E6E6
+          E6E6E6E6E6E6E6E6E6E6E6E6E6E6E6CC9D79CD9E7ACC9D79E6E6E67C7BD87C7C
+          D87B7BD8E6E6E6ABABABBFBFBFFFFFFF51AA66116A26116A26116A2651AA66FF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC1926E81522EC1926E
+          FFFFFF6868DF0000FF6868DFFFFFFFBFBFBFAEAEAEF4F4F44099554099554099
+          55409955409955F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4B0
+          815DB0815DB0815DF4F4F44E4DE74E4DE74D4DE8F4F4F4AEAEAE989898DFDFDF
+          DFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDF
+          DFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDF98
+          9898AAAAAAADADAD144E39144E39144E39144E39144E39144E39144E39144E39
+          144E39144E39144E39144E39144E39144E39144E39144E39144E39144E39144E
+          39144E39ADADADAAAAAAACACACB0B0B0134F39134E39124E38114D38134D3812
+          4F3913523C11513A114E39124E39114B36114935124835124834124733114632
+          10453111453110443011422EB0B0B0ACACACADADADB4B4B41A41331A4636148B
+          D2148BD2148BD2148BD2184E3A174F3B174E39164F3A174F3B184E3A174C3817
+          493617473417453216443116443116423015412FB4B4B4ADADADAFAFAFB9B9B9
+          1A3129148BD26AE7FF4FDFFF2FD8FF14D0FF148BD2154F3816523B17543E1859
+          431A5E481B61491A5F491C604A1C634D1C634F1C5F4D1F5A471F5946B9B9B9AF
+          AFAFB1B1B1BEBEBE1073A9148BD276EAFF62E5FF44DDFF26D5FF148BD2176A4B
+          196C4E1A73521B79571B7F5C1B825F1C85631F84641F86661E8B6A1E8C6B2089
+          68208666BEBEBEB1B1B1B3B3B3C3C3C31073A9148BD276EAFF71E9FF59E2FF3A
+          DAFF148BD21E937021947021956E209870209A72219B7422987221936F208E69
+          1E86631C7D5B1A735218704FC3C3C3B3B3B3B5B5B5C9C9C91073A900B6F1148B
+          D2148BD2148BD2148BD2209D78209A7521987220926E1D8A68187E5C13714F0D
+          6647085E4007533609482E0E462D15452C1D452DC9C9C9B5B5B5B8B8B8CFCFCF
+          1073A944DBFF44DBFF1073A91073A90D82600A7E5E0A75560C6C4E12664A195F
+          4421573E2B5C473B6452506D5D697E71808D8398988FA2988CA58F80CFCFCFB8
+          B8B8BABABAD4D4D453A7861073A91073A94990704B8E74548E765D81676F8269
+          808975968F7EA18E78AC9C8ABBAEA0C5B2A2CBAC98D3AD9AE0BEACE6C4B1E3BC
+          A8E4BCA9D4D4D4BABABABDBDBDDADADAD1BB9DCDB496CAB192C8AC8FC9AE93CC
+          AD92C69B7EC99A7ACE9A78D09571D49777DDAA91E2B49EDEAC93DBA385D9A182
+          DAA88BDBAC93DDB39AE2BBA6DADADABDBDBDBFBFBFE0E0E0DCA683DCA685148B
+          D2148BD2148BD2148BD2D79A75D6976FD69A76D59E7FD19879D19E81D7AB94DA
+          B099D6A88EDDB59FEEDACFEAD0C2E3C2ADDBB29BE0E0E0BFBFBFC1C1C1E6E6E6
+          DFB89D148BD26AE7FF4FDFFF2FD8FF14D0FF148BD2CA8F67DEB8A2EDD9CDD5A7
+          8DCC916DD09C7BD9AF98DEB8A2EACFC2F6F8F6F0DFD5DAAF93CF9671E6E6E6C1
+          C1C1C4C4C4EBEBEB1073A9148BD276EAFF62E5FF44DDFF26D5FF148BD2CB8D63
+          D5A78BDDB49BCE936DC88352C78251C88556D2A082EAD0C1E1BCA6CE956FCB87
+          55C88353EBEBEBC4C4C4C6C6C6F0F0F01073A9148BD276EAFF71E9FF59E2FF3A
+          DAFF148BD2C98455C77F50C77E4EC78050C78151C77F50C77C4DC98B61D6AA8E
+          CB9067C77C4EC77C4EC8885BF0F0F0C6C6C6C8C8C8F5F5F51073A900B6F1148B
+          D2148BD2148BD2148BD2C78351C78050C77F50C77E4FC78151C78254C78151C6
+          7B4CC4794CC4784CC4794CC6794CC47A4CC8865BF5F5F5C8C8C8CACACAF9F9F9
+          1073A944DBFF44DBFF1073A91073A9C88050C88050C77F50C77E4FC78154CA8B
+          66CA8C6AC67F51C3784BC3774BC3774BC2764AC3784BC37A4CC47A4CF9F9F9CA
+          CACACBCBCBFCFCFCC985531073A91073A9C77F50C77F50C77E4FC77E4FC67E4E
+          C88459CE967AD4A188CA8E6DC47C4DC17549C07548BF7047C17447C98D6AD7AA
+          93CA8B66FCFCFCCBCBCBCDCDCDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCDCDCDFFFFFFCECECECECECECECECECECE
+          CECECECECECECECECECECECECECECECECECECECECECECECECECECECECECECECE
+          CECECECECECECECECECECECECECECECECECECECECECECEFFFFFF}
+        OnClick = btnADDFOTOClick
       end
       object btnNovo: TBitBtn
         Left = 224
@@ -2328,22 +2457,12 @@
         Height = 21
         TabOrder = 6
       end
-      object btnAdd: TButton
-        Left = 769
-        Top = 216
-        Width = 120
-        Height = 25
-        Caption = 'Adicionar Foto'
-        Enabled = False
-        TabOrder = 7
-        OnClick = btnAddClick
-      end
       object edtBuscar: TEdit
         Left = 487
         Top = 16
         Width = 250
         Height = 21
-        TabOrder = 8
+        TabOrder = 7
         OnChange = edtBuscarChange
       end
       object EditENDERECO: TEdit
@@ -2351,63 +2470,63 @@
         Top = 87
         Width = 200
         Height = 21
-        TabOrder = 9
+        TabOrder = 8
       end
       object EditNUMERO: TEdit
         Left = 431
         Top = 87
         Width = 73
         Height = 21
-        TabOrder = 10
+        TabOrder = 9
       end
       object EditBAIRRO: TEdit
         Left = 510
         Top = 87
         Width = 121
         Height = 21
-        TabOrder = 11
+        TabOrder = 10
       end
       object EditCIDADE: TEdit
         Left = 637
         Top = 87
         Width = 121
         Height = 21
-        TabOrder = 12
+        TabOrder = 11
       end
       object EditESTADO: TEdit
         Left = 21
         Top = 132
         Width = 150
         Height = 21
-        TabOrder = 13
+        TabOrder = 12
       end
       object EditCOMPLEMENTO: TEdit
         Left = 248
         Top = 132
         Width = 129
         Height = 21
-        TabOrder = 14
+        TabOrder = 13
       end
       object EditTELPESSOAL: TEdit
         Left = 383
         Top = 132
         Width = 121
         Height = 21
-        TabOrder = 15
+        TabOrder = 14
       end
       object EditCONTATO1: TEdit
         Left = 510
         Top = 132
         Width = 121
         Height = 21
-        TabOrder = 16
+        TabOrder = 15
       end
       object EditCONTATO2: TEdit
         Left = 637
         Top = 132
         Width = 121
         Height = 21
-        TabOrder = 17
+        TabOrder = 16
       end
       object MaskCEP: TMaskEdit
         Left = 177
@@ -2416,7 +2535,7 @@
         Height = 21
         EditMask = '00000\-999;1;_'
         MaxLength = 9
-        TabOrder = 18
+        TabOrder = 17
         Text = '     -   '
       end
       object EditEMAIL: TEdit
@@ -2424,14 +2543,14 @@
         Top = 176
         Width = 179
         Height = 21
-        TabOrder = 19
+        TabOrder = 18
       end
       object cbSEXO: TComboBox
         Left = 206
         Top = 176
         Width = 38
         Height = 21
-        TabOrder = 20
+        TabOrder = 19
         Items.Strings = (
           'M'
           'F')
@@ -2441,7 +2560,7 @@
         Top = 176
         Width = 106
         Height = 21
-        TabOrder = 21
+        TabOrder = 20
         Items.Strings = (
           'Casado(a)'
           'Divorciado(a)'
@@ -2453,23 +2572,14 @@
         Top = 215
         Width = 150
         Height = 21
-        TabOrder = 22
-      end
-      object DateCASAMENTO: TDateTimePicker
-        Left = 362
-        Top = 176
-        Width = 97
-        Height = 21
-        Date = 44169.000000000000000000
-        Time = 0.917848101853451200
-        TabOrder = 23
+        TabOrder = 21
       end
       object cbESCOLARIDADE: TComboBox
         Left = 21
         Top = 215
         Width = 142
         Height = 21
-        TabOrder = 24
+        TabOrder = 22
       end
       object MaskRG: TMaskEdit
         Left = 359
@@ -2478,7 +2588,7 @@
         Height = 21
         EditMask = '999.999.999-99;1;_'
         MaxLength = 14
-        TabOrder = 25
+        TabOrder = 23
         Text = '   .   .   -  '
       end
       object MaskCPF: TMaskEdit
@@ -2488,7 +2598,7 @@
         Height = 21
         EditMask = '999.999.999-99;1;_'
         MaxLength = 14
-        TabOrder = 26
+        TabOrder = 24
         Text = '   .   .   -  '
       end
       object EditMAE: TEdit
@@ -2496,81 +2606,63 @@
         Top = 257
         Width = 200
         Height = 21
-        TabOrder = 27
+        TabOrder = 25
       end
       object EditPAI: TEdit
         Left = 227
         Top = 257
         Width = 200
         Height = 21
-        TabOrder = 28
+        TabOrder = 26
       end
       object EditTITULO: TEdit
         Left = 623
         Top = 215
         Width = 135
         Height = 21
-        TabOrder = 29
+        TabOrder = 27
       end
       object EditPAIS: TEdit
         Left = 436
         Top = 257
         Width = 129
         Height = 21
-        TabOrder = 30
+        TabOrder = 28
       end
       object EditNATURAL: TEdit
         Left = 571
         Top = 257
         Width = 129
         Height = 21
-        TabOrder = 31
+        TabOrder = 29
       end
       object EditCONJUGE: TEdit
         Left = 465
         Top = 176
         Width = 191
         Height = 21
-        TabOrder = 32
-      end
-      object DateNASCCONJUGE: TDateTimePicker
-        Left = 662
-        Top = 176
-        Width = 96
-        Height = 21
-        Date = 44169.000000000000000000
-        Time = 0.937815706020046500
-        TabOrder = 33
+        TabOrder = 30
       end
       object EditFILHOS: TEdit
         Left = 706
         Top = 257
         Width = 52
         Height = 21
-        TabOrder = 34
-      end
-      object DateNASC: TDateTimePicker
-        Left = 21
-        Top = 300
-        Width = 97
-        Height = 21
-        Date = 44169.000000000000000000
-        Time = 0.917848101853451200
-        TabOrder = 35
+        TabOrder = 31
       end
       object EditMORADIA: TEdit
         Left = 124
         Top = 300
         Width = 129
         Height = 21
-        TabOrder = 36
+        TabOrder = 32
       end
       object EditROLL: TEdit
         Left = 21
         Top = 44
         Width = 121
         Height = 21
-        TabOrder = 37
+        TabOrder = 33
       end
       object CheckATIVO: TCheckBox
         Left = 792
@@ -2578,7 +2670,37 @@
         Width = 97
         Height = 17
         Caption = 'Ativo'
-        TabOrder = 38
+        TabOrder = 34
+      end
+      object DateCASAMENTO: TMaskEdit
+        Left = 363
+        Top = 176
+        Width = 94
+        Height = 21
+        EditMask = '99/99/0000;1;_'
+        MaxLength = 10
+        TabOrder = 35
+        Text = '  /  /    '
+      end
+      object DateNASCCONJUGE: TMaskEdit
+        Left = 662
+        Top = 176
+        Width = 94
+        Height = 21
+        EditMask = '99/99/0000;1;_'
+        MaxLength = 10
+        TabOrder = 36
+        Text = '  /  /    '
+      end
+      object DateNASC: TMaskEdit
+        Left = 21
+        Top = 300
+        Width = 95
+        Height = 21
+        EditMask = '99/99/0000;1;_'
+        MaxLength = 10
+        TabOrder = 37
+        Text = '  /  /    '
       end
     end
     object TabSheet2: TTabSheet
@@ -2767,37 +2889,19 @@
           'SIM'
           'N'#195'O')
       end
-      object DateBATISMO: TDateTimePicker
-        Left = 104
-        Top = 48
-        Width = 91
-        Height = 21
-        Date = 44169.000000000000000000
-        Time = 0.956302002312440900
-        TabOrder = 6
-      end
       object EditIGREJA_BATISMO: TEdit
         Left = 201
         Top = 48
         Width = 200
         Height = 21
-        TabOrder = 7
-      end
-      object DateCONSAGRA: TDateTimePicker
-        Left = 376
-        Top = 88
-        Width = 91
-        Height = 21
-        Date = 44169.000000000000000000
-        Time = 0.956302002312440900
-        TabOrder = 8
+        TabOrder = 6
       end
       object EditCIDADEBATISMO: TEdit
         Left = 407
         Top = 48
         Width = 200
         Height = 21
-        TabOrder = 9
+        TabOrder = 7
       end
       object MemoMembro: TMemo
         Left = 17
@@ -2806,7 +2910,7 @@
         Height = 169
         Lines.Strings = (
           'MemoMembro')
-        TabOrder = 10
+        TabOrder = 8
       end
       object MemoHistórico: TMemo
         Left = 439
@@ -2815,53 +2919,75 @@
         Height = 169
         Lines.Strings = (
           'MemoMembro')
-        TabOrder = 11
-      end
-      object DateVALCARTEIRA: TDateTimePicker
-        Left = 613
-        Top = 48
-        Width = 91
-        Height = 21
-        Date = 44169.000000000000000000
-        Time = 0.956302002312440900
-        TabOrder = 12
-      end
-      object DateADMISSAO: TDateTimePicker
-        Left = 104
-        Top = 160
-        Width = 91
-        Height = 21
-        Date = 44173.000000000000000000
-        Time = 0.951005474540579600
-        TabOrder = 13
+        TabOrder = 9
       end
       object EditPAISORIG: TEdit
         Left = 223
         Top = 160
         Width = 121
         Height = 21
-        TabOrder = 14
+        TabOrder = 10
       end
       object EditTELPAISORIG: TEdit
         Left = 363
         Top = 160
         Width = 121
         Height = 21
-        TabOrder = 15
+        TabOrder = 11
       end
       object EditCAMPO13: TEdit
         Left = 504
         Top = 160
         Width = 121
         Height = 21
-        TabOrder = 16
+        TabOrder = 12
       end
       object EditCAMPO15: TEdit
         Left = 645
         Top = 160
         Width = 121
         Height = 21
+        TabOrder = 13
+      end
+      object DateBATISMO: TMaskEdit
+        Left = 98
+        Top = 48
+        Width = 95
+        Height = 21
+        EditMask = '99/99/0000;1;_'
+        MaxLength = 10
+        TabOrder = 14
+        Text = '  /  /    '
+      end
+      object DateVALCARTEIRA: TMaskEdit
+        Left = 613
+        Top = 48
+        Width = 95
+        Height = 21
+        EditMask = '99/99/0000;1;_'
+        MaxLength = 10
+        TabOrder = 15
+        Text = '  /  /    '
+      end
+      object DateADMISSAO: TMaskEdit
+        Left = 104
+        Top = 160
+        Width = 95
+        Height = 21
+        EditMask = '99/99/0000;1;_'
+        MaxLength = 10
+        TabOrder = 16
+        Text = '  /  /    '
+      end
+      object DateCONSAGRA: TMaskEdit
+        Left = 376
+        Top = 88
+        Width = 95
+        Height = 21
+        EditMask = '!99/99/0000;1;_'
+        MaxLength = 10
         TabOrder = 17
+        Text = '  /  /    '
       end
     end
   end

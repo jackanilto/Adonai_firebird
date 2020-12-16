@@ -101,16 +101,17 @@ type
   { TFrmAppCodLib }
   TFrmAppCodLib = class(TForm)
     PanFundo: TPanel;
-    ImgChaves: TImage;
-    EdtCodLiberacao: TEdit;
-    EdtNumSerie: TEdit;
     LabInfo: TLabel;
     LabNumSerie: TLabel;
     LabCodLiberacao: TLabel;
-    BtnOK: TButton;
-    BtnCancelar: TButton;
     BevSup: TBevel;
     BevInf: TBevel;
+    ImgChaves: TImage;
+    Label1: TLabel;
+    EdtNumSerie: TEdit;
+    EdtCodLiberacao: TEdit;
+    BtnOK: TButton;
+    BtnCancelar: TButton;
   private
   public
   end;
@@ -682,6 +683,5 @@ begin
   RegisterComponents('TCF Add', [TEvAppProtect]);
   {$ENDIF}
 end;
-
 
 end.

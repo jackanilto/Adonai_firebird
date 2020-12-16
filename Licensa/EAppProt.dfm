@@ -3,7 +3,7 @@ object FrmAppCodLib: TFrmAppCodLib
   Top = 198
   BorderIcons = [biMinimize, biMaximize]
   BorderStyle = bsDialog
-  Caption = 'Aplica'#231#227'o Bloqueada'
+  Caption = 'Informa'#231#245'es de Licensa'
   ClientHeight = 321
   ClientWidth = 594
   Color = clBtnFace
@@ -25,7 +25,6 @@ object FrmAppCodLib: TFrmAppCodLib
     BevelOuter = bvNone
     ParentColor = True
     TabOrder = 0
-    ExplicitWidth = 505
     object LabInfo: TLabel
       Left = 268
       Top = 154
@@ -229,6 +228,13 @@ object FrmAppCodLib: TFrmAppCodLib
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       Transparent = True
+    end
+    object Label1: TLabel
+      Left = 216
+      Top = 56
+      Width = 32
+      Height = 13
+      Caption = 'Label1'
     end
     object EdtNumSerie: TEdit
       Left = 423

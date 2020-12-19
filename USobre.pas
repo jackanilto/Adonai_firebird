@@ -5,17 +5,22 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, EAppProt, Vcl.ExtCtrls,
-  Vcl.Buttons;
+  Vcl.Buttons, Vcl.Imaging.jpeg, Vcl.Imaging.pngimage;
 
 type
   TFrmSobre = class(TForm)
     EvAppProtect1: TEvAppProtect;
-    SpeedButton1: TSpeedButton;
-    GroupBox1: TGroupBox;
+    Image1: TImage;
     Label1: TLabel;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    Image2: TImage;
     procedure FormActivate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,7 +35,7 @@ implementation
 
 {$R *.dfm}
 
-uses UPrincipal;
+uses UPrincipal, ShellApi;
 
 
 procedure TFrmSobre.FormActivate(Sender: TObject);
@@ -51,6 +56,22 @@ end;
 procedure TFrmSobre.SpeedButton1Click(Sender: TObject);
 begin
 EvAppProtect1.ResetLockApplication;
+end;
+
+procedure TFrmSobre.SpeedButton2Click(Sender: TObject);
+var
+  ConsultaEndereco: string;
+begin
+  ConsultaEndereco := 'https://www.jncenter.com.br';
+  ShellExecute(0, 'open', PCHar(ConsultaEndereco), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TFrmSobre.SpeedButton3Click(Sender: TObject);
+var
+  ConsultaEndereco: string;
+begin
+  ConsultaEndereco := 'https://wa.link/pj1nll';
+  ShellExecute(0, 'open', PCHar(ConsultaEndereco), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

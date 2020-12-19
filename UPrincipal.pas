@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.WinXCalendars,
   Vcl.ExtCtrls, Vcl.Menus, Vcl.Buttons, Vcl.WinXCtrls, Vcl.WinXPickers,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg;
+  //Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg, ESpshScr;
 
 type
   TFrmPrincipal = class(TForm)
@@ -32,6 +33,10 @@ type
     LabelHora: TLabel;
     Image2: TImage;
     Image3: TImage;
+    SobreoPrograma1: TMenuItem;
+    SobreoPrograma: TMenuItem;
+    Licensa1: TMenuItem;
+    //EvSplashScreen1: TEvSplashScreen;
     procedure Button1Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -41,9 +46,11 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure Profissoes1Click(Sender: TObject);
     procedure btnGRUPOSClick(Sender: TObject);
-    procedure ratamentos1Click(Sender: TObject);
+    procedure Tratamentos1Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure Deslogar1Click(Sender: TObject);
+    procedure SobreoProgramaClick(Sender: TObject);
+    procedure Licensa1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,7 +64,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDM, ULogin, UCadMembro, UProfissoes, UGrupos, UTratamentos;
+uses UDM, ULogin, UCadMembro, UProfissoes, UGrupos, UTratamentos, USobre;
 
 procedure TFrmPrincipal.btnGRUPOSClick(Sender: TObject);
 begin
@@ -105,6 +112,11 @@ LabelUsuario.Caption := DM.TblAcesso.FieldByName('USUARIO').AsString;
  SetBounds(r.Left, r.Top, r.Right-r.Left, r.Bottom-r.Top) ;
 end;
 
+procedure TFrmPrincipal.Licensa1Click(Sender: TObject);
+begin
+FrmAppCodLib.ShowModal;
+end;
+
 procedure TFrmPrincipal.Membros1Click(Sender: TObject);
 begin
 FrmCadMembro.ShowModal;
@@ -115,9 +127,14 @@ begin
 FrmCadProfissoes.ShowModal;
 end;
 
-procedure TFrmPrincipal.ratamentos1Click(Sender: TObject);
+procedure TFrmPrincipal.Tratamentos1Click(Sender: TObject);
 begin
 FrmTRATAMENTOS.ShowModal;
+end;
+
+procedure TFrmPrincipal.SobreoProgramaClick(Sender: TObject);
+begin
+FrmSobre.ShowModal;
 end;
 
 procedure TFrmPrincipal.SpeedButton1Click(Sender: TObject);

@@ -66,7 +66,7 @@ procedure TFrmLogin.BtnSairClick(Sender: TObject);
 begin
 Application.Terminate;
 end;
-
+//Exibir versao de compilação
 procedure TFrmLogin.Button2Click(Sender: TObject);
 begin
    ShowMessage(VersaoExe);

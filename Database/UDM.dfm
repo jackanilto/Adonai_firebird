@@ -201,11 +201,6 @@ object DM: TDM
       Origin = 'MINISTERIO'
       Size = 200
     end
-    object TBL_MEMBROSPOFISSAO: TStringField
-      FieldName = 'POFISSAO'
-      Origin = 'POFISSAO'
-      Size = 200
-    end
     object TBL_MEMBROSGRAU_ESCOLARIDADE: TStringField
       FieldName = 'GRAU_ESCOLARIDADE'
       Origin = 'GRAU_ESCOLARIDADE'
@@ -296,9 +291,9 @@ object DM: TDM
       Origin = 'VALIDADE_CARTEIRA'
       Size = 10
     end
-    object TBL_MEMBROSTAG: TStringField
-      FieldName = 'TAG'
-      Origin = 'TAG'
+    object TBL_MEMBROSROLL: TStringField
+      FieldName = 'ROLL'
+      Origin = 'ROLL'
       Size = 200
     end
     object TBL_MEMBROSCONJUGE: TStringField
@@ -341,14 +336,15 @@ object DM: TDM
       Origin = 'CIDADE_BATISMO'
       Size = 10
     end
-    object TBL_MEMBROSDATA_NASC: TDateField
-      FieldName = 'DATA_NASC'
-      Origin = 'DATA_NASC'
-    end
     object TBL_MEMBROSOBSERVACAO: TStringField
       FieldName = 'OBSERVACAO'
       Origin = 'OBSERVACAO'
       Size = 200
+    end
+    object TBL_MEMBROSDATA_NASC: TStringField
+      FieldName = 'DATA_NASC'
+      Origin = 'DATA_NASC'
+      Size = 50
     end
   end
   object DSMembro: TDataSource

@@ -74,7 +74,6 @@ type
     TBL_MEMBROSSEXO: TStringField;
     TBL_MEMBROSESTADO_CIVIL: TStringField;
     TBL_MEMBROSMINISTERIO: TStringField;
-    TBL_MEMBROSPOFISSAO: TStringField;
     TBL_MEMBROSGRAU_ESCOLARIDADE: TStringField;
     TBL_MEMBROSBATIZADO: TStringField;
     TBL_MEMBROSRG: TStringField;
@@ -93,7 +92,6 @@ type
     TBL_MEMBROSTITULO_ELEITOR: TStringField;
     TBL_MEMBROSFILHOS: TStringField;
     TBL_MEMBROSVALIDADE_CARTEIRA: TStringField;
-    TBL_MEMBROSTAG: TStringField;
     TBL_MEMBROSCONJUGE: TStringField;
     TBL_MEMBROSCAMPO13: TStringField;
     TBL_MEMBROSTIPO_MORADIA: TStringField;
@@ -102,8 +100,9 @@ type
     TBL_MEMBROSPROFISSAO: TStringField;
     TBL_MEMBROSNASC_CONJUGE: TStringField;
     TBL_MEMBROSCIDADE_BATISMO: TStringField;
-    TBL_MEMBROSDATA_NASC: TDateField;
     TBL_MEMBROSOBSERVACAO: TStringField;
+    TBL_MEMBROSROLL: TStringField;
+    TBL_MEMBROSDATA_NASC: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

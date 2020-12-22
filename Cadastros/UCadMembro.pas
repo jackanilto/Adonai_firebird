@@ -170,9 +170,9 @@ begin
    DM.TBL_MEMBROS.FieldByName('ENDERECO').Value := EditENDERECO.Text;
    DM.TBL_MEMBROS.FieldByName('NUMERO').Value := EditNUMERO.Text;
    DM.TBL_MEMBROS.FieldByName('BAIRRO').Value   := EditBAIRRO.Text;
-   DM.TBL_MEMBROS.FieldByName('CIDADE')  .Value   := EditCIDADE               .Text;
-   DM.TBL_MEMBROS.FieldByName('ESTADO')  .Value   := EditESTADO               .Text;
-   DM.TBL_MEMBROS.FieldByName('CEP')  .Value   := MaskCEP                  .Text;
+   DM.TBL_MEMBROS.FieldByName('CIDADE')  .Value   := EditCIDADE.Text;
+   DM.TBL_MEMBROS.FieldByName('ESTADO')  .Value   := EditESTADO.Text;
+   DM.TBL_MEMBROS.FieldByName('CEP')  .Value   := MaskCEP.Text;
    DM.TBL_MEMBROS.FieldByName('COMPLEMENTO')  .Value   := EditCOMPLEMENTO          .Text;
    DM.TBL_MEMBROS.FieldByName('TELPESSOAL')  .Value   := EditTELPESSOAL           .Text;
    DM.TBL_MEMBROS.FieldByName('CONTATO1')  .Value   := EditCONTATO1             .Text;

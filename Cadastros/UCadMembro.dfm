@@ -20,7 +20,7 @@
     Top = 0
     Width = 916
     Height = 599
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Images = ImageList1
     Style = tsButtons
@@ -2863,9 +2863,6 @@
         Width = 147
         Height = 21
         TabOrder = 2
-        Items.Strings = (
-          'SIM'
-          'N'#195'O')
       end
       object cbGRUPO: TComboBox
         Left = 504
@@ -2873,9 +2870,6 @@
         Width = 147
         Height = 21
         TabOrder = 3
-        Items.Strings = (
-          'SIM'
-          'N'#195'O')
       end
       object cbMINISTERIO: TComboBox
         Left = 657
@@ -2883,9 +2877,6 @@
         Width = 147
         Height = 21
         TabOrder = 4
-        Items.Strings = (
-          'SIM'
-          'N'#195'O')
       end
       object cbBATIZADO: TComboBox
         Left = 27

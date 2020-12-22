@@ -2580,6 +2580,14 @@
         Width = 142
         Height = 21
         TabOrder = 22
+        Items.Strings = (
+          'Educ. Infantil'
+          'Fundamental'
+          'Medio'
+          'Superior'
+          'P'#243's-Gradu'#231#227'o'
+          'Mestrado'
+          'Doutorado')
       end
       object MaskRG: TMaskEdit
         Left = 359

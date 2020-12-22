@@ -143,7 +143,7 @@ type
    procedure buscarTudo();
    procedure buscarNome();
    procedure associarCampos();
-//   procedure carregarComboboxFilial();
+   procedure carregarcbPROFISSAO();
 //   procedure carregarComboboxMatriz();
 //   procedure carregarComboboxFuncoes();
    procedure carregarImagemPadrao();
@@ -359,6 +359,7 @@ EditNOME.Text := '';
 EditNOME.SetFocus;
 EditNOME.Enabled := true;
 DM.TBL_MEMBROS.Insert;
+carregarcbPROFISSAO;
 BtnSalvar.Enabled := true;
 btnNovo.Enabled := true;
 
@@ -405,11 +406,6 @@ DM.QueryMembro.SQL.Add('select * from TBL_MEMBROS');
 DM.QueryMembro.Open();
 end;
 
-//procedure TFrmCadMembro.carregarComboboxFilial;
-//begin
-//
-//end;
-//
 //procedure TFrmCadMembro.carregarComboboxFuncoes;
 //begin
 //
@@ -424,6 +420,21 @@ end;
 //begin
 //
 //end;
+
+
+procedure TFrmCadMembro.carregarcbPROFISSAO;
+begin
+if not DM.TBL_PROFISSOES.IsEmpty then
+  begin
+
+    while not DM.TBL_PROFISSOES.Eof do
+    begin
+
+       cbPROFISSAO.Items.Add(DM.TBL_PROFISSOES.FieldByName('PROFISSAO').AsString);
+       DM.TBL_PROFISSOES.next;
+    end;
+  end;
+end;
 
 procedure TFrmCadMembro.carregarImagemPadrao;
 begin
@@ -447,7 +458,12 @@ procedure TFrmCadMembro.FormShow(Sender: TObject);
 begin
 DM.TBL_MEMBROS.Active := false;
 DM.TBL_MEMBROS.Active := true;
+
+DM.TBL_PROFISSOES.Active := false;
+DM.TBL_PROFISSOES.Active := true;
+
 buscarTudo;
+carregarcbPROFISSAO;
 btnSalvar.Enabled := false;
 btnEditar.Enabled := false;
 btnDeletar.Enabled := false;

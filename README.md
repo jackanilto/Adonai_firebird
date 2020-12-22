@@ -8,5 +8,6 @@ Faça uma copia do projeto em : C: ficando com a estrutura desta forma C:\Adonai
 Se preferir colocar em outro local irá precisar editar o caminho do diretório.
 Para editar a conexão abra o DATAMODULE e encontre o componente FDConn, dê um duplo click e aponte a propriedade DATABASE para a pasta que voce  escolheu para seu projeto
 Ex: C:\Adonai_firebird\Database\ADONIAFB.FDB
-Divirtase! Tentei comentar o maximo as Linhas principais de CODE.
+Divirta-se! 
+Tentei comentar o maximo as Linhas principais de CODE.
 

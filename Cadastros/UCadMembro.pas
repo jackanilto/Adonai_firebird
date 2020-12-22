@@ -181,12 +181,11 @@ begin
    DM.TBL_MEMBROS.FieldByName('DIZIMISTA')  .Value   := cbDIZIMISTA              .Text;
    DM.TBL_MEMBROS.FieldByName('VALOR')  .Value   := EditVALOR                .Text;
    DM.TBL_MEMBROS.FieldByName('GRUPO')  .Value   := cbGRUPO                  .Text;
-   DM.TBL_MEMBROS.FieldByName('TRATAMENTO')  .Value   := cbTRATAMENTO             .Text;
- //DM.TBL_MEMBROS.FieldByName('IMAGEM')  .Value   := EditIMAGEM               .Text;
-   DM.TBL_MEMBROS.FieldByName('SEXO')  .Value   := cbSEXO                   .Text;
+   DM.TBL_MEMBROS.FieldByName('TRATAMENTO')  .Value   := cbTRATAMENTO.Text;
+   DM.TBL_MEMBROS.FieldByName('OBSERVACAO')  .Value   := MemoMembro.Text;
+   DM.TBL_MEMBROS.FieldByName('SEXO')  .Value   := cbSEXO.Text;
    DM.TBL_MEMBROS.FieldByName('ESTADO_CIVIL')  .Value   := cbESTCIVIL               .Text;
    DM.TBL_MEMBROS.FieldByName('MINISTERIO')  .Value   := cbMINISTERIO             .Text;
-   DM.TBL_MEMBROS.FieldByName('POFISSAO')  .Value   := cbPROFISSAO              .Text;
    DM.TBL_MEMBROS.FieldByName('GRAU_ESCOLARIDADE')  .Value   := cbESCOLARIDADE           .Text;
    DM.TBL_MEMBROS.FieldByName('BATIZADO')  .Value   := cbBATIZADO               .Text;
    DM.TBL_MEMBROS.FieldByName('RG')  .Value   := MaskRG                   .Text;
@@ -213,8 +212,7 @@ begin
    DM.TBL_MEMBROS.FieldByName('PROFISSAO')  .Value   := cbPROFISSAO              .Text;
    DM.TBL_MEMBROS.FieldByName('NASC_CONJUGE')  .Value   := DateNASCCONJUGE          .Text;
    DM.TBL_MEMBROS.FieldByName('CIDADE_BATISMO')  .Value   := EditCIDADEBATISMO        .Text;
-   DM.TBL_MEMBROS.FieldByName('DATA_NASC')  .Value   := DateNASC                 .Text;
-   DM.TBL_MEMBROS.FieldByName('OBSERVACAO')  .Value   := MemoMembro               .Text;
+   DM.TBL_MEMBROS.FieldByName('DATA_NASC')  .Value   := DateNASC                    .Text;
 end;
 
 procedure TFrmCadMembro.btnAddClick(Sender: TObject);
@@ -270,32 +268,30 @@ if (editNOME.Text <> '') then
     if alterou = false then
     begin
     DM.QueryMembro.SQL.Add('update TBL_MEMBROS set '+
-   ' NOME                 = :NOME                 , NOME_PAI              = :NOME_PAI             , '+
-   ' ENDERECO             = :ENDERECO             , NOME_MAE              = :NOME_MAE             , '+
-   ' NUMERO               = :NUMERO               , DATA_BATISMO          = :DATA_BATISMO         , '+
-   ' BAIRRO               = :BAIRRO               , DATA_ADMISSAO         = :DATA_ADMISSAO        , '+
-   ' CIDADE               = :CIDADE               , PAIS_ORIGEM           = :PAIS_ORIGEM          , '+
-   ' ESTADO               = :ESTADO               , TELEFONE_PAIS_ORIGEM  = :TELEFONE_PAIS_ORIGEM , '+
-   ' CEP                  = :CEP                  , DATA_CASAMENTO        = :DATA_CASAMENTO       , '+
-   ' COMPLEMENTO          = :PLEMENTO             , ATIVO                 = :ATIVO                , '+
-   ' TELPESSOAL           = :TELPESSOAL           , IGREJA_BATISMO        = :IGREJA_BATISMO       , '+
-   ' CONTATO1             = :CONTATO1             , DATA_CONSAGRACAO      = :DATA_CONSAGRACAO     , '+
-   ' CONTATO2             = :CONTATO2             , NATURALIDADE          = :NATURALIDADE         , '+
-   ' EMAIL                = :EMAIL                , TITULO_ELEITOR        = :TITULO_ELEITOR       , '+
-   ' DIZIMISTA            = :DIZIMISTA            , FILHOS                = :FILHOS               , '+
-   ' VALOR                = :VALOR                , VALIDADE_CARTEIRA     = :VALIDADE_CARTEIRA    , '+
-   ' GRUPO                = :GRUPO                , ROLL                  = :ROLL                 , '+
-   ' TRATAMENTO           = :TRATAMENTO           , CONJUGE               = :CONJUGE              , '+
-   ' CAMPO13              = :CAMPO13                                                              , '+
-   ' SEXO                 = :SEXO                 , TIPO_MORADIA          = :TIPO_MORADIA         , '+
-   ' ESTADO_CIVIL         = :ESTADO_CIVIL         , CAMPO15               = :CAMPO15              , '+
-   ' MINISTERIO           = :MINISTERIO           , HISTORICO             = :HISTORICO            , '+
-   ' POFISSAO             = :POFISSAO             , PROFISSAO             = :PROFISSAO            , '+
-   ' GRAU_ESCOLARIDADE    = :GRAU_ESCOLARIDADE    , NASC_CONJUGE          = :NASC_CONJUGE         , '+
-   ' BATIZADO             = :BATIZADO             , CIDADE_BATISMO        = :CIDADE_BATISMO       , '+
-   ' RG                   = :RG                   , DATA_NASC             = :DATA_NASC            , '+
-   ' CPF                  = :CPF                  , OBSERVACAO            = :OBSERVACAO           , '+
-   'where id  = :id');
+   ' NOME              =  :NOME                 , NOME_PAI             = :NOME_PAI             , '+
+   ' ENDERECO          =  :ENDERECO             , NOME_MAE             = :NOME_MAE             , '+
+   ' NUMERO            =  :NUMERO               , DATA_BATISMO         = :DATA_BATISMO         , '+
+   ' BAIRRO            =  :BAIRRO               , DATA_ADMISSAO        = :DATA_ADMISSAO        , '+
+   ' CIDADE            =  :CIDADE               , PAIS_ORIGEM          = :PAIS_ORIGEM          , '+
+   ' ESTADO            =  :ESTADO               , TELEFONE_PAIS_ORIGEM = :TELEFONE_PAIS_ORIGEM , '+
+   ' CEP               =  :CEP                  , DATA_CASAMENTO       = :DATA_CASAMENTO       , '+
+   ' COMPLEMENTO       =  :COMPLEMENTO          , ATIVO                = :ATIVO                , '+
+   ' TELPESSOAL        =  :TELPESSOAL           , IGREJA_BATISMO       = :IGREJA_BATISMO       , '+
+   ' CONTATO1          =  :CONTATO1             , DATA_CONSAGRACAO     = :DATA_CONSAGRACAO     , '+
+   ' CONTATO2          =  :CONTATO2             , NATURALIDADE         = :NATURALIDADE         , '+
+   ' EMAIL             =  :EMAIL                , TITULO_ELEITOR       = :TITULO_ELEITOR       , '+
+   ' DIZIMISTA         =  :DIZIMISTA            , FILHOS               = :FILHOS               , '+
+   ' VALOR             =  :VALOR                , VALIDADE_CARTEIRA    = :VALIDADE_CARTEIRA    , '+
+   ' GRUPO             =  :GRUPO                , ROLL                 = :ROLL                 , '+
+   ' TRATAMENTO        =  :TRATAMENTO           , CONJUGE              = :CONJUGE              , '+
+   ' CAMPO13           =  :CAMPO13              , PROFISSAO            = :PROFISSAO            , '+
+   ' SEXO              =  :SEXO                 , TIPO_MORADIA         = :TIPO_MORADIA         , '+
+   ' ESTADO_CIVIL      =  :ESTADO_CIVIL         , CAMPO15              = :CAMPO15              , '+
+   ' MINISTERIO        =  :MINISTERIO           , HISTORICO            = :HISTORICO            , '+
+   ' GRAU_ESCOLARIDADE =  :GRAU_ESCOLARIDADE    , NASC_CONJUGE         = :NASC_CONJUGE         , '+
+   ' BATIZADO          =  :BATIZADO             , CIDADE_BATISMO       = :CIDADE_BATISMO       , '+
+   ' RG                =  :RG                   , DATA_NASC            = :DATA_NASC            , '+
+   ' CPF               =  :CPF                  , OBSERVACAO           = :OBSERVACAO where id  = :id');
 
     end
     else
@@ -317,16 +313,15 @@ if (editNOME.Text <> '') then
    ' VALOR             =  :VALOR                , VALIDADE_CARTEIRA    = :VALIDADE_CARTEIRA    , '+
    ' GRUPO             =  :GRUPO                , ROLL                 = :ROLL                 , '+
    ' TRATAMENTO        =  :TRATAMENTO           , CONJUGE              = :CONJUGE              , '+
-   ' CAMPO13           = :CAMPO13                                                              , '+
+   ' CAMPO13           =  :CAMPO13              , PROFISSAO            = :PROFISSAO            , '+
    ' SEXO              =  :SEXO                 , TIPO_MORADIA         = :TIPO_MORADIA         , '+
    ' ESTADO_CIVIL      =  :ESTADO_CIVIL         , CAMPO15              = :CAMPO15              , '+
    ' MINISTERIO        =  :MINISTERIO           , HISTORICO            = :HISTORICO            , '+
-   ' POFISSAO          =  :POFISSAO             , PROFISSAO            = :PROFISSAO            , '+
    ' GRAU_ESCOLARIDADE =  :GRAU_ESCOLARIDADE    , NASC_CONJUGE         = :NASC_CONJUGE         , '+
    ' BATIZADO          =  :BATIZADO             , CIDADE_BATISMO       = :CIDADE_BATISMO       , '+
    ' RG                =  :RG                   , DATA_NASC            = :DATA_NASC            , '+
    ' CPF               =  :CPF                  , OBSERVACAO           = :OBSERVACAO           , '+
-   'imagem             =  :imagem where           id                   = :id');
+   'imagem             =  :imagem                where id             = :id                     ');
 
     imgPessoa := TPicture.Create;
     imgPessoa.LoadFromFile(dialog.FileName);
@@ -553,8 +548,8 @@ cbESTCIVIL.Text  := DM.QueryMembro.FieldByName('ESTADO_CIVIL').Value;
 if DM.QueryMembro.FieldByName('MINISTERIO').Value <> null then
 cbMINISTERIO.Text  := DM.QueryMembro.FieldByName('MINISTERIO').Value;
 
-if DM.QueryMembro.FieldByName('POFISSAO').Value <> null then
-cbPROFISSAO.Text  := DM.QueryMembro.FieldByName('POFISSAO').Value;
+if DM.QueryMembro.FieldByName('PROFISSAO').Value <> null then
+cbPROFISSAO.Text  := DM.QueryMembro.FieldByName('PROFISSAO').Value;
 
 if DM.QueryMembro.FieldByName('GRAU_ESCOLARIDADE').Value <> null then
 cbESCOLARIDADE.Text  := DM.QueryMembro.FieldByName('GRAU_ESCOLARIDADE').Value;
@@ -628,9 +623,6 @@ EditCAMPO15.Text  := DM.QueryMembro.FieldByName('CAMPO15').Value;
 if DM.QueryMembro.FieldByName('HISTORICO').Value <> null then
 MemoHistórico.Text  := DM.QueryMembro.FieldByName('HISTORICO').Value;
 
-if DM.QueryMembro.FieldByName('PROFISSAO').Value <> null then
-cbPROFISSAO.Text  := DM.QueryMembro.FieldByName('PROFISSAO').Value;
-
 if DM.QueryMembro.FieldByName('NASC_CONJUGE').Value <> null then
 DateNASCCONJUGE.Text  := DM.QueryMembro.FieldByName('NASC_CONJUGE').Value;
 
@@ -674,7 +666,6 @@ cbTRATAMENTO    .Enabled := True;
 cbSEXO          .Enabled := True;
 cbESTCIVIL      .Enabled := True;
 cbMINISTERIO    .Enabled := True;
-cbPROFISSAO     .Enabled := True;
 cbESCOLARIDADE  .Enabled := True;
 cbBATIZADO      .Enabled := True;
 MaskRG          .Enabled := True;
@@ -752,7 +743,6 @@ EditCAMPO13      .Text := '';
 EditMORADIA      .Text := '';
 EditCAMPO15      .Text := '';
 MemoHistórico    .Text := '';
-cbPROFISSAO      .Text := '';
 //DateNASCCONJUGE  .DateTime := '';
 EditCIDADEBATISMO .Text := '';
 //DateNASC         .DateTime := '';

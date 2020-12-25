@@ -2196,7 +2196,7 @@
       end
       object EditENDERECO: TEdit
         Left = 227
-        Top = 89
+        Top = 87
         Width = 200
         Height = 21
         TabOrder = 8

@@ -174,6 +174,7 @@ uses UDM;
 
 
 
+// INICIO DO TRATAMENTO DE ERROS
 procedure TFrmCadMembro.ApplicationEvents1Exception(Sender: TObject;
   E: Exception);
 var
@@ -259,7 +260,7 @@ if Pos(UpperCase('is not a valid date'), UpperCase(E.Message)) <> 0 then
 
  then
 
- mensagem := 'O valor informadono campo ROLL ja está em uso, o valor não pode ser usado por 2 cadastros!'+#13#10
+ mensagem := 'O valor informado no campo ROLL ja está em uso!'
 //  mensagem := 'O valor informado ja está em uso, o valor não pode ser usado por 2 cadastros!'+#13#10+Copy(UpperCase(E.Message),Pos('VIOLATION OF PRIMARY OR UNIQUE KEY CONSTRAINT',UpperCase(E.Message))+47,100)
 
  else if (Pos(UpperCase('MUST APPLY UPDATES BEFORE REFRESHING DATA'),
@@ -280,7 +281,7 @@ if Pos(UpperCase('is not a valid date'), UpperCase(E.Message)) <> 0 then
 
  ABORT;
 end;
-
+// FIM DO TRATAMENTO DE ERROS
 procedure TFrmCadMembro.associarCampos;
 begin
    DM.TBL_MEMBROS.FieldByName('NOME').Value := EditNOME.Text;

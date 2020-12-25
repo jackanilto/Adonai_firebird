@@ -2872,7 +2872,7 @@
   end
   object ApplicationEvents1: TApplicationEvents
     OnException = ApplicationEvents1Exception
-    Left = 700
-    Top = 348
+    Left = 396
+    Top = 4
   end
 end

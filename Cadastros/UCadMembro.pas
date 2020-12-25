@@ -132,6 +132,8 @@ type
     procedure edtBuscarChange(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
     procedure btnADDFOTOClick(Sender: TObject);
+    procedure EditVALORKeyPress(Sender: TObject; var Key: Char);
+    procedure EditVALORChange(Sender: TObject);
 
   private
     { Private declarations }
@@ -156,6 +158,10 @@ var
   caminhoImg: string;
   imgPessoa: TPicture;
   alterou: boolean;
+// VAR PARA PROCEDURE FORMATA MOEDAS
+   s : string;
+   v : double;
+   I : integer;
 
 
 implementation
@@ -491,6 +497,36 @@ begin
 limparcampos();
 EditNOME.Enabled := false;
 
+end;
+// trabalhando com valor de moeda
+procedure TFrmCadMembro.EditVALORChange(Sender: TObject);
+
+begin
+   //1º Passo : se o edit estiver vazio, nada pode ser feito.
+   If (Editvalor.Text = emptystr) then
+      Editvalor.Text := '0,00';
+
+   //2º Passo : obter o texto do edit, SEM a virgula e SEM o ponto decimal:
+   s := '';
+   for I := 1 to length(Editvalor.Text) do
+   if (Editvalor.text[I] in ['0'..'9']) then
+      s := s + Editvalor.text[I];
+
+   //3º Passo : fazer com que o conteúdo do edit apresente 2 casas decimais:
+   v := strtofloat(s);
+   v := (v /100); // para criar 2 casa decimais
+
+   //4º Passo : Formata o valor de (V) para aceitar valores do tipo 0,10.
+   Editvalor.text := FormatFloat('###,##0.00',v);
+   Editvalor.SelStart := Length(Editvalor.text);
+end;
+// trabalhando com valor de moeda
+procedure TFrmCadMembro.EditVALORKeyPress(Sender: TObject; var Key: Char);
+begin
+     if NOT (Key in ['0'..'9', #8, #9]) then
+     key := #0;
+     //Função posiciona o cursor sempre a direita como nos Caixas Eletronicos
+     Editvalor.selstart := Length(Editvalor.text);
 end;
 
 procedure TFrmCadMembro.edtBuscarChange(Sender: TObject);

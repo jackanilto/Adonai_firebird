@@ -20,7 +20,7 @@
     Top = 0
     Width = 916
     Height = 599
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Images = ImageList1
     Style = tsButtons
@@ -2453,9 +2453,9 @@
       object Label21: TLabel
         Left = 96
         Top = 72
-        Width = 28
+        Width = 44
         Height = 13
-        Caption = 'Valor:'
+        Caption = 'Valor R$:'
       end
       object Tratamento: TLabel
         Left = 223
@@ -2584,7 +2584,11 @@
         Top = 88
         Width = 121
         Height = 21
+        BiDiMode = bdRightToLeft
+        ParentBiDiMode = False
         TabOrder = 1
+        OnChange = EditVALORChange
+        OnKeyPress = EditVALORKeyPress
       end
       object cbTRATAMENTO: TComboBox
         Left = 223

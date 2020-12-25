@@ -20,7 +20,7 @@
     Top = 0
     Width = 916
     Height = 599
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Images = ImageList1
     Style = tsButtons
@@ -2178,277 +2178,6 @@
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
         OnCellClick = gridCellClick
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'ID'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'NOME'
-            Width = 200
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'ENDERECO'
-            Title.Caption = 'ENDERE'#199'O'
-            Width = 200
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'NUMERO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'BAIRRO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'CIDADE'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'ESTADO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'CEP'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'COMPLEMENTO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'TELPESSOAL'
-            Title.Caption = 'TEL. PESSOAL'
-            Width = 100
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'CONTATO1'
-            Title.Caption = 'CONTATO 1'
-            Width = 100
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'CONTATO2'
-            Title.Caption = 'CONTATO 2'
-            Width = 100
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'EMAIL'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'DIZIMISTA'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'VALOR'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'GRUPO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'TRATAMENTO'
-            Width = 100
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'IMAGEM'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'OBS'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'SEXO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'ESTADO_CIVIL'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'MINISTERIO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'POFISSAO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'GRAU_ESCOLARIDADE'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'BATIZADO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'RG'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'CPF'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'NOME_PAI'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'NOME_MAE'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'DATA_BATISMO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'DATA_ADMISSAO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'PAIS_ORIGEM'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'TELEFONE_PAIS_ORIGEM'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'DATA_CASAMENTO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'ATIVO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'IGREJA_BATISMO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'DATA_CONSAGRACAO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'NATURALIDADE'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'TITULO_ELEITOR'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'FILHOS'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'VALIDADE_CARTEIRA'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'TAG'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'CONJUGE'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'CAMPO13'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'TIPO_MORADIA'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'CAMPO15'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'HISTORICO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'PROFISSAO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'NASC_CONJUGE'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'CIDADE_BATISMO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'DATA_NASC'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'OBSERVACAO'
-            Visible = False
-          end>
       end
       object EditID: TEdit
         Left = 267
@@ -2466,8 +2195,8 @@
         OnChange = edtBuscarChange
       end
       object EditENDERECO: TEdit
-        Left = 226
-        Top = 87
+        Left = 227
+        Top = 89
         Width = 200
         Height = 21
         TabOrder = 8
@@ -2902,7 +2631,7 @@
         Height = 21
         TabOrder = 7
       end
-      object MemoMembro: TMemo
+      object MemoOBSERVACAO: TMemo
         Left = 17
         Top = 339
         Width = 416

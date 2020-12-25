@@ -97,7 +97,7 @@ type
     Label25: TLabel;
     EditCIDADEBATISMO: TEdit;
     CidadeBatismo: TLabel;
-    MemoMembro: TMemo;
+    MemoOBSERVACAO: TMemo;
     OBS: TLabel;
     MemoHistórico: TMemo;
     Label26: TLabel;
@@ -169,20 +169,20 @@ begin
    DM.TBL_MEMBROS.FieldByName('NOME').Value := EditNOME.Text;
    DM.TBL_MEMBROS.FieldByName('ENDERECO').Value := EditENDERECO.Text;
    DM.TBL_MEMBROS.FieldByName('NUMERO').Value := EditNUMERO.Text;
-   DM.TBL_MEMBROS.FieldByName('BAIRRO').Value   := EditBAIRRO.Text;
-   DM.TBL_MEMBROS.FieldByName('CIDADE')  .Value   := EditCIDADE.Text;
-   DM.TBL_MEMBROS.FieldByName('ESTADO')  .Value   := EditESTADO.Text;
-   DM.TBL_MEMBROS.FieldByName('CEP')  .Value   := MaskCEP.Text;
-   DM.TBL_MEMBROS.FieldByName('COMPLEMENTO')  .Value   := EditCOMPLEMENTO          .Text;
-   DM.TBL_MEMBROS.FieldByName('TELPESSOAL')  .Value   := EditTELPESSOAL           .Text;
-   DM.TBL_MEMBROS.FieldByName('CONTATO1')  .Value   := EditCONTATO1             .Text;
+   DM.TBL_MEMBROS.FieldByName('BAIRRO').Value := EditBAIRRO.Text;
+   DM.TBL_MEMBROS.FieldByName('CIDADE').Value := EditCIDADE.Text;
+   DM.TBL_MEMBROS.FieldByName('ESTADO').Value := EditESTADO.Text;
+   DM.TBL_MEMBROS.FieldByName('CEP').Value := MaskCEP.Text;
+   DM.TBL_MEMBROS.FieldByName('COMPLEMENTO').Value := EditCOMPLEMENTO.Text;
+   DM.TBL_MEMBROS.FieldByName('TELPESSOAL')  .Value   := EditTELPESSOAL.Text;
+   DM.TBL_MEMBROS.FieldByName('CONTATO1')  .Value   := EditCONTATO1.Text;
    DM.TBL_MEMBROS.FieldByName('CONTATO2')  .Value   := EditCONTATO2             .Text;
    DM.TBL_MEMBROS.FieldByName('EMAIL')  .Value   := EditEMAIL                .Text;
    DM.TBL_MEMBROS.FieldByName('DIZIMISTA')  .Value   := cbDIZIMISTA              .Text;
    DM.TBL_MEMBROS.FieldByName('VALOR')  .Value   := EditVALOR                .Text;
    DM.TBL_MEMBROS.FieldByName('GRUPO')  .Value   := cbGRUPO                  .Text;
    DM.TBL_MEMBROS.FieldByName('TRATAMENTO')  .Value   := cbTRATAMENTO.Text;
-   DM.TBL_MEMBROS.FieldByName('OBSERVACAO')  .Value   := MemoMembro.Text;
+   DM.TBL_MEMBROS.FieldByName('OBSERVACAO')  .Value   := MemoOBSERVACAO.Text;
    DM.TBL_MEMBROS.FieldByName('SEXO')  .Value   := cbSEXO.Text;
    DM.TBL_MEMBROS.FieldByName('ESTADO_CIVIL')  .Value   := cbESTCIVIL               .Text;
    DM.TBL_MEMBROS.FieldByName('MINISTERIO')  .Value   := cbMINISTERIO             .Text;
@@ -267,8 +267,7 @@ if (editNOME.Text <> '') then
 
     if alterou = false then
     begin
-    DM.QueryMembro.SQL.Add('update TBL_MEMBROS set '+
-   ' NOME              =  :NOME                 , NOME_PAI             = :NOME_PAI             , '+
+    DM.QueryMembro.SQL.Add('update TBL_MEMBROS set   NOME = :NOME, NOME_PAI = :NOME_PAI, '+
    ' ENDERECO          =  :ENDERECO             , NOME_MAE             = :NOME_MAE             , '+
    ' NUMERO            =  :NUMERO               , DATA_BATISMO         = :DATA_BATISMO         , '+
    ' BAIRRO            =  :BAIRRO               , DATA_ADMISSAO        = :DATA_ADMISSAO        , '+
@@ -296,8 +295,7 @@ if (editNOME.Text <> '') then
     end
     else
     begin
-    DM.QueryMembro.SQL.Add('update TBL_MEMBROS set '+
-   ' NOME              =  :NOME                 , NOME_PAI             = :NOME_PAI             , '+
+    DM.QueryMembro.SQL.Add('update TBL_MEMBROS set NOME = :NOME, NOME_PAI = :NOME_PAI, '+
    ' ENDERECO          =  :ENDERECO             , NOME_MAE             = :NOME_MAE             , '+
    ' NUMERO            =  :NUMERO               , DATA_BATISMO         = :DATA_BATISMO         , '+
    ' BAIRRO            =  :BAIRRO               , DATA_ADMISSAO        = :DATA_ADMISSAO        , '+
@@ -330,8 +328,54 @@ if (editNOME.Text <> '') then
     alterou := false;
     end;
 
-
     DM.QueryMembro.ParamByName('NOME').Value := editNome.Text;
+    DM.QueryMembro.FieldByName('ENDERECO').Value := EditENDERECO.Text;
+    DM.QueryMembro.FieldByName('NUMERO').Value := editNUMERO.Text;
+    DM.QueryMembro.FieldByName('BAIRRO').Value := editBAIRRO.Text;
+    DM.QueryMembro.FieldByName('CIDADE').Value := editCIDADE.Text;
+    DM.QueryMembro.FieldByName('ESTADO').Value := editESTADO.Text;
+    DM.QueryMembro.FieldByName('CEP').Value := MaskCEP.Text;
+    DM.QueryMembro.FieldByName('COMPLEMENTO').Value := editCOMPLEMENTO.Text;
+    DM.QueryMembro.FieldByName('TELPESSOAL').Value := editTELPESSOAL.Text;
+    DM.QueryMembro.FieldByName('CONTATO1').Value := editCONTATO1.Text;
+    DM.QueryMembro.FieldByName('CONTATO2').Value := editCONTATO2.Text;
+    DM.QueryMembro.FieldByName('EMAIL').Value := editEMAIL.Text;
+    DM.QueryMembro.FieldByName('DIZIMISTA').Value := cbDIZIMISTA.Text;
+    DM.QueryMembro.FieldByName('VALOR').Value := editVALOR.Text;
+    DM.QueryMembro.FieldByName('GRUPO').Value := cbGRUPO.Text;
+    DM.QueryMembro.FieldByName('TRATAMENTO').Value := cbTRATAMENTO.Text;
+    DM.QueryMembro.FieldByName('SEXO').Value := cbSEXO.Text;
+    DM.QueryMembro.FieldByName('ESTADO_CIVIL').Value := cbESTCIVIL.Text;
+    DM.QueryMembro.FieldByName('MINISTERIO').Value := cbMINISTERIO.Text;
+    DM.QueryMembro.FieldByName('PROFISSAO').Value := cbPROFISSAO.Text;
+    DM.QueryMembro.FieldByName('GRAU_ESCOLARIDADE').Value := cbESCOLARIDADE.Text;
+    DM.QueryMembro.FieldByName('BATIZADO').Value := cbBATIZADO.Text;
+    DM.QueryMembro.FieldByName('RG').Value := MaskRG.Text;
+    DM.QueryMembro.FieldByName('CPF').Value := MaskCPF.Text;
+    DM.QueryMembro.FieldByName('NOME_PAI').Value := editPAI.Text;
+    DM.QueryMembro.FieldByName('NOME_MAE').Value := editMAE.Text;
+    DM.QueryMembro.FieldByName('DATA_BATISMO').Value := DateBATISMO.Text;
+    DM.QueryMembro.FieldByName('DATA_ADMISSAO').Value := DateADMISSAO.Text;
+    DM.QueryMembro.FieldByName('PAIS_ORIGEM').Value := editPAISORIG.Text;
+    DM.QueryMembro.FieldByName('TELEFONE_PAIS_ORIGEM').Value := editTELPAISORIG.Text;
+    DM.QueryMembro.FieldByName('DATA_CASAMENTO').Value := DateCASAMENTO.Text;
+//  DM.QueryMembro.FieldByName('ATIVO').Value := editATIVO.Text;
+    DM.QueryMembro.FieldByName('IGREJA_BATISMO').Value := editIGREJA_BATISMO.Text;
+    DM.QueryMembro.FieldByName('DATA_CONSAGRACAO').Value := DateCONSAGRA.Text;
+    DM.QueryMembro.FieldByName('NATURALIDADE').Value := editNATURAL.Text;
+    DM.QueryMembro.FieldByName('TITULO_ELEITOR').Value := editTITULO.Text;
+    DM.QueryMembro.FieldByName('FILHOS').Value := editFILHOS.Text;
+    DM.QueryMembro.FieldByName('VALIDADE_CARTEIRA').Value := DateVALCARTEIRA.Text;
+    DM.QueryMembro.FieldByName('ROLL').Value := editROLL.Text;
+    DM.QueryMembro.FieldByName('CONJUGE').Value := editCONJUGE.Text;
+    DM.QueryMembro.FieldByName('CAMPO13').Value := editCAMPO13.Text;
+    DM.QueryMembro.FieldByName('TIPO_MORADIA').Value := editMORADIA.Text;
+    DM.QueryMembro.FieldByName('CAMPO15').Value := editCAMPO15.Text;
+    DM.QueryMembro.FieldByName('HISTORICO').Value := MemoHistórico.Text;
+    DM.QueryMembro.FieldByName('NASC_CONJUGE').Value := DateNASCCONJUGE.Text;
+    DM.QueryMembro.FieldByName('CIDADE_BATISMO').Value := EditCIDADEBATISMO.Text;
+    DM.QueryMembro.FieldByName('DATA_NASC').Value := DateNASC.Text;
+    DM.QueryMembro.FieldByName('OBSERVACAO').Value := MemoOBSERVACAO.Text;
 
     DM.QueryMembro.ParamByName('id').Value := editID.Text;
     DM.QueryMembro.ExecSql;
@@ -533,7 +577,6 @@ EditCOMPLEMENTO.Text  := DM.QueryMembro.FieldByName('COMPLEMENTO').Value;
 if DM.QueryMembro.FieldByName('TELPESSOAL').Value <> null then
 EditTELPESSOAL.Text  := DM.QueryMembro.FieldByName('TELPESSOAL').Value;
 
-
 if DM.QueryMembro.FieldByName('CONTATO1').Value <> null then
 EditCONTATO1.Text  := DM.QueryMembro.FieldByName('CONTATO1').Value;
 
@@ -649,9 +692,9 @@ if DM.QueryMembro.FieldByName('DATA_NASC').Value <> null then
 DateNASC .Text  := DM.QueryMembro.FieldByName('DATA_NASC').Value;
 
 if DM.QueryMembro.FieldByName('OBSERVACAO').Value <> null then
-MemoMembro.Text  := DM.QueryMembro.FieldByName('OBSERVACAO').Value;
+MemoOBSERVACAO.Text  := DM.QueryMembro.FieldByName('OBSERVACAO').Value;
 
-
+if DM.QueryMembro.FieldByName('id').Value <> null then
 editID.Text := DM.QueryMembro.FieldByName('ID').Value;
 
  if DM.QueryMembro.FieldByName('imagem').Value <> null then
@@ -662,7 +705,6 @@ end;
 procedure TFrmCadMembro.habilitarCampos;
 begin
 limparCampos;
-//EditNOME.Enabled := True;
 EditNOME        .Enabled := True;
 EditENDERECO    .Enabled := True;
 EditNUMERO      .Enabled := True;
@@ -710,7 +752,7 @@ cbPROFISSAO     .Enabled := True;
 DateNASCCONJUGE .Enabled := True;
 EditCIDADEBATISMO.Enabled := True;
 DateNASC        .Enabled := True;
-MemoMembro      .Enabled := True;
+MemoOBSERVACAO      .Enabled := True;
 
 end;
 
@@ -762,7 +804,7 @@ MemoHistórico    .Text := '';
 //DateNASCCONJUGE  .DateTime := '';
 EditCIDADEBATISMO .Text := '';
 //DateNASC         .DateTime := '';
-MemoMembro       .Text := '';
+MemoOBSERVACAO       .Text := '';
 end;
 
 procedure TFrmCadMembro.salvarFoto;

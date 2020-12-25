@@ -20,7 +20,7 @@
     Top = 0
     Width = 916
     Height = 599
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Images = ImageList1
     Style = tsButtons
@@ -2869,5 +2869,10 @@
       0000C003000000000000E007000000000000E00F000000000000E43F00000000
       0000C67F000000000000FFFF0000000000000000000000000000000000000000
       000000000000}
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnException = ApplicationEvents1Exception
+    Left = 700
+    Top = 348
   end
 end

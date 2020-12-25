@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
   Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtDlgs, Vcl.ExtCtrls, Data.DB,
-  Vcl.Grids, Vcl.DBGrids, Vcl.Mask;
+  Vcl.Grids, Vcl.DBGrids, Vcl.Mask, Vcl.AppEvnts;
 
 type
   TFrmCadMembro = class(TForm)
@@ -123,6 +123,7 @@ type
     DateCONSAGRA: TMaskEdit;
     btnFOTOCAMERA: TSpeedButton;
     btnAdd: TSpeedButton;
+    ApplicationEvents1: TApplicationEvents;
     procedure btnNovoClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -134,6 +135,7 @@ type
     procedure btnADDFOTOClick(Sender: TObject);
     procedure EditVALORKeyPress(Sender: TObject; var Key: Char);
     procedure EditVALORChange(Sender: TObject);
+    procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
 
   private
     { Private declarations }
@@ -169,6 +171,115 @@ implementation
 {$R *.dfm}
 
 uses UDM;
+
+
+
+procedure TFrmCadMembro.ApplicationEvents1Exception(Sender: TObject;
+  E: Exception);
+var
+
+ mensagem: string;
+
+ Pos1, Pos2: integer;
+begin
+
+if Pos(UpperCase('is not a valid date'), UpperCase(E.Message)) <> 0 then
+
+  mensagem:='Data inválida, proceda a correção.'
+
+ else if Pos(UpperCase('must have a value'), UpperCase(E.Message)) <> 0 then
+
+ begin
+
+  Pos1:=Pos('''', E.Message);
+
+  mensagem:=E.Message;
+
+  Delete(mensagem, Pos1, 1);
+
+  Pos2:=Pos('''', mensagem);
+
+  mensagem:=copy(E.Message, Pos1 + 1, Pos2 - Pos1);
+
+  mensagem := 'É obrigatório o preenchimento do campo '+ mensagem + '.';
+
+ end
+
+ else if Pos(UpperCase('key violation'), UpperCase(E.Message)) <> 0 then
+
+  mensagem := 'Houve violação de Chave. Registro já incluido.'
+
+ else if Pos(UpperCase('is not a valid time'), UpperCase(E.Message)) <> 0 then
+
+  mensagem := 'Hora inválida, proceda a correção.'
+
+ else if Pos(UpperCase('is not a valid float'), UpperCase(E.Message)) <> 0 then
+
+ begin
+
+  Pos1 :=Pos('''', E.Message);
+
+  mensagem :=E.Message;
+
+  Delete(mensagem, Pos1, 1);
+
+  Pos2 := Pos('''', mensagem);
+
+  mensagem :=copy(E.Message, Pos1 + 1, Pos2 - Pos1);
+
+  mensagem := 'O valor '+ mensagem + ' não é válido.';
+
+ end
+
+ else if Pos(UpperCase('field value required'), UpperCase(E.Message)) <> 0 then
+
+ begin
+
+  Pos1 :=Pos('column ', E.Message) + 7;
+
+  Pos2 :=Pos(',', E.Message);
+
+  mensagem :=copy(E.Message, Pos1, Pos2 - Pos1);
+
+  mensagem := 'Campo ' + mensagem + ' deve ser preenchido.';
+
+ end
+
+ else if Pos(UpperCase('ATTEMPT TO STORE DUPLICATE VALUE'), UpperCase(E.Message)) <> 0
+
+ then
+
+  mensagem := 'Não é permitido valor duplicado. '
+
+ else if Pos(UpperCase('FOREIGN KEY'), UpperCase(E.Message)) <> 0 then
+
+  mensagem := 'Operação não permitida, registro vinculado em outra tabela está faltando.'
+
+ else if Pos('VIOLATION OF PRIMARY OR UNIQUE KEY CONSTRAINT', UpperCase(E.Message)) <> 0
+
+ then
+
+ mensagem := 'O valor informadono campo ROLL ja está em uso, o valor não pode ser usado por 2 cadastros!'+#13#10
+//  mensagem := 'O valor informado ja está em uso, o valor não pode ser usado por 2 cadastros!'+#13#10+Copy(UpperCase(E.Message),Pos('VIOLATION OF PRIMARY OR UNIQUE KEY CONSTRAINT',UpperCase(E.Message))+47,100)
+
+ else if (Pos(UpperCase('MUST APPLY UPDATES BEFORE REFRESHING DATA'),
+
+ UpperCase(E.Message)) <> 0) then
+
+  mensagem := 'É necessário aplicar as alterações antes de atualizar os dados.'
+
+ else if (Pos(UpperCase('INVALID INPUT VALUE'), UpperCase(E.Message)) <> 0) then
+
+  mensagem := 'Valor digitado não é valido conforme a máscara.'
+
+ else
+
+  mensagem := 'Ocorreu o seguinte erro: ' + #13 +UpperCase(E.Message);
+
+ MessageDlg(mensagem, mtError, [mbOk], 0);
+
+ ABORT;
+end;
 
 procedure TFrmCadMembro.associarCampos;
 begin

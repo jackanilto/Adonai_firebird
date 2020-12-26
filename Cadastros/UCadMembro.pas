@@ -554,8 +554,8 @@ end;
 procedure TFrmCadMembro.buscarNome;
 begin
 dm.QueryMembro.Close;
-dm.QueryMembro.SQL.Clear;
-dm.QueryMembro.SQL.Add('select * from TBL_MEMBROS where nome LIKE :nome order by nome asc');
+dm.QueryMembro.SQL.Clear;                                 //add collate win_ptbr para busca CASE INSESITIVE
+dm.QueryMembro.SQL.Add('select * from TBL_MEMBROS where nome collate win_ptbr LIKE :nome order by nome asc');
 dm.QueryMembro.ParamByName('nome').Value := edtBuscar.Text + '%';
 dm.QueryMembro.Open;
 end;

@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
   Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtDlgs, Vcl.ExtCtrls, Data.DB,
-  Vcl.Grids, Vcl.DBGrids, Vcl.Mask, Vcl.AppEvnts;
+  Vcl.Grids, Vcl.DBGrids, Vcl.Mask, Vcl.AppEvnts, JvExMask, JvToolEdit,
+  JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit;
 
 type
   TFrmCadMembro = class(TForm)
@@ -93,7 +94,6 @@ type
     Label23: TLabel;
     DataCONSAGRAÇAO: TLabel;
     Label24: TLabel;
-    EditMORADIA: TEdit;
     Label25: TLabel;
     EditCIDADEBATISMO: TEdit;
     CidadeBatismo: TLabel;
@@ -114,16 +114,17 @@ type
     EditCAMPO15: TEdit;
     Label30: TLabel;
     Label31: TLabel;
-    DateCASAMENTO: TMaskEdit;
-    DateNASCCONJUGE: TMaskEdit;
-    DateNASC: TMaskEdit;
-    DateBATISMO: TMaskEdit;
-    DateVALCARTEIRA: TMaskEdit;
-    DateADMISSAO: TMaskEdit;
-    DateCONSAGRA: TMaskEdit;
     btnFOTOCAMERA: TSpeedButton;
     btnAdd: TSpeedButton;
     ApplicationEvents1: TApplicationEvents;
+    cbMORADIA: TComboBox;
+    DateNASC: TJvDatePickerEdit;
+    DateBATISMO: TJvDatePickerEdit;
+    DateVALCARTEIRA: TJvDatePickerEdit;
+    DateADMISSAO: TJvDatePickerEdit;
+    DateCONSAGRA: TJvDatePickerEdit;
+    DateCASAMENTO: TJvDatePickerEdit;
+    DateNASCCONJUGE: TJvDatePickerEdit;
     procedure btnNovoClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -182,6 +183,7 @@ var
  mensagem: string;
 
  Pos1, Pos2: integer;
+
 begin
 
 if Pos(UpperCase('is not a valid date'), UpperCase(E.Message)) <> 0 then
@@ -260,22 +262,21 @@ if Pos(UpperCase('is not a valid date'), UpperCase(E.Message)) <> 0 then
 
  then
 
- mensagem := 'O valor informado no campo ROLL DE MEMBROS ja está em uso!'
-//  mensagem := 'O valor informado ja está em uso, o valor não pode ser usado por 2 cadastros!'+#13#10+Copy(UpperCase(E.Message),Pos('VIOLATION OF PRIMARY OR UNIQUE KEY CONSTRAINT',UpperCase(E.Message))+47,100)
+  mensagem := 'Registro Duplicado'+#13#10+Copy(UpperCase(E.Message),Pos('VIOLATION OF PRIMARY OR UNIQUE KEY CONSTRAINT',UpperCase(E.Message))+47,100)
 
  else if (Pos(UpperCase('MUST APPLY UPDATES BEFORE REFRESHING DATA'),
 
  UpperCase(E.Message)) <> 0) then
 
-  mensagem := 'É necessário aplicar as alterações antes de atualizar os dados.'
+  mensagem := 'É necessário aplicara as alterações antes de atualizar os dados.'
 
  else if (Pos(UpperCase('INVALID INPUT VALUE'), UpperCase(E.Message)) <> 0) then
 
   mensagem := 'Valor digitado não é valido conforme a máscara.'
 
  else
-     mensagem := 'É obrigatório o preenchimento do campo ROLL DE MEMBROS.';
-//  mensagem := 'Por favor preencha o campo ROLL DE MEMBROS.' + #13 +UpperCase(E.Message);
+
+  mensagem := 'Ocorreu o seguinte erro: ' + #13 +UpperCase(E.Message);
 
  MessageDlg(mensagem, mtError, [mbOk], 0);
 
@@ -311,27 +312,27 @@ begin
    DM.TBL_MEMBROS.FieldByName('CPF')  .Value   := MaskCPF                  .Text;
    DM.TBL_MEMBROS.FieldByName('NOME_PAI')  .Value   := EditPAI                  .Text;
    DM.TBL_MEMBROS.FieldByName('NOME_MAE')  .Value   := EditMAE                  .Text;
-   DM.TBL_MEMBROS.FieldByName('DATA_BATISMO')  .Value   := DateBATISMO.Text;
-   DM.TBL_MEMBROS.FieldByName('DATA_ADMISSAO')  .Value   := DateADMISSAO             .Text;
+   DM.TBL_MEMBROS.FieldByName('DATA_BATISMO')  .Value   := DateBATISMO.Date;
+   DM.TBL_MEMBROS.FieldByName('DATA_ADMISSAO')  .Value   := DateADMISSAO             .Date;
    DM.TBL_MEMBROS.FieldByName('PAIS_ORIGEM')  .Value   := EditPAISORIG             .Text;
    DM.TBL_MEMBROS.FieldByName('TELEFONE_PAIS_ORIGEM')  .Value   := EditTELPAISORIG          .Text;
-   DM.TBL_MEMBROS.FieldByName('DATA_CASAMENTO')  .Value   := DateCASAMENTO            .Text;
+   DM.TBL_MEMBROS.FieldByName('DATA_CASAMENTO')  .Value   := DateCASAMENTO            .Date;
    DM.TBL_MEMBROS.FieldByName('IGREJA_BATISMO')  .Value   := EditIGREJA_BATISMO       .Text;
-   DM.TBL_MEMBROS.FieldByName('DATA_CONSAGRACAO')  .Value   := DateCONSAGRA.Text;
+   DM.TBL_MEMBROS.FieldByName('DATA_CONSAGRACAO')  .Value   := DateCONSAGRA.Date;
    DM.TBL_MEMBROS.FieldByName('NATURALIDADE')  .Value   := EditNATURAL              .Text;
    DM.TBL_MEMBROS.FieldByName('TITULO_ELEITOR')  .Value   := EditTITULO               .Text;
    DM.TBL_MEMBROS.FieldByName('FILHOS')  .Value   := EditFILHOS               .Text;
-   DM.TBL_MEMBROS.FieldByName('VALIDADE_CARTEIRA')  .Value   := DateVALCARTEIRA          .Text;
+   DM.TBL_MEMBROS.FieldByName('VALIDADE_CARTEIRA')  .Value   := DateVALCARTEIRA          .Date;
    DM.TBL_MEMBROS.FieldByName('ROLL')  .Value   := EditROLL                 .Text;
    DM.TBL_MEMBROS.FieldByName('CONJUGE')  .Value   := EditCONJUGE              .Text;
    DM.TBL_MEMBROS.FieldByName('CAMPO13')  .Value   := EditCAMPO13              .Text;
-   DM.TBL_MEMBROS.FieldByName('TIPO_MORADIA')  .Value   := EditMORADIA              .Text;
+   DM.TBL_MEMBROS.FieldByName('TIPO_MORADIA')  .Value   := cbMORADIA              .Text;
    DM.TBL_MEMBROS.FieldByName('CAMPO15')  .Value   := EditCAMPO15              .Text;
    DM.TBL_MEMBROS.FieldByName('HISTORICO')  .Value   := MemoHistórico            .Text;
    DM.TBL_MEMBROS.FieldByName('PROFISSAO')  .Value   := cbPROFISSAO              .Text;
-   DM.TBL_MEMBROS.FieldByName('NASC_CONJUGE')  .Value   := DateNASCCONJUGE          .Text;
+   DM.TBL_MEMBROS.FieldByName('NASC_CONJUGE')  .Value   := DateNASCCONJUGE          .Date;
    DM.TBL_MEMBROS.FieldByName('CIDADE_BATISMO')  .Value   := EditCIDADEBATISMO        .Text;
-   DM.TBL_MEMBROS.FieldByName('DATA_NASC')  .Value   := DateNASC                    .Text;
+   DM.TBL_MEMBROS.FieldByName('DATA_NASC')  .Value   := DateNASC.Date;
 end;
 
 procedure TFrmCadMembro.btnAddClick(Sender: TObject);
@@ -474,27 +475,27 @@ if (editNOME.Text <> '') then
     DM.QueryMembro.ParamByName('CPF').Value := MaskCPF.Text;
     DM.QueryMembro.ParamByName('NOME_PAI').Value := editPAI.Text;
     DM.QueryMembro.ParamByName('NOME_MAE').Value := editMAE.Text;
-    DM.QueryMembro.ParamByName('DATA_BATISMO').Value := DateBATISMO.Text;
-    DM.QueryMembro.ParamByName('DATA_ADMISSAO').Value := DateADMISSAO.Text;
+    DM.QueryMembro.ParamByName('DATA_BATISMO').Value := DateBATISMO.Date;
+    DM.QueryMembro.ParamByName('DATA_ADMISSAO').Value := DateADMISSAO.Date;
     DM.QueryMembro.ParamByName('PAIS_ORIGEM').Value := editPAISORIG.Text;
     DM.QueryMembro.ParamByName('TELEFONE_PAIS_ORIGEM').Value := editTELPAISORIG.Text;
-    DM.QueryMembro.ParamByName('DATA_CASAMENTO').Value := DateCASAMENTO.Text;
+    DM.QueryMembro.ParamByName('DATA_CASAMENTO').Value := DateCASAMENTO.Date;
 //  DM.QueryMembro.ParamByName('ATIVO').Value := editATIVO.Text;
     DM.QueryMembro.ParamByName('IGREJA_BATISMO').Value := editIGREJA_BATISMO.Text;
-    DM.QueryMembro.ParamByName('DATA_CONSAGRACAO').Value := DateCONSAGRA.Text;
+    DM.QueryMembro.ParamByName('DATA_CONSAGRACAO').Value := DateCONSAGRA.Date;
     DM.QueryMembro.ParamByName('NATURALIDADE').Value := editNATURAL.Text;
     DM.QueryMembro.ParamByName('TITULO_ELEITOR').Value := editTITULO.Text;
     DM.QueryMembro.ParamByName('FILHOS').Value := editFILHOS.Text;
-    DM.QueryMembro.ParamByName('VALIDADE_CARTEIRA').Value := DateVALCARTEIRA.Text;
+    DM.QueryMembro.ParamByName('VALIDADE_CARTEIRA').Value := DateVALCARTEIRA.Date;
     DM.QueryMembro.ParamByName('ROLL').Value := editROLL.Text;
     DM.QueryMembro.ParamByName('CONJUGE').Value := editCONJUGE.Text;
     DM.QueryMembro.ParamByName('CAMPO13').Value := editCAMPO13.Text;
-    DM.QueryMembro.ParamByName('TIPO_MORADIA').Value := editMORADIA.Text;
+    DM.QueryMembro.ParamByName('TIPO_MORADIA').Value := cbMORADIA.Text;
     DM.QueryMembro.ParamByName('CAMPO15').Value := editCAMPO15.Text;
     DM.QueryMembro.ParamByName('HISTORICO').Value := MemoHistórico.Text;
-    DM.QueryMembro.ParamByName('NASC_CONJUGE').Value := DateNASCCONJUGE.Text;
+    DM.QueryMembro.ParamByName('NASC_CONJUGE').Value := DateNASCCONJUGE.Date;
     DM.QueryMembro.ParamByName('CIDADE_BATISMO').Value := EditCIDADEBATISMO.Text;
-    DM.QueryMembro.ParamByName('DATA_NASC').Value := DateNASC.Text;
+    DM.QueryMembro.ParamByName('DATA_NASC').Value := DateNASC.Date;
     DM.QueryMembro.ParamByName('OBSERVACAO').Value := MemoOBSERVACAO.Text;
     DM.QueryMembro.ParamByName('id').Value := editID.Text;
     DM.QueryMembro.ExecSql;
@@ -778,10 +779,10 @@ if DM.QueryMembro.FieldByName('NOME_MAE').Value <> null then
 EditMAE.Text  := DM.QueryMembro.FieldByName('NOME_MAE').Value;
 
 if DM.QueryMembro.FieldByName('DATA_BATISMO').Value <> null then
-DateBATISMO.Text  := DM.QueryMembro.FieldByName('DATA_BATISMO').Value;
+DateBATISMO.Date  := DM.QueryMembro.FieldByName('DATA_BATISMO').Value;
 
 if DM.QueryMembro.FieldByName('DATA_ADMISSAO').Value <> null then
-DateADMISSAO.Text  := DM.QueryMembro.FieldByName('DATA_ADMISSAO').Value;
+DateADMISSAO.Date  := DM.QueryMembro.FieldByName('DATA_ADMISSAO').Value;
 
 if DM.QueryMembro.FieldByName('PAIS_ORIGEM').Value <> null then
 EditPAISORIG.Text  := DM.QueryMembro.FieldByName('PAIS_ORIGEM').Value;
@@ -790,7 +791,7 @@ if DM.QueryMembro.FieldByName('TELEFONE_PAIS_ORIGEM').Value <> null then
 EditTELPAISORIG.Text  := DM.QueryMembro.FieldByName('TELEFONE_PAIS_ORIGEM').Value;
 
 if DM.QueryMembro.FieldByName('DATA_CASAMENTO').Value <> null then
-DateCASAMENTO.Text  := DM.QueryMembro.FieldByName('DATA_CASAMENTO').Value;
+DateCASAMENTO.Date  := DM.QueryMembro.FieldByName('DATA_CASAMENTO').Value;
 
 //if DM.QueryMembro.FieldByName('ATIVO').Value <> null then
 //CheckATIVO.Text  := DM.QueryMembro.FieldByName('ATIVO').Value;
@@ -799,7 +800,7 @@ if DM.QueryMembro.FieldByName('IGREJA_BATISMO').Value <> null then
 EditIGREJA_BATISMO.Text  := DM.QueryMembro.FieldByName('IGREJA_BATISMO').Value;
 
 if DM.QueryMembro.FieldByName('DATA_CONSAGRACAO').Value <> null then
-DateCONSAGRA.Text  := DM.QueryMembro.FieldByName('DATA_CONSAGRACAO').Value;
+DateCONSAGRA.Date  := DM.QueryMembro.FieldByName('DATA_CONSAGRACAO').Value;
 
 if DM.QueryMembro.FieldByName('NATURALIDADE').Value <> null then
 EditNATURAL.Text  := DM.QueryMembro.FieldByName('NATURALIDADE').Value;
@@ -811,7 +812,7 @@ if DM.QueryMembro.FieldByName('FILHOS').Value <> null then
 EditFILHOS.Text  := DM.QueryMembro.FieldByName('FILHOS').Value;
 
 if DM.QueryMembro.FieldByName('VALIDADE_CARTEIRA').Value <> null then
-DateVALCARTEIRA.Text  := DM.QueryMembro.FieldByName('VALIDADE_CARTEIRA').Value;
+DateVALCARTEIRA.Date  := DM.QueryMembro.FieldByName('VALIDADE_CARTEIRA').Value;
 
 if DM.QueryMembro.FieldByName('ROLL').Value <> null then
 EditROLL.Text  := DM.QueryMembro.FieldByName('ROLL').Value;
@@ -823,7 +824,7 @@ if DM.QueryMembro.FieldByName('CAMPO13').Value <> null then
 EditCAMPO13.Text  := DM.QueryMembro.FieldByName('CAMPO13').Value;
 
 if DM.QueryMembro.FieldByName('TIPO_MORADIA').Value <> null then
-EditMORADIA.Text  := DM.QueryMembro.FieldByName('TIPO_MORADIA').Value;
+cbMORADIA.Text  := DM.QueryMembro.FieldByName('TIPO_MORADIA').Value;
 
 if DM.QueryMembro.FieldByName('CAMPO15').Value <> null then
 EditCAMPO15.Text  := DM.QueryMembro.FieldByName('CAMPO15').Value;
@@ -832,13 +833,13 @@ if DM.QueryMembro.FieldByName('HISTORICO').Value <> null then
 MemoHistórico.Text  := DM.QueryMembro.FieldByName('HISTORICO').Value;
 
 if DM.QueryMembro.FieldByName('NASC_CONJUGE').Value <> null then
-DateNASCCONJUGE.Text  := DM.QueryMembro.FieldByName('NASC_CONJUGE').Value;
+DateNASCCONJUGE.Date  := DM.QueryMembro.FieldByName('NASC_CONJUGE').Value;
 
 if DM.QueryMembro.FieldByName('CIDADE_BATISMO').Value <> null then
 EditCIDADEBATISMO.Text  := DM.QueryMembro.FieldByName('CIDADE_BATISMO').Value;
 
 if DM.QueryMembro.FieldByName('DATA_NASC').Value <> null then
-DateNASC .Text  := DM.QueryMembro.FieldByName('DATA_NASC').Value;
+DateNASC .Date  := DM.QueryMembro.FieldByName('DATA_NASC').Value;
 
 if DM.QueryMembro.FieldByName('OBSERVACAO').Value <> null then
 MemoOBSERVACAO.Text  := DM.QueryMembro.FieldByName('OBSERVACAO').Value;
@@ -894,7 +895,7 @@ DateVALCARTEIRA .Enabled := True;
 EditROLL        .Enabled := True;
 EditCONJUGE     .Enabled := True;
 EditCAMPO13     .Enabled := True;
-EditMORADIA     .Enabled := True;
+cbMORADIA     .Enabled := True;
 EditCAMPO15     .Enabled := True;
 MemoHistórico   .Enabled := True;
 cbPROFISSAO     .Enabled := True;
@@ -947,7 +948,7 @@ EditFILHOS       .Text := '';
 EditROLL         .Text := '';
 EditCONJUGE      .Text := '';
 EditCAMPO13      .Text := '';
-EditMORADIA      .Text := '';
+cbMORADIA      .Text := '';
 EditCAMPO15      .Text := '';
 MemoHistórico    .Text := '';
 //DateNASCCONJUGE  .DateTime := '';

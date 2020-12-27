@@ -20,7 +20,7 @@
     Top = 0
     Width = 916
     Height = 599
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Images = ImageList1
     Style = tsButtons
@@ -2193,7 +2193,7 @@
           item
             Expanded = False
             FieldName = 'ROLL'
-            Width = 50
+            Width = 44
             Visible = True
           end
           item
@@ -2217,7 +2217,7 @@
           item
             Expanded = False
             FieldName = 'BAIRRO'
-            Width = 80
+            Width = 76
             Visible = True
           end
           item
@@ -2243,13 +2243,13 @@
           item
             Expanded = False
             FieldName = 'TELPESSOAL'
-            Width = 80
+            Width = 95
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CONTATO1'
-            Width = 80
+            Width = 97
             Visible = True
           end
           item
@@ -2395,7 +2395,7 @@
           item
             Expanded = False
             FieldName = 'CONJUGE'
-            Width = 80
+            Width = 89
             Visible = True
           end
           item
@@ -2658,19 +2658,12 @@
         Height = 21
         TabOrder = 31
       end
-      object EditMORADIA: TEdit
-        Left = 124
-        Top = 300
-        Width = 129
-        Height = 21
-        TabOrder = 32
-      end
       object EditROLL: TEdit
         Left = 21
         Top = 44
         Width = 121
         Height = 21
-        TabOrder = 33
+        TabOrder = 32
       end
       object CheckATIVO: TCheckBox
         Left = 792
@@ -2678,37 +2671,45 @@
         Width = 97
         Height = 17
         Caption = 'Ativo'
+        TabOrder = 33
+      end
+      object cbMORADIA: TComboBox
+        Left = 122
+        Top = 300
+        Width = 99
+        Height = 21
         TabOrder = 34
+        Items.Strings = (
+          'Propria'
+          'Aluguel'
+          'Favor')
       end
-      object DateCASAMENTO: TMaskEdit
-        Left = 363
-        Top = 176
-        Width = 94
-        Height = 21
-        EditMask = '99/99/0000;1;_'
-        MaxLength = 10
-        TabOrder = 35
-        Text = '  /  /    '
-      end
-      object DateNASCCONJUGE: TMaskEdit
-        Left = 662
-        Top = 176
-        Width = 94
-        Height = 21
-        EditMask = '99/99/0000;1;_'
-        MaxLength = 10
-        TabOrder = 36
-        Text = '  /  /    '
-      end
-      object DateNASC: TMaskEdit
+      object DateNASC: TJvDatePickerEdit
         Left = 21
         Top = 300
-        Width = 95
+        Width = 97
         Height = 21
-        EditMask = '99/99/0000;1;_'
-        MaxLength = 10
+        AllowNoDate = True
+        Checked = True
+        TabOrder = 35
+      end
+      object DateCASAMENTO: TJvDatePickerEdit
+        Left = 359
+        Top = 176
+        Width = 100
+        Height = 21
+        AllowNoDate = True
+        Checked = True
+        TabOrder = 36
+      end
+      object DateNASCCONJUGE: TJvDatePickerEdit
+        Left = 662
+        Top = 176
+        Width = 96
+        Height = 21
+        AllowNoDate = True
+        Checked = True
         TabOrder = 37
-        Text = '  /  /    '
       end
     end
     object TabSheet2: TTabSheet
@@ -2952,45 +2953,41 @@
         Height = 21
         TabOrder = 13
       end
-      object DateBATISMO: TMaskEdit
-        Left = 98
+      object DateBATISMO: TJvDatePickerEdit
+        Left = 99
         Top = 48
         Width = 95
         Height = 21
-        EditMask = '99/99/0000;1;_'
-        MaxLength = 10
+        AllowNoDate = True
+        Checked = True
         TabOrder = 14
-        Text = '  /  /    '
       end
-      object DateVALCARTEIRA: TMaskEdit
+      object DateVALCARTEIRA: TJvDatePickerEdit
         Left = 613
         Top = 48
         Width = 95
         Height = 21
-        EditMask = '99/99/0000;1;_'
-        MaxLength = 10
+        AllowNoDate = True
+        Checked = True
         TabOrder = 15
-        Text = '  /  /    '
       end
-      object DateADMISSAO: TMaskEdit
+      object DateADMISSAO: TJvDatePickerEdit
         Left = 104
         Top = 160
         Width = 95
         Height = 21
-        EditMask = '99/99/0000;1;_'
-        MaxLength = 10
+        AllowNoDate = True
+        Checked = True
         TabOrder = 16
-        Text = '  /  /    '
       end
-      object DateCONSAGRA: TMaskEdit
+      object DateCONSAGRA: TJvDatePickerEdit
         Left = 376
         Top = 88
         Width = 95
         Height = 21
-        EditMask = '!99/99/0000;1;_'
-        MaxLength = 10
+        AllowNoDate = True
+        Checked = True
         TabOrder = 17
-        Text = '  /  /    '
       end
     end
   end

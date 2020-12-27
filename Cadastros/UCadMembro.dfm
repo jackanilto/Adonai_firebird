@@ -2171,6 +2171,12 @@
         Width = 868
         Height = 120
         DataSource = DM.DSMembro
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
         TabOrder = 5
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText

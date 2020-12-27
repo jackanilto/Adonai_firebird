@@ -260,7 +260,7 @@ if Pos(UpperCase('is not a valid date'), UpperCase(E.Message)) <> 0 then
 
  then
 
- mensagem := 'O valor informado no campo ROLL ja está em uso!'
+ mensagem := 'O valor informado no campo ROLL DE MEMBROS ja está em uso!'
 //  mensagem := 'O valor informado ja está em uso, o valor não pode ser usado por 2 cadastros!'+#13#10+Copy(UpperCase(E.Message),Pos('VIOLATION OF PRIMARY OR UNIQUE KEY CONSTRAINT',UpperCase(E.Message))+47,100)
 
  else if (Pos(UpperCase('MUST APPLY UPDATES BEFORE REFRESHING DATA'),
@@ -274,14 +274,15 @@ if Pos(UpperCase('is not a valid date'), UpperCase(E.Message)) <> 0 then
   mensagem := 'Valor digitado não é valido conforme a máscara.'
 
  else
-
-  mensagem := 'Ocorreu o seguinte erro: ' + #13 +UpperCase(E.Message);
+     mensagem := 'É obrigatório o preenchimento do campo ROLL DE MEMBROS.';
+//  mensagem := 'Por favor preencha o campo ROLL DE MEMBROS.' + #13 +UpperCase(E.Message);
 
  MessageDlg(mensagem, mtError, [mbOk], 0);
 
  ABORT;
 end;
 // FIM DO TRATAMENTO DE ERROS
+
 procedure TFrmCadMembro.associarCampos;
 begin
    DM.TBL_MEMBROS.FieldByName('NOME').Value := EditNOME.Text;

@@ -4126,6 +4126,19 @@ object FrmSobre: TFrmSobre
       3086FF003A7678E59CE0BB5F0000000049454E44AE426082}
     Stretch = True
   end
+  object Label2: TLabel
+    Left = 43
+    Top = 80
+    Width = 54
+    Height = 19
+    Caption = 'Label2'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object EvAppProtect1: TEvAppProtect
     IdApplication = 6101974
     RegKey = '\SOFTWARE\TCF Software\AppProtect\'

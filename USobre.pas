@@ -16,6 +16,7 @@ type
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     Image2: TImage;
+    Label2: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -35,22 +36,30 @@ implementation
 
 {$R *.dfm}
 
-uses UPrincipal, ShellApi;
+uses UPrincipal, ShellApi, DateUtils, UITypes;
 
 
 procedure TFrmSobre.FormActivate(Sender: TObject);
 begin
-  Label1.Caption := 'Inicio da Licença ' + FormatDateTime('dd/mm/yyyy', EvAppProtect1.DateStart) + #13 +
-                    'Licença ativa até ' + FormatDateTime('dd/mm/yyyy', EvAppProtect1.DateEnd);
+  Label1.Caption := 'Inicio da Licença  -  ' + FormatDateTime('dd/mm/yyyy', EvAppProtect1.DateStart) + #13 +
+                    'Licença ativa até  -  ' + FormatDateTime('dd/mm/yyyy', EvAppProtect1.DateEnd)+ #13 +
+
+
+  Label2.Caption := 'Faltam ' + IntToStr(DaysBetween( Today, EvAppProtect1.DateEnd))+' dias para expirar sua licença';
+
 end;
 
 procedure TFrmSobre.FormCreate(Sender: TObject);
 const
- Msg = 'Faltam menos de 10 dias para a licença expirar.         Deseja renovar agora?';
+ Msg = 'Faltam menos de 10 dias para a licença expirar. '+ #13 +
+ 'Deseja renovar agora?';
 begin
   if ((EvAppProtect1.DateEnd - Date) < 10) and
     (MessageDlg(Msg, mtConfirmation, mbYesNoCancel, 0) = mrYes) then
     EvAppProtect1.ResetLockApplication;
+
+
+
 end;
 
 procedure TFrmSobre.SpeedButton1Click(Sender: TObject);

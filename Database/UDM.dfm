@@ -163,10 +163,6 @@ object DM: TDM
       Origin = 'DIZIMISTA'
       Size = 200
     end
-    object TBL_MEMBROSVALOR: TFloatField
-      FieldName = 'VALOR'
-      Origin = 'VALOR'
-    end
     object TBL_MEMBROSGRUPO: TStringField
       FieldName = 'GRUPO'
       Origin = 'GRUPO'
@@ -231,16 +227,6 @@ object DM: TDM
       Origin = 'NOME_MAE'
       Size = 200
     end
-    object TBL_MEMBROSDATA_BATISMO: TStringField
-      FieldName = 'DATA_BATISMO'
-      Origin = 'DATA_BATISMO'
-      Size = 10
-    end
-    object TBL_MEMBROSDATA_ADMISSAO: TStringField
-      FieldName = 'DATA_ADMISSAO'
-      Origin = 'DATA_ADMISSAO'
-      Size = 10
-    end
     object TBL_MEMBROSPAIS_ORIGEM: TStringField
       FieldName = 'PAIS_ORIGEM'
       Origin = 'PAIS_ORIGEM'
@@ -251,25 +237,10 @@ object DM: TDM
       Origin = 'TELEFONE_PAIS_ORIGEM'
       Size = 200
     end
-    object TBL_MEMBROSDATA_CASAMENTO: TStringField
-      FieldName = 'DATA_CASAMENTO'
-      Origin = 'DATA_CASAMENTO'
-      Size = 10
-    end
     object TBL_MEMBROSATIVO: TStringField
       FieldName = 'ATIVO'
       Origin = 'ATIVO'
       Size = 200
-    end
-    object TBL_MEMBROSIGREJA_BATISMO: TStringField
-      FieldName = 'IGREJA_BATISMO'
-      Origin = 'IGREJA_BATISMO'
-      Size = 200
-    end
-    object TBL_MEMBROSDATA_CONSAGRACAO: TStringField
-      FieldName = 'DATA_CONSAGRACAO'
-      Origin = 'DATA_CONSAGRACAO'
-      Size = 10
     end
     object TBL_MEMBROSNATURALIDADE: TStringField
       FieldName = 'NATURALIDADE'
@@ -284,16 +255,6 @@ object DM: TDM
     object TBL_MEMBROSFILHOS: TStringField
       FieldName = 'FILHOS'
       Origin = 'FILHOS'
-      Size = 200
-    end
-    object TBL_MEMBROSVALIDADE_CARTEIRA: TStringField
-      FieldName = 'VALIDADE_CARTEIRA'
-      Origin = 'VALIDADE_CARTEIRA'
-      Size = 10
-    end
-    object TBL_MEMBROSROLL: TStringField
-      FieldName = 'ROLL'
-      Origin = 'ROLL'
       Size = 200
     end
     object TBL_MEMBROSCONJUGE: TStringField
@@ -326,11 +287,6 @@ object DM: TDM
       Origin = 'PROFISSAO'
       Size = 200
     end
-    object TBL_MEMBROSNASC_CONJUGE: TStringField
-      FieldName = 'NASC_CONJUGE'
-      Origin = 'NASC_CONJUGE'
-      Size = 10
-    end
     object TBL_MEMBROSCIDADE_BATISMO: TStringField
       FieldName = 'CIDADE_BATISMO'
       Origin = 'CIDADE_BATISMO'
@@ -341,10 +297,46 @@ object DM: TDM
       Origin = 'OBSERVACAO'
       Size = 200
     end
-    object TBL_MEMBROSDATA_NASC: TStringField
+    object TBL_MEMBROSVALOR: TStringField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+    end
+    object TBL_MEMBROSROLL: TIntegerField
+      FieldName = 'ROLL'
+      Origin = 'ROLL'
+    end
+    object TBL_MEMBROSIGREJA_BATISMO: TStringField
+      FieldName = 'IGREJA_BATISMO'
+      Origin = 'IGREJA_BATISMO'
+      Size = 100
+    end
+    object TBL_MEMBROSDATA_NASC: TDateField
       FieldName = 'DATA_NASC'
       Origin = 'DATA_NASC'
-      Size = 50
+    end
+    object TBL_MEMBROSDATEBATISMO: TDateField
+      FieldName = 'DATEBATISMO'
+      Origin = 'DATEBATISMO'
+    end
+    object TBL_MEMBROSDATEVALCARTEIRA: TDateField
+      FieldName = 'DATEVALCARTEIRA'
+      Origin = 'DATEVALCARTEIRA'
+    end
+    object TBL_MEMBROSDATEADMISSAO: TDateField
+      FieldName = 'DATEADMISSAO'
+      Origin = 'DATEADMISSAO'
+    end
+    object TBL_MEMBROSDATECONSAGRA: TDateField
+      FieldName = 'DATECONSAGRA'
+      Origin = 'DATECONSAGRA'
+    end
+    object TBL_MEMBROSDATECASAMENTO: TDateField
+      FieldName = 'DATECASAMENTO'
+      Origin = 'DATECASAMENTO'
+    end
+    object TBL_MEMBROSDATENASCCONJUGE: TDateField
+      FieldName = 'DATENASCCONJUGE'
+      Origin = 'DATENASCCONJUGE'
     end
   end
   object DSMembro: TDataSource
@@ -478,5 +470,15 @@ object DM: TDM
     Connection = FDConn
     Left = 64
     Top = 360
+  end
+  object DSAniverMes: TDataSource
+    DataSet = QueryAniverMes
+    Left = 304
+    Top = 288
+  end
+  object QueryAniverMes: TFDQuery
+    Connection = FDConn
+    Left = 304
+    Top = 344
   end
 end

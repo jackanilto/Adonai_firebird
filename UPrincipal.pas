@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.WinXCalendars,
   Vcl.ExtCtrls, Vcl.Menus, Vcl.Buttons, Vcl.WinXCtrls, Vcl.WinXPickers,
-  Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg;
+  Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg, Data.DB, Vcl.Grids,
+  Vcl.DBGrids;
   //Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg, ESpshScr;
 
 type
@@ -35,7 +36,6 @@ type
     Image3: TImage;
     SobreoPrograma1: TMenuItem;
     SobreoPrograma: TMenuItem;
-    Licensa1: TMenuItem;
     //EvSplashScreen1: TEvSplashScreen;
     procedure Button1Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -110,6 +110,7 @@ LabelUsuario.Caption := DM.TblAcesso.FieldByName('USUARIO').AsString;
  //Abre form full Screen ( precisa configurar BorderStyle = bsSigle ou none )
  SystemParametersInfo(SPI_GETWORKAREA, 0, @r,0) ;
  SetBounds(r.Left, r.Top, r.Right-r.Left, r.Bottom-r.Top) ;
+
 end;
 
 procedure TFrmPrincipal.Licensa1Click(Sender: TObject);
@@ -136,6 +137,7 @@ procedure TFrmPrincipal.SobreoProgramaClick(Sender: TObject);
 begin
 FrmSobre.ShowModal;
 end;
+
 
 procedure TFrmPrincipal.SpeedButton1Click(Sender: TObject);
 begin

@@ -20,7 +20,7 @@
     Top = 0
     Width = 916
     Height = 599
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     Images = ImageList1
     Style = tsButtons
@@ -2715,6 +2715,10 @@
     object TabSheet2: TTabSheet
       Caption = 'Dados Eclesiasticos'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DIZIMISTA: TLabel
         Left = 25
         Top = 72

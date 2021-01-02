@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
   Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtDlgs, Vcl.ExtCtrls, Data.DB,
   Vcl.Grids, Vcl.DBGrids, Vcl.Mask, Vcl.AppEvnts, JvExMask, JvToolEdit,
-  JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit;
+  JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit, JvAVICapture, Vcl.Imaging.jpeg;
 
 type
   TFrmCadMembro = class(TForm)
@@ -23,7 +23,7 @@ type
     grid: TDBGrid;
     EditID: TEdit;
     dialog: TOpenPictureDialog;
-    img: TImage;
+    imgProfile: TImage;
     Label2: TLabel;
     edtBuscar: TEdit;
     ImageList1: TImageList;
@@ -114,7 +114,7 @@ type
     EditCAMPO15: TEdit;
     Label30: TLabel;
     Label31: TLabel;
-    btnFOTOCAMERA: TSpeedButton;
+    btnTakePhoto: TSpeedButton;
     btnAdd: TSpeedButton;
     ApplicationEvents1: TApplicationEvents;
     cbMORADIA: TComboBox;
@@ -125,6 +125,8 @@ type
     DateCONSAGRA: TJvDatePickerEdit;
     DateCASAMENTO: TJvDatePickerEdit;
     DateNASCCONJUGE: TJvDatePickerEdit;
+    btnSave: TSpeedButton;
+    btnCarteirinha: TSpeedButton;
     procedure btnNovoClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -132,11 +134,12 @@ type
     procedure btnDeletarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure edtBuscarChange(Sender: TObject);
-    procedure btnAddClick(Sender: TObject);
-    procedure btnADDFOTOClick(Sender: TObject);
     procedure EditVALORKeyPress(Sender: TObject; var Key: Char);
     procedure EditVALORChange(Sender: TObject);
     procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
+    procedure btnTakePhotoClick(Sender: TObject);
+    procedure btnAddClick(Sender: TObject);
+    procedure btnCarteirinhaClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -171,7 +174,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDM;
+uses UDM, uWebCam;
 
 
 
@@ -258,11 +261,11 @@ if Pos(UpperCase('is not a valid date'), UpperCase(E.Message)) <> 0 then
 
   mensagem := 'Operação não permitida, registro vinculado em outra tabela está faltando.'
 
- else if Pos('VIOLATION OF PRIMARY OR UNIQUE KEY CONSTRAINT', UpperCase(E.Message)) <> 0
-
- then
-
-  mensagem := 'Registro Duplicado'+#13#10+Copy(UpperCase(E.Message),Pos('VIOLATION OF PRIMARY OR UNIQUE KEY CONSTRAINT',UpperCase(E.Message))+47,100)
+// else if Pos('VIOLATION OF PRIMARY OR UNIQUE KEY CONSTRAINT', UpperCase(E.Message)) <> 0
+//
+// then
+//
+//  mensagem := 'Registro Duplicado'+#13#10+Copy(UpperCase(E.Message),Pos('VIOLATION OF PRIMARY OR UNIQUE KEY CONSTRAINT',UpperCase(E.Message))+47,100)
 
  else if (Pos(UpperCase('MUST APPLY UPDATES BEFORE REFRESHING DATA'),
 
@@ -338,14 +341,7 @@ end;
 procedure TFrmCadMembro.btnAddClick(Sender: TObject);
 begin
 dialog.Execute();
-img.Picture.LoadFromFile(dialog.filename);
-alterou := true;
-end;
-
-procedure TFrmCadMembro.btnADDFOTOClick(Sender: TObject);
-begin
-dialog.Execute();
-img.Picture.LoadFromFile(dialog.filename);
+imgProfile.Picture.LoadFromFile(dialog.filename);
 alterou := true;
 end;
 
@@ -371,6 +367,7 @@ if Messagedlg('Deseja excluir o registro?', mtConfirmation, [mbYes, mbNo], 0) = 
     btnSalvar.Enabled := false;
     btnEditar.Enabled := false;
     btnDeletar.Enabled := false;
+    btnCarteirinha.Enabled := false;
     btnNovo.Enabled := true;
   end;
 end;
@@ -507,6 +504,7 @@ if (editNOME.Text <> '') then
     btnSalvar.Enabled := false;
     btnEditar.Enabled := false;
     btnDeletar.Enabled := false;
+    btnCarteirinha.Enabled := false;
     btnNovo.Enabled := true;
     end
     else
@@ -545,11 +543,29 @@ if (EditNOME.Text <> '') then
   btnNovo.Enabled := true;
   btnEditar.Enabled := false;
   btnDeletar.Enabled := false;
+  btnCarteirinha.Enabled := false;
   grid.Enabled := true;
   end
   else
   begin
   MessageDlg('Preencha os Campos', mtInformation, mbOKCancel, 0);
+  end;
+end;
+
+procedure TFrmCadMembro.btnTakePhotoClick(Sender: TObject);
+begin
+frmWebCam := TfrmWebCam.Create(Application);
+//    frmWebCam.ShowModal;
+  with frmWebCam do
+  begin
+    ShowModal;
+    if ModalResult = mrOk then
+      imgProfile.Picture.Assign(imgSnapshot.Picture);
+      begin
+      //dialog.Execute();
+      //img.Picture.LoadFromFile(dialog.filename);
+      alterou := true;
+end;
   end;
 end;
 
@@ -566,7 +582,7 @@ procedure TFrmCadMembro.buscarTudo;
 begin
 DM.QueryMembro.Close;
 DM.QueryMembro.SQL.Clear;
-DM.QueryMembro.SQL.Add('select * from TBL_MEMBROS');
+DM.QueryMembro.SQL.Add('select * from TBL_MEMBROS order by nome asc');
 DM.QueryMembro.Open();
 end;
 
@@ -603,7 +619,7 @@ end;
 procedure TFrmCadMembro.carregarImagemPadrao;
 begin
     caminhoImg  := GetCurrentDir + '\img\sem-foto.jpg';
-    img.Picture.LoadFromFile(caminhoImg);
+    imgProfile.Picture.LoadFromFile(caminhoImg);
 end;
 
 procedure TFrmCadMembro.desabilitarCampos;
@@ -661,6 +677,7 @@ carregarcbPROFISSAO;
 btnSalvar.Enabled := false;
 btnEditar.Enabled := false;
 btnDeletar.Enabled := false;
+btnCarteirinha.Enabled := false;
 
 carregarImagemPadrao();
 end;
@@ -698,6 +715,7 @@ DM.TBL_MEMBROS.Edit;
 btnEditar.Enabled := true;
 btnDeletar.Enabled := true;
 btnAdd.Enabled := true;
+btnCarteirinha.Enabled := true;
 habilitarCampos;
 
 if DM.QueryMembro.FieldByName('NOME').Value <> null then
@@ -848,7 +866,7 @@ if DM.QueryMembro.FieldByName('id').Value <> null then
 editID.Text := DM.QueryMembro.FieldByName('ID').Value;
 
  if DM.QueryMembro.FieldByName('imagem').Value <> null then
- ExibeFoto(dm.querymembro, 'imagem', img);
+ ExibeFoto(dm.querymembro, 'imagem', imgProfile);
 
 end;
 
@@ -973,6 +991,22 @@ begin
   DM.TBL_MEMBROS.FieldByName('imagem').Value := GetCurrentDir + '\img\sem-foto.jpg';
 
   end;
+end;
+
+procedure TFrmCadMembro.btnCarteirinhaClick(Sender: TObject);
+begin
+// Faz a consulta do membro para enviar para o relatorio
+DM.QueryMembro.Close;
+DM.QueryMembro.SQL.Clear;
+DM.QueryMembro.SQL.Add('select * from TBL_MEMBROS where id = :id'); // passa o parametro ID
+DM.QueryMembro.ParamByName('ID').Value := editID.Text;       // Recupera o parametro ID para o Edit
+DM.QueryMembro.Open();
+
+
+DM.frxCarteirinha.LoadFromFile(GetCurrentDir + '\Relatorio\modelo_01.fr3');
+DM.frxCarteirinha.ShowReport();
+btnCarteirinha.Enabled := false;
+buscarTudo; // Após chamar o relatorio, executa a procedure BuscarTudo
 end;
 
 end.

@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
   Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtDlgs, Vcl.ExtCtrls, Data.DB,
   Vcl.Grids, Vcl.DBGrids, Vcl.Mask, Vcl.AppEvnts, JvExMask, JvToolEdit,
-  JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit, JvAVICapture, Vcl.Imaging.jpeg;
+  JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit, JvAVICapture, Vcl.Imaging.jpeg, frxDesgn,
+  frxClass, frxExportBaseDialog, frxExportPDF;
 
 type
   TFrmCadMembro = class(TForm)
@@ -628,6 +629,7 @@ limparcampos();
 EditNOME.Enabled := false;
 
 end;
+
 // trabalhando com valor de moeda
 procedure TFrmCadMembro.EditVALORChange(Sender: TObject);
 

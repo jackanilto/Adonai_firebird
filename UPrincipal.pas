@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.WinXCalendars,
   Vcl.ExtCtrls, Vcl.Menus, Vcl.Buttons, Vcl.WinXCtrls, Vcl.WinXPickers,
   Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg, Data.DB, Vcl.Grids,
-  Vcl.DBGrids;
+  Vcl.DBGrids, frxClass;
   //Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg, ESpshScr;
 
 type
@@ -36,6 +36,8 @@ type
     Image3: TImage;
     SobreoPrograma1: TMenuItem;
     SobreoPrograma: TMenuItem;
+    Configuraes1: TMenuItem;
+    Carteirinhas1: TMenuItem;
     //EvSplashScreen1: TEvSplashScreen;
     procedure Button1Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -51,6 +53,7 @@ type
     procedure Deslogar1Click(Sender: TObject);
     procedure SobreoProgramaClick(Sender: TObject);
     procedure Licensa1Click(Sender: TObject);
+    procedure Carteirinhas1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,6 +77,12 @@ end;
 procedure TFrmPrincipal.Button1Click(Sender: TObject);
 begin
 Application.Terminate;
+end;
+
+procedure TFrmPrincipal.Carteirinhas1Click(Sender: TObject);
+begin
+//carrega o componente TFRXREPORT em modo Design em tempo de execução
+  DM.frxCarteirinha.DesignReport();
 end;
 
 procedure TFrmPrincipal.Deslogar1Click(Sender: TObject);

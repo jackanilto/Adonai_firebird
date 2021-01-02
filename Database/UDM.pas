@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, FireDAC.Phys.IBBase, FireDAC.Comp.UI,
   Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, System.Actions,
-  Vcl.ActnList;
+  Vcl.ActnList, frxClass, frxDBSet;
 
 type
   TDM = class(TDataModule)
@@ -105,6 +105,8 @@ type
     TBL_MEMBROSDATECONSAGRA: TDateField;
     TBL_MEMBROSDATECASAMENTO: TDateField;
     TBL_MEMBROSDATENASCCONJUGE: TDateField;
+    frxCarteirinha: TfrxReport;
+    frxCarteira: TfrxDBDataset;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -127,5 +129,6 @@ procedure TDM.DataModuleCreate(Sender: TObject);
 begin
 FDConn.Connected := true;
 end;
+
 
 end.

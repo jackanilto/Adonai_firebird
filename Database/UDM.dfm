@@ -458,27 +458,148 @@ object DM: TDM
     Connection = FDConn
     UpdateOptions.UpdateTableName = 'TBL_ENTRADA_SAIDA'
     TableName = 'TBL_ENTRADA_SAIDA'
-    Left = 64
-    Top = 256
+    Left = 776
+    Top = 264
   end
   object DSEntSai: TDataSource
     DataSet = QueryEntSai
-    Left = 64
-    Top = 304
+    Left = 776
+    Top = 312
   end
   object QueryEntSai: TFDQuery
     Connection = FDConn
-    Left = 64
-    Top = 360
+    Left = 776
+    Top = 368
   end
   object DSAniverMes: TDataSource
     DataSet = QueryAniverMes
-    Left = 304
-    Top = 288
+    Left = 680
+    Top = 304
   end
   object QueryAniverMes: TFDQuery
     Connection = FDConn
-    Left = 304
-    Top = 344
+    Left = 680
+    Top = 360
+  end
+  object frxCarteirinha: TfrxReport
+    Version = '6.3.3'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Padr'#227'o'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 44197.778314513900000000
+    ReportOptions.LastChange = 44197.915507256940000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 56
+    Top = 352
+    Datasets = <
+      item
+        DataSet = frxCarteira
+        DataSetName = 'frxDBMEMBRO'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 180.000000000000000000
+      PaperHeight = 50.000000000000000000
+      PaperSize = 256
+      Frame.Typ = []
+      MirrorMode = []
+      object frxDBMEMBRONOME: TfrxMemoView
+        IndexTag = 1
+        AllowVectorExport = True
+        Left = 18.897650000000000000
+        Top = 147.960730000000000000
+        Width = 313.700990000000000000
+        Height = 18.897650000000000000
+        DataField = 'NOME'
+        DataSet = frxCarteira
+        DataSetName = 'frxDBMEMBRO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+        HAlign = haCenter
+        Memo.UTF8W = (
+          '[frxDBMEMBRO."NOME"]')
+        ParentFont = False
+      end
+      object Picture1: TfrxPictureView
+        AllowVectorExport = True
+        Left = 230.551330000000000000
+        Top = 7.559060000000000000
+        Width = 102.047310000000000000
+        Height = 117.165430000000000000
+        DataField = 'IMAGEM'
+        DataSet = frxCarteira
+        DataSetName = 'frxDBMEMBRO'
+        Frame.Typ = []
+        HightQuality = False
+        Transparent = False
+        TransparentColor = clWhite
+      end
+      object frxDBMEMBROROLL: TfrxMemoView
+        IndexTag = 1
+        AllowVectorExport = True
+        Left = 230.551330000000000000
+        Top = 128.504020000000000000
+        Width = 102.047310000000000000
+        Height = 18.897650000000000000
+        DataField = 'ROLL'
+        DataSet = frxCarteira
+        DataSetName = 'frxDBMEMBRO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+        HAlign = haCenter
+        Memo.UTF8W = (
+          '[frxDBMEMBRO."ROLL"]')
+        ParentFont = False
+      end
+      object frxDBMEMBROTRATAMENTO: TfrxMemoView
+        IndexTag = 1
+        AllowVectorExport = True
+        Left = 359.055350000000000000
+        Top = 26.456710000000000000
+        Width = 283.464750000000000000
+        Height = 18.897650000000000000
+        DataField = 'TRATAMENTO'
+        DataSet = frxCarteira
+        DataSetName = 'frxDBMEMBRO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+        HAlign = haCenter
+        Memo.UTF8W = (
+          '[frxDBMEMBRO."TRATAMENTO"]')
+        ParentFont = False
+      end
+    end
+  end
+  object frxCarteira: TfrxDBDataset
+    UserName = 'frxDBMEMBRO'
+    CloseDataSource = False
+    DataSet = QueryMembro
+    BCDToCurrency = False
+    Left = 56
+    Top = 408
   end
 end

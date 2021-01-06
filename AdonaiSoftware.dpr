@@ -9,7 +9,18 @@ uses
   UProfissoes in 'Cadastros\UProfissoes.pas' {FrmCadProfissoes},
   UGrupos in 'Cadastros\UGrupos.pas' {FrmGRUPOS},
   UTratamentos in 'Cadastros\UTratamentos.pas' {FrmTRATAMENTOS},
-  UEntraSaida in 'Movimentacoes\UEntraSaida.pas' {FormEntraSaida};
+  UEntraSaida in 'Movimentacoes\UEntraSaida.pas' {FormEntraSaida},
+  USobre in 'USobre.pas' {FrmSobre},
+  USplash in 'USplash.pas' {FrmSplash},
+  VFrames in 'Win32\WebcamFiles\VFrames.pas',
+  VSample in 'Win32\WebcamFiles\VSample.pas',
+  Direct3D9 in 'Win32\WebcamFiles\DirectX\Direct3D9.pas',
+  DirectDraw in 'Win32\WebcamFiles\DirectX\DirectDraw.pas',
+  DirectShow9 in 'Win32\WebcamFiles\DirectX\DirectShow9.pas',
+  DirectSound in 'Win32\WebcamFiles\DirectX\DirectSound.pas',
+  DXTypes in 'Win32\WebcamFiles\DirectX\DXTypes.pas',
+  uWebCam in 'Cadastros\uWebCam.pas' {frmWebCam},
+  UCarteirinhas in 'Relatorios\UCarteirinhas.pas' {FrmCarteirinha};
 
 {$R *.res}
 
@@ -24,5 +35,9 @@ begin
   Application.CreateForm(TFrmGRUPOS, FrmGRUPOS);
   Application.CreateForm(TFrmTRATAMENTOS, FrmTRATAMENTOS);
   Application.CreateForm(TFormEntraSaida, FormEntraSaida);
+  Application.CreateForm(TFrmSobre, FrmSobre);
+  Application.CreateForm(TFrmSplash, FrmSplash);
+  Application.CreateForm(TFrmCarteirinha, FrmCarteirinha);
+  //Application.CreateForm(TfrmWebCam, frmWebCam);
   Application.Run;
 end.

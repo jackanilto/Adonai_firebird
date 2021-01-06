@@ -37,7 +37,7 @@
         Caption = 'Nome: '
       end
       object imgProfile: TImage
-        Left = 769
+        Left = 764
         Top = 87
         Width = 120
         Height = 120
@@ -957,7 +957,7 @@
         OnClick = btnNovoClick
       end
       object BtnSalvar: TBitBtn
-        Left = 298
+        Left = 300
         Top = 488
         Width = 56
         Height = 56
@@ -2314,6 +2314,7 @@
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
         OnCellClick = gridCellClick
+        OnDrawColumnCell = gridDrawColumnCell
         Columns = <
           item
             Expanded = False
@@ -3276,10 +3277,5 @@
       0000C003000000000000E007000000000000E00F000000000000E43F00000000
       0000C67F000000000000FFFF0000000000000000000000000000000000000000
       000000000000}
-  end
-  object ApplicationEvents1: TApplicationEvents
-    OnException = ApplicationEvents1Exception
-    Left = 396
-    Top = 4
   end
 end

@@ -1,0 +1,578 @@
+object FrmCarteirinha: TFrmCarteirinha
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'Impress'#227'o de Carteirinhas'
+  ClientHeight = 416
+  ClientWidth = 744
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label2: TLabel
+    Left = 20
+    Top = 51
+    Width = 36
+    Height = 13
+    Caption = 'Buscar:'
+  end
+  object gridListMembros: TDBGrid
+    Left = 8
+    Top = 160
+    Width = 361
+    Height = 193
+    DataSource = DM.DSMembro
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ROLL'
+        Width = 50
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ID'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME'
+        Width = 270
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ENDERECO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'NUMERO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'BAIRRO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'CIDADE'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'ESTADO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'CEP'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'COMPLEMENTO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'TELPESSOAL'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'CONTATO1'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'CONTATO2'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'EMAIL'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'DIZIMISTA'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'GRUPO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'TRATAMENTO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'IMAGEM'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'OBS'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'SEXO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'ESTADO_CIVIL'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'MINISTERIO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'GRAU_ESCOLARIDADE'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'BATIZADO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'RG'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'CPF'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME_PAI'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME_MAE'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'PAIS_ORIGEM'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'TELEFONE_PAIS_ORIGEM'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'ATIVO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'IGREJA_BATISMO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'NATURALIDADE'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'TITULO_ELEITOR'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'FILHOS'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'CONJUGE'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'CAMPO13'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'TIPO_MORADIA'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'CAMPO15'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'HISTORICO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'PROFISSAO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'CIDADE_BATISMO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'OBSERVACAO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'VALOR'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'DATA_NASC'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'DATEBATISMO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'DATEVALCARTEIRA'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'DATEADMISSAO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'DATECONSAGRA'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'DATECASAMENTO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'DATENASCCONJUGE'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'DATA_BATISMO'
+        Visible = False
+      end>
+  end
+  object gridMembrosPrinter: TDBGrid
+    Left = 375
+    Top = 160
+    Width = 361
+    Height = 193
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ID'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ENDERECO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NUMERO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'BAIRRO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CIDADE'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ESTADO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CEP'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'COMPLEMENTO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TELPESSOAL'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CONTATO1'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CONTATO2'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'EMAIL'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DIZIMISTA'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'GRUPO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TRATAMENTO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'IMAGEM'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'OBS'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'SEXO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ESTADO_CIVIL'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'MINISTERIO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'GRAU_ESCOLARIDADE'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'BATIZADO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'RG'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CPF'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME_PAI'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME_MAE'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'PAIS_ORIGEM'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TELEFONE_PAIS_ORIGEM'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ATIVO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NATURALIDADE'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TITULO_ELEITOR'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'FILHOS'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CONJUGE'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CAMPO13'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TIPO_MORADIA'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CAMPO15'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'HISTORICO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'PROFISSAO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CIDADE_BATISMO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'OBSERVACAO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'VALOR'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ROLL'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'IGREJA_BATISMO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATA_NASC'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATEBATISMO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATEVALCARTEIRA'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATEADMISSAO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATECONSAGRA'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATECASAMENTO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATENASCCONJUGE'
+        Visible = True
+      end>
+  end
+  object edtBuscar: TEdit
+    Left = 71
+    Top = 48
+    Width = 250
+    Height = 21
+    TabOrder = 2
+    OnChange = edtBuscarChange
+  end
+end

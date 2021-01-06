@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.WinXCalendars,
   Vcl.ExtCtrls, Vcl.Menus, Vcl.Buttons, Vcl.WinXCtrls, Vcl.WinXPickers,
   Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg, Data.DB, Vcl.Grids,
-  Vcl.DBGrids, frxClass;
+  Vcl.DBGrids, frxClass, UCarteirinhas;
   //Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg, ESpshScr;
 
 type
@@ -25,12 +25,12 @@ type
     Deslogar1: TMenuItem;
     Encerrar1: TMenuItem;
     Membros1: TMenuItem;
-    SpeedButton1: TSpeedButton;
+    btnADDMEmbro: TSpeedButton;
     Profissoes1: TMenuItem;
     SpeedButton2: TSpeedButton;
     btnGRUPOS: TSpeedButton;
     ratamentos1: TMenuItem;
-    SpeedButton3: TSpeedButton;
+    btnTratamentos: TSpeedButton;
     LabelHora: TLabel;
     Image2: TImage;
     Image3: TImage;
@@ -38,22 +38,24 @@ type
     SobreoPrograma: TMenuItem;
     Configuraes1: TMenuItem;
     Carteirinhas1: TMenuItem;
+    btnCarteirinhas: TSpeedButton;
     //EvSplashScreen1: TEvSplashScreen;
     procedure Button1Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Encerrar1Click(Sender: TObject);
     procedure Membros1Click(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
+    procedure btnADDMEmbroClick(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure Profissoes1Click(Sender: TObject);
     procedure btnGRUPOSClick(Sender: TObject);
     procedure Tratamentos1Click(Sender: TObject);
-    procedure SpeedButton3Click(Sender: TObject);
+    procedure btnTratamentosClick(Sender: TObject);
     procedure Deslogar1Click(Sender: TObject);
     procedure SobreoProgramaClick(Sender: TObject);
     procedure Licensa1Click(Sender: TObject);
     procedure Carteirinhas1Click(Sender: TObject);
+    procedure btnCarteirinhasClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -148,7 +150,7 @@ FrmSobre.ShowModal;
 end;
 
 
-procedure TFrmPrincipal.SpeedButton1Click(Sender: TObject);
+procedure TFrmPrincipal.btnADDMEmbroClick(Sender: TObject);
 begin
 FrmCadMembro.ShowModal;
 end;
@@ -159,9 +161,14 @@ Application.Terminate;
 end;
 
 
-procedure TFrmPrincipal.SpeedButton3Click(Sender: TObject);
+procedure TFrmPrincipal.btnTratamentosClick(Sender: TObject);
 begin
 FrmTRATAMENTOS.ShowModal;
+end;
+
+procedure TFrmPrincipal.btnCarteirinhasClick(Sender: TObject);
+begin
+FrmCarteirinha.ShowModal;
 end;
 
 procedure TFrmPrincipal.Timer1Timer(Sender: TObject);

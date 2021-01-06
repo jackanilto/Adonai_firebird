@@ -9,13 +9,13 @@ uses
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, FireDAC.Phys.IBBase, FireDAC.Comp.UI,
   Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, System.Actions,
-  Vcl.ActnList, frxClass, frxDBSet;
+  Vcl.ActnList, frxClass, frxDBSet, Datasnap.DBClient;
 
 type
   TDM = class(TDataModule)
     FDConn: TFDConnection;
-    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
-    FDPhysFBDriverLink1: TFDPhysFBDriverLink;
+    WaitCursor: TFDGUIxWaitCursor;
+    FBDriver: TFDPhysFBDriverLink;
     TblAcesso: TFDTable;
     DSAcesso: TDataSource;
     TblAcessoCODIGO: TIntegerField;
@@ -107,6 +107,17 @@ type
     TBL_MEMBROSDATENASCCONJUGE: TDateField;
     frxCarteirinha: TfrxReport;
     frxCarteira: TfrxDBDataset;
+    cdsCARTtemp: TClientDataSet;
+    cdsCARTtempNOME: TStringField;
+    cdsCARTtempTRATAMENTO: TStringField;
+    cdsCARTtempNOME_PAI: TStringField;
+    cdsCARTtempNOME_MAE: TStringField;
+    cdsCARTtempTELPESSOAL: TStringField;
+    cdsCARTtempCONJUGE: TStringField;
+    cdsCARTtempDATA_NASC: TDateField;
+    cdsCARTtempROLL: TIntegerField;
+    DSCARTtemp: TDataSource;
+    cdsCARTtempid: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

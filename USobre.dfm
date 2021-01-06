@@ -3791,9 +3791,9 @@ object FrmSobre: TFrmSobre
   object Label1: TLabel
     Left = 43
     Top = 45
-    Width = 54
+    Width = 219
     Height = 19
-    Caption = 'Label1'
+    Caption = 'Data inicio e fim da licen'#231'a'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -16
@@ -4127,16 +4127,20 @@ object FrmSobre: TFrmSobre
     Stretch = True
   end
   object Label2: TLabel
-    Left = 43
-    Top = 80
-    Width = 54
+    Left = 8
+    Top = 133
+    Width = 122
     Height = 19
-    Caption = 'Label2'
+    Hint = 'Dias restante da Licen'#231'a'
+    Caption = 'Dias Restantes'
+    Color = clBtnFace
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
+    Font.Color = clRed
     Font.Height = -16
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
+    GlowSize = 10
+    ParentColor = False
     ParentFont = False
   end
   object EvAppProtect1: TEvAppProtect

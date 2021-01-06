@@ -11,11 +11,16 @@ type
   TFrmCarteirinha = class(TForm)
     gridListMembros: TDBGrid;
     gridMembrosPrinter: TDBGrid;
-    Label2: TLabel;
     edtBuscar: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    btnCarteirinha: TSpeedButton;
     SpeedButton1: TSpeedButton;
     procedure edtBuscarChange(Sender: TObject);
     procedure gridListMembrosDblClick(Sender: TObject);
+    procedure btnCarteirinhaClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,6 +35,21 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFrmCarteirinha.btnCarteirinhaClick(Sender: TObject);
+begin
+// Faz a consulta do membro para enviar para o relatorio
+DM.cdsCARTtemp.Close;
+//DM.cdsCARTtemp.Add('select * from TBL_MEMBROS where id = :id'); // passa o parametro ID
+//DM.cdsCARTtemp.ParamByName('ID').Value := DM.cdsCARTtemp.ParamByName('ID');       // Recupera o parametro ID para o Edit
+DM.cdsCARTtemp.Open();
+
+
+DM.frxCarteirinha.LoadFromFile(GetCurrentDir + '\Relatorio\modelo_01.fr3');
+DM.frxCarteirinha.ShowReport();
+btnCarteirinha.Enabled := true;
+buscarTudo; // Após chamar o relatorio, executa a procedure BuscarTudo
+end;
 
 procedure TFrmCarteirinha.buscarNome;
 begin
@@ -57,6 +77,7 @@ procedure TFrmCarteirinha.gridListMembrosDblClick(Sender: TObject);
 begin
   DM.cdsCARTtemp.Append;  //Coloca a TABELA TEMPORARIA em modo Insert ou Edit
   //Tabela TEMP Field NOME recebe Query Membro Field Nome  quando executado DuploClick
+  DM.cdsCARTtemp.FieldByName('ID').AsInteger := dm.QueryMembro.FieldByName('ID').AsInteger;
   DM.cdsCARTtemp.FieldByName('NOME').AsString := dm.QueryMembro.FieldByName('NOME').AsString;
   DM.cdsCARTtemp.FieldByName('TRATAMENTO').AsString := dm.QueryMembro.FieldByName('TRATAMENTO').AsString;
   DM.cdsCARTtemp.FieldByName('NOME_PAI').AsString := dm.QueryMembro.FieldByName('NOME_PAI').AsString;
@@ -66,6 +87,12 @@ begin
   DM.cdsCARTtemp.FieldByName('DATA_NASC').AsString := dm.QueryMembro.FieldByName('DATA_NASC').AsString;
   DM.cdsCARTtemp.FieldByName('ROLL').AsString := dm.QueryMembro.FieldByName('ROLL').AsString;
   DM.cdsCARTtemp.Post;
+end;
+
+procedure TFrmCarteirinha.SpeedButton1Click(Sender: TObject);
+begin
+DM.cdsCARTtemp.EmptyDataSet;
+
 end;
 
 end.

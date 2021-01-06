@@ -1,0 +1,40 @@
+program AdonaiSoftware;
+
+uses
+  Vcl.Forms,
+  ULogin in 'ULogin.pas' {FrmLogin},
+  UDM in 'Database\UDM.pas' {DM: TDataModule},
+  UPrincipal in 'UPrincipal.pas' {FrmPrincipal},
+  UCadMembro in 'Cadastros\UCadMembro.pas' {FrmCadMembro},
+  UProfissoes in 'Cadastros\UProfissoes.pas' {FrmCadProfissoes},
+  UGrupos in 'Cadastros\UGrupos.pas' {FrmGRUPOS},
+  UTratamentos in 'Cadastros\UTratamentos.pas' {FrmTRATAMENTOS},
+  UEntraSaida in 'Movimentacoes\UEntraSaida.pas' {FormEntraSaida},
+  USobre in 'USobre.pas' {FrmSobre},
+  USplash in 'USplash.pas' {FrmSplash},
+  //uWebCam in 'uWebCam.pas' {frmWebCam},
+  VFrames in 'Win32\WebcamFiles\VFrames.pas',
+  VSample in 'Win32\WebcamFiles\VSample.pas',
+  Direct3D9 in 'Win32\WebcamFiles\DirectX\Direct3D9.pas',
+  DirectDraw in 'Win32\WebcamFiles\DirectX\DirectDraw.pas',
+  DirectShow9 in 'Win32\WebcamFiles\DirectX\DirectShow9.pas',
+  DirectSound in 'Win32\WebcamFiles\DirectX\DirectSound.pas',
+  DXTypes in 'Win32\WebcamFiles\DirectX\DXTypes.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmLogin, FrmLogin);
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFrmPrincipal, FrmPrincipal);
+  Application.CreateForm(TFrmCadMembro, FrmCadMembro);
+  Application.CreateForm(TFrmCadProfissoes, FrmCadProfissoes);
+  Application.CreateForm(TFrmGRUPOS, FrmGRUPOS);
+  Application.CreateForm(TFrmTRATAMENTOS, FrmTRATAMENTOS);
+  Application.CreateForm(TFormEntraSaida, FormEntraSaida);
+  Application.CreateForm(TFrmSobre, FrmSobre);
+  Application.CreateForm(TFrmSplash, FrmSplash);
+  Application.Run;
+end.

@@ -480,7 +480,6 @@ object FrmCarteirinha: TFrmCarteirinha
       item
         Expanded = False
         FieldName = 'ROLL'
-        Width = -1
         Visible = False
       end
       item

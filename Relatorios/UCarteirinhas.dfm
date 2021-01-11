@@ -13,6 +13,8 @@ object FrmCarteirinha: TFrmCarteirinha
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -55,7 +57,7 @@ object FrmCarteirinha: TFrmCarteirinha
     ParentFont = False
   end
   object btnCarteirinha: TSpeedButton
-    Left = 704
+    Left = 755
     Top = 272
     Width = 177
     Height = 49
@@ -120,7 +122,7 @@ object FrmCarteirinha: TFrmCarteirinha
     OnClick = btnCarteirinhaClick
   end
   object SpeedButton1: TSpeedButton
-    Left = 704
+    Left = 755
     Top = 336
     Width = 177
     Height = 49
@@ -467,9 +469,9 @@ object FrmCarteirinha: TFrmCarteirinha
   object gridMembrosPrinter: TDBGrid
     Left = 20
     Top = 272
-    Width = 653
+    Width = 729
     Height = 193
-    DataSource = DM.DSCARTtemp
+    DataSource = DM.DSTEMP
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -480,35 +482,25 @@ object FrmCarteirinha: TFrmCarteirinha
       item
         Expanded = False
         FieldName = 'ROLL'
-        Visible = False
+        Width = 50
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ID'
+        Width = 50
+        Visible = True
       end
       item
         Expanded = False
         FieldName = 'NOME'
-        Width = 180
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'CONJUGE'
-        Width = 180
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TRATAMENTO'
-        Width = 120
+        Width = 150
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'TELPESSOAL'
         Width = 80
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DATA_NASC'
         Visible = True
       end
       item
@@ -521,6 +513,17 @@ object FrmCarteirinha: TFrmCarteirinha
         Expanded = False
         FieldName = 'NOME_MAE'
         Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CONJUGE'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATA_NASC'
         Visible = True
       end>
   end

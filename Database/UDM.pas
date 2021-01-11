@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, FireDAC.Phys.IBBase, FireDAC.Comp.UI,
   Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, System.Actions,
-  Vcl.ActnList, frxClass, frxDBSet, Datasnap.DBClient;
+  Vcl.ActnList, frxClass, frxDBSet, Datasnap.DBClient, jpeg;
 
 type
   TDM = class(TDataModule)
@@ -106,18 +106,19 @@ type
     TBL_MEMBROSDATECASAMENTO: TDateField;
     TBL_MEMBROSDATENASCCONJUGE: TDateField;
     frxCarteirinha: TfrxReport;
-    frxCarteira: TfrxDBDataset;
-    cdsCARTtemp: TClientDataSet;
-    cdsCARTtempNOME: TStringField;
-    cdsCARTtempTRATAMENTO: TStringField;
-    cdsCARTtempNOME_PAI: TStringField;
-    cdsCARTtempNOME_MAE: TStringField;
-    cdsCARTtempTELPESSOAL: TStringField;
-    cdsCARTtempCONJUGE: TStringField;
-    cdsCARTtempDATA_NASC: TDateField;
-    cdsCARTtempROLL: TIntegerField;
-    DSCARTtemp: TDataSource;
-    cdsCARTtempid: TIntegerField;
+    frxDBCarteira: TfrxDBDataset;
+    cdsTEMP: TClientDataSet;
+    cdsTEMPID: TStringField;
+    cdsTEMPNOME: TStringField;
+    cdsTEMPTELPESSOAL: TStringField;
+    cdsTEMPNOME_PAI: TStringField;
+    cdsTEMPNOME_MAE: TStringField;
+    cdsTEMPDATA_NASC: TDateField;
+    cdsTEMPTRATAMENTO: TStringField;
+    cdsTEMPCONJUGE: TStringField;
+    cdsTEMPROLL: TIntegerField;
+    cdsTEMPIMAGEM: TBlobField;
+    DSTEMP: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -140,6 +141,5 @@ procedure TDM.DataModuleCreate(Sender: TObject);
 begin
 FDConn.Connected := true;
 end;
-
 
 end.

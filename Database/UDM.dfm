@@ -502,8 +502,6 @@ object DM: TDM
   end
   object frxCarteirinha: TfrxReport
     Version = '6.3.3'
-    DataSet = frxDBCarteira
-    DataSetName = 'frxDBMEMBRO'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
@@ -511,7 +509,7 @@ object DM: TDM
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 44202.884277581000000000
-    ReportOptions.LastChange = 44204.515949976800000000
+    ReportOptions.LastChange = 44206.933443495370000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -609,11 +607,13 @@ object DM: TDM
         Height = 170.637910000000000000
         Top = 18.897650000000000000
         Width = 778.583180000000000000
+        DataSet = frxDBCarteira
+        DataSetName = 'frxDBMEMBRO'
         RowCount = 0
         object Picture3: TfrxPictureView
           AllowVectorExport = True
           Top = 3.000000000000000000
-          Width = 805.039890000000000000
+          Width = 661.417310630000000000
           Height = 162.519790000000000000
           DataField = 'TELPESSOAL'
           DataSet = frxDBCarteira
@@ -29236,7 +29236,7 @@ object DM: TDM
       'DATECASAMENTO=DATECASAMENTO'
       'DATENASCCONJUGE=DATENASCCONJUGE'
       'DATA_BATISMO=DATA_BATISMO')
-    DataSet = QueryMembro
+    DataSet = cdsTEMP
     BCDToCurrency = False
     Left = 56
     Top = 408

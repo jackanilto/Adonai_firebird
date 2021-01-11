@@ -40,13 +40,7 @@ implementation
 
 procedure TFrmCarteirinha.btnCarteirinhaClick(Sender: TObject);
 begin
-// Faz a consulta do membro para enviar para o relatorio
-DM.cdsTEMP.Close;
-//DM.cdsCARTtemp.Add('select * from TBL_MEMBROS where id = :id'); // passa o parametro ID
-//DM.cdsCARTtemp.ParamByName('ID').Value := DM.cdsCARTtemp.ParamByName('ID');       // Recupera o parametro ID para o Edit
-DM.cdsTEMP.Open();
-
-
+DM.cdsTEMP.Open;
 DM.frxCarteirinha.LoadFromFile(GetCurrentDir + '\Relatorio\modelo_01.fr3');
 DM.frxCarteirinha.ShowReport();
 btnCarteirinha.Enabled := true;
@@ -75,6 +69,12 @@ begin
 buscarNome;
 end;
 
+procedure TFrmCarteirinha.FormShow(Sender: TObject);
+begin
+buscarTudo;
+edtBuscar.SetFocus;
+end;
+
 procedure TFrmCarteirinha.FormCreate(Sender: TObject);
 begin
 DM.cdsTEMP.Active := false;
@@ -83,11 +83,6 @@ DM.cdsTEMP.Active := true;
 //DM.DSCARTtemp.Edit;
 end;
 
-procedure TFrmCarteirinha.FormShow(Sender: TObject);
-begin
-buscarTudo;
-edtBuscar.SetFocus;
-end;
 
 procedure TFrmCarteirinha.gridListMembrosDblClick(Sender: TObject);
 begin

@@ -68,7 +68,6 @@ type
     TBL_MEMBROSDIZIMISTA: TStringField;
     TBL_MEMBROSGRUPO: TStringField;
     TBL_MEMBROSTRATAMENTO: TStringField;
-    TBL_MEMBROSIMAGEM: TBlobField;
     TBL_MEMBROSOBS: TStringField;
     TBL_MEMBROSSEXO: TStringField;
     TBL_MEMBROSESTADO_CIVIL: TStringField;
@@ -119,6 +118,14 @@ type
     cdsTEMPROLL: TIntegerField;
     cdsTEMPIMAGEM: TBlobField;
     DSTEMP: TDataSource;
+    cdsTEMPIMG4: TGraphicField;
+    TBL_MEMBROSIMAGEM: TStringField;
+    TBL_IGREJAS: TFDTable;
+    DSIgrejas: TDataSource;
+    QueryIgrejas: TFDQuery;
+    TBL_IGREJASID: TIntegerField;
+    TBL_IGREJASNOME_IGREJA: TStringField;
+    TBL_IGREJASPASTA_IMG: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

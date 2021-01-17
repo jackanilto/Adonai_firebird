@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, VSample, VFrames;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, VSample, VFrames,
+  Vcl.Buttons;
 
 type
   TfrmWebCam = class(TForm)
@@ -12,12 +13,14 @@ type
     pnlRight: TPanel;
     pbCamera: TPaintBox;
     imgSnapshot: TImage;
-    btnTake: TButton;
-    btnSave: TButton;
+    btnFOTOGRAFAR: TSpeedButton;
+    btnSALVARFOTO: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
     procedure btnTakeClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnFOTOGRAFARClick(Sender: TObject);
+    procedure btnSALVARFOTOClick(Sender: TObject);
   private
     { Private declarations }
     FVideoImage: TVideoImage;
@@ -45,7 +48,7 @@ begin
   imgSnapshot.Picture.Assign(FVideoBitmap);
 end;
 
-//Ao fechar a form, destaiva a webcam
+//Ao fechar a form, destativa a webcam
 procedure TfrmWebCam.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   FVideoImage.VideoStop;
@@ -75,6 +78,16 @@ begin
   FVideoImage.GetBitmap(FVideoBitmap);
   // Paint image onto screen, either normally or flipped.
   pbCamera.Canvas.Draw(0, 0, FVideoBitmap);
+end;
+
+procedure TfrmWebCam.btnSALVARFOTOClick(Sender: TObject);
+begin
+  Self.ModalResult := mrOk;
+end;
+
+procedure TfrmWebCam.btnFOTOGRAFARClick(Sender: TObject);
+begin
+  imgSnapshot.Picture.Assign(FVideoBitmap);
 end;
 
 end.

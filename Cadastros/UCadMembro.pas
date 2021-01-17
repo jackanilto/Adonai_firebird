@@ -23,7 +23,6 @@ type
     EditNOME: TEdit;
     grid: TDBGrid;
     EditID: TEdit;
-    dialog: TOpenPictureDialog;
     imgProfile: TImage;
     Label2: TLabel;
     edtBuscar: TEdit;
@@ -127,6 +126,8 @@ type
     DateNASCCONJUGE: TJvDatePickerEdit;
     btnSave: TSpeedButton;
     btnCarteirinha: TSpeedButton;
+    dialog: TOpenDialog;
+    EditPATHFOTO: TEdit;
     procedure btnNovoClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -141,6 +142,10 @@ type
     procedure btnCarteirinhaClick(Sender: TObject);
     procedure gridDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    function ApplicationPath: String;
+    Function PathWithDelim( const APath : String ) : String ;
+
+    function RightStr(const AText: AnsiString; const ACount: Integer): AnsiString;
 
   private
     { Private declarations }
@@ -231,14 +236,44 @@ begin
    DM.TBL_MEMBROS.FieldByName('DateNASCCONJUGE')  .Value   := DateNASCCONJUGE          .Date;
    DM.TBL_MEMBROS.FieldByName('CIDADE_BATISMO')  .Value   := EditCIDADEBATISMO        .Text;
    DM.TBL_MEMBROS.FieldByName('DATA_NASC')  .Value   := DateNASC.Date;
+   DM.TBL_MEMBROS.FieldByName('IMAGEM')  .asstring   := editpathfoto.text;
+
 end;
 
 procedure TFrmCadMembro.btnAddClick(Sender: TObject);
+var path: string;
+dirfotos: string;
 begin
-dialog.Execute();
-imgProfile.Picture.LoadFromFile(dialog.filename);
-alterou := true;
+  dirfotos:=ApplicationPath+'Fotos';
+
+  if directoryexists(dirfotos) = false then
+  forcedirectories(dirfotos);
+
+  if dialog.Execute then
+  begin
+    EditPATHFOTO.TEXT:= dirfotos+'\'+ExtractFileName(Dialog.FileName);
+    imgProfile.picture.loadfromfile(Dialog.FileName);
+    imgProfile.visible := true;
+    imgProfile.picture.SaveToFile(EDITPATHFOTO.TEXT);
+  end;
 end;
+
+//  VAR
+//  PATH: STRING;
+//    begin
+//     PATH := DM.QueryIgrejas.FIELDBYNAME('PASTA_IMG').ASSTRING;
+//      IF PATH = '' THEN
+//        BEGIN
+//         ShowMessage(
+//         'PATH PARA GUARDAR AS FOTOS NÃO FOI DEFINIDO, ENTRE NOS PARÂMETROS DO SISTEMA, GUIA [SISTEMA] E INFORME O PATH CORRETAMENTE.');
+//         EXIT;
+//
+//
+//          alterou := true;
+//        end;
+//    end;
+
+
 
 procedure TFrmCadMembro.btnDeletarClick(Sender: TObject);
 begin
@@ -269,7 +304,7 @@ end;
 
 procedure TFrmCadMembro.btnEditarClick(Sender: TObject);
 begin
-if (editNOME.Text <> '') then
+  if (editNOME.Text <> '') then
     begin
     associarCampos;
     DM.TBL_MEMBROS.Edit;
@@ -302,7 +337,7 @@ if (editNOME.Text <> '') then
    ' GRAU_ESCOLARIDADE =  :GRAU_ESCOLARIDADE    , DATENASCCONJUGE      = :DATENASCCONJUGE      , '+
    ' BATIZADO          =  :BATIZADO             , CIDADE_BATISMO       = :CIDADE_BATISMO       , '+
    ' RG                =  :RG                   , DATA_NASC            = :DATA_NASC            , '+
-   ' CPF               =  :CPF                  , OBSERVACAO           = :OBSERVACAO where id  = :id');
+   ' IMAGEM = :IMAGEM, CPF               =  :CPF                  , OBSERVACAO           = :OBSERVACAO where id  = :id');
 
     end
     else
@@ -333,10 +368,10 @@ if (editNOME.Text <> '') then
    ' CPF               =  :CPF                  , OBSERVACAO           = :OBSERVACAO           , '+
    'imagem             =  :imagem                where id             = :id                     ');
 
-    imgPessoa := TPicture.Create;
-    imgPessoa.LoadFromFile(dialog.FileName);
-    DM.QueryMembro.ParamByName('imagem').Assign(imgPessoa);
-    imgPessoa.Free;
+//    imgPessoa := TPicture.Create;
+//    imgPessoa.LoadFromFile(dialog.FileName);
+//    DM.QueryMembro.ParamByName('imagem').Assign(imgPessoa);
+//    imgPessoa.Free;
     alterou := false;
     end;
 
@@ -390,6 +425,8 @@ if (editNOME.Text <> '') then
     DM.QueryMembro.ParamByName('DATA_NASC').Value := DateNASC.Date;
     DM.QueryMembro.ParamByName('OBSERVACAO').Value := MemoOBSERVACAO.Text;
     DM.QueryMembro.ParamByName('id').Value := editID.Text;
+    DM.QueryMembro.paramByName('IMAGEM').ASSTRING:=editpathfoto.text;
+
     DM.QueryMembro.ExecSql;
 
     MessageDlg('Editado com Sucesso!!', mtInformation, mbOKCancel, 0);
@@ -401,6 +438,7 @@ if (editNOME.Text <> '') then
     btnDeletar.Enabled := false;
     btnCarteirinha.Enabled := false;
     btnNovo.Enabled := true;
+    grid.Enabled := true;
     end
     else
     begin
@@ -410,44 +448,47 @@ end;
 
 procedure TFrmCadMembro.btnNovoClick(Sender: TObject);
 begin
-//apos editar um dado esta desbilitando o Edit
-EditNOME.Enabled := true; // Reabilita Edit
-EditNOME.Text := '';
-EditNOME.SetFocus;
-EditNOME.Enabled := true;
-DM.TBL_MEMBROS.Insert;
-carregarcbPROFISSAO;
-BtnSalvar.Enabled := true;
-btnNovo.Enabled := true;
+  //apos editar um dado esta desbilitando o Edit
+  grid.Enabled:=false;
+  EditNOME.Enabled := true; // Reabilita Edit
+  EditNOME.Text := '';
+  EditNOME.SetFocus;
+  EditNOME.Enabled := true;
+  DM.TBL_MEMBROS.Insert;
+  carregarcbPROFISSAO;
+  BtnSalvar.Enabled := true;
+  btnNovo.Enabled := true;
 
-btnEditar.Enabled := true;
-btnDeletar.Enabled := false;
+  btnEditar.Enabled := true;
+  btnDeletar.Enabled := false;
 end;
 
 procedure TFrmCadMembro.BtnSalvarClick(Sender: TObject);
 begin
-if (EditNOME.Text <> '') then
+  if (EditNOME.Text <> '') then
   begin
-  associarCampos;
-  salvarFoto;
-  DM.TBL_MEMBROS.Post;
-  MessageDlg('Salvo com Sucesso!!', mtInformation, mbOKCancel, 0);
-  buscarTudo;
-  desabilitarCampos;
-  btnSalvar.Enabled := false;
-  btnNovo.Enabled := true;
-  btnEditar.Enabled := false;
-  btnDeletar.Enabled := false;
-  btnCarteirinha.Enabled := false;
-  grid.Enabled := true;
-  end
-  else
-  begin
-  MessageDlg('Preencha os Campos', mtInformation, mbOKCancel, 0);
+    associarCampos;
+    //  salvarFoto;
+    DM.TBL_MEMBROS.Post;
+    MessageDlg('Salvo com Sucesso!!', mtInformation, mbOKCancel, 0);
+    buscarTudo;
+    desabilitarCampos;
+    btnSalvar.Enabled := false;
+    btnNovo.Enabled := true;
+    btnEditar.Enabled := false;
+    btnDeletar.Enabled := false;
+    btnCarteirinha.Enabled := false;
+    grid.Enabled := true;
+    end
+    else
+    begin
+    MessageDlg('Preencha os Campos', mtInformation, mbOKCancel, 0);
   end;
 end;
 
 procedure TFrmCadMembro.btnTakePhotoClick(Sender: TObject);
+var path: string;
+  dirfotos: string;
 begin
 frmWebCam := TfrmWebCam.Create(Application);
 //    frmWebCam.ShowModal;
@@ -457,10 +498,19 @@ frmWebCam := TfrmWebCam.Create(Application);
     if ModalResult = mrOk then
       imgProfile.Picture.Assign(imgSnapshot.Picture);
       begin
-      //dialog.Execute();
-      //img.Picture.LoadFromFile(dialog.filename);
-      alterou := true;
-end;
+        //dialog.Execute();
+        //img.Picture.LoadFromFile(dialog.filename);
+        alterou := true;
+
+        dirfotos:=ApplicationPath+'Fotos';
+
+        if directoryexists(dirfotos) = false then
+        forcedirectories(dirfotos);
+
+        EditPATHFOTO.TEXT:= dirfotos+'\'+editid.text+'.bmp';
+        imgProfile.visible := true;
+        imgProfile.picture.SaveToFile(EDITPATHFOTO.TEXT);
+      end;
   end;
 end;
 
@@ -581,189 +631,207 @@ end;
 procedure ExibeFoto(DataSet : TDataSet; BlobFieldName : String; ImageExibicao :
 TImage);
 
- var MemoryStream:TMemoryStream; jpg : TPicture;
- const
-  OffsetMemoryStream : Int64 = 0;
-
-begin
-  if not(DataSet.IsEmpty) and
-  not((DataSet.FieldByName(BlobFieldName) as TBlobField).IsNull) then
-    try
-      MemoryStream := TMemoryStream.Create;
-      Jpg := TPicture.Create;
-      (DataSet.FieldByName(BlobFieldName) as
-TBlobField).SaveToStream(MemoryStream);
-      MemoryStream.Position := OffsetMemoryStream;
-      Jpg.LoadFromStream(MemoryStream);
-      ImageExibicao.Picture.Assign(Jpg);
-    finally
-     // Jpg.Free;
-      MemoryStream.Free;
-    end
-  else
-    ImageExibicao.Picture := Nil;
+  begin
+  //imgProfile.picture.loadfromfile(xApplicationPath+'FOTOS\PROD_'+DM.QUERYmEMBRO.fieldbyname('IMAGEM').asstring+'.png');
+    //imgProfile.Picture.LoadFromFile(DM.TBL_MEMBROIMAGEM.Value);   // atualiza foto na navegação
 end;
+
+// var MemoryStream:TMemoryStream; jpg : TPicture;
+// const
+//  OffsetMemoryStream : Int64 = 0;
+//
+//begin
+//  if not(DataSet.IsEmpty) and
+//  not((DataSet.FieldByName(BlobFieldName) as TBlobField).IsNull) then
+//    try
+//      MemoryStream := TMemoryStream.Create;
+//      Jpg := TPicture.Create;
+//      (DataSet.FieldByName(BlobFieldName) as
+//TBlobField).SaveToStream(MemoryStream);
+//      MemoryStream.Position := OffsetMemoryStream;
+//      Jpg.LoadFromStream(MemoryStream);
+//      ImageExibicao.Picture.Assign(Jpg);
+//    finally
+//     // Jpg.Free;
+//      MemoryStream.Free;
+//    end
+//  else
+//    ImageExibicao.Picture := Nil;
+//end;
 
 
 procedure TFrmCadMembro.gridCellClick(Column: TColumn);
 begin
-DM.TBL_MEMBROS.Edit;
-btnEditar.Enabled := true;
-btnDeletar.Enabled := true;
-btnAdd.Enabled := true;
-btnCarteirinha.Enabled := true;
-habilitarCampos;
+  DM.TBL_MEMBROS.Edit;
+  DM.QueryMembro.Edit;
+  btnEditar.Enabled := true;
+  btnDeletar.Enabled := true;
+  btnAdd.Enabled := true;
+  btnCarteirinha.Enabled := true;
+  habilitarCampos;
 
-if DM.QueryMembro.FieldByName('NOME').Value <> null then
-EditNOME.Text := DM.QueryMembro.FieldByName('NOME').Value;
+  if DM.QueryMembro.FieldByName('NOME').Value <> null then
+  EditNOME.Text := DM.QueryMembro.FieldByName('NOME').Value;
 
-if DM.QueryMembro.FieldByName('ENDERECO').Value <> null then
-EditENDERECO.Text := DM.QueryMembro.FieldByName('ENDERECO').Value;
+  if DM.QueryMembro.FieldByName('ENDERECO').Value <> null then
+  EditENDERECO.Text := DM.QueryMembro.FieldByName('ENDERECO').Value;
 
-if DM.QueryMembro.FieldByName('NUMERO').Value <> null then
-EditNUMERO.Text  := DM.QueryMembro.FieldByName('NUMERO').Value;
+  if DM.QueryMembro.FieldByName('NUMERO').Value <> null then
+  EditNUMERO.Text  := DM.QueryMembro.FieldByName('NUMERO').Value;
 
-if DM.QueryMembro.FieldByName('BAIRRO').Value <> null then
-EditBAIRRO.Text  := DM.QueryMembro.FieldByName('BAIRRO').Value;
+  if DM.QueryMembro.FieldByName('BAIRRO').Value <> null then
+  EditBAIRRO.Text  := DM.QueryMembro.FieldByName('BAIRRO').Value;
 
-if DM.QueryMembro.FieldByName('CIDADE').Value <> null then
-EditCIDADE.Text  := DM.QueryMembro.FieldByName('CIDADE').Value;
+  if DM.QueryMembro.FieldByName('CIDADE').Value <> null then
+  EditCIDADE.Text  := DM.QueryMembro.FieldByName('CIDADE').Value;
 
-if DM.QueryMembro.FieldByName('ESTADO').Value <> null then
-EditESTADO.Text  := DM.QueryMembro.FieldByName('ESTADO').Value;
+  if DM.QueryMembro.FieldByName('ESTADO').Value <> null then
+  EditESTADO.Text  := DM.QueryMembro.FieldByName('ESTADO').Value;
 
-if DM.QueryMembro.FieldByName('CEP').Value <> null then
-MaskCEP.Text  := DM.QueryMembro.FieldByName('CEP').Value;
+  if DM.QueryMembro.FieldByName('CEP').Value <> null then
+  MaskCEP.Text  := DM.QueryMembro.FieldByName('CEP').Value;
 
-if DM.QueryMembro.FieldByName('COMPLEMENTO').Value <> null then
-EditCOMPLEMENTO.Text  := DM.QueryMembro.FieldByName('COMPLEMENTO').Value;
+  if DM.QueryMembro.FieldByName('COMPLEMENTO').Value <> null then
+  EditCOMPLEMENTO.Text  := DM.QueryMembro.FieldByName('COMPLEMENTO').Value;
 
-if DM.QueryMembro.FieldByName('TELPESSOAL').Value <> null then
-EditTELPESSOAL.Text  := DM.QueryMembro.FieldByName('TELPESSOAL').Value;
+  if DM.QueryMembro.FieldByName('TELPESSOAL').Value <> null then
+  EditTELPESSOAL.Text  := DM.QueryMembro.FieldByName('TELPESSOAL').Value;
 
-if DM.QueryMembro.FieldByName('CONTATO1').Value <> null then
-EditCONTATO1.Text  := DM.QueryMembro.FieldByName('CONTATO1').Value;
+  if DM.QueryMembro.FieldByName('CONTATO1').Value <> null then
+  EditCONTATO1.Text  := DM.QueryMembro.FieldByName('CONTATO1').Value;
 
-if DM.QueryMembro.FieldByName('CONTATO2').Value <> null then
-EditCONTATO2.Text  := DM.QueryMembro.FieldByName('CONTATO2').Value;
+  if DM.QueryMembro.FieldByName('CONTATO2').Value <> null then
+  EditCONTATO2.Text  := DM.QueryMembro.FieldByName('CONTATO2').Value;
 
-if DM.QueryMembro.FieldByName('EMAIL').Value <> null then
-EditEMAIL.Text  := DM.QueryMembro.FieldByName('EMAIL').Value;
+  if DM.QueryMembro.FieldByName('EMAIL').Value <> null then
+  EditEMAIL.Text  := DM.QueryMembro.FieldByName('EMAIL').Value;
 
-if DM.QueryMembro.FieldByName('DIZIMISTA').Value <> null then
-cbDIZIMISTA.Text  := DM.QueryMembro.FieldByName('DIZIMISTA').Value;
+  if DM.QueryMembro.FieldByName('DIZIMISTA').Value <> null then
+  cbDIZIMISTA.Text  := DM.QueryMembro.FieldByName('DIZIMISTA').Value;
 
-if DM.QueryMembro.FieldByName('VALOR').Value <> null then
-EditVALOR.Text  := DM.QueryMembro.FieldByName('VALOR').Value;
+  if DM.QueryMembro.FieldByName('VALOR').Value <> null then
+  EditVALOR.Text  := DM.QueryMembro.FieldByName('VALOR').Value;
 
-if DM.QueryMembro.FieldByName('GRUPO').Value <> null then
-cbGRUPO.Text  := DM.QueryMembro.FieldByName('GRUPO').Value;
+  if DM.QueryMembro.FieldByName('GRUPO').Value <> null then
+  cbGRUPO.Text  := DM.QueryMembro.FieldByName('GRUPO').Value;
 
-if DM.QueryMembro.FieldByName('TRATAMENTO').Value <> null then
-cbTRATAMENTO.Text  := DM.QueryMembro.FieldByName('TRATAMENTO').Value;
+  if DM.QueryMembro.FieldByName('TRATAMENTO').Value <> null then
+  cbTRATAMENTO.Text  := DM.QueryMembro.FieldByName('TRATAMENTO').Value;
 
-if DM.QueryMembro.FieldByName('SEXO').Value <> null then
-cbSEXO.Text  := DM.QueryMembro.FieldByName('SEXO').Value;
+  if DM.QueryMembro.FieldByName('SEXO').Value <> null then
+  cbSEXO.Text  := DM.QueryMembro.FieldByName('SEXO').Value;
 
-if DM.QueryMembro.FieldByName('ESTADO_CIVIL').Value <> null then
-cbESTCIVIL.Text  := DM.QueryMembro.FieldByName('ESTADO_CIVIL').Value;
+  if DM.QueryMembro.FieldByName('ESTADO_CIVIL').Value <> null then
+  cbESTCIVIL.Text  := DM.QueryMembro.FieldByName('ESTADO_CIVIL').Value;
 
-if DM.QueryMembro.FieldByName('MINISTERIO').Value <> null then
-cbMINISTERIO.Text  := DM.QueryMembro.FieldByName('MINISTERIO').Value;
+  if DM.QueryMembro.FieldByName('MINISTERIO').Value <> null then
+  cbMINISTERIO.Text  := DM.QueryMembro.FieldByName('MINISTERIO').Value;
 
-if DM.QueryMembro.FieldByName('PROFISSAO').Value <> null then
-cbPROFISSAO.Text  := DM.QueryMembro.FieldByName('PROFISSAO').Value;
+  if DM.QueryMembro.FieldByName('PROFISSAO').Value <> null then
+  cbPROFISSAO.Text  := DM.QueryMembro.FieldByName('PROFISSAO').Value;
 
-if DM.QueryMembro.FieldByName('GRAU_ESCOLARIDADE').Value <> null then
-cbESCOLARIDADE.Text  := DM.QueryMembro.FieldByName('GRAU_ESCOLARIDADE').Value;
+  if DM.QueryMembro.FieldByName('GRAU_ESCOLARIDADE').Value <> null then
+  cbESCOLARIDADE.Text  := DM.QueryMembro.FieldByName('GRAU_ESCOLARIDADE').Value;
 
-if DM.QueryMembro.FieldByName('BATIZADO').Value <> null then
-cbBATIZADO.Text  := DM.QueryMembro.FieldByName('BATIZADO').Value;
+  if DM.QueryMembro.FieldByName('BATIZADO').Value <> null then
+  cbBATIZADO.Text  := DM.QueryMembro.FieldByName('BATIZADO').Value;
 
-if DM.QueryMembro.FieldByName('RG').Value <> null then
-MaskRG.Text  := DM.QueryMembro.FieldByName('RG').Value;
+  if DM.QueryMembro.FieldByName('RG').Value <> null then
+  MaskRG.Text  := DM.QueryMembro.FieldByName('RG').Value;
 
-if DM.QueryMembro.FieldByName('CPF').Value <> null then
-MaskCPF.Text  := DM.QueryMembro.FieldByName('CPF').Value;
+  if DM.QueryMembro.FieldByName('CPF').Value <> null then
+  MaskCPF.Text  := DM.QueryMembro.FieldByName('CPF').Value;
 
-if DM.QueryMembro.FieldByName('NOME_PAI').Value <> null then
-EditPAI.Text  := DM.QueryMembro.FieldByName('NOME_PAI').Value;
+  if DM.QueryMembro.FieldByName('NOME_PAI').Value <> null then
+  EditPAI.Text  := DM.QueryMembro.FieldByName('NOME_PAI').Value;
 
-if DM.QueryMembro.FieldByName('NOME_MAE').Value <> null then
-EditMAE.Text  := DM.QueryMembro.FieldByName('NOME_MAE').Value;
+  if DM.QueryMembro.FieldByName('NOME_MAE').Value <> null then
+  EditMAE.Text  := DM.QueryMembro.FieldByName('NOME_MAE').Value;
 
-if DM.QueryMembro.FieldByName('DATEBATISMO').Value <> null then
-DateBATISMO.Date  := DM.QueryMembro.FieldByName('DATEBATISMO').Value;
+  if DM.QueryMembro.FieldByName('DATEBATISMO').Value <> null then
+  DateBATISMO.Date  := DM.QueryMembro.FieldByName('DATEBATISMO').Value;
 
-if DM.QueryMembro.FieldByName('DATEADMISSAO').Value <> null then
-DateADMISSAO.Date  := DM.QueryMembro.FieldByName('DATEADMISSAO').Value;
+  if DM.QueryMembro.FieldByName('DATEADMISSAO').Value <> null then
+  DateADMISSAO.Date  := DM.QueryMembro.FieldByName('DATEADMISSAO').Value;
 
-if DM.QueryMembro.FieldByName('PAIS_ORIGEM').Value <> null then
-EditPAISORIG.Text  := DM.QueryMembro.FieldByName('PAIS_ORIGEM').Value;
+  if DM.QueryMembro.FieldByName('PAIS_ORIGEM').Value <> null then
+  EditPAISORIG.Text  := DM.QueryMembro.FieldByName('PAIS_ORIGEM').Value;
 
-if DM.QueryMembro.FieldByName('TELEFONE_PAIS_ORIGEM').Value <> null then
-EditTELPAISORIG.Text  := DM.QueryMembro.FieldByName('TELEFONE_PAIS_ORIGEM').Value;
+  if DM.QueryMembro.FieldByName('TELEFONE_PAIS_ORIGEM').Value <> null then
+  EditTELPAISORIG.Text  := DM.QueryMembro.FieldByName('TELEFONE_PAIS_ORIGEM').Value;
 
-if DM.QueryMembro.FieldByName('DATECASAMENTO').Value <> null then
-DateCASAMENTO.Date  := DM.QueryMembro.FieldByName('DATECASAMENTO').Value;
+  if DM.QueryMembro.FieldByName('DATECASAMENTO').Value <> null then
+  DateCASAMENTO.Date  := DM.QueryMembro.FieldByName('DATECASAMENTO').Value;
 
-//if DM.QueryMembro.FieldByName('ATIVO').Value <> null then
-//CheckATIVO.Text  := DM.QueryMembro.FieldByName('ATIVO').Value;
+  //if DM.QueryMembro.FieldByName('ATIVO').Value <> null then
+  //CheckATIVO.Text  := DM.QueryMembro.FieldByName('ATIVO').Value;
 
-if DM.QueryMembro.FieldByName('IGREJA_BATISMO').Value <> null then
-EditIGREJA_BATISMO.Text  := DM.QueryMembro.FieldByName('IGREJA_BATISMO').Value;
+  if DM.QueryMembro.FieldByName('IGREJA_BATISMO').Value <> null then
+  EditIGREJA_BATISMO.Text  := DM.QueryMembro.FieldByName('IGREJA_BATISMO').Value;
 
-if DM.QueryMembro.FieldByName('DATECONSAGRA').Value <> null then
-DateCONSAGRA.Date  := DM.QueryMembro.FieldByName('DATECONSAGRA').Value;
+  if DM.QueryMembro.FieldByName('DATECONSAGRA').Value <> null then
+  DateCONSAGRA.Date  := DM.QueryMembro.FieldByName('DATECONSAGRA').Value;
 
-if DM.QueryMembro.FieldByName('NATURALIDADE').Value <> null then
-EditNATURAL.Text  := DM.QueryMembro.FieldByName('NATURALIDADE').Value;
+  if DM.QueryMembro.FieldByName('NATURALIDADE').Value <> null then
+  EditNATURAL.Text  := DM.QueryMembro.FieldByName('NATURALIDADE').Value;
 
-if DM.QueryMembro.FieldByName('TITULO_ELEITOR').Value <> null then
-EditTITULO.Text  := DM.QueryMembro.FieldByName('TITULO_ELEITOR').Value;
+  if DM.QueryMembro.FieldByName('TITULO_ELEITOR').Value <> null then
+  EditTITULO.Text  := DM.QueryMembro.FieldByName('TITULO_ELEITOR').Value;
 
-if DM.QueryMembro.FieldByName('FILHOS').Value <> null then
-EditFILHOS.Text  := DM.QueryMembro.FieldByName('FILHOS').Value;
+  if DM.QueryMembro.FieldByName('FILHOS').Value <> null then
+  EditFILHOS.Text  := DM.QueryMembro.FieldByName('FILHOS').Value;
 
-if DM.QueryMembro.FieldByName('DateVALCARTEIRA').Value <> null then
-DateVALCARTEIRA.Date  := DM.QueryMembro.FieldByName('DateVALCARTEIRA').Value;
+  if DM.QueryMembro.FieldByName('DateVALCARTEIRA').Value <> null then
+  DateVALCARTEIRA.Date  := DM.QueryMembro.FieldByName('DateVALCARTEIRA').Value;
 
-if DM.QueryMembro.FieldByName('ROLL').Value <> null then
-EditROLL.Text  := DM.QueryMembro.FieldByName('ROLL').Value;
+  if DM.QueryMembro.FieldByName('ROLL').Value <> null then
+  EditROLL.Text  := DM.QueryMembro.FieldByName('ROLL').Value;
 
-if DM.QueryMembro.FieldByName('CONJUGE').Value <> null then
-EditCONJUGE.Text  := DM.QueryMembro.FieldByName('CONJUGE').Value;
+  if DM.QueryMembro.FieldByName('CONJUGE').Value <> null then
+  EditCONJUGE.Text  := DM.QueryMembro.FieldByName('CONJUGE').Value;
 
-if DM.QueryMembro.FieldByName('CAMPO13').Value <> null then
-EditCAMPO13.Text  := DM.QueryMembro.FieldByName('CAMPO13').Value;
+  if DM.QueryMembro.FieldByName('CAMPO13').Value <> null then
+  EditCAMPO13.Text  := DM.QueryMembro.FieldByName('CAMPO13').Value;
 
-if DM.QueryMembro.FieldByName('TIPO_MORADIA').Value <> null then
-cbMORADIA.Text  := DM.QueryMembro.FieldByName('TIPO_MORADIA').Value;
+  if DM.QueryMembro.FieldByName('TIPO_MORADIA').Value <> null then
+  cbMORADIA.Text  := DM.QueryMembro.FieldByName('TIPO_MORADIA').Value;
 
-if DM.QueryMembro.FieldByName('CAMPO15').Value <> null then
-EditCAMPO15.Text  := DM.QueryMembro.FieldByName('CAMPO15').Value;
+  if DM.QueryMembro.FieldByName('CAMPO15').Value <> null then
+  EditCAMPO15.Text  := DM.QueryMembro.FieldByName('CAMPO15').Value;
 
-if DM.QueryMembro.FieldByName('HISTORICO').Value <> null then
-MemoHistórico.Text  := DM.QueryMembro.FieldByName('HISTORICO').Value;
+  if DM.QueryMembro.FieldByName('HISTORICO').Value <> null then
+  MemoHistórico.Text  := DM.QueryMembro.FieldByName('HISTORICO').Value;
 
-if DM.QueryMembro.FieldByName('DateNASCCONJUGE').Value <> null then
-DateNASCCONJUGE.Date  := DM.QueryMembro.FieldByName('DateNASCCONJUGE').Value;
+  if DM.QueryMembro.FieldByName('DateNASCCONJUGE').Value <> null then
+  DateNASCCONJUGE.Date  := DM.QueryMembro.FieldByName('DateNASCCONJUGE').Value;
 
-if DM.QueryMembro.FieldByName('CIDADE_BATISMO').Value <> null then
-EditCIDADEBATISMO.Text  := DM.QueryMembro.FieldByName('CIDADE_BATISMO').Value;
+  if DM.QueryMembro.FieldByName('CIDADE_BATISMO').Value <> null then
+  EditCIDADEBATISMO.Text  := DM.QueryMembro.FieldByName('CIDADE_BATISMO').Value;
 
-if DM.QueryMembro.FieldByName('DATA_NASC').Value <> null then
-DateNASC .Date  := DM.QueryMembro.FieldByName('DATA_NASC').Value;
+  if DM.QueryMembro.FieldByName('DATA_NASC').Value <> null then
+  DateNASC .Date  := DM.QueryMembro.FieldByName('DATA_NASC').Value;
 
-if DM.QueryMembro.FieldByName('OBSERVACAO').Value <> null then
-MemoOBSERVACAO.Text  := DM.QueryMembro.FieldByName('OBSERVACAO').Value;
+  if DM.QueryMembro.FieldByName('OBSERVACAO').Value <> null then
+  MemoOBSERVACAO.Text  := DM.QueryMembro.FieldByName('OBSERVACAO').Value;
 
-if DM.QueryMembro.FieldByName('id').Value <> null then
-editID.Text := DM.QueryMembro.FieldByName('ID').Value;
+  if DM.QueryMembro.FieldByName('id').Value <> null then
+  editID.Text := DM.QueryMembro.FieldByName('ID').Value;
 
- if DM.QueryMembro.FieldByName('imagem').Value <> null then
- ExibeFoto(dm.querymembro, 'imagem', imgProfile);
+  editpathfoto.Text:=DM.QueryMembro.FieldByName('imagem').asstring;
 
+  imgProfile.Picture.Assign(nil);
+  If DM.QueryMembro.FieldByName('imagem').asstring <> '' then
+  begin
+    if fileexists(DM.QueryMembro.FieldByName('imagem').asstring) then
+    imgProfile.Picture.LoadFromFile(DM.QueryMembro.FieldByName('imagem').AsString);
+  end;
+
+  //  if DM.QueryMembro.FieldByName('imagem').Value <> null then
+  //  ExibeFoto(dm.querymembro, 'imagem', imgProfile);
+
+
+   //ImgFoto1.picture.loadfromfile(xApplicationPath+'FOTOS\PROD_'+QRCADASTRO.fieldbyname('cod_barras').asstring+'.png');
+   //imgProfile.picture.Loadfromfile(Application+'fotos' + DM.QueryMembro.fieldbyname('IMAGEM').asstring);
 end;
 
 procedure TFrmCadMembro.gridDrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -894,6 +962,7 @@ begin
   begin
   imgPessoa := TPicture.Create;
   imgPessoa.LoadFromFile(dialog.FileName);
+  /////////
   DM.TBL_MEMBROS.FieldByName('imagem').Assign(imgPessoa);
   imgPessoa.Free;
   dialog.FileName := GetCurrentDir + '\img\sem-foto.png';
@@ -921,5 +990,37 @@ DM.frxCarteirinha.ShowReport();
 btnCarteirinha.Enabled := false;
 buscarTudo; // Após chamar o relatorio, executa a procedure BuscarTudo
 end;
+
+function TFrmCadMembro.ApplicationPath: String;
+begin
+  {$IfDef ANDROID}
+  Result := PathWithDelim(TPath.GetHomePath);
+  {$Else}
+  Result := PathWithDelim(ExtractFilePath(ParamStr(0)));
+  {$EndIf}
+end;
+
+
+function TFrmCadMembro.PathWithDelim(const APath : String) : String ;
+begin
+  Result := Trim(APath) ;
+  if Result <> '' then
+  begin
+     {$IfDef FPC}
+      Result := IncludeTrailingPathDelimiter(Result);
+     {$Else}
+      if RightStr(Result,1) <> PathDelim then   { Tem delimitador no final ? }
+         Result := Result + PathDelim ;
+     {$EndIf}
+  end;
+end ;
+
+
+function TFrmCadMembro.RightStr(const AText: AnsiString; const ACount: Integer): AnsiString;
+begin
+  Result := Copy(AText, Length(AText) + 1 - ACount, ACount);
+end;
+
+
 
 end.

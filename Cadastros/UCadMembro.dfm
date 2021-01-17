@@ -319,7 +319,7 @@
         OnClick = btnTakePhotoClick
       end
       object btnAdd: TSpeedButton
-        Left = 769
+        Left = 764
         Top = 213
         Width = 120
         Height = 30
@@ -2329,6 +2329,11 @@
           end
           item
             Expanded = False
+            FieldName = 'IMAGEM'
+            Visible = True
+          end
+          item
+            Expanded = False
             FieldName = 'NOME'
             Width = 150
             Visible = True
@@ -2406,11 +2411,6 @@
           item
             Expanded = False
             FieldName = 'TRATAMENTO'
-            Visible = False
-          end
-          item
-            Expanded = False
-            FieldName = 'IMAGEM'
             Visible = False
           end
           item
@@ -2842,6 +2842,14 @@
         Checked = True
         TabOrder = 37
       end
+      object EditPATHFOTO: TEdit
+        Left = 368
+        Top = 304
+        Width = 369
+        Height = 21
+        TabOrder = 38
+        Text = 'EditPATHFOTO'
+      end
     end
     object TabSheet2: TTabSheet
       Caption = 'Dados Eclesiasticos'
@@ -3122,19 +3130,6 @@
       end
     end
   end
-  object dialog: TOpenPictureDialog
-    Filter = 
-      'All (*.png_old;*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.ico;*.emf;*.wmf;' +
-      '*.tif;*.tiff)|*.png_old;*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.ico;*.e' +
-      'mf;*.wmf;*.tif;*.tiff|Portable Network Graphics (*.png_old)|*.pn' +
-      'g_old|GIF Image (*.gif)|*.gif|Portable Network Graphics (*.png)|' +
-      '*.png|JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.j' +
-      'peg|Bitmaps (*.bmp)|*.bmp|Icons (*.ico)|*.ico|Enhanced Metafiles' +
-      ' (*.emf)|*.emf|Metafiles (*.wmf)|*.wmf|TIFF Images (*.tif)|*.tif' +
-      '|TIFF Images (*.tiff)|*.tiff'
-    Left = 816
-    Top = 160
-  end
   object ImageList1: TImageList
     Left = 316
     Top = 4
@@ -3277,5 +3272,21 @@
       0000C003000000000000E007000000000000E00F000000000000E43F00000000
       0000C67F000000000000FFFF0000000000000000000000000000000000000000
       000000000000}
+  end
+  object dialog: TOpenDialog
+    Filter = 
+      'All (*.gif;*.cur;*.pcx;*.ani;*.png_old;*.gif;*.png;*.jpg;*.jpeg;' +
+      '*.bmp;*.ico;*.emf;*.wmf;*.tif;*.tiff)|*.gif;*.cur;*.pcx;*.ani;*.' +
+      'png;*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.ico;*.emf;*.wmf;*.tif;*.tif' +
+      'f|CompuServe GIF Image (*.gif)|*.gif|Cursor files (*.cur)|*.cur|' +
+      'PCX Image (*.pcx)|*.pcx|ANI Image (*.ani)|*.ani|Portable Network' +
+      ' Graphics (*.png_old)|*.png_old|GIF Image (*.gif)|*.gif|Portable' +
+      ' Network Graphics (*.png)|*.png|JPEG Image File (*.jpg)|*.jpg|JP' +
+      'EG Image File (*.jpeg)|*.jpeg|Bitmaps (*.bmp)|*.bmp|Icons (*.ico' +
+      ')|*.ico|Enhanced Metafiles (*.emf)|*.emf|Metafiles (*.wmf)|*.wmf' +
+      '|TIFF Images (*.tif)|*.tif|TIFF Images (*.tiff)|*.tiff'
+    InitialDir = 'C:\Adonai_firebird\Cadastros\Fotos'
+    Left = 812
+    Top = 172
   end
 end

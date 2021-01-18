@@ -147,7 +147,6 @@ type
     Function PathWithDelim( const APath : String ) : String ;
 
     function RightStr(const AText: AnsiString; const ACount: Integer): AnsiString;
-    procedure btmCANCELARClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -233,13 +232,6 @@ begin
    DM.TBL_MEMBROS.FieldByName('CIDADE_BATISMO')  .Value   := EditCIDADEBATISMO        .Text;
    DM.TBL_MEMBROS.FieldByName('DATA_NASC')  .Value   := DateNASC.Date;
    DM.TBL_MEMBROS.FieldByName('IMAGEM')  .asstring   := editpathfoto.text;
-
-end;
-
-procedure TFrmCadMembro.btmCANCELARClick(Sender: TObject);
-begin
- //FrmCadMembro.Free;
- //FrmCadMembro.Create;
 
 end;
 

@@ -290,7 +290,7 @@ object FrmCarteirinha: TFrmCarteirinha
       item
         Expanded = False
         FieldName = 'IMAGEM'
-        Visible = False
+        Visible = True
       end
       item
         Expanded = False
@@ -481,49 +481,52 @@ object FrmCarteirinha: TFrmCarteirinha
     Columns = <
       item
         Expanded = False
-        FieldName = 'ROLL'
-        Width = 50
-        Visible = True
-      end
-      item
-        Expanded = False
         FieldName = 'ID'
-        Width = 50
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NOME'
-        Width = 150
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'TELPESSOAL'
-        Width = 80
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NOME_PAI'
-        Width = 150
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NOME_MAE'
-        Width = 150
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'CONJUGE'
-        Width = 150
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DATA_NASC'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TRATAMENTO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CONJUGE'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ROLL'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'IMAGEM'
         Visible = True
       end>
   end

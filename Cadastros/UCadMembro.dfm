@@ -461,6 +461,7 @@
         Width = 56
         Height = 56
         Caption = 'Cancel'
+        OnClick = btmCANCELARClick
       end
       object btnNovo: TBitBtn
         Left = 224

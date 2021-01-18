@@ -112,13 +112,7 @@ type
     cdsTEMPTELPESSOAL: TStringField;
     cdsTEMPNOME_PAI: TStringField;
     cdsTEMPNOME_MAE: TStringField;
-    cdsTEMPDATA_NASC: TDateField;
-    cdsTEMPTRATAMENTO: TStringField;
-    cdsTEMPCONJUGE: TStringField;
-    cdsTEMPROLL: TIntegerField;
-    cdsTEMPIMAGEM: TBlobField;
     DSTEMP: TDataSource;
-    cdsTEMPIMG4: TGraphicField;
     TBL_MEMBROSIMAGEM: TStringField;
     TBL_IGREJAS: TFDTable;
     DSIgrejas: TDataSource;
@@ -126,6 +120,12 @@ type
     TBL_IGREJASID: TIntegerField;
     TBL_IGREJASNOME_IGREJA: TStringField;
     TBL_IGREJASPASTA_IMG: TStringField;
+    cdsTEMPDATA_NASC: TDateField;
+    cdsTEMPTRATAMENTO: TStringField;
+    cdsTEMPCONJUGE: TStringField;
+    cdsTEMPROLL: TIntegerField;
+    cdsTEMPIMAGEM: TBlobField;
+    cdsTEMPIMG4: TGraphicField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

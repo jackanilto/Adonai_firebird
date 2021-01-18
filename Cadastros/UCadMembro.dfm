@@ -460,7 +460,7 @@
         Top = 488
         Width = 56
         Height = 56
-        Caption = 'Cancelar'
+        Caption = 'Cancel'
       end
       object btnNovo: TBitBtn
         Left = 224

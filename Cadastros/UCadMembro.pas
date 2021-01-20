@@ -8,7 +8,7 @@ uses
   Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtDlgs, Vcl.ExtCtrls, Data.DB,
   Vcl.Grids, Vcl.DBGrids, Vcl.Mask, Vcl.AppEvnts, JvExMask, JvToolEdit,
   JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit, JvAVICapture, Vcl.Imaging.jpeg, frxDesgn,
-  frxClass, frxExportBaseDialog, frxExportPDF;
+  frxClass, frxExportBaseDialog, frxExportPDF, Vcl.DBCtrls;
 
 type
   TFrmCadMembro = class(TForm)
@@ -114,7 +114,7 @@ type
     EditCAMPO15: TEdit;
     Label30: TLabel;
     Label31: TLabel;
-    btnTakePhoto: TSpeedButton;
+    btnFOTOGRAFAR: TSpeedButton;
     btnAdd: TSpeedButton;
     cbMORADIA: TComboBox;
     DateNASC: TJvDatePickerEdit;
@@ -128,7 +128,7 @@ type
     dialog: TOpenDialog;
     EditPATHFOTO: TEdit;
     Label32: TLabel;
-    btmCANCELAR: TSpeedButton;
+    btnCANCELAR: TSpeedButton;
     procedure btnNovoClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -138,7 +138,7 @@ type
     procedure edtBuscarChange(Sender: TObject);
     procedure EditVALORKeyPress(Sender: TObject; var Key: Char);
     procedure EditVALORChange(Sender: TObject);
-    procedure btnTakePhotoClick(Sender: TObject);
+    procedure btnFOTOGRAFARClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
     procedure btnCarteirinhaClick(Sender: TObject);
     procedure gridDrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -147,6 +147,7 @@ type
     Function PathWithDelim( const APath : String ) : String ;
 
     function RightStr(const AText: AnsiString; const ACount: Integer): AnsiString;
+//    procedure btnCANCELARClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -184,23 +185,23 @@ uses UDM, uWebCam;
 
 procedure TFrmCadMembro.associarCampos;
 begin
-   DM.TBL_MEMBROS.FieldByName('NOME').Value := EditNOME.Text;
-   DM.TBL_MEMBROS.FieldByName('ENDERECO').Value := EditENDERECO.Text;
-   DM.TBL_MEMBROS.FieldByName('NUMERO').Value := EditNUMERO.Text;
-   DM.TBL_MEMBROS.FieldByName('BAIRRO').Value := EditBAIRRO.Text;
-   DM.TBL_MEMBROS.FieldByName('CIDADE').Value := EditCIDADE.Text;
-   DM.TBL_MEMBROS.FieldByName('ESTADO').Value := EditESTADO.Text;
-   DM.TBL_MEMBROS.FieldByName('CEP').Value := MaskCEP.Text;
-   DM.TBL_MEMBROS.FieldByName('COMPLEMENTO').Value := EditCOMPLEMENTO.Text;
+   DM.TBL_MEMBROS.FieldByName('NOME').asstring := EditNOME.Text;
+   DM.TBL_MEMBROS.FieldByName('ENDERECO').asstring := EditENDERECO.Text;
+   DM.TBL_MEMBROS.FieldByName('NUMERO').asstring := EditNUMERO.Text;
+   DM.TBL_MEMBROS.FieldByName('BAIRRO').asstring := EditBAIRRO.Text;
+   DM.TBL_MEMBROS.FieldByName('CIDADE').asstring := EditCIDADE.Text;
+   DM.TBL_MEMBROS.FieldByName('ESTADO').asstring := EditESTADO.Text;
+   DM.TBL_MEMBROS.FieldByName('CEP').asstring := MaskCEP.Text;
+   DM.TBL_MEMBROS.FieldByName('COMPLEMENTO').asstring := EditCOMPLEMENTO.Text;
    DM.TBL_MEMBROS.FieldByName('TELPESSOAL')  .Value   := EditTELPESSOAL.Text;
    DM.TBL_MEMBROS.FieldByName('CONTATO1')  .Value   := EditCONTATO1.Text;
    DM.TBL_MEMBROS.FieldByName('CONTATO2')  .Value   := EditCONTATO2             .Text;
-   DM.TBL_MEMBROS.FieldByName('EMAIL')  .Value   := EditEMAIL                .Text;
+   DM.TBL_MEMBROS.FieldByName('EMAIL')  .asstring   := EditEMAIL                .Text;
    DM.TBL_MEMBROS.FieldByName('DIZIMISTA')  .Value   := cbDIZIMISTA              .Text;
    DM.TBL_MEMBROS.FieldByName('VALOR')  .Value   := EditVALOR                .Text;
-   DM.TBL_MEMBROS.FieldByName('GRUPO')  .Value   := cbGRUPO                  .Text;
-   DM.TBL_MEMBROS.FieldByName('TRATAMENTO')  .Value   := cbTRATAMENTO.Text;
-   DM.TBL_MEMBROS.FieldByName('OBSERVACAO')  .Value   := MemoOBSERVACAO.Text;
+   DM.TBL_MEMBROS.FieldByName('GRUPO')  .asstring   := cbGRUPO                  .Text;
+   DM.TBL_MEMBROS.FieldByName('TRATAMENTO')  .asstring   := cbTRATAMENTO.Text;
+   DM.TBL_MEMBROS.FieldByName('OBSERVACAO')  .asstring   := MemoOBSERVACAO.Text;
    DM.TBL_MEMBROS.FieldByName('SEXO')  .Value   := cbSEXO.Text;
    DM.TBL_MEMBROS.FieldByName('ESTADO_CIVIL')  .Value   := cbESTCIVIL               .Text;
    DM.TBL_MEMBROS.FieldByName('MINISTERIO')  .Value   := cbMINISTERIO             .Text;
@@ -208,25 +209,25 @@ begin
    DM.TBL_MEMBROS.FieldByName('BATIZADO')  .Value   := cbBATIZADO               .Text;
    DM.TBL_MEMBROS.FieldByName('RG')  .Value   := MaskRG                   .Text;
    DM.TBL_MEMBROS.FieldByName('CPF')  .Value   := MaskCPF                  .Text;
-   DM.TBL_MEMBROS.FieldByName('NOME_PAI')  .Value   := EditPAI                  .Text;
-   DM.TBL_MEMBROS.FieldByName('NOME_MAE')  .Value   := EditMAE                  .Text;
+   DM.TBL_MEMBROS.FieldByName('NOME_PAI')  .asstring   := EditPAI                  .Text;
+   DM.TBL_MEMBROS.FieldByName('NOME_MAE')  .asstring   := EditMAE                  .Text;
    DM.TBL_MEMBROS.FieldByName('DateBATISMO')  .Value   := DateBATISMO.Date;
    DM.TBL_MEMBROS.FieldByName('DATEADMISSAO')  .Value   := DateADMISSAO             .Date;
-   DM.TBL_MEMBROS.FieldByName('PAIS_ORIGEM')  .Value   := EditPAISORIG             .Text;
+   DM.TBL_MEMBROS.FieldByName('PAIS_ORIGEM')  .asstring   := EditPAISORIG             .Text;
    DM.TBL_MEMBROS.FieldByName('TELEFONE_PAIS_ORIGEM')  .Value   := EditTELPAISORIG          .Text;
    DM.TBL_MEMBROS.FieldByName('DateCASAMENTO')  .Value   := DateCASAMENTO            .Date;
-   DM.TBL_MEMBROS.FieldByName('IGREJA_BATISMO')  .Value   := EditIGREJA_BATISMO       .Text;
+   DM.TBL_MEMBROS.FieldByName('IGREJA_BATISMO')  .asstring   := EditIGREJA_BATISMO       .Text;
    DM.TBL_MEMBROS.FieldByName('DATECONSAGRA')  .Value   := DateCONSAGRA.Date;
    DM.TBL_MEMBROS.FieldByName('NATURALIDADE')  .Value   := EditNATURAL              .Text;
    DM.TBL_MEMBROS.FieldByName('TITULO_ELEITOR')  .Value   := EditTITULO               .Text;
    DM.TBL_MEMBROS.FieldByName('FILHOS')  .Value   := EditFILHOS               .Text;
    DM.TBL_MEMBROS.FieldByName('DateVALCARTEIRA').Value   := DateVALCARTEIRA.Date;
    DM.TBL_MEMBROS.FieldByName('ROLL')  .Value   := EditROLL                 .Text;
-   DM.TBL_MEMBROS.FieldByName('CONJUGE')  .Value   := EditCONJUGE              .Text;
+   DM.TBL_MEMBROS.FieldByName('CONJUGE')  .asstring   := EditCONJUGE              .Text;
    DM.TBL_MEMBROS.FieldByName('CAMPO13')  .Value   := EditCAMPO13              .Text;
    DM.TBL_MEMBROS.FieldByName('TIPO_MORADIA')  .Value   := cbMORADIA              .Text;
    DM.TBL_MEMBROS.FieldByName('CAMPO15')  .Value   := EditCAMPO15              .Text;
-   DM.TBL_MEMBROS.FieldByName('HISTORICO')  .Value   := MemoHistórico            .Text;
+   DM.TBL_MEMBROS.FieldByName('HISTORICO')  .asstring   := MemoHistórico            .Text;
    DM.TBL_MEMBROS.FieldByName('PROFISSAO')  .Value   := cbPROFISSAO              .Text;
    DM.TBL_MEMBROS.FieldByName('DateNASCCONJUGE')  .Value   := DateNASCCONJUGE          .Date;
    DM.TBL_MEMBROS.FieldByName('CIDADE_BATISMO')  .Value   := EditCIDADEBATISMO        .Text;
@@ -234,6 +235,23 @@ begin
    DM.TBL_MEMBROS.FieldByName('IMAGEM')  .asstring   := editpathfoto.text;
 
 end;
+
+//procedure TFrmCadMembro.btnCANCELARClick(Sender: TObject);
+//var
+//  FrmCadMembro: TFrmCadMembro;
+//begin
+//  try try
+//    FrmCadMembro := TFrmCadMembro.Create(Application);
+//    FrmCadMembro.ShowModal;
+//  Except
+//    on e:exception do begin
+//      showmessage('Exception:'+e.message);
+//    end;
+//  end;
+//  finally
+//    FrmCadMembro.Free;
+//  end;
+//end;
 
 procedure TFrmCadMembro.btnAddClick(Sender: TObject);
 var path: string;
@@ -426,15 +444,18 @@ begin
   EditNOME.Enabled := true; // Reabilita Edit
   EditNOME.Text := '';
   EditNOME.SetFocus;
-  EditNOME.Enabled := true;
   DM.TBL_MEMBROS.Insert;
-  carregarcbPROFISSAO;
+  carregarcbPROFISSAO;    // Carrega ComboBox
   BtnSalvar.Enabled := true;
   btnNovo.Enabled := true;
 
   btnEditar.Enabled := true;
   btnDeletar.Enabled := false;
   EditPATHFOTO.Enabled := false;
+
+  btnCANCELAR.Enabled := true;
+  btnAdd.Enabled := true;
+  btnFOTOGRAFAR.Enabled := true;
 end;
 
 procedure TFrmCadMembro.BtnSalvarClick(Sender: TObject);
@@ -459,7 +480,7 @@ begin
   end;
 end;
 
-procedure TFrmCadMembro.btnTakePhotoClick(Sender: TObject);
+procedure TFrmCadMembro.btnFOTOGRAFARClick(Sender: TObject);
 var path: string;
   dirfotos: string;
 begin
@@ -573,14 +594,19 @@ DM.TBL_PROFISSOES.Active := false;
 DM.TBL_PROFISSOES.Active := true;
 
 buscarTudo;
-carregarcbPROFISSAO;
+limparCampos;
+
 btnSalvar.Enabled := false;
 btnEditar.Enabled := false;
 btnDeletar.Enabled := false;
 btnCarteirinha.Enabled := false;
 EditPATHFOTO.Enabled := false;
+btnCANCELAR.Enabled := false;
+btnAdd.Enabled := false;
+btnFOTOGRAFAR.Enabled := false;
 
 carregarImagemPadrao();
+carregarcbPROFISSAO;
 end;
 
 procedure TFrmCadMembro.gridCellClick(Column: TColumn);
@@ -593,6 +619,9 @@ begin
   btnCarteirinha.Enabled := true;
   habilitarCampos;
   EditPATHFOTO.Enabled := false;
+  btnCANCELAR.Enabled := true;
+  btnAdd.Enabled := true;
+  btnFOTOGRAFAR.Enabled := true;
 
   if DM.QueryMembro.FieldByName('NOME').Value <> null then
   EditNOME.Text := DM.QueryMembro.FieldByName('NOME').Value;

@@ -1,0 +1,76 @@
+object frmWebCam: TfrmWebCam
+  Left = 0
+  Top = 0
+  Caption = 'Captura foto para Cadastro'
+  ClientHeight = 362
+  ClientWidth = 528
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlLeft: TPanel
+    Left = 0
+    Top = 0
+    Width = 268
+    Height = 362
+    Align = alClient
+    TabOrder = 0
+    ExplicitWidth = 244
+    ExplicitHeight = 181
+    object pbCamera: TPaintBox
+      Left = 1
+      Top = 1
+      Width = 266
+      Height = 335
+      Align = alClient
+      ExplicitWidth = 304
+    end
+    object btnFOTOGRAFAR: TSpeedButton
+      Left = 1
+      Top = 336
+      Width = 266
+      Height = 25
+      Align = alBottom
+      Caption = 'Fotografar'
+      OnClick = btnFOTOGRAFARClick
+      ExplicitLeft = 0
+      ExplicitWidth = 239
+    end
+  end
+  object pnlRight: TPanel
+    Left = 268
+    Top = 0
+    Width = 260
+    Height = 362
+    Align = alRight
+    TabOrder = 1
+    ExplicitLeft = 244
+    ExplicitHeight = 181
+    object imgSnapshot: TImage
+      Left = 1
+      Top = 1
+      Width = 258
+      Height = 335
+      Align = alClient
+      ExplicitLeft = 5
+      ExplicitTop = -5
+      ExplicitHeight = 154
+    end
+    object btnSALVARFOTO: TSpeedButton
+      Left = 1
+      Top = 336
+      Width = 258
+      Height = 25
+      Align = alBottom
+      OnClick = btnSALVARFOTOClick
+    end
+  end
+end

@@ -3134,6 +3134,15 @@ object FrmPrincipal: TFrmPrincipal
       ParentFont = False
       OnClick = btnCarteirinhasClick
     end
+    object btnDIZIMOS: TSpeedButton
+      Left = 447
+      Top = 0
+      Width = 97
+      Height = 72
+      Caption = 'Dizimos'
+      Layout = blGlyphTop
+      OnClick = btnDIZIMOSClick
+    end
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer

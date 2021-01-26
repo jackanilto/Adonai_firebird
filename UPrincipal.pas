@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.WinXCalendars,
   Vcl.ExtCtrls, Vcl.Menus, Vcl.Buttons, Vcl.WinXCtrls, Vcl.WinXPickers,
   Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg, Data.DB, Vcl.Grids,
-  Vcl.DBGrids, frxClass, UCarteirinhas;
+  Vcl.DBGrids, frxClass, UCarteirinhas, UDizimos;
   //Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg, ESpshScr;
 
 type
@@ -39,6 +39,7 @@ type
     Configuraes1: TMenuItem;
     Carteirinhas1: TMenuItem;
     btnCarteirinhas: TSpeedButton;
+    btnDIZIMOS: TSpeedButton;
     //EvSplashScreen1: TEvSplashScreen;
     procedure Button1Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -56,6 +57,7 @@ type
     procedure Licensa1Click(Sender: TObject);
     procedure Carteirinhas1Click(Sender: TObject);
     procedure btnCarteirinhasClick(Sender: TObject);
+    procedure btnDIZIMOSClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -84,7 +86,7 @@ end;
 procedure TFrmPrincipal.Carteirinhas1Click(Sender: TObject);
 begin
 //carrega o componente TFRXREPORT em modo Design em tempo de execução
-  DM.frxCarteirinha.DesignReport();
+  DM.frxReportCarteira.DesignReport();
 end;
 
 procedure TFrmPrincipal.Deslogar1Click(Sender: TObject);
@@ -169,6 +171,11 @@ end;
 procedure TFrmPrincipal.btnCarteirinhasClick(Sender: TObject);
 begin
 FrmCarteirinha.ShowModal;
+end;
+
+procedure TFrmPrincipal.btnDIZIMOSClick(Sender: TObject);
+begin
+FrmDIZIMOOFERTA.ShowModal;
 end;
 
 procedure TFrmPrincipal.Timer1Timer(Sender: TObject);

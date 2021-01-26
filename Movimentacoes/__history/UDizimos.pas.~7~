@@ -1,0 +1,141 @@
+unit UDizimos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UDM, Data.DB, Vcl.Mask, JvExMask,
+  JvToolEdit, JvMaskEdit, JvCheckedMaskEdit, JvDatePickerEdit, Vcl.StdCtrls,
+  Vcl.Grids, Vcl.DBGrids, Vcl.Buttons;
+
+type
+  TFrmDIZIMOOFERTA = class(TForm)
+    btnNovo: TBitBtn;
+    BtnSalvar: TBitBtn;
+    btnEditar: TBitBtn;
+    btnDeletar: TBitBtn;
+    DBGrid1: TDBGrid;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    EditID: TEdit;
+    EditROLL: TEdit;
+    EditNOME: TEdit;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    EditVALDIZIMO: TEdit;
+    DatePickerDIZIMO: TJvDatePickerEdit;
+    CBFormas: TComboBox;
+    MemoOBSERVACAO: TMemo;
+    EditBUSCAR: TEdit;
+    Label8: TLabel;
+    SpeedButton1: TSpeedButton;
+    procedure EditVALDIZIMOChange(Sender: TObject);
+    procedure EditVALDIZIMOKeyPress(Sender: TObject; var Key: Char);
+    procedure SpeedButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+   procedure limparCampos();
+   procedure habilitarCampos();
+   procedure desabilitarCampos();
+   procedure buscarTudo();
+   procedure buscarNome();
+   procedure associarCampos();
+  end;
+
+var
+  FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA;
+  // VAR PARA PROCEDURE FORMATA MOEDAS
+   s : string;
+   v : double;
+   I : integer;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmDIZIMOOFERTA }
+
+procedure TFrmDIZIMOOFERTA.associarCampos;
+begin
+   DM.TBL_MEMBROS.FieldByName('NOME')       .AsString   := EditNOME.Text;
+   DM.TBL_MEMBROS.FieldByName('ROLL')       .AsString   := EditROLL.Text;
+   DM.TBL_MEMBROS.FieldByName('DATA')       .AsDateTime := Date;
+   DM.TBL_MEMBROS.FieldByName('FORMA')      .AsString   := cbFORMAS.Text;
+   DM.TBL_MEMBROS.FieldByName('VALOR')      .Value      := EditVALDIZIMO.Text;
+   DM.TBL_MEMBROS.FieldByName('OBSERVACAO') .AsString   := MemoOBSERVACAO.Text;
+
+end;
+
+procedure TFrmDIZIMOOFERTA.buscarNome;
+begin
+  dm.QueryMembro.Close;
+  dm.QueryMembro.SQL.Clear;                                 //add collate win_ptbr para busca CASE INSESITIVE
+  dm.QueryMembro.SQL.Add('select * from TBL_MEMBROS where nome collate win_ptbr LIKE :nome order by nome asc');
+  dm.QueryMembro.ParamByName('nome').Value := editBuscar.Text + '%';
+  dm.QueryMembro.Open;
+end;
+
+procedure TFrmDIZIMOOFERTA.buscarTudo;
+begin
+  DM.QueryMembro.Close;
+  DM.QueryMembro.SQL.Clear;
+  DM.QueryMembro.SQL.Add('select * from TBL_MEMBROS order by nome asc');
+  DM.QueryMembro.Open();
+end;
+
+procedure TFrmDIZIMOOFERTA.desabilitarCampos;
+begin
+
+end;
+
+procedure TFrmDIZIMOOFERTA.EditVALDIZIMOChange(Sender: TObject);
+begin
+   //1º Passo : se o edit estiver vazio, nada pode ser feito.
+   If (EditVALDIZIMO.Text = emptystr) then
+      EditVALDIZIMO.Text := '0,00';
+
+   //2º Passo : obter o texto do edit, SEM a virgula e SEM o ponto decimal:
+   s := '';
+   for I := 1 to length(EditVALDIZIMO.Text) do
+   if (EditVALDIZIMO.text[I] in ['0'..'9']) then
+      s := s + EditVALDIZIMO.text[I];
+
+   //3º Passo : fazer com que o conteúdo do edit apresente 2 casas decimais:
+   v := strtofloat(s);
+   v := (v /100); // para criar 2 casa decimais
+
+   //4º Passo : Formata o valor de (V) para aceitar valores do tipo 0,10.
+   EditVALDIZIMO.text := FormatFloat('###,##0.00',v);
+   EditVALDIZIMO.SelStart := Length(EditVALDIZIMO.text);
+end;
+
+procedure TFrmDIZIMOOFERTA.EditVALDIZIMOKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+     if NOT (Key in ['0'..'9', #8, #9]) then
+     key := #0;
+     //Função posiciona o cursor sempre a direita como nos Caixas Eletronicos
+     EditVALDIZIMO.selstart := Length(EditVALDIZIMO.text);
+end;
+
+procedure TFrmDIZIMOOFERTA.habilitarCampos;
+begin
+
+end;
+
+procedure TFrmDIZIMOOFERTA.limparCampos;
+begin
+  EditNOME         .Text  := '';
+end;
+
+procedure TFrmDIZIMOOFERTA.SpeedButton1Click(Sender: TObject);
+begin
+FrmBUSCARMEMBRO.ShowModal;
+end;
+
+end.

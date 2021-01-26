@@ -124,7 +124,7 @@ type
     DateCONSAGRA: TJvDatePickerEdit;
     DateCASAMENTO: TJvDatePickerEdit;
     DateNASCCONJUGE: TJvDatePickerEdit;
-    btnCarteirinha: TSpeedButton;
+    btnCartas: TSpeedButton;
     dialog: TOpenDialog;
     EditPATHFOTO: TEdit;
     Label32: TLabel;
@@ -140,7 +140,7 @@ type
     procedure EditVALORChange(Sender: TObject);
     procedure btnFOTOGRAFARClick(Sender: TObject);
     procedure btnAddClick(Sender: TObject);
-    procedure btnCarteirinhaClick(Sender: TObject);
+    procedure btnCartasClick(Sender: TObject);
     procedure gridDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     function ApplicationPath: String;
@@ -195,7 +195,7 @@ begin
    DM.TBL_MEMBROS.FieldByName('COMPLEMENTO').asstring := EditCOMPLEMENTO.Text;
    DM.TBL_MEMBROS.FieldByName('TELPESSOAL')  .Value   := EditTELPESSOAL.Text;
    DM.TBL_MEMBROS.FieldByName('CONTATO1')  .Value   := EditCONTATO1.Text;
-   DM.TBL_MEMBROS.FieldByName('CONTATO2')  .Value   := EditCONTATO2             .Text;
+   DM.TBL_MEMBROS.FieldByName('CONTATO2')  .Value   := EditCONTATO2.Text;
    DM.TBL_MEMBROS.FieldByName('EMAIL')  .asstring   := EditEMAIL                .Text;
    DM.TBL_MEMBROS.FieldByName('DIZIMISTA')  .Value   := cbDIZIMISTA              .Text;
    DM.TBL_MEMBROS.FieldByName('VALOR')  .Value   := EditVALOR                .Text;
@@ -215,7 +215,7 @@ begin
    DM.TBL_MEMBROS.FieldByName('DATEADMISSAO')  .Value   := DateADMISSAO             .Date;
    DM.TBL_MEMBROS.FieldByName('PAIS_ORIGEM')  .asstring   := EditPAISORIG             .Text;
    DM.TBL_MEMBROS.FieldByName('TELEFONE_PAIS_ORIGEM')  .Value   := EditTELPAISORIG          .Text;
-   DM.TBL_MEMBROS.FieldByName('DateCASAMENTO')  .Value   := DateCASAMENTO            .Date;
+   DM.TBL_MEMBROS.FieldByName('DateCASAMENTO')  .Value   := DateCASAMENTO.Date;
    DM.TBL_MEMBROS.FieldByName('IGREJA_BATISMO')  .asstring   := EditIGREJA_BATISMO       .Text;
    DM.TBL_MEMBROS.FieldByName('DATECONSAGRA')  .Value   := DateCONSAGRA.Date;
    DM.TBL_MEMBROS.FieldByName('NATURALIDADE')  .Value   := EditNATURAL              .Text;
@@ -293,7 +293,7 @@ if Messagedlg('Deseja excluir o registro?', mtConfirmation, [mbYes, mbNo], 0) = 
     btnSalvar.Enabled := false;
     btnEditar.Enabled := false;
     btnDeletar.Enabled := false;
-    btnCarteirinha.Enabled := false;
+    btnCartas.Enabled := false;
     btnNovo.Enabled := true;
   end;
 end;
@@ -427,7 +427,7 @@ begin
         btnSalvar.Enabled := false;
         btnEditar.Enabled := false;
         btnDeletar.Enabled := false;
-        btnCarteirinha.Enabled := false;
+        btnCartas.Enabled := false;
         btnNovo.Enabled := true;
         grid.Enabled := true;
     end
@@ -471,7 +471,7 @@ begin
     btnNovo.Enabled := true;
     btnEditar.Enabled := false;
     btnDeletar.Enabled := false;
-    btnCarteirinha.Enabled := false;
+    btnCartas.Enabled := false;
     grid.Enabled := true;
     end
     else
@@ -507,19 +507,19 @@ end;
 
 procedure TFrmCadMembro.buscarNome;
 begin
-dm.QueryMembro.Close;
-dm.QueryMembro.SQL.Clear;                                 //add collate win_ptbr para busca CASE INSESITIVE
-dm.QueryMembro.SQL.Add('select * from TBL_MEMBROS where nome collate win_ptbr LIKE :nome order by nome asc');
-dm.QueryMembro.ParamByName('nome').Value := edtBuscar.Text + '%';
-dm.QueryMembro.Open;
+  dm.QueryMembro.Close;
+  dm.QueryMembro.SQL.Clear;                                 //add collate win_ptbr para busca CASE INSESITIVE
+  dm.QueryMembro.SQL.Add('select * from TBL_MEMBROS where nome collate win_ptbr LIKE :nome order by nome asc');
+  dm.QueryMembro.ParamByName('nome').Value := edtBuscar.Text + '%';
+  dm.QueryMembro.Open;
 end;
 
 procedure TFrmCadMembro.buscarTudo;
 begin
-DM.QueryMembro.Close;
-DM.QueryMembro.SQL.Clear;
-DM.QueryMembro.SQL.Add('select * from TBL_MEMBROS order by nome asc');
-DM.QueryMembro.Open();
+  DM.QueryMembro.Close;
+  DM.QueryMembro.SQL.Clear;
+  DM.QueryMembro.SQL.Add('select * from TBL_MEMBROS order by nome asc');
+  DM.QueryMembro.Open();
 end;
 
 procedure TFrmCadMembro.carregarcbPROFISSAO;
@@ -571,6 +571,7 @@ begin
    Editvalor.text := FormatFloat('###,##0.00',v);
    Editvalor.SelStart := Length(Editvalor.text);
 end;
+
 // trabalhando com valor de moeda
 procedure TFrmCadMembro.EditVALORKeyPress(Sender: TObject; var Key: Char);
 begin
@@ -599,7 +600,7 @@ limparCampos;
 btnSalvar.Enabled := false;
 btnEditar.Enabled := false;
 btnDeletar.Enabled := false;
-btnCarteirinha.Enabled := false;
+btnCartas.Enabled := false;
 EditPATHFOTO.Enabled := false;
 btnCANCELAR.Enabled := false;
 btnAdd.Enabled := false;
@@ -616,7 +617,7 @@ begin
   btnEditar.Enabled := true;
   btnDeletar.Enabled := true;
   btnAdd.Enabled := true;
-  btnCarteirinha.Enabled := true;
+  btnCartas.Enabled := true;
   habilitarCampos;
   EditPATHFOTO.Enabled := false;
   btnCANCELAR.Enabled := true;
@@ -893,7 +894,7 @@ begin
   MemoOBSERVACAO       .Text := '';
 end;
 
-procedure TFrmCadMembro.btnCarteirinhaClick(Sender: TObject);
+procedure TFrmCadMembro.btnCartasClick(Sender: TObject);
 begin
 // Faz a consulta do membro para enviar para o relatorio
   DM.QueryMembro.Close;
@@ -903,9 +904,9 @@ begin
   DM.QueryMembro.Open();
 
 
-  DM.frxCarteirinha.LoadFromFile(GetCurrentDir + '\Relatorio\modelo_01.fr3');
-  DM.frxCarteirinha.ShowReport();
-  btnCarteirinha.Enabled := false;
+  DM.frxReportCarteira.LoadFromFile(GetCurrentDir + '\Relatorio\modelo_01.fr3');
+  DM.frxReportCarteira.ShowReport();
+  btnCartas.Enabled := false;
   buscarTudo; // Após chamar o relatorio, executa a procedure BuscarTudo
 end;
 

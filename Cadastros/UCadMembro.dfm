@@ -2,7 +2,7 @@
   Left = 0
   Top = 0
   Caption = 'Cadastro de Pessoas'
-  ClientHeight = 599
+  ClientHeight = 595
   ClientWidth = 916
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,7 +19,7 @@
     Left = 0
     Top = 0
     Width = 916
-    Height = 599
+    Height = 595
     ActivePage = TabSheet1
     Align = alClient
     Images = ImageList1
@@ -254,8 +254,8 @@
         Caption = 'ROLL de Membros'
       end
       object btnFOTOGRAFAR: TSpeedButton
-        Left = 769
-        Top = 247
+        Left = 764
+        Top = 249
         Width = 120
         Height = 30
         Caption = 'Fotografar'
@@ -383,12 +383,12 @@
           CECECECECECECECECECECECECECECECECECECECECECECEFFFFFF}
         OnClick = btnAddClick
       end
-      object btnCarteirinha: TSpeedButton
-        Left = 680
+      object btnCartas: TSpeedButton
+        Left = 744
         Top = 488
         Width = 145
         Height = 33
-        Caption = 'Emitir Carteirinha'
+        Caption = 'Emitir Documento'
         Glyph.Data = {
           F6060000424DF606000000000000360000002800000018000000180000000100
           180000000000C006000000000000000000000000000000000000043988043988
@@ -446,7 +446,7 @@
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-        OnClick = btnCarteirinhaClick
+        OnClick = btnCartasClick
       end
       object Label32: TLabel
         Left = 515

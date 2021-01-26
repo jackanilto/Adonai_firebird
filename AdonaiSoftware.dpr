@@ -20,7 +20,9 @@ uses
   DirectSound in 'Win32\WebcamFiles\DirectX\DirectSound.pas',
   DXTypes in 'Win32\WebcamFiles\DirectX\DXTypes.pas',
   uWebCam in 'Cadastros\uWebCam.pas' {frmWebCam},
-  UCarteirinhas in 'Relatorios\UCarteirinhas.pas' {FrmCarteirinha};
+  UCarteirinhas in 'Relatorios\UCarteirinhas.pas' {FrmCarteirinha},
+  UDizimos in 'Movimentacoes\UDizimos.pas' {FrmDIZIMOOFERTA},
+  UBuscarMembro in 'Movimentacoes\UBuscarMembro.pas' {FrmBUSCARMEMBRO};
 
 {$R *.res}
 
@@ -38,6 +40,8 @@ begin
   Application.CreateForm(TFrmSobre, FrmSobre);
   Application.CreateForm(TFrmSplash, FrmSplash);
   Application.CreateForm(TFrmCarteirinha, FrmCarteirinha);
+  Application.CreateForm(TFrmDIZIMOOFERTA, FrmDIZIMOOFERTA);
+  Application.CreateForm(TFrmBUSCARMEMBRO, FrmBUSCARMEMBRO);
   //Application.CreateForm(TfrmWebCam, frmWebCam);
   Application.Run;
 end.

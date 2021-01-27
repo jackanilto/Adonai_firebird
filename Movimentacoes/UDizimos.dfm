@@ -1942,6 +1942,8 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
     Top = 97
     Width = 130
     Height = 21
+    BiDiMode = bdRightToLeft
+    ParentBiDiMode = False
     TabOrder = 8
     OnChange = EditVALDIZIMOChange
     OnKeyPress = EditVALDIZIMOKeyPress
@@ -1974,8 +1976,6 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
     Top = 46
     Width = 246
     Height = 72
-    Lines.Strings = (
-      'MemoOBSERVACAO')
     TabOrder = 11
   end
 end

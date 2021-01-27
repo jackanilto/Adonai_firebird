@@ -9,6 +9,7 @@ object DM: TDM
       'User_Name=SYSDBA'
       'Password=masterkey'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 32
     Top = 8
@@ -794,14 +795,20 @@ object DM: TDM
       Origin = 'FORMA'
       Size = 12
     end
-    object TBL_DIZIMOSVALOR: TFloatField
-      FieldName = 'VALOR'
-      Origin = 'VALOR'
-    end
     object TBL_DIZIMOSOBS: TStringField
       FieldName = 'OBS'
       Origin = 'OBS'
       Size = 50
+    end
+    object TBL_DIZIMOSTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      Size = 80
+    end
+    object TBL_DIZIMOSVALOR: TStringField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+      Size = 80
     end
   end
   object DSDIZIMOS: TDataSource

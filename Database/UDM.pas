@@ -130,8 +130,9 @@ type
     TBL_DIZIMOSNOME: TStringField;
     TBL_DIZIMOSDATA: TStringField;
     TBL_DIZIMOSFORMA: TStringField;
-    TBL_DIZIMOSVALOR: TFloatField;
     TBL_DIZIMOSOBS: TStringField;
+    TBL_DIZIMOSTIPO: TStringField;
+    TBL_DIZIMOSVALOR: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

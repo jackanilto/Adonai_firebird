@@ -38,14 +38,14 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
     Caption = 'NOME'
   end
   object Label4: TLabel
-    Left = 176
+    Left = 137
     Top = 78
     Width = 27
     Height = 13
     Caption = 'DATA'
   end
   object Label5: TLabel
-    Left = 295
+    Left = 256
     Top = 78
     Width = 36
     Height = 13
@@ -1940,7 +1940,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   object EditVALDIZIMO: TEdit
     Left = 32
     Top = 97
-    Width = 130
+    Width = 101
     Height = 21
     BiDiMode = bdRightToLeft
     ParentBiDiMode = False
@@ -1949,7 +1949,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
     OnKeyPress = EditVALDIZIMOKeyPress
   end
   object DatePickerDIZIMO: TJvDatePickerEdit
-    Left = 176
+    Left = 137
     Top = 97
     Width = 105
     Height = 21
@@ -1958,9 +1958,9 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
     TabOrder = 9
   end
   object CBFormas: TComboBox
-    Left = 295
+    Left = 256
     Top = 97
-    Width = 122
+    Width = 89
     Height = 21
     ItemIndex = 0
     TabOrder = 10

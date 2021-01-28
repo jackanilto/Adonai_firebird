@@ -14,7 +14,7 @@ type
     BtnSalvar: TBitBtn;
     btnEditar: TBitBtn;
     btnDeletar: TBitBtn;
-    DBGrid1: TDBGrid;
+    DBGridDIZIMOS: TDBGrid;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -24,15 +24,22 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    Label7: TLabel;
+    LabelOBS: TLabel;
     EditVALDIZIMO: TEdit;
     DatePickerDIZIMO: TJvDatePickerEdit;
     CBFormas: TComboBox;
     MemoOBSERVACAO: TMemo;
     SpeedButton1: TSpeedButton;
+    Label8: TLabel;
+    cbTipo: TComboBox;
     procedure EditVALDIZIMOChange(Sender: TObject);
     procedure EditVALDIZIMOKeyPress(Sender: TObject; var Key: Char);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure BtnSalvarClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure btnDeletarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,9 +72,115 @@ begin
    DM.TBL_MEMBROS.FieldByName('ROLL')       .AsString   := EditROLL.Text;
    DM.TBL_MEMBROS.FieldByName('DATA')       .AsDateTime := Date;
    DM.TBL_MEMBROS.FieldByName('FORMA')      .AsString   := cbFORMAS.Text;
-   DM.TBL_MEMBROS.FieldByName('VALOR')      .Value      := EditVALDIZIMO.Text;
-   DM.TBL_MEMBROS.FieldByName('OBSERVACAO') .AsString   := MemoOBSERVACAO.Text;
+   DM.TBL_MEMBROS.FieldByName('TIPO')       .AsString   := cbTIPO.Text;
+   DM.TBL_MEMBROS.FieldByName('VALOR')      .AsString   := EditVALDIZIMO.Text;
+   DM.TBL_MEMBROS.FieldByName('OBS')        .AsString   := MemoOBSERVACAO.Text;
 
+end;
+
+procedure TFrmDIZIMOOFERTA.btnDeletarClick(Sender: TObject);
+begin
+if Messagedlg('Deseja excluir o registro?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+   associarCampos;
+    DM.QueryDIZIMOS.Close;
+    DM.QueryDIZIMOS.SQL.Clear;
+    DM.QueryDIZIMOS.SQL.Add('delete from TBL_DIZIMOS where ID = :ID');
+
+    DM.QueryDIZIMOS.ParamByName('ID').Value := EditID.Text;
+    DM.QueryDIZIMOS.ExecSql;
+    buscarTudo;
+    MessageDlg('Excluido com Sucesso!!', mtInformation, mbOKCancel, 0);
+    // destativa a table (solução para atualiza grid em tempo de execução)
+    //reativa a table
+    DM.TBL_DIZIMOS.Active := false;
+    DM.TBL_DIZIMOS.Active := true;
+
+    EditNOME.Enabled := false;
+    btnSalvar.Enabled := false;
+    btnEditar.Enabled := false;
+    btnDeletar.Enabled := false;
+    btnNovo.Enabled := true;
+  end;
+end;
+
+procedure TFrmDIZIMOOFERTA.btnEditarClick(Sender: TObject);
+begin
+  if (editNOME.Text <> '') then
+    begin
+        associarCampos;
+        DM.TBL_DIZIMOS.Edit;
+        DM.QueryDIZIMOS.Close;
+        DM.QueryDIZIMOS.SQL.Clear;
+        DM.QueryDIZIMOS.SQL.Add('update TBL_MEMBROS set '+
+        ' NOME              =  :NOME                 , ROLL                 = :ROLL                 , '+
+        ' DATA              =  :DATA                 , FORMA                = :FORMA                , '+
+        ' TIPO              =  :TIPO                 , VALOR                = :VALOR                , '+
+        ' OBS               =  :OBS                   where id              = :id                     ');
+
+        DM.QueryDIZIMOS.ParamByName('ROLL').AsString := EditROLL.Text;
+        DM.QueryDIZIMOS.ParamByName('NOME').AsString := EditNome.Text;
+        DM.QueryDIZIMOS.ParamByName('DATA').AsDate := DatePickerDIZIMO.Date;
+        DM.QueryDIZIMOS.ParamByName('FORMA').AsString := CBFormas.Text;
+        DM.QueryDIZIMOS.ParamByName('TIPO').AsString := cbTIPO.Text;
+        DM.QueryDIZIMOS.ParamByName('VALOR').AsString := EditVALDIZIMO.Text;
+        DM.QueryDIZIMOS.ParamByName('OBS').AsString := MemoOBSERVACAO.Text;
+        DM.QueryDIZIMOS.ParamByName('ID').AsString := EditID.Text;
+
+        DM.QueryDIZIMOS.ExecSql;
+
+        MessageDlg('Editado com Sucesso!!', mtInformation, mbOKCancel, 0);
+        buscarTudo;
+        desabilitarCampos;
+        limparCampos;
+        btnSalvar.Enabled := false;
+        btnEditar.Enabled := false;
+        btnDeletar.Enabled := false;
+        btnNovo.Enabled := true;
+        DBGridDIZIMOS.Enabled := true;
+    end
+    else
+    begin
+    MessageDlg('Preencha os Campos', mtInformation, mbOKCancel, 0);
+    end;
+end;
+
+procedure TFrmDIZIMOOFERTA.btnNovoClick(Sender: TObject);
+begin
+  //apos editar um dado esta desbilitando o Edit
+  DBGridDIZIMOS.Enabled:=false;
+  habilitarCampos();
+  limparCampos();
+  //EditNOME.Enabled := true; // Reabilita Edit
+  //EditNOME.Text := '';
+  EditROLL.SetFocus;
+  DM.TBL_DIZIMOS.Insert;
+
+  BtnSalvar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnEditar.Enabled := true;
+  btnDeletar.Enabled := false;
+end;
+
+procedure TFrmDIZIMOOFERTA.BtnSalvarClick(Sender: TObject);
+begin
+  if (EditNOME.Text <> '') then
+  begin
+    associarCampos;
+    DM.TBL_DIZIMOS.Post;
+    MessageDlg('Salvo com Sucesso!!', mtInformation, mbOKCancel, 0);
+    buscarTudo;
+    desabilitarCampos;
+    btnSalvar.Enabled := false;
+    btnNovo.Enabled := true;
+    btnEditar.Enabled := false;
+    btnDeletar.Enabled := false;
+    DBGridDIZIMOS.Enabled := true;
+    end
+    else
+    begin
+    MessageDlg('Preencha os Campos', mtInformation, mbOKCancel, 0);
+  end;
 end;
 
 procedure TFrmDIZIMOOFERTA.buscarTudo;
@@ -80,26 +193,29 @@ end;
 
 procedure TFrmDIZIMOOFERTA.desabilitarCampos;
 begin
-
+  EditNOME        .Enabled := false;
+  EditROLL        .Enabled := false;
+  EditVALDIZIMO   .Enabled := false;
+  MemoOBSERVACAO  .Enabled := false;
 end;
 
 procedure TFrmDIZIMOOFERTA.EditVALDIZIMOChange(Sender: TObject);
 begin
-   //1º Passo : se o edit estiver vazio, nada pode ser feito.
+   //se o edit estiver vazio, nada pode ser feito.
    If (EditVALDIZIMO.Text = emptystr) then
       EditVALDIZIMO.Text := '0,00';
 
-   //2º Passo : obter o texto do edit, SEM a virgula e SEM o ponto decimal:
+   //obter o texto do edit, SEM a virgula e SEM o ponto decimal:
    s := '';
    for I := 1 to length(EditVALDIZIMO.Text) do
    if (EditVALDIZIMO.text[I] in ['0'..'9']) then
       s := s + EditVALDIZIMO.text[I];
 
-   //3º Passo : fazer com que o conteúdo do edit apresente 2 casas decimais:
+   //fazer com que o conteúdo do edit apresente 2 casas decimais:
    v := strtofloat(s);
    v := (v /100); // para criar 2 casa decimais
 
-   //4º Passo : Formata o valor de (V) para aceitar valores do tipo 0,10.
+   //Formata o valor de (V) para aceitar valores do tipo 0,10.
    EditVALDIZIMO.text := FormatFloat('###,##0.00',v);
    EditVALDIZIMO.SelStart := Length(EditVALDIZIMO.text);
 end;
@@ -107,25 +223,41 @@ end;
 procedure TFrmDIZIMOOFERTA.EditVALDIZIMOKeyPress(Sender: TObject;
   var Key: Char);
 begin
-     if NOT (Key in ['0'..'9', #8, #9]) then
-     key := #0;
-     //Função posiciona o cursor sempre a direita como nos Caixas Eletronicos
-     EditVALDIZIMO.selstart := Length(EditVALDIZIMO.text);
+   if NOT (Key in ['0'..'9', #8, #9]) then
+   key := #0;
+   //Função posiciona o cursor sempre a direita como nos Caixas Eletronicos
+   EditVALDIZIMO.selstart := Length(EditVALDIZIMO.text);
+end;
+
+procedure TFrmDIZIMOOFERTA.FormShow(Sender: TObject);
+begin
+DM.TBL_DIZIMOS.Active := false;
+DM.TBL_DIZIMOS.Active := true;
+limparCampos;
+BtnSalvar.Enabled  := false;
+btnEditar.Enabled  := false;
+btnDeletar.Enabled := false;
 end;
 
 procedure TFrmDIZIMOOFERTA.habilitarCampos;
 begin
-
+  EditNOME        .Enabled := true;
+  EditROLL        .Enabled := true;
+  EditVALDIZIMO   .Enabled := true;
+  MemoOBSERVACAO  .Enabled := true;
 end;
 
 procedure TFrmDIZIMOOFERTA.limparCampos;
 begin
-  EditNOME.Text  := '';
+  EditNOME        .Text  := '';
+  EditROLL        .Text  := '';
+  EditVALDIZIMO   .Text  := '';
+  MemoOBSERVACAO  .Text  := '';
 end;
 
 procedure TFrmDIZIMOOFERTA.SpeedButton1Click(Sender: TObject);
 begin
-FrmBUSCARMEMBRO.ShowModal;
+  FrmBUSCARMEMBRO.ShowModal;
 end;
 
 end.

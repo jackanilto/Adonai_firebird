@@ -13,6 +13,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -58,12 +59,12 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
     Height = 13
     Caption = 'VALOR'
   end
-  object Label7: TLabel
-    Left = 484
-    Top = 49
-    Width = 20
+  object LabelOBS: TLabel
+    Left = 488
+    Top = 37
+    Width = 68
     Height = 13
-    Caption = 'OBS'
+    Caption = 'OBSERVA'#199#195'O'
   end
   object SpeedButton1: TSpeedButton
     Left = 423
@@ -129,6 +130,13 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     Layout = blGlyphTop
     OnClick = SpeedButton1Click
+  end
+  object Label8: TLabel
+    Left = 351
+    Top = 78
+    Width = 24
+    Height = 13
+    Caption = 'TIPO'
   end
   object btnNovo: TBitBtn
     Left = 225
@@ -572,6 +580,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     NumGlyphs = 2
     TabOrder = 0
+    OnClick = btnNovoClick
   end
   object BtnSalvar: TBitBtn
     Left = 301
@@ -1015,6 +1024,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     NumGlyphs = 2
     TabOrder = 1
+    OnClick = BtnSalvarClick
   end
   object btnEditar: TBitBtn
     Left = 372
@@ -1458,6 +1468,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     NumGlyphs = 2
     TabOrder = 2
+    OnClick = btnEditarClick
   end
   object btnDeletar: TBitBtn
     Left = 449
@@ -1901,8 +1912,9 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     NumGlyphs = 2
     TabOrder = 3
+    OnClick = btnDeletarClick
   end
-  object DBGrid1: TDBGrid
+  object DBGridDIZIMOS: TDBGrid
     Left = 8
     Top = 135
     Width = 748
@@ -1962,9 +1974,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
     Top = 97
     Width = 89
     Height = 21
-    ItemIndex = 0
     TabOrder = 10
-    Text = 'Dinheiro'
     Items.Strings = (
       'Dinheiro'
       'Cheque'
@@ -1972,10 +1982,21 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       'Outros')
   end
   object MemoOBSERVACAO: TMemo
-    Left = 510
-    Top = 46
-    Width = 246
-    Height = 72
+    Left = 488
+    Top = 56
+    Width = 268
+    Height = 62
     TabOrder = 11
+  end
+  object cbTipo: TComboBox
+    Left = 351
+    Top = 97
+    Width = 114
+    Height = 21
+    TabOrder = 12
+    Items.Strings = (
+      'Oferta'
+      'D'#237'zimo'
+      'Outros')
   end
 end

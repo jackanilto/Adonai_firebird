@@ -767,6 +767,7 @@ object DM: TDM
     Top = 328
   end
   object TBL_DIZIMOS: TFDTable
+    Active = True
     Connection = FDConn
     UpdateOptions.UpdateTableName = 'TBL_DIZIMOS'
     TableName = 'TBL_DIZIMOS'
@@ -795,11 +796,6 @@ object DM: TDM
       Origin = 'FORMA'
       Size = 12
     end
-    object TBL_DIZIMOSOBS: TStringField
-      FieldName = 'OBS'
-      Origin = 'OBS'
-      Size = 50
-    end
     object TBL_DIZIMOSTIPO: TStringField
       FieldName = 'TIPO'
       Origin = 'TIPO'
@@ -809,6 +805,11 @@ object DM: TDM
       FieldName = 'VALOR'
       Origin = 'VALOR'
       Size = 80
+    end
+    object TBL_DIZIMOSOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 50
     end
   end
   object DSDIZIMOS: TDataSource

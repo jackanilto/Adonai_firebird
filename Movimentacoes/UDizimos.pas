@@ -44,9 +44,9 @@ type
     { Private declarations }
   public
     { Public declarations }
-   procedure limparCampos();
-   procedure habilitarCampos();
-   procedure desabilitarCampos();
+//   procedure limparCampos();
+//   procedure habilitarCampos();
+//   procedure desabilitarCampos();
    procedure buscarTudo();
    procedure associarCampos();
   end;
@@ -131,8 +131,8 @@ begin
 
         MessageDlg('Editado com Sucesso!!', mtInformation, mbOKCancel, 0);
         buscarTudo;
-        desabilitarCampos;
-        limparCampos;
+//        desabilitarCampos;
+//        limparCampos;
         btnSalvar.Enabled := false;
         btnEditar.Enabled := false;
         btnDeletar.Enabled := false;
@@ -149,8 +149,8 @@ procedure TFrmDIZIMOOFERTA.btnNovoClick(Sender: TObject);
 begin
   //apos editar um dado esta desbilitando o Edit
   DBGridDIZIMOS.Enabled:=false;
-  habilitarCampos();
-  limparCampos();
+//  habilitarCampos();
+//  limparCampos();
   //EditNOME.Enabled := true; // Reabilita Edit
   //EditNOME.Text := '';
   EditROLL.SetFocus;
@@ -170,7 +170,7 @@ begin
     DM.TBL_DIZIMOS.Post;
     MessageDlg('Salvo com Sucesso!!', mtInformation, mbOKCancel, 0);
     buscarTudo;
-    desabilitarCampos;
+//    desabilitarCampos;
     btnSalvar.Enabled := false;
     btnNovo.Enabled := true;
     btnEditar.Enabled := false;
@@ -191,13 +191,13 @@ begin
   DM.QueryMembro.Open();
 end;
 
-procedure TFrmDIZIMOOFERTA.desabilitarCampos;
-begin
-  EditNOME        .Enabled := false;
-  EditROLL        .Enabled := false;
-  EditVALDIZIMO   .Enabled := false;
-  MemoOBSERVACAO  .Enabled := false;
-end;
+//procedure TFrmDIZIMOOFERTA.desabilitarCampos;
+//begin
+//  EditNOME        .Enabled := false;
+//  EditROLL        .Enabled := false;
+//  EditVALDIZIMO   .Enabled := false;
+//  MemoOBSERVACAO  .Enabled := false;
+//end;
 
 procedure TFrmDIZIMOOFERTA.EditVALDIZIMOChange(Sender: TObject);
 begin
@@ -231,29 +231,30 @@ end;
 
 procedure TFrmDIZIMOOFERTA.FormShow(Sender: TObject);
 begin
-DM.TBL_DIZIMOS.Active := false;
-DM.TBL_DIZIMOS.Active := true;
-limparCampos;
-BtnSalvar.Enabled  := false;
-btnEditar.Enabled  := false;
-btnDeletar.Enabled := false;
+  DM.TBL_DIZIMOS.Active := false;
+  DM.TBL_DIZIMOS.Active := true;
+  buscarTudo;
+  //limparCampos;
+  BtnSalvar.Enabled  := false;
+  btnEditar.Enabled  := false;
+  btnDeletar.Enabled := false;
 end;
 
-procedure TFrmDIZIMOOFERTA.habilitarCampos;
-begin
-  EditNOME        .Enabled := true;
-  EditROLL        .Enabled := true;
-  EditVALDIZIMO   .Enabled := true;
-  MemoOBSERVACAO  .Enabled := true;
-end;
+//procedure TFrmDIZIMOOFERTA.habilitarCampos;
+//begin
+//  EditNOME        .Enabled := true;
+//  EditROLL        .Enabled := true;
+//  EditVALDIZIMO   .Enabled := true;
+//  MemoOBSERVACAO  .Enabled := true;
+//end;
 
-procedure TFrmDIZIMOOFERTA.limparCampos;
-begin
-  EditNOME        .Text  := '';
-  EditROLL        .Text  := '';
-  EditVALDIZIMO   .Text  := '';
-  MemoOBSERVACAO  .Text  := '';
-end;
+//procedure TFrmDIZIMOOFERTA.limparCampos;
+//begin
+//  EditNOME        .Text  := '';
+//  EditROLL        .Text  := '';
+//  EditVALDIZIMO   .Text  := '';
+//  MemoOBSERVACAO  .Text  := '';
+//end;
 
 procedure TFrmDIZIMOOFERTA.SpeedButton1Click(Sender: TObject);
 begin

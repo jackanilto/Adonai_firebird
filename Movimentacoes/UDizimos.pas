@@ -29,12 +29,12 @@ type
     DatePickerDIZIMO: TJvDatePickerEdit;
     CBFormas: TComboBox;
     MemoOBSERVACAO: TMemo;
-    SpeedButton1: TSpeedButton;
+    btnBUSCAR: TSpeedButton;
     Label8: TLabel;
     cbTipo: TComboBox;
     procedure EditVALDIZIMOChange(Sender: TObject);
     procedure EditVALDIZIMOKeyPress(Sender: TObject; var Key: Char);
-    procedure SpeedButton1Click(Sender: TObject);
+    procedure btnBUSCARClick(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
@@ -101,6 +101,7 @@ if Messagedlg('Deseja excluir o registro?', mtConfirmation, [mbYes, mbNo], 0) = 
     DM.TBL_DIZIMOS.Active := false;
     DM.TBL_DIZIMOS.Active := true;
 
+    btnBUSCAR.Enabled := false;
     EditNOME.Enabled := false;
     btnSalvar.Enabled := false;
     btnEditar.Enabled := false;
@@ -138,6 +139,7 @@ begin
         buscarTudo;
 //        desabilitarCampos;
 //        limparCampos;
+        btnBUSCAR.Enabled := false;
         btnSalvar.Enabled := false;
         btnEditar.Enabled := false;
         btnDeletar.Enabled := false;
@@ -161,6 +163,7 @@ begin
   EditROLL.SetFocus;
   DM.TBL_DIZIMOS.Insert;
 
+  btnBUSCAR.Enabled := true;
   BtnSalvar.Enabled := true;
   btnNovo.Enabled := true;
   btnEditar.Enabled := true;
@@ -176,6 +179,7 @@ begin
     MessageDlg('Salvo com Sucesso!!', mtInformation, mbOKCancel, 0);
     buscarTudo;
 //    desabilitarCampos;
+    btnBUSCAR.Enabled := false;
     btnSalvar.Enabled := false;
     btnNovo.Enabled := true;
     btnEditar.Enabled := false;
@@ -257,11 +261,14 @@ procedure TFrmDIZIMOOFERTA.FormShow(Sender: TObject);
 begin
   DM.TBL_DIZIMOS.Active := false;
   DM.TBL_DIZIMOS.Active := true;
+  DM.QueryDIZIMOS.Active := false;
+  DM.QueryDIZIMOS.Active := true;
   buscarTudo;
   limparCampos;
   BtnSalvar.Enabled  := false;
   btnEditar.Enabled  := false;
   btnDeletar.Enabled := false;
+  btnBUSCAR.Enabled := false;
 end;
 
 procedure TFrmDIZIMOOFERTA.habilitarCampos;
@@ -280,7 +287,7 @@ begin
   MemoOBSERVACAO  .Text  := '';
 end;
 
-procedure TFrmDIZIMOOFERTA.SpeedButton1Click(Sender: TObject);
+procedure TFrmDIZIMOOFERTA.btnBUSCARClick(Sender: TObject);
 begin
   FrmBUSCARMEMBRO.ShowModal;
 end;

@@ -40,15 +40,20 @@ type
     procedure BtnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnDeletarClick(Sender: TObject);
+//    procedure EditBUSCARROLLChange(Sender: TObject);
+//    procedure EditBUSCARChange(Sender: TObject);
+    procedure DBGridBUSCARCellClick(Column: TColumn);
   private
     { Private declarations }
   public
     { Public declarations }
-//   procedure limparCampos();
-//   procedure habilitarCampos();
-//   procedure desabilitarCampos();
+   procedure limparCampos();
+   procedure habilitarCampos();
+   procedure desabilitarCampos();
    procedure buscarTudo();
    procedure associarCampos();
+//   procedure buscarNome();
+//   procedure buscarRoll();
   end;
 
 var
@@ -68,13 +73,13 @@ uses UBuscarMembro;
 
 procedure TFrmDIZIMOOFERTA.associarCampos;
 begin
-   DM.TBL_MEMBROS.FieldByName('NOME')       .AsString   := EditNOME.Text;
-   DM.TBL_MEMBROS.FieldByName('ROLL')       .AsString   := EditROLL.Text;
-   DM.TBL_MEMBROS.FieldByName('DATA')       .AsDateTime := Date;
-   DM.TBL_MEMBROS.FieldByName('FORMA')      .AsString   := cbFORMAS.Text;
-   DM.TBL_MEMBROS.FieldByName('TIPO')       .AsString   := cbTIPO.Text;
-   DM.TBL_MEMBROS.FieldByName('VALOR')      .AsString   := EditVALDIZIMO.Text;
-   DM.TBL_MEMBROS.FieldByName('OBS')        .AsString   := MemoOBSERVACAO.Text;
+   DM.TBL_DIZIMOS.FieldByName('NOME')       .AsString   := EditNOME.Text;
+   DM.TBL_DIZIMOS.FieldByName('ROLL')       .AsString   := EditROLL.Text;
+   DM.TBL_DIZIMOS.FieldByName('DATA')       .AsDateTime := Date;
+   DM.TBL_DIZIMOS.FieldByName('FORMA')      .AsString   := cbFORMAS.Text;
+   DM.TBL_DIZIMOS.FieldByName('TIPO')       .AsString   := cbTIPO.Text;
+   DM.TBL_DIZIMOS.FieldByName('VALOR')      .AsString   := EditVALDIZIMO.Text;
+   DM.TBL_DIZIMOS.FieldByName('OBS')        .AsString   := MemoOBSERVACAO.Text;
 
 end;
 
@@ -108,7 +113,7 @@ procedure TFrmDIZIMOOFERTA.btnEditarClick(Sender: TObject);
 begin
   if (editNOME.Text <> '') then
     begin
-        associarCampos;
+        //associarCampos;
         DM.TBL_DIZIMOS.Edit;
         DM.QueryDIZIMOS.Close;
         DM.QueryDIZIMOS.SQL.Clear;
@@ -187,17 +192,36 @@ procedure TFrmDIZIMOOFERTA.buscarTudo;
 begin
   DM.QueryMembro.Close;
   DM.QueryMembro.SQL.Clear;
-  DM.QueryMembro.SQL.Add('select * from TBL_MEMBROS order by nome asc');
+  DM.QueryMembro.SQL.Add('select * from TBL_DIZIMOS order by nome asc');
   DM.QueryMembro.Open();
 end;
 
-//procedure TFrmDIZIMOOFERTA.desabilitarCampos;
-//begin
-//  EditNOME        .Enabled := false;
-//  EditROLL        .Enabled := false;
-//  EditVALDIZIMO   .Enabled := false;
-//  MemoOBSERVACAO  .Enabled := false;
-//end;
+procedure TFrmDIZIMOOFERTA.DBGridBUSCARCellClick(Column: TColumn);
+begin
+  DM.TBL_MEMBROS.Edit;
+  DM.QueryMembro.Edit;
+  btnEditar.Enabled := true;
+  btnDeletar.Enabled := true;
+  habilitarCampos;
+
+
+  if DM.QueryDIZIMOS.FieldByName('NOME').Value <> null then
+    EditNOME.Text := DM.QueryDIZIMOS.FieldByName('NOME').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('ROLL').Value <> null then
+     EditNOME.Text := DM.QueryDIZIMOS.FieldByName('ROLL').Value;
+
+
+
+end;
+
+procedure TFrmDIZIMOOFERTA.desabilitarCampos;
+begin
+  EditNOME        .Enabled := false;
+  EditROLL        .Enabled := false;
+  EditVALDIZIMO   .Enabled := false;
+  MemoOBSERVACAO  .Enabled := false;
+end;
 
 procedure TFrmDIZIMOOFERTA.EditVALDIZIMOChange(Sender: TObject);
 begin
@@ -234,27 +258,27 @@ begin
   DM.TBL_DIZIMOS.Active := false;
   DM.TBL_DIZIMOS.Active := true;
   buscarTudo;
-  //limparCampos;
+  limparCampos;
   BtnSalvar.Enabled  := false;
   btnEditar.Enabled  := false;
   btnDeletar.Enabled := false;
 end;
 
-//procedure TFrmDIZIMOOFERTA.habilitarCampos;
-//begin
-//  EditNOME        .Enabled := true;
-//  EditROLL        .Enabled := true;
-//  EditVALDIZIMO   .Enabled := true;
-//  MemoOBSERVACAO  .Enabled := true;
-//end;
-
-//procedure TFrmDIZIMOOFERTA.limparCampos;
-//begin
-//  EditNOME        .Text  := '';
-//  EditROLL        .Text  := '';
-//  EditVALDIZIMO   .Text  := '';
-//  MemoOBSERVACAO  .Text  := '';
-//end;
+procedure TFrmDIZIMOOFERTA.habilitarCampos;
+begin
+  EditNOME        .Enabled := true;
+  EditROLL        .Enabled := true;
+  EditVALDIZIMO   .Enabled := true;
+  MemoOBSERVACAO  .Enabled := true;
+end;
+//
+procedure TFrmDIZIMOOFERTA.limparCampos;
+begin
+  EditNOME        .Text  := '';
+  EditROLL        .Text  := '';
+  EditVALDIZIMO   .Text  := '';
+  MemoOBSERVACAO  .Text  := '';
+end;
 
 procedure TFrmDIZIMOOFERTA.SpeedButton1Click(Sender: TObject);
 begin

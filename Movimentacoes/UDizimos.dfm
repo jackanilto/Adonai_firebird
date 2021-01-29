@@ -3,7 +3,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'D'#237'zimo e Ofertas'
-  ClientHeight = 321
+  ClientHeight = 512
   ClientWidth = 764
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -26,49 +26,49 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   end
   object Label2: TLabel
     Left = 32
-    Top = 49
+    Top = 41
     Width = 25
     Height = 13
     Caption = 'ROLL'
   end
   object Label3: TLabel
     Left = 141
-    Top = 49
+    Top = 41
     Width = 29
     Height = 13
     Caption = 'NOME'
   end
   object Label4: TLabel
     Left = 137
-    Top = 78
+    Top = 70
     Width = 27
     Height = 13
     Caption = 'DATA'
   end
   object Label5: TLabel
     Left = 256
-    Top = 78
+    Top = 70
     Width = 36
     Height = 13
     Caption = 'FORMA'
   end
   object Label6: TLabel
     Left = 32
-    Top = 78
+    Top = 70
     Width = 33
     Height = 13
     Caption = 'VALOR'
   end
   object LabelOBS: TLabel
     Left = 488
-    Top = 37
+    Top = 29
     Width = 68
     Height = 13
     Caption = 'OBSERVA'#199#195'O'
   end
   object SpeedButton1: TSpeedButton
     Left = 423
-    Top = 39
+    Top = 31
     Width = 42
     Height = 36
     Glyph.Data = {
@@ -133,14 +133,14 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   end
   object Label8: TLabel
     Left = 351
-    Top = 78
+    Top = 70
     Width = 24
     Height = 13
     Caption = 'TIPO'
   end
   object btnNovo: TBitBtn
     Left = 225
-    Top = 261
+    Top = 253
     Width = 56
     Height = 56
     Glyph.Data = {
@@ -584,7 +584,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   end
   object BtnSalvar: TBitBtn
     Left = 301
-    Top = 261
+    Top = 253
     Width = 56
     Height = 56
     Glyph.Data = {
@@ -1028,7 +1028,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   end
   object btnEditar: TBitBtn
     Left = 372
-    Top = 261
+    Top = 253
     Width = 56
     Height = 56
     Glyph.Data = {
@@ -1472,7 +1472,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   end
   object btnDeletar: TBitBtn
     Left = 449
-    Top = 261
+    Top = 253
     Width = 56
     Height = 56
     Glyph.Data = {
@@ -1916,7 +1916,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   end
   object DBGridDIZIMOS: TDBGrid
     Left = 8
-    Top = 135
+    Top = 127
     Width = 748
     Height = 120
     DataSource = DM.DSDIZIMOS
@@ -1926,6 +1926,55 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ID'
+        Width = -1
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'ROLL'
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME'
+        Width = 260
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATA'
+        Width = 90
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'FORMA'
+        Width = 90
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'OBS'
+        Width = -1
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'TIPO'
+        Width = 90
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'VALOR'
+        Width = 90
+        Visible = True
+      end>
   end
   object EditID: TEdit
     Left = 41
@@ -1937,21 +1986,21 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   end
   object EditROLL: TEdit
     Left = 63
-    Top = 46
+    Top = 38
     Width = 70
     Height = 21
     TabOrder = 6
   end
   object EditNOME: TEdit
     Left = 176
-    Top = 46
+    Top = 38
     Width = 241
     Height = 21
     TabOrder = 7
   end
   object EditVALDIZIMO: TEdit
     Left = 32
-    Top = 97
+    Top = 89
     Width = 101
     Height = 21
     BiDiMode = bdRightToLeft
@@ -1962,7 +2011,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   end
   object DatePickerDIZIMO: TJvDatePickerEdit
     Left = 137
-    Top = 97
+    Top = 89
     Width = 105
     Height = 21
     AllowNoDate = True
@@ -1971,7 +2020,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   end
   object CBFormas: TComboBox
     Left = 256
-    Top = 97
+    Top = 89
     Width = 89
     Height = 21
     TabOrder = 10
@@ -1983,14 +2032,14 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   end
   object MemoOBSERVACAO: TMemo
     Left = 488
-    Top = 56
+    Top = 48
     Width = 268
     Height = 62
     TabOrder = 11
   end
   object cbTipo: TComboBox
     Left = 351
-    Top = 97
+    Top = 89
     Width = 114
     Height = 21
     TabOrder = 12

@@ -2,7 +2,7 @@ object FrmBUSCARMEMBRO: TFrmBUSCARMEMBRO
   Left = 0
   Top = 0
   Caption = 'Buscar Membro'
-  ClientHeight = 335
+  ClientHeight = 230
   ClientWidth = 578
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET

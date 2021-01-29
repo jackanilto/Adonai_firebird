@@ -9,7 +9,6 @@ object DM: TDM
       'User_Name=SYSDBA'
       'Password=masterkey'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 32
     Top = 8
@@ -767,7 +766,6 @@ object DM: TDM
     Top = 328
   end
   object TBL_DIZIMOS: TFDTable
-    Active = True
     Connection = FDConn
     UpdateOptions.UpdateTableName = 'TBL_DIZIMOS'
     TableName = 'TBL_DIZIMOS'
@@ -819,6 +817,8 @@ object DM: TDM
   end
   object QueryDIZIMOS: TFDQuery
     Connection = FDConn
+    SQL.Strings = (
+      'select * from tbl_dizimos')
     Left = 768
     Top = 216
   end

@@ -14,10 +14,10 @@ type
     EditBUSCARROLL: TEdit;
     GroupBox2: TGroupBox;
     EditBUSCAR: TEdit;
-    RadioFiltro: TRadioGroup;
     procedure EditBUSCARChange(Sender: TObject);
     procedure DBGridBUSCARCellClick(Column: TColumn);
     procedure EditBUSCARROLLChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,17 +38,6 @@ implementation
 { TFrmBUSCARMEMBRO }
 
 procedure TFrmBUSCARMEMBRO.buscarNome;
-//  var
-//  Filtro: string;
-//begin
-//  case RadioFiltro.ItemIndex of
-//      0: Filtro := 'WHERE NOME LIKE ''%'''+EditBUSCAR.Text+'''';
-//      1: Filtro := 'WHERE ROLL LIKE ''%'''+EditBUSCAR.Text+'''';
-//  end;
-//  dm.QueryMembro.SQL.Text := 'SELECT *  FROM TBL_MEMBROS ' + Filtro;
-//  dm.QueryMembro.Open;
-//end;
-
 
   BEGIN
 
@@ -61,6 +50,7 @@ procedure TFrmBUSCARMEMBRO.buscarNome;
 
 
 procedure TFrmBUSCARMEMBRO.buscarRoll;
+{Filtra por numero de Roll}
 begin
   dm.QueryMembro.Close;
   dm.QueryMembro.SQL.Clear;
@@ -88,6 +78,13 @@ end;
 procedure TFrmBUSCARMEMBRO.EditBUSCARROLLChange(Sender: TObject);
 begin
 buscarRoll;
+end;
+
+procedure TFrmBUSCARMEMBRO.FormShow(Sender: TObject);
+begin
+limparCampos;
+EditBUSCARROLL.SetFocus;
+
 end;
 
 procedure TFrmBUSCARMEMBRO.limparCampos;

@@ -2,7 +2,7 @@ object FrmBUSCARMEMBRO: TFrmBUSCARMEMBRO
   Left = 0
   Top = 0
   Caption = 'Buscar Membro'
-  ClientHeight = 405
+  ClientHeight = 335
   ClientWidth = 578
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,6 +12,7 @@ object FrmBUSCARMEMBRO: TFrmBUSCARMEMBRO
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object DBGridBUSCAR: TDBGrid
@@ -31,7 +32,6 @@ object FrmBUSCARMEMBRO: TFrmBUSCARMEMBRO
       item
         Expanded = False
         FieldName = 'ID'
-        Width = -1
         Visible = False
       end
       item
@@ -334,16 +334,5 @@ object FrmBUSCARMEMBRO: TFrmBUSCARMEMBRO
       TabOrder = 0
       OnChange = EditBUSCARChange
     end
-  end
-  object RadioFiltro: TRadioGroup
-    Left = 104
-    Top = 256
-    Width = 97
-    Height = 73
-    Caption = 'Selecione o Filtro'
-    Items.Strings = (
-      ' ROLL'
-      'NOME')
-    TabOrder = 3
   end
 end

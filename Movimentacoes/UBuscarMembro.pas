@@ -41,11 +41,11 @@ procedure TFrmBUSCARMEMBRO.buscarNome;
 
   BEGIN
 
-  dm.QueryMembro.Close;
-  dm.QueryMembro.SQL.Clear;                                 //add collate win_ptbr para busca CASE INSESITIVE
-  dm.QueryMembro.SQL.Add('select * from TBL_MEMBROS where nome collate win_ptbr LIKE :nome order by nome asc');
-  dm.QueryMembro.ParamByName('nome').Value := editBuscar.Text + '%';
-  dm.QueryMembro.Open;
+    dm.QueryMembro.Close;
+    dm.QueryMembro.SQL.Clear;                                 //add collate win_ptbr para busca CASE INSESITIVE
+    dm.QueryMembro.SQL.Add('select * from TBL_MEMBROS where nome collate win_ptbr LIKE :nome order by nome asc');
+    dm.QueryMembro.ParamByName('nome').Value := editBuscar.Text + '%';
+    dm.QueryMembro.Open;
   end;
 
 
@@ -70,20 +70,21 @@ end;
 procedure TFrmBUSCARMEMBRO.DBGridBUSCARCellClick(Column: TColumn);
 begin
   {Associa a field do DBGrid aos edits da form DIZIMOS}
-  FrmDIZIMOOFERTA.EditROLL.Text := DBGridBUSCAR.Fields[1].Value;
-  FrmDIZIMOOFERTA.EditNOME.Text := DBGridBUSCAR.Fields[2].Value;
+  FrmDIZIMOOFERTA.EditID.Text := DBGridBUSCAR.Fields[0].AsString;
+  FrmDIZIMOOFERTA.EditROLL.Text := DBGridBUSCAR.Fields[1].AsString;
+  FrmDIZIMOOFERTA.EditNOME.Text := DBGridBUSCAR.Fields[2].AsString;
   FrmBUSCARMEMBRO.Close;
 end;
 
 procedure TFrmBUSCARMEMBRO.EditBUSCARROLLChange(Sender: TObject);
 begin
-buscarRoll;
+  buscarRoll;
 end;
 
 procedure TFrmBUSCARMEMBRO.FormShow(Sender: TObject);
 begin
-limparCampos;
-EditBUSCARROLL.SetFocus;
+  limparCampos;
+  buscarTudo;
 
 end;
 
@@ -95,7 +96,7 @@ end;
 
 procedure TFrmBUSCARMEMBRO.EditBUSCARChange(Sender: TObject);
 begin
-buscarNome;
+  buscarNome;
 end;
 
 end.

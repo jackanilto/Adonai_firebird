@@ -634,7 +634,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       DEEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     NumGlyphs = 2
-    TabOrder = 0
+    TabOrder = 3
     OnClick = btnNovoClick
   end
   object BtnSalvar: TBitBtn
@@ -1078,7 +1078,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       FCFCFCFCEEEEEEAFAFAFAFAFAFB3B3B3CFCFCFF2F2F2FFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     NumGlyphs = 2
-    TabOrder = 1
+    TabOrder = 4
     OnClick = BtnSalvarClick
   end
   object btnEditar: TBitBtn
@@ -1522,7 +1522,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8FBFBFBFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     NumGlyphs = 2
-    TabOrder = 2
+    TabOrder = 5
     OnClick = btnEditarClick
   end
   object btnDeletar: TBitBtn
@@ -1966,7 +1966,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       5F848484C8C8C8FAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     NumGlyphs = 2
-    TabOrder = 3
+    TabOrder = 6
     OnClick = btnDeletarClick
   end
   object DBGridDIZIMOS: TDBGrid
@@ -1975,40 +1975,48 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
     Width = 748
     Height = 120
     DataSource = DM.DSDIZIMOS
-    TabOrder = 4
+    TabOrder = 7
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnCellClick = DBGridDIZIMOSCellClick
     Columns = <
       item
         Expanded = False
+        FieldName = 'ID_DIZIMO'
+        Width = 60
+        Visible = True
+      end
+      item
+        Expanded = False
         FieldName = 'ID'
-        Visible = False
+        Width = 50
+        Visible = True
       end
       item
         Expanded = False
         FieldName = 'ROLL'
-        Width = 80
+        Width = 60
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NOME'
-        Width = 260
+        Width = 230
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DATA'
-        Width = 90
+        Width = 80
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'FORMA'
-        Width = 90
+        Width = 80
         Visible = True
       end
       item
@@ -2019,13 +2027,13 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       item
         Expanded = False
         FieldName = 'TIPO'
-        Width = 90
+        Width = 80
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VALOR'
-        Width = 90
+        Width = 80
         Visible = True
       end>
   end
@@ -2034,22 +2042,21 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
     Top = 5
     Width = 121
     Height = 21
-    TabOrder = 5
-    Visible = False
+    TabOrder = 0
   end
   object EditROLL: TEdit
     Left = 63
     Top = 38
     Width = 70
     Height = 21
-    TabOrder = 6
+    TabOrder = 1
   end
   object EditNOME: TEdit
     Left = 176
     Top = 38
     Width = 241
     Height = 21
-    TabOrder = 7
+    TabOrder = 2
   end
   object EditVALDIZIMO: TEdit
     Left = 32

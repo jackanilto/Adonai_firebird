@@ -43,6 +43,7 @@ type
 //    procedure EditBUSCARROLLChange(Sender: TObject);
 //    procedure EditBUSCARChange(Sender: TObject);
     procedure DBGridBUSCARCellClick(Column: TColumn);
+    procedure DBGridDIZIMOSCellClick(Column: TColumn);
   private
     { Private declarations }
   public
@@ -73,6 +74,7 @@ uses UBuscarMembro;
 
 procedure TFrmDIZIMOOFERTA.associarCampos;
 begin
+   DM.TBL_DIZIMOS.FieldByName('ID')         .AsString   := EditID.Text;
    DM.TBL_DIZIMOS.FieldByName('NOME')       .AsString   := EditNOME.Text;
    DM.TBL_DIZIMOS.FieldByName('ROLL')       .AsString   := EditROLL.Text;
    DM.TBL_DIZIMOS.FieldByName('DATA')       .AsDateTime := Date;
@@ -156,8 +158,8 @@ procedure TFrmDIZIMOOFERTA.btnNovoClick(Sender: TObject);
 begin
   //apos editar um dado esta desbilitando o Edit
   DBGridDIZIMOS.Enabled:=false;
-//  habilitarCampos();
-//  limparCampos();
+  habilitarCampos();
+  limparCampos();
   //EditNOME.Enabled := true; // Reabilita Edit
   //EditNOME.Text := '';
   EditROLL.SetFocus;
@@ -178,7 +180,7 @@ begin
     DM.TBL_DIZIMOS.Post;
     MessageDlg('Salvo com Sucesso!!', mtInformation, mbOKCancel, 0);
     buscarTudo;
-//    desabilitarCampos;
+    desabilitarCampos;
     btnBUSCAR.Enabled := false;
     btnSalvar.Enabled := false;
     btnNovo.Enabled := true;
@@ -215,6 +217,41 @@ begin
   if DM.QueryDIZIMOS.FieldByName('ROLL').Value <> null then
      EditNOME.Text := DM.QueryDIZIMOS.FieldByName('ROLL').Value;
 
+
+
+end;
+
+procedure TFrmDIZIMOOFERTA.DBGridDIZIMOSCellClick(Column: TColumn);
+begin
+  DM.TBL_DIZIMOS.Edit;
+  DM.QueryDIZIMOS.Edit;
+  btnEditar.Enabled := true;
+  btnDeletar.Enabled := true;
+  habilitarCampos;
+
+  if DM.QueryDIZIMOS.FieldByName('NOME').Value <> null then
+     EditNOME.Text := DM.QueryDIZIMOS.FieldByName('NOME').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('DATA').Value <> null then
+     DatePickerDIZIMO.Text := DM.QueryDIZIMOS.FieldByName('DATA').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('FORMA').Value <> null then
+     cbFORMAS.Text := DM.QueryDIZIMOS.FieldByName('FORMA').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('TIPO').Value <> null then
+     cbTIPO.Text := DM.QueryDIZIMOS.FieldByName('TIPO').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('VALOR').Value <> null then
+     EditVALDIZIMO.Text := DM.QueryDIZIMOS.FieldByName('VALOR').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('OBS').Value <> null then
+     MemoOBSERVACAO.Text := DM.QueryDIZIMOS.FieldByName('OBS').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('ROLL').Value <> null then
+     EditROLL.Text := DM.QueryDIZIMOS.FieldByName('ROLL').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('ID').Value <> null then
+     EditID.Text := DM.QueryDIZIMOS.FieldByName('ID').Value;
 
 
 end;

@@ -3,7 +3,7 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'D'#237'zimo e Ofertas'
-  ClientHeight = 314
+  ClientHeight = 319
   ClientWidth = 764
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -2107,5 +2107,13 @@ object FrmDIZIMOOFERTA: TFrmDIZIMOOFERTA
       'Oferta'
       'D'#237'zimo'
       'Outros')
+  end
+  object EditID_DIZIMO: TEdit
+    Left = 208
+    Top = 5
+    Width = 121
+    Height = 21
+    TabOrder = 13
+    Text = 'EditID_DIZIMO'
   end
 end

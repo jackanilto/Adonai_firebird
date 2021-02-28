@@ -32,6 +32,7 @@ type
     btnBUSCAR: TSpeedButton;
     Label8: TLabel;
     cbTipo: TComboBox;
+    EditID_DIZIMO: TEdit;
     procedure EditVALDIZIMOChange(Sender: TObject);
     procedure EditVALDIZIMOKeyPress(Sender: TObject; var Key: Char);
     procedure btnBUSCARClick(Sender: TObject);
@@ -116,24 +117,26 @@ procedure TFrmDIZIMOOFERTA.btnEditarClick(Sender: TObject);
 begin
   if (editNOME.Text <> '') then
     begin
-        //associarCampos;
+        associarCampos;
         DM.TBL_DIZIMOS.Edit;
         DM.QueryDIZIMOS.Close;
         DM.QueryDIZIMOS.SQL.Clear;
         DM.QueryDIZIMOS.SQL.Add('update TBL_MEMBROS set '+
-        ' NOME              =  :NOME                 , ROLL                 = :ROLL                 , '+
-        ' DATA              =  :DATA                 , FORMA                = :FORMA                , '+
-        ' TIPO              =  :TIPO                 , VALOR                = :VALOR                , '+
-        ' OBS               =  :OBS                   where id              = :id                     ');
+        ' ID_DIZIMO     =  :ID_DIZIMO     ,  NOME           = :NOME        , '+
+        ' DATA          =  :DATA          ,  FORMA          = :FORMA       , '+
+        ' OBS           =  :OBS           ,  TIPO           = :TIPO        , '+
+        ' VALOR         =  :VALOR         ,ROLL             = :ROLL          '+
+        ' where id      =  :id           ');
 
-        DM.QueryDIZIMOS.ParamByName('ROLL').AsString := EditROLL.Text;
+        DM.QueryDIZIMOS.ParamByName('ID_DIZIMO').AsString := EditID_DIZIMO.Text;
+        DM.QueryDIZIMOS.ParamByName('ID').AsString := EditID.Text;
         DM.QueryDIZIMOS.ParamByName('NOME').AsString := EditNome.Text;
         DM.QueryDIZIMOS.ParamByName('DATA').AsDate := DatePickerDIZIMO.Date;
         DM.QueryDIZIMOS.ParamByName('FORMA').AsString := CBFormas.Text;
+        DM.QueryDIZIMOS.ParamByName('OBS').AsString := MemoOBSERVACAO.Text;
         DM.QueryDIZIMOS.ParamByName('TIPO').AsString := cbTIPO.Text;
         DM.QueryDIZIMOS.ParamByName('VALOR').AsString := EditVALDIZIMO.Text;
-        DM.QueryDIZIMOS.ParamByName('OBS').AsString := MemoOBSERVACAO.Text;
-        DM.QueryDIZIMOS.ParamByName('ID').AsString := EditID.Text;
+        DM.QueryDIZIMOS.ParamByName('ROLL').AsString := EditROLL.Text;
 
         DM.QueryDIZIMOS.ExecSql;
 
@@ -198,7 +201,7 @@ procedure TFrmDIZIMOOFERTA.buscarTudo;
 begin
   DM.QueryMembro.Close;
   DM.QueryMembro.SQL.Clear;
-  DM.QueryMembro.SQL.Add('select * from TBL_DIZIMOS order by nome asc');
+  DM.QueryMembro.SQL.Add('select * from TBL_DIZIMOS');
   DM.QueryMembro.Open();
 end;
 
@@ -211,11 +214,37 @@ begin
   habilitarCampos;
 
 
+
+
+  if DM.QueryDIZIMOS.FieldByName('ID').Value <> null then
+     EditID.Text := DM.QueryDIZIMOS.FieldByName('ID').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('ID_DIZIMO').Value <> null then
+     EditID_DIZIMO.Text := DM.QueryDIZIMOS.FieldByName('ID_DIZIMO').Value;
+
   if DM.QueryDIZIMOS.FieldByName('NOME').Value <> null then
     EditNOME.Text := DM.QueryDIZIMOS.FieldByName('NOME').Value;
 
+  if DM.QueryDIZIMOS.FieldByName('DATA').Value <> null then
+     DatePickerDIZIMO.DATE := DM.QueryDIZIMOS.FieldByName('DATA').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('FORMA').Value <> null then
+     CBFormas.Text := DM.QueryDIZIMOS.FieldByName('FORMA').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('OBS').Value <> null then
+     MemoOBSERVACAO.Text := DM.QueryDIZIMOS.FieldByName('OBS').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('TIPO').Value <> null then
+     cbTipo.Text := DM.QueryDIZIMOS.FieldByName('TIPO').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('VALOR').Value <> null then
+     EditVALDIZIMO.Text := DM.QueryDIZIMOS.FieldByName('VALOR').Value;
+
   if DM.QueryDIZIMOS.FieldByName('ROLL').Value <> null then
      EditNOME.Text := DM.QueryDIZIMOS.FieldByName('ROLL').Value;
+
+  if DM.QueryDIZIMOS.FieldByName('ROLL').Value <> null then
+     EditROLL.Text := DM.QueryDIZIMOS.FieldByName('ROLL').Value;
 
 
 
@@ -298,10 +327,8 @@ procedure TFrmDIZIMOOFERTA.FormShow(Sender: TObject);
 begin
   DM.TBL_DIZIMOS.Active := false;
   DM.TBL_DIZIMOS.Active := true;
-  DM.QueryDIZIMOS.Active := false;
-  DM.QueryDIZIMOS.Active := true;
-  buscarTudo;
   limparCampos;
+  buscarTudo;
   BtnSalvar.Enabled  := false;
   btnEditar.Enabled  := false;
   btnDeletar.Enabled := false;
@@ -326,7 +353,7 @@ end;
 
 procedure TFrmDIZIMOOFERTA.btnBUSCARClick(Sender: TObject);
 begin
-  FrmBUSCARMEMBRO.ShowModal;
+  FrmBUSCARMEMBRO.ShowModal;      {Abre a form para Pesquisa de Pessoa}
 end;
 
 end.

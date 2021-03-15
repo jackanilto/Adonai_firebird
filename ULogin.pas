@@ -56,7 +56,7 @@ begin
 // Verifica se foram preencidos os campos Login e Senha e exibe o alerta
    else
    if (EdtUser.Text ='') and (EdtSenha.Text = '')then
-   ShowMessage ('Preencha os campos Login e Senha') // Caso esteja vazio
+   ShowMessage ('Preencha os campos Login e Senha') // Caso esteja vazio, exiba msg
 
    else
    MessageDlg('Login ou senha inválidos', mtError, [mbOk], 0); // Caso de digitação errada
@@ -66,7 +66,7 @@ procedure TFrmLogin.BtnSairClick(Sender: TObject);
 begin
 Application.Terminate;
 end;
-//Exibir versao de compilação
+//Exibir versao de compilação na tela LOGIN
 procedure TFrmLogin.Button2Click(Sender: TObject);
 begin
    ShowMessage(VersaoExe);
@@ -155,7 +155,5 @@ begin
    MessageDlg('Login ou senha inválidos', mtError, [mbOk], 0); // Caso de digitação errada
 end;
   //Fim do codigo login
-
-//Procedure para pegar a versao do programa
 
 end.

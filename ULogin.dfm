@@ -2227,7 +2227,7 @@ object FrmLogin: TFrmLogin
     TabOrder = 0
     object Image2: TImage
       Left = 240
-      Top = 24
+      Top = 27
       Width = 67
       Height = 67
       Picture.Data = {

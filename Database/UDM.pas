@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, FireDAC.Phys.IBBase, FireDAC.Comp.UI,
   Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, System.Actions,
-  Vcl.ActnList, frxClass, frxDBSet, Datasnap.DBClient, jpeg;
+  Vcl.ActnList, frxClass, frxDBSet, Datasnap.DBClient, jpeg, Datasnap.Provider, MidasLib;
 
 type
   TDM = class(TDataModule)
@@ -109,9 +109,34 @@ type
     TBL_IGREJASNOME_IGREJA: TStringField;
     TBL_IGREJASPASTA_IMG: TStringField;
     frxReportCarteira: TfrxReport;
-    frxDBDSCart: TfrxDBDataset;
-    CDSCarteira: TClientDataSet;
+    TBL_DIZIMOS: TFDTable;
+    DSDIZIMOS: TDataSource;
+    QueryDIZIMOS: TFDQuery;
+    TBL_DIZIMOSID_DIZIMO: TIntegerField;
+    TBL_DIZIMOSID: TIntegerField;
+    TBL_DIZIMOSNOME: TStringField;
+    TBL_DIZIMOSDATA: TStringField;
+    TBL_DIZIMOSFORMA: TStringField;
+    TBL_DIZIMOSOBS: TStringField;
+    TBL_DIZIMOSTIPO: TStringField;
+    TBL_DIZIMOSVALOR: TStringField;
+    TBL_DIZIMOSROLL: TIntegerField;
+    TBL_ANIVERSARIANTES: TFDTable;
+    frxDBDSCarteira: TfrxDBDataset;
+    DSCarteira2: TDataSource;
+    CDSTempCarteira: TClientDataSet;
+    CDSTempCarteiraID: TIntegerField;
+    CDSTempCarteiraNOME: TStringField;
+    CDSTempCarteiraTRATAMENTO: TStringField;
+    CDSTempCarteiraNOME_PAI: TStringField;
+    CDSTempCarteiraNOME_MAE: TStringField;
+    CDSTempCarteiraTELPESSOAL: TStringField;
+    CDSTempCarteiraCONJUGE: TStringField;
+    CDSTempCarteiraDATA_NASC: TDateField;
+    CDSTempCarteiraIMAGEM: TStringField;
+    CDSTempCarteiraROLL: TIntegerField;
     DSCarteira: TDataSource;
+    CDSCarteira: TClientDataSet;
     CDSCarteiraID: TIntegerField;
     CDSCarteiraNOME: TStringField;
     CDSCarteiraTELPESSOAL: TStringField;
@@ -122,18 +147,9 @@ type
     CDSCarteiraCONJUGE: TStringField;
     CDSCarteiraROLL: TStringField;
     CDSCarteiraIMAGEM: TStringField;
-    TBL_DIZIMOS: TFDTable;
-    DSDIZIMOS: TDataSource;
-    QueryDIZIMOS: TFDQuery;
-    TBL_DIZIMOSID: TIntegerField;
-    TBL_DIZIMOSROLL: TIntegerField;
-    TBL_DIZIMOSNOME: TStringField;
-    TBL_DIZIMOSDATA: TStringField;
-    TBL_DIZIMOSFORMA: TStringField;
-    TBL_DIZIMOSOBS: TStringField;
-    TBL_DIZIMOSTIPO: TStringField;
-    TBL_DIZIMOSVALOR: TStringField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure QueryAniverMesFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
   private
     { Private declarations }
   public
@@ -142,6 +158,7 @@ type
 
 var
   DM: TDM;
+  MesFiltrado:string;
 
 implementation
 
@@ -154,6 +171,23 @@ uses ULogin, UProfissoes, UCadMembro;
 procedure TDM.DataModuleCreate(Sender: TObject);
 begin
 FDConn.Connected := true;
+TBL_DIZIMOS.Active := true;
+QueryDIZIMOS.Active := true;
+//QueryAniverMes.Active := true;
 end;
+
+procedure TDM.QueryAniverMesFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+  var
+  dia, mes, ano : Word;
+begin
+  if QueryAniverMes.RecordCount = 0 then
+  Abort else
+  Accept := false;
+  DecodeDate(QueryAniverMes.FieldByName('DATA_NASC').AsDateTime, dia, mes, ano);
+  if mes = StrToInt (MesFiltrado) then
+  Accept := true;
+end;
+
 
 end.

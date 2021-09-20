@@ -476,13 +476,15 @@ object DM: TDM
   end
   object DSAniverMes: TDataSource
     DataSet = QueryAniverMes
-    Left = 680
-    Top = 304
+    Left = 768
+    Top = 384
   end
   object QueryAniverMes: TFDQuery
+    Filtered = True
+    OnFilterRecord = QueryAniverMesFilterRecord
     Connection = FDConn
-    Left = 680
-    Top = 360
+    Left = 768
+    Top = 440
   end
   object TBL_IGREJAS: TFDTable
     Connection = FDConn
@@ -520,6 +522,8 @@ object DM: TDM
   end
   object frxReportCarteira: TfrxReport
     Version = '6.3.3'
+    DataSet = frxDBDSCarteira
+    DataSetName = 'frxDBDataset1'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
@@ -527,7 +531,7 @@ object DM: TDM
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 44220.761111469900000000
-    ReportOptions.LastChange = 44220.888196111100000000
+    ReportOptions.LastChange = 44459.505667858790000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -538,7 +542,7 @@ object DM: TDM
     Top = 328
     Datasets = <
       item
-        DataSet = frxDBDSCart
+        DataSet = frxDBDSCarteira
         DataSetName = 'frxDBDataset1'
       end>
     Variables = <>
@@ -563,17 +567,15 @@ object DM: TDM
         Height = 188.976377950000000000
         Top = 18.897650000000000000
         Width = 684.094930000000000000
-        DataSet = frxDBDSCart
-        DataSetName = 'frxDBDataset1'
         RowCount = 0
         object Picture1: TfrxPictureView
           AllowVectorExport = True
-          Left = 608.504330000000000000
+          Left = 566.929500000000000000
           Top = 11.338590000000000000
           Width = 94.488250000000000000
           Height = 105.826840000000000000
           DataField = 'IMAGEM'
-          DataSet = frxDBDSCart
+          DataSet = frxDBDSCarteira
           DataSetName = 'frxDBDataset1'
           Frame.Typ = []
           HightQuality = False
@@ -588,8 +590,6 @@ object DM: TDM
           Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataField = 'NOME'
-          DataSet = frxDBDSCart
-          DataSetName = 'frxDBDataset1'
           Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."NOME"]')
@@ -602,8 +602,6 @@ object DM: TDM
           Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataField = 'TELPESSOAL'
-          DataSet = frxDBDSCart
-          DataSetName = 'frxDBDataset1'
           Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."TELPESSOAL"]')
@@ -616,8 +614,6 @@ object DM: TDM
           Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataField = 'NOME_PAI'
-          DataSet = frxDBDSCart
-          DataSetName = 'frxDBDataset1'
           Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."NOME_PAI"]')
@@ -630,8 +626,6 @@ object DM: TDM
           Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataField = 'NOME_MAE'
-          DataSet = frxDBDSCart
-          DataSetName = 'frxDBDataset1'
           Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."NOME_MAE"]')
@@ -644,8 +638,6 @@ object DM: TDM
           Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataField = 'DATA_NASC'
-          DataSet = frxDBDSCart
-          DataSetName = 'frxDBDataset1'
           Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."DATA_NASC"]')
@@ -658,8 +650,6 @@ object DM: TDM
           Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataField = 'TRATAMENTO'
-          DataSet = frxDBDSCart
-          DataSetName = 'frxDBDataset1'
           Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."TRATAMENTO"]')
@@ -672,8 +662,6 @@ object DM: TDM
           Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataField = 'CONJUGE'
-          DataSet = frxDBDSCart
-          DataSetName = 'frxDBDataset1'
           Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."CONJUGE"]')
@@ -681,13 +669,11 @@ object DM: TDM
         object frxDBDataset1ROLL: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 600.945270000000000000
+          Left = 472.441250000000000000
           Top = 143.622140000000000000
-          Width = 102.047310000000000000
+          Width = 192.756030000000000000
           Height = 18.897650000000000000
           DataField = 'ROLL'
-          DataSet = frxDBDSCart
-          DataSetName = 'frxDBDataset1'
           Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."ROLL"]')
@@ -695,13 +681,132 @@ object DM: TDM
       end
     end
   end
-  object frxDBDSCart: TfrxDBDataset
+  object TBL_DIZIMOS: TFDTable
+    Connection = FDConn
+    UpdateOptions.UpdateTableName = 'TBL_DIZIMOS'
+    TableName = 'TBL_DIZIMOS'
+    Left = 768
+    Top = 112
+    object TBL_DIZIMOSID_DIZIMO: TIntegerField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'ID_DIZIMO'
+      Origin = 'ID_DIZIMO'
+      Required = True
+    end
+    object TBL_DIZIMOSID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+    end
+    object TBL_DIZIMOSNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 250
+    end
+    object TBL_DIZIMOSDATA: TStringField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+      Size = 50
+    end
+    object TBL_DIZIMOSFORMA: TStringField
+      FieldName = 'FORMA'
+      Origin = 'FORMA'
+      Size = 90
+    end
+    object TBL_DIZIMOSOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 300
+    end
+    object TBL_DIZIMOSTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      Size = 90
+    end
+    object TBL_DIZIMOSVALOR: TStringField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+      Size = 90
+    end
+    object TBL_DIZIMOSROLL: TIntegerField
+      FieldName = 'ROLL'
+      Origin = 'ROLL'
+    end
+  end
+  object DSDIZIMOS: TDataSource
+    DataSet = QueryDIZIMOS
+    Left = 768
+    Top = 168
+  end
+  object QueryDIZIMOS: TFDQuery
+    Connection = FDConn
+    SQL.Strings = (
+      'select * from tbl_dizimos')
+    Left = 768
+    Top = 216
+  end
+  object TBL_ANIVERSARIANTES: TFDTable
+    Connection = FDConn
+    UpdateOptions.UpdateTableName = 'TBL_ANIVERSARIANTES'
+    TableName = 'TBL_ANIVERSARIANTES'
+    Left = 768
+    Top = 320
+  end
+  object frxDBDSCarteira: TfrxDBDataset
     UserName = 'frxDBDataset1'
     CloseDataSource = False
-    DataSet = CDSCarteira
+    DataSource = DSCarteira
     BCDToCurrency = False
     Left = 48
+    Top = 384
+  end
+  object DSCarteira2: TDataSource
+    DataSet = CDSTempCarteira
+    Left = 480
     Top = 392
+  end
+  object CDSTempCarteira: TClientDataSet
+    Aggregates = <>
+    MasterSource = DSMembro
+    PacketRecords = 0
+    Params = <>
+    Left = 480
+    Top = 336
+    object CDSTempCarteiraID: TIntegerField
+      FieldName = 'ID'
+    end
+    object CDSTempCarteiraNOME: TStringField
+      FieldName = 'NOME'
+      Size = 150
+    end
+    object CDSTempCarteiraTRATAMENTO: TStringField
+      FieldName = 'TRATAMENTO'
+    end
+    object CDSTempCarteiraNOME_PAI: TStringField
+      FieldName = 'NOME_PAI'
+    end
+    object CDSTempCarteiraNOME_MAE: TStringField
+      FieldName = 'NOME_MAE'
+    end
+    object CDSTempCarteiraTELPESSOAL: TStringField
+      FieldName = 'TELPESSOAL'
+    end
+    object CDSTempCarteiraCONJUGE: TStringField
+      FieldName = 'CONJUGE'
+    end
+    object CDSTempCarteiraDATA_NASC: TDateField
+      FieldName = 'DATA_NASC'
+    end
+    object CDSTempCarteiraIMAGEM: TStringField
+      FieldName = 'IMAGEM'
+    end
+    object CDSTempCarteiraROLL: TIntegerField
+      FieldName = 'ROLL'
+    end
+  end
+  object DSCarteira: TDataSource
+    DataSet = CDSCarteira
+    Left = 176
+    Top = 328
   end
   object CDSCarteira: TClientDataSet
     PersistDataPacket.Data = {
@@ -759,67 +864,5 @@ object DM: TDM
       FieldName = 'IMAGEM'
       Size = 300
     end
-  end
-  object DSCarteira: TDataSource
-    DataSet = CDSCarteira
-    Left = 176
-    Top = 328
-  end
-  object TBL_DIZIMOS: TFDTable
-    Connection = FDConn
-    UpdateOptions.UpdateTableName = 'TBL_DIZIMOS'
-    TableName = 'TBL_DIZIMOS'
-    Left = 768
-    Top = 112
-    object TBL_DIZIMOSID: TIntegerField
-      FieldName = 'ID'
-      Origin = 'ID'
-    end
-    object TBL_DIZIMOSROLL: TIntegerField
-      FieldName = 'ROLL'
-      Origin = 'ROLL'
-    end
-    object TBL_DIZIMOSNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
-      Size = 50
-    end
-    object TBL_DIZIMOSDATA: TStringField
-      FieldName = 'DATA'
-      Origin = '"DATA"'
-      Size = 255
-    end
-    object TBL_DIZIMOSFORMA: TStringField
-      FieldName = 'FORMA'
-      Origin = 'FORMA'
-      Size = 12
-    end
-    object TBL_DIZIMOSTIPO: TStringField
-      FieldName = 'TIPO'
-      Origin = 'TIPO'
-      Size = 80
-    end
-    object TBL_DIZIMOSVALOR: TStringField
-      FieldName = 'VALOR'
-      Origin = 'VALOR'
-      Size = 80
-    end
-    object TBL_DIZIMOSOBS: TStringField
-      FieldName = 'OBS'
-      Origin = 'OBS'
-      Size = 50
-    end
-  end
-  object DSDIZIMOS: TDataSource
-    DataSet = QueryDIZIMOS
-    Left = 768
-    Top = 168
-  end
-  object QueryDIZIMOS: TFDQuery
-    Connection = FDConn
-    SQL.Strings = (
-      'select * from tbl_dizimos')
-    Left = 768
-    Top = 216
   end
 end

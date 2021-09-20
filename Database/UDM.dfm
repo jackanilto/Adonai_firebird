@@ -531,9 +531,15 @@ object DM: TDM
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 44220.761111469900000000
-    ReportOptions.LastChange = 44459.505667858790000000
+    ReportOptions.LastChange = 44459.512779375000000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
+      ''
+      'procedure FotoMembroOnBeforePrint(Sender: TfrxComponent);'
+      '  var wCaminho : string;'
+      'begin'
+      '   wCaminho := QueryMembro.FieldByName('#39'IMAGEM'#39').AsString;'
+      '   FotoMembro.Picture.LoadFromFile(wCaminho);'
       ''
       'begin'
       ''
@@ -568,12 +574,13 @@ object DM: TDM
         Top = 18.897650000000000000
         Width = 684.094930000000000000
         RowCount = 0
-        object Picture1: TfrxPictureView
+        object FotoMembro: TfrxPictureView
           AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 11.338590000000000000
           Width = 94.488250000000000000
           Height = 105.826840000000000000
+          OnBeforePrint = 'FotoMembroOnBeforePrint'
           DataField = 'IMAGEM'
           DataSet = frxDBDSCarteira
           DataSetName = 'frxDBDataset1'

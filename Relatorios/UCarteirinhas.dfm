@@ -188,7 +188,7 @@ object FrmCarteirinha: TFrmCarteirinha
   end
   object gridListMembros: TDBGrid
     Left = 20
-    Top = 88
+    Top = 90
     Width = 901
     Height = 137
     DataSource = DM.DSMembro
@@ -215,6 +215,39 @@ object FrmCarteirinha: TFrmCarteirinha
         Expanded = False
         FieldName = 'NOME'
         Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME_PAI'
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME_MAE'
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CONJUGE'
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TELPESSOAL'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'TRATAMENTO'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'IMAGEM'
         Visible = True
       end
       item
@@ -254,11 +287,6 @@ object FrmCarteirinha: TFrmCarteirinha
       end
       item
         Expanded = False
-        FieldName = 'TELPESSOAL'
-        Visible = False
-      end
-      item
-        Expanded = False
         FieldName = 'CONTATO1'
         Visible = False
       end
@@ -281,16 +309,6 @@ object FrmCarteirinha: TFrmCarteirinha
         Expanded = False
         FieldName = 'GRUPO'
         Visible = False
-      end
-      item
-        Expanded = False
-        FieldName = 'TRATAMENTO'
-        Visible = False
-      end
-      item
-        Expanded = False
-        FieldName = 'IMAGEM'
-        Visible = True
       end
       item
         Expanded = False
@@ -334,18 +352,6 @@ object FrmCarteirinha: TFrmCarteirinha
       end
       item
         Expanded = False
-        FieldName = 'NOME_PAI'
-        Width = 200
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'NOME_MAE'
-        Width = 200
-        Visible = True
-      end
-      item
-        Expanded = False
         FieldName = 'PAIS_ORIGEM'
         Visible = False
       end
@@ -378,12 +384,6 @@ object FrmCarteirinha: TFrmCarteirinha
         Expanded = False
         FieldName = 'FILHOS'
         Visible = False
-      end
-      item
-        Expanded = False
-        FieldName = 'CONJUGE'
-        Width = 200
-        Visible = True
       end
       item
         Expanded = False
@@ -478,6 +478,67 @@ object FrmCarteirinha: TFrmCarteirinha
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ROLL'
+        Width = 50
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ID'
+        Width = -1
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME'
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME_PAI'
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME_MAE'
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CONJUGE'
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TELPESSOAL'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATA_NASC'
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TRATAMENTO'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'IMAGEM'
+        Width = 50
+        Visible = True
+      end>
   end
   object edtBuscar: TEdit
     Left = 20

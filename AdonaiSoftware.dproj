@@ -168,6 +168,10 @@
             <Form>FrmBUSCARMEMBRO</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Movimentacoes\UAniversariantes.pas">
+            <Form>FrmAniversariantes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

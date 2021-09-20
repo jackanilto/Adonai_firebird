@@ -304,7 +304,6 @@ begin
     begin
         associarCampos;
         DM.TBL_MEMBROS.Edit;
-
         DM.QueryMembro.Close;
         DM.QueryMembro.SQL.Clear;
 
@@ -442,7 +441,7 @@ begin
   //apos editar um dado esta desbilitando o Edit
   grid.Enabled:=false;
   EditNOME.Enabled := true; // Reabilita Edit
-  EditNOME.Text := '';
+  limparCampos;
   EditNOME.SetFocus;
   DM.TBL_MEMBROS.Insert;
   carregarcbPROFISSAO;    // Carrega ComboBox
@@ -887,11 +886,11 @@ begin
   EditROLL         .Text := '';
   EditCONJUGE      .Text := '';
   EditCAMPO13      .Text := '';
-  cbMORADIA      .Text := '';
+  cbMORADIA        .Text := '';
   EditCAMPO15      .Text := '';
   MemoHistórico    .Text := '';
-  EditCIDADEBATISMO .Text := '';
-  MemoOBSERVACAO       .Text := '';
+  EditCIDADEBATISMO.Text := '';
+  MemoOBSERVACAO   .Text := '';
 end;
 
 procedure TFrmCadMembro.btnCartasClick(Sender: TObject);

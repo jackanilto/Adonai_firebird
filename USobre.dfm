@@ -4129,8 +4129,8 @@ object FrmSobre: TFrmSobre
   object Label2: TLabel
     Left = 8
     Top = 133
-    Width = 122
-    Height = 19
+    Width = 142
+    Height = 39
     Hint = 'Dias restante da Licen'#231'a'
     Caption = 'Dias Restantes'
     Color = clBtnFace
@@ -4144,6 +4144,7 @@ object FrmSobre: TFrmSobre
     ParentFont = False
   end
   object EvAppProtect1: TEvAppProtect
+    Active = False
     IdApplication = 6101974
     RegKey = '\SOFTWARE\TCF Software\AppProtect\'
     Left = 528

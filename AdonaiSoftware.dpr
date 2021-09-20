@@ -22,7 +22,8 @@ uses
   uWebCam in 'Cadastros\uWebCam.pas' {frmWebCam},
   UCarteirinhas in 'Relatorios\UCarteirinhas.pas' {FrmCarteirinha},
   UDizimos in 'Movimentacoes\UDizimos.pas' {FrmDIZIMOOFERTA},
-  UBuscarMembro in 'Movimentacoes\UBuscarMembro.pas' {FrmBUSCARMEMBRO};
+  UBuscarMembro in 'Movimentacoes\UBuscarMembro.pas' {FrmBUSCARMEMBRO},
+  UAniversariantes in 'Movimentacoes\UAniversariantes.pas' {FrmAniversariantes};
 
 {$R *.res}
 
@@ -42,6 +43,7 @@ begin
   Application.CreateForm(TFrmCarteirinha, FrmCarteirinha);
   Application.CreateForm(TFrmDIZIMOOFERTA, FrmDIZIMOOFERTA);
   Application.CreateForm(TFrmBUSCARMEMBRO, FrmBUSCARMEMBRO);
+  Application.CreateForm(TFrmAniversariantes, FrmAniversariantes);
   //Application.CreateForm(TfrmWebCam, frmWebCam);
   Application.Run;
 end.

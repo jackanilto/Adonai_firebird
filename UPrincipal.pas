@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.WinXCalendars,
   Vcl.ExtCtrls, Vcl.Menus, Vcl.Buttons, Vcl.WinXCtrls, Vcl.WinXPickers,
   Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg, Data.DB, Vcl.Grids,
-  Vcl.DBGrids, frxClass, UCarteirinhas, UDizimos;
+  Vcl.DBGrids, frxClass, UCarteirinhas, UDizimos, UAniversariantes;
   //Vcl.Imaging.pngimage, EAppProt, Vcl.Imaging.jpeg, ESpshScr;
 
 type
@@ -40,6 +40,9 @@ type
     Carteirinhas1: TMenuItem;
     btnCarteirinhas: TSpeedButton;
     btnDIZIMOS: TSpeedButton;
+    SpeedButton1: TSpeedButton;
+    Utilitarios1: TMenuItem;
+    Calculadora1: TMenuItem;
     //EvSplashScreen1: TEvSplashScreen;
     procedure Button1Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -58,6 +61,8 @@ type
     procedure Carteirinhas1Click(Sender: TObject);
     procedure btnCarteirinhasClick(Sender: TObject);
     procedure btnDIZIMOSClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure Calculadora1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -81,6 +86,11 @@ end;
 procedure TFrmPrincipal.Button1Click(Sender: TObject);
 begin
 Application.Terminate;
+end;
+
+procedure TFrmPrincipal.Calculadora1Click(Sender: TObject);
+begin
+WinExec ('Calc.exe',SW_Show);
 end;
 
 procedure TFrmPrincipal.Carteirinhas1Click(Sender: TObject);
@@ -157,11 +167,15 @@ begin
 FrmCadMembro.ShowModal;
 end;
 
+procedure TFrmPrincipal.SpeedButton1Click(Sender: TObject);
+begin
+FrmAniversariantes.ShowModal;
+end;
+
 procedure TFrmPrincipal.SpeedButton2Click(Sender: TObject);
 begin
 Application.Terminate;
 end;
-
 
 procedure TFrmPrincipal.btnTratamentosClick(Sender: TObject);
 begin

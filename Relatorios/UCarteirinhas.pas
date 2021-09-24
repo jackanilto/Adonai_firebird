@@ -39,7 +39,12 @@ implementation
 {$R *.dfm}
 
 procedure TFrmCarteirinha.btnCarteirinhaClick(Sender: TObject);
+
 begin
+//Aqui seria a nova linha
+//Dm.frxReportCarteira.Loadfromfile( DM.CDSCarteiraIMAGEM.value);
+//DM.frxReportCarteira.ShowReport();
+
   DM.CDSCarteira.Open;
   DM.frxReportCarteira.LoadFromFile(GetCurrentDir + '\Relatorio\modelo_01.fr3');
   DM.frxReportCarteira.ShowReport();

@@ -488,7 +488,6 @@ object FrmCarteirinha: TFrmCarteirinha
       item
         Expanded = False
         FieldName = 'ID'
-        Width = -1
         Visible = False
       end
       item
